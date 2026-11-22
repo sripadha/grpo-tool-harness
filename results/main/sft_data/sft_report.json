@@ -1,0 +1,51 @@
+{
+  "selection": {
+    "n_records": 4800,
+    "n_harness_errors": 0,
+    "n_passed": 2030,
+    "n_clean_passes": 1865,
+    "allow_penalised": false,
+    "n_with_refused_call": 5,
+    "n_candidates": 1860,
+    "n_distinct": 512,
+    "n_chosen": 452,
+    "n_chosen_with_penalty": 0,
+    "n_scenarios": 600,
+    "n_families": 200,
+    "n_families_covered": 172,
+    "by_outcome": {
+      "grant": {
+        "families": 50,
+        "families_covered": 50,
+        "scenarios_chosen": 147
+      },
+      "approval": {
+        "families": 50,
+        "families_covered": 47,
+        "scenarios_chosen": 134
+      },
+      "already": {
+        "families": 50,
+        "families_covered": 41,
+        "scenarios_chosen": 101
+      },
+      "inactive": {
+        "families": 50,
+        "families_covered": 34,
+        "scenarios_chosen": 70
+      }
+    },
+    "pass_rate_by_outcome": {
+      "grant": 0.5033333333333334,
+      "approval": 0.7325000000000002,
+      "already": 0.2458333333333333,
+      "inactive": 0.21
+    }
+  },
+  "pass_rate": 0.4229166666666668,
+  "attempts_per_scenario": {
+    "8": 600
+  },
+  "n_chosen_tokens": 799503,
+  "n_loss_tokens": 85062
+}

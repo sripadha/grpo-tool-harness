@@ -1,0 +1,17 @@
+table results/main/tables/test_base_sft_grpo_seed1_seed2; families 48; records per arm {'base': 1536, 'sft': 1536, 'grpo_seed1': 1536, 'grpo_seed2': 1536}
+input checks failed: 0; structure problems: 0
+base        pass 634/1536 = 0.4127604167  interval: my seed 0.3268..0.5033  seed 0 0.3216..0.5007  exact 0.3255..0.5020
+sft         pass 1403/1536 = 0.9134114583  interval: my seed 0.8600..0.9583  seed 0 0.8594..0.9577  exact 0.8587..0.9577
+grpo_seed1  pass 1529/1536 = 0.9954427083  interval: my seed 0.9889..0.9993  seed 0 0.9896..0.9993  exact 0.9889..0.9993
+grpo_seed2  pass 1528/1536 = 0.9947916667  interval: my seed 0.9896..0.9987  seed 0 0.9896..0.9987  exact 0.9896..0.9987
+sft         minus base  diff +0.5006510417  boot: my seed +0.4212..+0.5801  seed 0 +0.4219..+0.5814  exact +0.4212..+0.5794  t +0.418280..+0.583022
+grpo_seed1  minus sft   diff +0.0820312500  boot: my seed +0.0378..+0.1354  seed 0 +0.0391..+0.1361  exact +0.0384..+0.1367  t +0.030748..+0.133315
+grpo_seed2  minus sft   diff +0.0813802083  boot: my seed +0.0371..+0.1380  seed 0 +0.0371..+0.1354  exact +0.0371..+0.1361  t +0.029515..+0.133245
+.json numbers without a random part: 218 compared, mismatches 0, largest absolute difference 1.44e-15
+.md printed numbers without a random part: 175 compared, mismatches 0
+.md printed numbers against their .json value: 184 compared, mismatches 0
+interval ends: 14; outside the 95% band 1; outside the 99.9% band 0; outside the range of 200 seeds 0
+numbers with a random part, my code with seed 0: .json 34 compared, mismatches 0, largest absolute difference 6.94e-18; .md 26 compared, mismatches 0
+table entries not made again (settings and labels): 10; parts of the .md not covered: 0
+in all: 651 comparisons (the lines above added up), 0 differ
+wrote report_test.md and my_numbers_test.json in results/main/audit/recount

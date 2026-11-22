@@ -1,0 +1,16 @@
+STEP 1: OK      the watchdog runs
+STEP 2: OK      machine: GPU, driver, memory, disk
+STEP 3: OK      uv is installed
+STEP 4: OK      Python 3.11 environment in /workspace/venv
+STEP 5: OK      packages of requirements-gpu.txt
+STEP 6: OK      optional package causal-conv1d==1.7.0
+STEP 7: OK      optional package kernels==0.18.3
+STEP 8: OK      optional package trl==1.18.0
+STEP 9: OK      the pinned versions are the installed ones
+STEP 10: OK      torch sees the GPU
+STEP 11: OK      fast kernel: flash-linear-attention (fla.ops)
+STEP 12: OK      fast kernel: causal-conv1d
+STEP 13: OK      model snapshot Qwen/Qwen3.5-9B@c202236235762e1c871ad0ccb60c8ee5ba337b9a
+STEP 14: OK      model snapshot Qwen/Qwen3.5-2B@15852e8c16360a2fea060d615a32b45270f8a8fc
+STEP 15: OK      model snapshot Qwen/Qwen3.5-4B@851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a
+STEP 16: OK      write /workspace/env.sh

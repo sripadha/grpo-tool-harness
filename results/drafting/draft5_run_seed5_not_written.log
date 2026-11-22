@@ -1,0 +1,89 @@
+06:59:18
+3 fields to write, with up to 8 candidates each
+Loading weights:   0%|          | 0/427 [00:00<?, ?it/s]Loading weights: 100%|██████████| 427/427 [00:00<00:00, 4695.21it/s]
+/workspace/venv/lib/python3.11/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+  candidate 0 of system_prompt: refused: names the tool lookup_person only in a list of tools: on every line that holds it, 2 or more tools of the desk are named besides close_request
+  candidate 1 of system_prompt: refused: names the tool lookup_person only in a list of tools: on every line that holds it, 2 or more tools of the desk are named besides close_request
+  candidate 2 of system_prompt: refused: names the tool lookup_person only in a list of tools: on every line that holds it, 2 or more tools of the desk are named besides close_request
+  candidate 3 of system_prompt: refused: names the tool lookup_person only in a list of tools: on every line that holds it, 2 or more tools of the desk are named besides close_request
+  candidate 4 of system_prompt: refused: names the tool lookup_person only in a list of tools: on every line that holds it, 2 or more tools of the desk are named besides close_request
+  candidate 5 of system_prompt: refused: names the tool lookup_person only in a list of tools: on every line that holds it, 2 or more tools of the desk are named besides close_request
+  candidate 6 of system_prompt: refused: names the tool lookup_person only in a list of tools: on every line that holds it, 2 or more tools of the desk are named besides close_request
+  candidate 7 of system_prompt: refused: names the tool request_approval only in a list of tools: on every line that holds it, 2 or more tools of the desk are named besides close_request
+  FAILED    system_prompt: no valid candidate among 8
+  FAILED    policy_shift.system_prompt: not written, because these fields have no value: ['system_prompt']
+  FAILED    plain_system_prompt: not written, because these fields have no value: ['system_prompt']
+longest run of words shared with the shown text, among the taken values (limit 8): 7 words in policy_shift.system_prompt ("a named person from a named department")
+longest run of words shared with the placeholder text file (a report, not a rule): 6 words in tools.grant_role.params.person_id.description ("the id of the person who")
+runs in which a value was drawn, for each field:
+  id_prefixes.person                                     1
+  id_prefixes.role                                       1
+  tools.department_info.name                             1
+  tools.lookup_person.params.name.name                   1
+  tools.check_access.params.person_id.name               1
+  tools.check_access.params.role_name.name               1
+  tools.request_approval.params.role_id.name             1
+  tools.request_approval.params.approver_id.name         1
+  tools.close_request.params.resolution.name             1
+  tools.department_info.params.department.name           1
+  result_keys.matches                                    1
+  result_keys.person_id                                  1
+  result_keys.name                                       1
+  result_keys.department                                 1
+  result_keys.status                                     1
+  result_keys.manager_id                                 1
+  result_keys.role_id                                    1
+  result_keys.sensitive                                  1
+  result_keys.has_access                                 1
+  result_keys.result                                     1
+  result_keys.error                                      1
+  result_keys.member_count                               1
+  values.status.active                                   1
+  values.status.inactive                                 1
+  values.resolution.granted                              1
+  values.resolution.pending                              1
+  values.resolution.already                              1
+  values.resolution.denied                               1
+  values.confirmation.approval_requested                 1
+  values.confirmation.role_granted                       1
+  values.confirmation.request_closed                     1
+  tools.lookup_person.description                        1
+  tools.check_access.description                         1
+  tools.request_approval.description                     1
+  tools.grant_role.description                           1
+  tools.close_request.description                        1
+  tools.department_info.description                      1
+  tools.lookup_person.params.name.description            1
+  tools.check_access.params.person_id.description        1
+  tools.check_access.params.role_name.description        1
+  tools.request_approval.params.person_id.description    1
+  tools.request_approval.params.role_id.description      1
+  tools.request_approval.params.approver_id.description  1
+  tools.grant_role.params.person_id.description          1
+  tools.grant_role.params.role_id.description            1
+  tools.close_request.params.resolution.description      2
+  tools.close_request.params.person_id.description       2
+  tools.close_request.params.role_id.description         1
+  tools.department_info.params.department.description    1
+  errors.unknown_person_id                               1
+  errors.unknown_role_name                               1
+  errors.unknown_role_id                                 1
+  errors.unknown_approver_id                             1
+  errors.unknown_department                              1
+  errors.malformed_call                                  1
+  system_prompt                                          4
+  policy_shift.system_prompt                             2
+  plain_system_prompt                                    2
+  request_templates.style_1                              1
+  request_templates.style_2                              1
+  request_templates.style_3                              3
+  request_templates.style_4                              3
+  departments                                            1
+  roles                                                  1
+fields drawn in more than one run: ['tools.close_request.params.resolution.description', 'tools.close_request.params.person_id.description', 'system_prompt', 'policy_shift.system_prompt', 'plain_system_prompt', 'request_templates.style_3', 'request_templates.style_4']
+peak GPU memory of this process: 17.06 GB
+NOT WRITTEN: 3 field(s) have no value: ['plain_system_prompt', 'policy_shift.system_prompt', 'system_prompt']
+DRAFT_EXIT=1
+07:01:35
+JOB_EXIT_CODE=0

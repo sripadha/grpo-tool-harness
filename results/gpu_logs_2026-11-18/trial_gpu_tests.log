@@ -1,0 +1,319 @@
+Wed Nov 18 16:42:38 UTC 2026
+........................................................................ [ 65%]
+......................................                                   [100%]
+=============================== warnings summary ===============================
+tests/gpu/test_train_fixes_gpu.py::test_pieces_give_the_logprobs_of_all_rows_at_once
+  /workspace/venv/lib/python3.11/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+    warn_once(FP_FUSION_DEFAULT_WARNING)
+
+tests/gpu/test_lora.py::test_add_lora_returns_a_wrapper_of_the_same_model
+  /workspace/venv/lib/python3.11/site-packages/transformers/modeling_utils.py:3303: FutureWarning: `is_gradient_checkpointing` is deprecated and will be removed in v6. Use `is_activation_checkpointing` instead.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+==================================== PASSES ====================================
+______________ test_pieces_give_the_logprobs_of_all_rows_at_once _______________
+---------------------------- Captured stderr setup -----------------------------
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/320 [00:00<?, ?it/s]Loading weights: 100%|██████████| 320/320 [00:00<00:00, 4183.32it/s]
+------------------------------ Captured log setup ------------------------------
+WARNING  huggingface_hub.utils._http:_http.py:1023 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+----------------------------- Captured stdout call -----------------------------
+
+all rows at once, twice:       {'n': 77, 'mean': 0.0, 'p99': 0.0, 'max': 0.0}
+pieces of 16 against all rows: {'n': 77, 'mean': 0.0, 'p99': 0.0, 'max': 0.0}
+pieces of  1 against all rows: {'n': 77, 'mean': 1.019471651547915e-06, 'p99': 3.1948089599609375e-05, 'max': 3.1948089599609375e-05}
+______________ test_pieces_give_the_gradient_of_all_rows_at_once _______________
+----------------------------- Captured stdout call -----------------------------
+
+gradient, pieces of 16 against all rows: cosine = 0.998520, relative difference = 5.44e-02
+____________ test_pieces_lower_the_peak_memory_of_the_output_layer _____________
+----------------------------- Captured stdout call -----------------------------
+
+peak memory of the output layer, 2048 rows, vocabulary 248320: all rows at once 5.68 GiB (estimate 6.63), pieces of 256 2.37 GiB (estimate 2.49), ratio 0.417 (estimate 0.375)
+values, pieces against all rows: {'n': 2048, 'mean': 5.653128027915955e-07, 'p99': 1.9073486328125e-06, 'max': 0.00012111663818359375} ; gradient of the rows: cosine = 1.000000
+_____________________ test_equal_to_the_plain_logits_path ______________________
+----------------------------- Captured stdout call -----------------------------
+
+plain path against token_logprobs: {'n': 77, 'mean': 0.0, 'p99': 0.0, 'max': 0.0}
+_________________ test_left_padding_does_not_change_a_sequence _________________
+----------------------------- Captured stdout call -----------------------------
+
+alone against batch of two, no pad:   {'n': 399, 'mean': 0.0462258165386145, 'p99': 0.4999685287475586, 'max': 1.912243366241455}
+alone against left-padded (80 pads):  {'n': 399, 'mean': 0.04747813297900723, 'p99': 0.5674112439155579, 'max': 1.4374942779541016}
+left-padded, partner A against B:     {'n': 399, 'mean': 0.0, 'p99': 0.0, 'max': 0.0}
+MISTAKE on purpose, pads not masked:  {'n': 399, 'mean': 0.8185179636251515, 'p99': 12.982342720031738, 'max': 17.402414321899414}
+______________ test_parity_of_sampler_and_trainer_logprobs[eval] _______________
+----------------------------- Captured stdout call -----------------------------
+
+sampler against trainer (eval mode): {'n': 149, 'mean': 0.0006631158737291394, 'p99': 0.005587957799434662, 'max': 0.08025696873664856}
+______________ test_parity_of_sampler_and_trainer_logprobs[train] ______________
+----------------------------- Captured stdout call -----------------------------
+
+sampler against trainer (train mode): {'n': 149, 'mean': 0.0006631158737291394, 'p99': 0.005587957799434662, 'max': 0.08025696873664856}
+_________ test_gradients_flow_with_and_without_gradient_checkpointing __________
+----------------------------- Captured stdout call -----------------------------
+
+gradient with against without checkpointing: cosine = 1.000000
+_______________________ test_coverage_of_the_real_model ________________________
+----------------------------- Captured stdout call -----------------------------
+
+LoRA coverage (layer type, block, module, wrapped/of, shape, adapter weights):
+  full_attention    mlp          down_proj      6/6   [2048, 6144]       786,432
+  full_attention    mlp          gate_proj      6/6   [6144, 2048]       786,432
+  full_attention    mlp          up_proj        6/6   [6144, 2048]       786,432
+  full_attention    self_attn    k_proj         6/6   [512, 2048]        245,760
+  full_attention    self_attn    o_proj         6/6   [2048, 2048]       393,216
+  full_attention    self_attn    q_proj         6/6   [4096, 2048]       589,824
+  full_attention    self_attn    v_proj         6/6   [512, 2048]        245,760
+  linear_attention  linear_attn  in_proj_a      0/18  [16, 2048]               0
+  linear_attention  linear_attn  in_proj_b      0/18  [16, 2048]               0
+  linear_attention  linear_attn  in_proj_qkv   18/18  [6144, 2048]     2,359,296
+  linear_attention  linear_attn  in_proj_z     18/18  [2048, 2048]     1,179,648
+  linear_attention  linear_attn  out_proj      18/18  [2048, 2048]     1,179,648
+  linear_attention  mlp          down_proj     18/18  [2048, 6144]     2,359,296
+  linear_attention  mlp          gate_proj     18/18  [6144, 2048]     2,359,296
+  linear_attention  mlp          up_proj       18/18  [6144, 2048]     2,359,296
+  None              None         lm_head        0/1   [248320, 2048]           0
+_______________ test_the_adapter_changes_nothing_before_training _______________
+----------------------------- Captured stdout call -----------------------------
+
+base against base with zero adapters: mean 0.00e+00, max 0.00e+00
+___________ test_gradients_reach_both_layer_types_and_the_mlp[False] ___________
+----------------------------- Captured stdout call -----------------------------
+
+checkpointing False: loss 2.0858, lora_B gradient norms {'linear_attn': 12.711002810989775, 'mlp': 13.889921930068308, 'self_attn': 5.336061126455334}
+___________ test_gradients_reach_both_layer_types_and_the_mlp[True] ____________
+----------------------------- Captured stdout call -----------------------------
+
+checkpointing True: loss 2.0858, lora_B gradient norms {'linear_attn': 12.724892770768836, 'mlp': 13.898224824175585, 'self_attn': 5.34209307001095}
+_______ test_training_changes_the_adapter_and_it_survives_save_and_load ________
+----------------------------- Captured stdout call -----------------------------
+
+gradient norm 19.5720; weight change per block {'linear_attn': 0.1986221173629625, 'mlp': 0.27125808996543466, 'self_attn': 0.09580005574905585}; mean log-probability -2.0858 -> -1.3628
+----------------------------- Captured stderr call -----------------------------
+Loading weights:   0%|          | 0/320 [00:00<?, ?it/s]Loading weights: 100%|██████████| 320/320 [00:00<00:00, 4227.17it/s]
+Loading weights:   0%|          | 0/320 [00:00<?, ?it/s]Loading weights: 100%|██████████| 320/320 [00:00<00:00, 3992.95it/s]
+_______________________ test_value_and_gradient_by_hand ________________________
+---------------------------- Captured stdout setup -----------------------------
+
+policy_loss under test: the main version
+___________________ test_gradient_formula_on_unequal_numbers ___________________
+---------------------------- Captured stdout setup -----------------------------
+
+policy_loss under test: the main version
+___________ test_zero_advantages_give_exactly_zero_loss_and_gradient ___________
+---------------------------- Captured stdout setup -----------------------------
+
+policy_loss under test: the main version
+___________ test_a_masked_token_gets_no_gradient_and_changes_nothing ___________
+---------------------------- Captured stdout setup -----------------------------
+
+policy_loss under test: the main version
+________ test_sign_a_gradient_step_raises_the_logprob_of_a_good_episode ________
+---------------------------- Captured stdout setup -----------------------------
+
+policy_loss under test: the main version
+_______________________ test_the_normaliser_only_divides _______________________
+---------------------------- Captured stdout setup -----------------------------
+
+policy_loss under test: the main version
+_____________________ test_float32_tensors_as_in_training ______________________
+---------------------------- Captured stdout setup -----------------------------
+
+policy_loss under test: the main version
+___________________________ test_wrong_inputs_raise ____________________________
+---------------------------- Captured stdout setup -----------------------------
+
+policy_loss under test: the main version
+________________ test_the_copied_lines_are_in_the_installed_trl ________________
+----------------------------- Captured stdout call -----------------------------
+
+trl 1.18.0; group_advantages: the main version
+________ test_same_seed_gives_the_same_tokens_and_another_seed_does_not ________
+----------------------------- Captured stdout call -----------------------------
+
+same seed twice: largest difference of a recorded log-probability = 0.00e+00
+__________ test_a_row_sampled_in_a_padded_batch_scores_the_same_alone __________
+----------------------------- Captured stdout call -----------------------------
+
+sampled in a padded batch of 4 against scored alone: n = 32, 1150 prompt tokens, 21 pads, mean = 1.51e-04, max = 2.99e-03
+_______________ test_kernel_report_is_consistent_and_repeatable ________________
+----------------------------- Captured stdout call -----------------------------
+
+kernel report: {'imports': {'fla': {'ok': True, 'error': None}, 'fla.ops': {'ok': True, 'error': None}, 'fla.ops.gated_delta_rule': {'ok': True, 'error': None}, 'causal_conv1d': {'ok': True, 'error': None}, 'kernels': {'ok': True, 'error': None}}, 'use_kernels': False, 'fallback_warnings': [], 'torch_fallback_functions': [], 'gated_delta_rule': 'fla', 'causal_conv1d': 'causal_conv1d', 'fast_path': True}
+_________________________ test_rollout_with_the_model __________________________
+----------------------------- Captured stdout call -----------------------------
+
+whole episodes, sampler against trainer: {'n': 2589, 'mean': 0.0026061065453332976, 'p99': 0.07961618900299072, 'max': 0.29523515701293945}
+passed 4/10, malformed messages 0.26
+___ test_the_run_manifest_of_the_rollout_script_names_the_code_that_made_it ____
+----------------------------- Captured stdout call -----------------------------
+pass 1/1: 1 episodes, 10 s, 0 harness errors
+episodes 1   harness errors 0
+pass rate (mean over families)  1.000
+  approval   1.000
+invalid-call rate (malformed messages / all messages)  0.333
+turns cut off by the token cap  0.000
+tokens per turn  49.8  (largest 74)
+turns per episode  6.00
+episodes that used up the turn limit  0.000
+368 episodes per hour in 9.8 s; peak GPU memory {'allocated': 7.46, 'reserved': 11.08} GiB; wrote /tmp/pytest-of-root/pytest-0/test_the_run_manifest_of_the_r0/run
+============================== slowest durations ===============================
+80.27s call     tests/gpu/test_rollout.py::test_same_seed_gives_the_same_episodes
+54.20s call     tests/gpu/test_train_fixes_gpu.py::test_pieces_give_the_gradient_of_all_rows_at_once
+41.25s call     tests/gpu/test_rollout.py::test_rollout_with_the_model
+40.40s call     tests/gpu/test_train_fixes_gpu.py::test_pieces_give_the_logprobs_of_all_rows_at_once
+13.04s call     tests/gpu/test_forward.py::test_parity_of_sampler_and_trainer_logprobs[eval]
+9.98s call     tests/gpu/test_forward.py::test_equal_to_the_plain_logits_path
+9.93s call     tests/gpu/test_rollout.py::test_the_run_manifest_of_the_rollout_script_names_the_code_that_made_it
+7.08s setup    tests/gpu/test_train_fixes_gpu.py::test_pieces_give_the_logprobs_of_all_rows_at_once
+6.19s call     tests/gpu/test_lora.py::test_training_changes_the_adapter_and_it_survives_save_and_load
+3.38s call     tests/gpu/test_sampler.py::test_same_seed_gives_the_same_tokens_and_another_seed_does_not
+3.37s call     tests/gpu/test_sampler.py::test_recorded_logprobs_equal_the_scores_that_generate_samples_from[settings1]
+2.82s call     tests/gpu/test_sampler.py::test_recorded_logprobs_equal_the_scores_that_generate_samples_from[settings0]
+2.51s call     tests/gpu/test_forward.py::test_gradients_flow_with_and_without_gradient_checkpointing
+2.00s call     tests/gpu/test_sampler.py::test_collecting_this_folder_does_not_import_torch
+1.55s call     tests/gpu/test_forward.py::test_parity_of_sampler_and_trainer_logprobs[train]
+1.34s call     tests/gpu/test_train_fixes_gpu.py::test_pieces_give_the_hand_made_logprobs_and_gradients_on_the_toy_model[1]
+1.17s call     tests/gpu/test_sampler.py::test_a_row_sampled_in_a_padded_batch_scores_the_same_alone
+0.96s setup    tests/gpu/test_lora.py::test_add_lora_returns_a_wrapper_of_the_same_model
+0.35s call     tests/gpu/test_lora.py::test_gradients_reach_both_layer_types_and_the_mlp[True]
+0.30s call     tests/gpu/test_sampler.py::test_sampler_restores_the_mode_of_the_model
+0.27s call     tests/gpu/test_forward.py::test_left_padding_does_not_change_a_sequence
+0.24s call     tests/gpu/test_lora.py::test_gradients_reach_both_layer_types_and_the_mlp[False]
+0.15s call     tests/gpu/test_sampler.py::test_kernel_report_is_consistent_and_repeatable
+0.14s call     tests/gpu/test_train_fixes_gpu.py::test_pieces_lower_the_peak_memory_of_the_output_layer
+0.12s call     tests/gpu/test_lora.py::test_the_adapter_changes_nothing_before_training
+0.08s call     tests/gpu/test_rollout.py::test_samples_of_one_scenario_are_numbered_in_order
+0.06s call     tests/gpu/test_rollout.py::test_scripted_rollout_gives_the_oracles_episodes
+0.05s call     tests/gpu/test_forward.py::test_no_graph_without_gradients
+0.05s teardown tests/gpu/test_lora.py::test_training_changes_the_adapter_and_it_survives_save_and_load
+0.04s call     tests/gpu/test_grpo_step.py::test_scenario_order_has_no_repeat_in_a_pass_and_goes_on_after_a_restart
+0.03s call     tests/gpu/test_rollout.py::test_a_failed_sample_call_fails_its_chunk_only
+0.02s call     tests/gpu/test_rollout.py::test_one_sample_call_per_chunk_and_turn_with_the_derived_seed
+0.02s teardown tests/gpu/test_rollout.py::test_the_run_manifest_of_the_rollout_script_names_the_code_that_made_it
+0.02s call     tests/gpu/test_rollout.py::test_an_exception_in_one_episode_is_a_harness_error_and_the_others_go_on
+0.01s call     tests/gpu/test_lora.py::test_only_float32_lora_weights_are_trainable
+0.01s call     tests/gpu/test_grpo_step.py::test_the_normaliser_is_the_config_constant_whatever_goes_through_the_model
+0.01s setup    tests/gpu/test_policy_loss_grad.py::test_gradient_formula_on_unequal_numbers
+0.01s call     tests/gpu/test_lora.py::test_assert_coverage_fails_on_a_changed_real_table
+0.01s call     tests/gpu/test_rollout.py::test_a_turn_cut_off_by_the_token_cap_is_malformed_and_gets_a_forced_end_token
+0.01s call     tests/gpu/test_lora.py::test_coverage_of_the_real_model
+
+(290 durations < 0.005s hidden.  Use -vv to show these durations.)
+=========================== short test summary info ============================
+PASSED tests/gpu/test_train_fixes_gpu.py::test_pieces_give_the_hand_made_logprobs_and_gradients_on_the_toy_model[1]
+PASSED tests/gpu/test_train_fixes_gpu.py::test_pieces_give_the_hand_made_logprobs_and_gradients_on_the_toy_model[2]
+PASSED tests/gpu/test_train_fixes_gpu.py::test_pieces_give_the_hand_made_logprobs_and_gradients_on_the_toy_model[3]
+PASSED tests/gpu/test_train_fixes_gpu.py::test_pieces_give_the_hand_made_logprobs_and_gradients_on_the_toy_model[1024]
+PASSED tests/gpu/test_train_fixes_gpu.py::test_pieces_give_the_hand_made_logprobs_and_gradients_on_the_toy_model[1000000000]
+PASSED tests/gpu/test_train_fixes_gpu.py::test_pieces_and_all_rows_at_once_give_one_weighted_gradient_on_the_toy_model
+PASSED tests/gpu/test_train_fixes_gpu.py::test_a_piece_size_below_one_is_refused_before_any_forward_pass
+PASSED tests/gpu/test_train_fixes_gpu.py::test_pieces_give_the_logprobs_of_all_rows_at_once
+PASSED tests/gpu/test_train_fixes_gpu.py::test_pieces_give_the_gradient_of_all_rows_at_once
+PASSED tests/gpu/test_train_fixes_gpu.py::test_pieces_lower_the_peak_memory_of_the_output_layer
+PASSED tests/gpu/test_forward.py::test_loss_positions_hand_made
+PASSED tests/gpu/test_forward.py::test_loss_positions_with_two_pads_and_several_tokens
+PASSED tests/gpu/test_forward.py::test_loss_positions_rejects_bad_input[seqs0-weights0]
+PASSED tests/gpu/test_forward.py::test_loss_positions_rejects_bad_input[seqs1-weights1]
+PASSED tests/gpu/test_forward.py::test_loss_positions_rejects_bad_input[seqs2-weights2]
+PASSED tests/gpu/test_forward.py::test_loss_positions_rejects_bad_input[seqs3-weights3]
+PASSED tests/gpu/test_forward.py::test_loss_positions_rejects_bad_input[seqs4-weights4]
+PASSED tests/gpu/test_forward.py::test_position_ids_count_real_tokens_only
+PASSED tests/gpu/test_forward.py::test_token_logprobs_on_the_toy_model
+PASSED tests/gpu/test_forward.py::test_token_logprobs_micro_batches_and_empty_selection
+PASSED tests/gpu/test_forward.py::test_token_logprobs_with_gradients_takes_one_micro_batch
+PASSED tests/gpu/test_forward.py::test_pad_batch_is_the_samplers_function
+PASSED tests/gpu/test_forward.py::test_equal_to_the_plain_logits_path
+PASSED tests/gpu/test_forward.py::test_left_padding_does_not_change_a_sequence
+PASSED tests/gpu/test_forward.py::test_parity_of_sampler_and_trainer_logprobs[eval]
+PASSED tests/gpu/test_forward.py::test_parity_of_sampler_and_trainer_logprobs[train]
+PASSED tests/gpu/test_forward.py::test_gradients_flow_with_and_without_gradient_checkpointing
+PASSED tests/gpu/test_forward.py::test_no_graph_without_gradients
+PASSED tests/gpu/test_grpo_step.py::test_plan_of_the_hand_made_batch
+PASSED tests/gpu/test_grpo_step.py::test_a_harness_error_is_not_selected_and_its_reward_is_not_read
+PASSED tests/gpu/test_grpo_step.py::test_reward_matrix_refuses_a_group_of_two_scenarios
+PASSED tests/gpu/test_grpo_step.py::test_scenario_order_has_no_repeat_in_a_pass_and_goes_on_after_a_restart
+PASSED tests/gpu/test_grpo_step.py::test_stop_rule_by_hand
+PASSED tests/gpu/test_grpo_step.py::test_stack_logprobs_by_hand
+PASSED tests/gpu/test_grpo_step.py::test_loss_and_gradient_by_hand
+PASSED tests/gpu/test_grpo_step.py::test_the_normaliser_is_the_config_constant_whatever_goes_through_the_model
+PASSED tests/gpu/test_grpo_step.py::test_a_dropped_group_only_removes_its_own_terms
+PASSED tests/gpu/test_grpo_step.py::test_the_logprob_gap_is_measured_on_the_tokens_that_are_trained
+PASSED tests/gpu/test_grpo_step.py::test_one_update_moves_the_logprobs_in_the_direction_of_the_advantage
+PASSED tests/gpu/test_grpo_step.py::test_a_step_without_a_kept_group_has_an_exactly_zero_gradient
+PASSED tests/gpu/test_grpo_step.py::test_after_a_real_step_a_zero_gradient_step_still_moves_the_weights
+PASSED tests/gpu/test_grpo_step.py::test_a_gradient_that_is_not_finite_makes_no_step
+PASSED tests/gpu/test_lora.py::test_target_pattern_matches_the_projections_of_the_decoder_layers_only
+PASSED tests/gpu/test_lora.py::test_target_pattern_with_the_gate_projections
+PASSED tests/gpu/test_lora.py::test_target_pattern_rejects_what_is_not_a_projection[targets0]
+PASSED tests/gpu/test_lora.py::test_target_pattern_rejects_what_is_not_a_projection[targets1]
+PASSED tests/gpu/test_lora.py::test_target_pattern_rejects_what_is_not_a_projection[targets2]
+PASSED tests/gpu/test_lora.py::test_target_pattern_rejects_what_is_not_a_projection[targets3]
+PASSED tests/gpu/test_lora.py::test_target_pattern_rejects_what_is_not_a_projection[targets4]
+PASSED tests/gpu/test_lora.py::test_a_correct_table_has_no_problem
+PASSED tests/gpu/test_lora.py::test_a_missing_adapter_is_found[model.layers.0.linear_attn.in_proj_qkv]
+PASSED tests/gpu/test_lora.py::test_a_missing_adapter_is_found[model.layers.1.linear_attn.in_proj_z]
+PASSED tests/gpu/test_lora.py::test_a_missing_adapter_is_found[model.layers.2.linear_attn.out_proj]
+PASSED tests/gpu/test_lora.py::test_a_missing_adapter_is_found[model.layers.3.self_attn.q_proj]
+PASSED tests/gpu/test_lora.py::test_a_missing_adapter_is_found[model.layers.3.self_attn.o_proj]
+PASSED tests/gpu/test_lora.py::test_a_missing_adapter_is_found[model.layers.0.mlp.gate_proj]
+PASSED tests/gpu/test_lora.py::test_a_missing_adapter_is_found[model.layers.3.mlp.down_proj]
+PASSED tests/gpu/test_lora.py::test_the_silent_miss_of_a_llama_style_list_is_found
+PASSED tests/gpu/test_lora.py::test_an_adapter_outside_the_decoder_layers_is_found
+PASSED tests/gpu/test_lora.py::test_wrong_layers_are_found
+PASSED tests/gpu/test_lora.py::test_coverage_summary_folds_the_layers
+PASSED tests/gpu/test_lora.py::test_add_lora_returns_a_wrapper_of_the_same_model
+PASSED tests/gpu/test_lora.py::test_coverage_of_the_real_model
+PASSED tests/gpu/test_lora.py::test_assert_coverage_fails_on_a_changed_real_table
+PASSED tests/gpu/test_lora.py::test_only_float32_lora_weights_are_trainable
+PASSED tests/gpu/test_lora.py::test_the_adapter_changes_nothing_before_training
+PASSED tests/gpu/test_lora.py::test_gradients_reach_both_layer_types_and_the_mlp[False]
+PASSED tests/gpu/test_lora.py::test_gradients_reach_both_layer_types_and_the_mlp[True]
+PASSED tests/gpu/test_lora.py::test_training_changes_the_adapter_and_it_survives_save_and_load
+PASSED tests/gpu/test_policy_loss_grad.py::test_value_and_gradient_by_hand
+PASSED tests/gpu/test_policy_loss_grad.py::test_gradient_formula_on_unequal_numbers
+PASSED tests/gpu/test_policy_loss_grad.py::test_zero_advantages_give_exactly_zero_loss_and_gradient
+PASSED tests/gpu/test_policy_loss_grad.py::test_a_masked_token_gets_no_gradient_and_changes_nothing
+PASSED tests/gpu/test_policy_loss_grad.py::test_sign_a_gradient_step_raises_the_logprob_of_a_good_episode
+PASSED tests/gpu/test_policy_loss_grad.py::test_the_normaliser_only_divides
+PASSED tests/gpu/test_policy_loss_grad.py::test_float32_tensors_as_in_training
+PASSED tests/gpu/test_policy_loss_grad.py::test_wrong_inputs_raise
+PASSED tests/gpu/test_trl_advantages.py::test_the_copied_lines_are_in_the_installed_trl
+PASSED tests/gpu/test_trl_advantages.py::test_equal_on_hand_made_rewards
+PASSED tests/gpu/test_trl_advantages.py::test_equal_with_lost_samples_when_at_least_half_are_valid
+PASSED tests/gpu/test_trl_advantages.py::test_the_one_difference_a_group_with_fewer_than_half_valid_samples
+PASSED tests/gpu/test_trl_advantages.py::test_equal_on_many_generated_groups
+PASSED tests/gpu/test_sampler.py::test_collecting_this_folder_does_not_import_torch
+PASSED tests/gpu/test_sampler.py::test_ids_end_at_the_first_stop_token_and_padding_is_dropped
+PASSED tests/gpu/test_sampler.py::test_a_second_stop_token_after_the_first_is_dropped_too
+PASSED tests/gpu/test_sampler.py::test_a_row_without_stop_token_is_truncated_and_has_exactly_the_cap
+PASSED tests/gpu/test_sampler.py::test_a_pad_token_that_the_model_wrote_before_the_stop_token_is_kept
+PASSED tests/gpu/test_sampler.py::test_a_stop_token_on_the_last_allowed_step_is_not_truncated
+PASSED tests/gpu/test_sampler.py::test_a_short_row_without_stop_token_is_an_error
+PASSED tests/gpu/test_sampler.py::test_recorder_on_hand_made_scores
+PASSED tests/gpu/test_sampler.py::test_recorder_refuses_a_wrong_number_of_steps
+PASSED tests/gpu/test_sampler.py::test_pad_batch_left_and_right
+PASSED tests/gpu/test_sampler.py::test_recorded_logprobs_equal_the_scores_that_generate_samples_from[settings0]
+PASSED tests/gpu/test_sampler.py::test_recorded_logprobs_equal_the_scores_that_generate_samples_from[settings1]
+PASSED tests/gpu/test_sampler.py::test_same_seed_gives_the_same_tokens_and_another_seed_does_not
+PASSED tests/gpu/test_sampler.py::test_a_row_sampled_in_a_padded_batch_scores_the_same_alone
+PASSED tests/gpu/test_sampler.py::test_sampler_restores_the_mode_of_the_model
+PASSED tests/gpu/test_sampler.py::test_effective_generation_config_is_plain_sampling
+PASSED tests/gpu/test_sampler.py::test_sampler_refuses_a_hidden_setting_of_the_models_own_generation_config
+PASSED tests/gpu/test_sampler.py::test_kernel_report_is_consistent_and_repeatable
+PASSED tests/gpu/test_rollout.py::test_scripted_rollout_gives_the_oracles_episodes
+PASSED tests/gpu/test_rollout.py::test_one_sample_call_per_chunk_and_turn_with_the_derived_seed
+PASSED tests/gpu/test_rollout.py::test_samples_of_one_scenario_are_numbered_in_order
+PASSED tests/gpu/test_rollout.py::test_a_turn_cut_off_by_the_token_cap_is_malformed_and_gets_a_forced_end_token
+PASSED tests/gpu/test_rollout.py::test_an_exception_in_one_episode_is_a_harness_error_and_the_others_go_on
+PASSED tests/gpu/test_rollout.py::test_a_failed_sample_call_fails_its_chunk_only
+PASSED tests/gpu/test_rollout.py::test_rollout_refuses_a_layout_with_another_stop_token
+PASSED tests/gpu/test_rollout.py::test_rollout_with_the_model
+PASSED tests/gpu/test_rollout.py::test_same_seed_gives_the_same_episodes
+PASSED tests/gpu/test_rollout.py::test_the_run_manifest_of_the_rollout_script_names_the_code_that_made_it
+110 passed, 2 warnings in 284.11s (0:04:44)
+Wed Nov 18 16:47:27 UTC 2026
+PYTEST_EXIT_CODE=0
+JOB_EXIT_CODE=0

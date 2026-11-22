@@ -1,0 +1,2 @@
+options=--overfit results/main/checks/overfit_families.txt --styles 1 --group-size 16 --max-harness-error-rate 0.1
+GRPO_OPTIONS=--reference-tokens 200

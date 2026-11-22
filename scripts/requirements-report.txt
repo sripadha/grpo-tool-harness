@@ -1,0 +1,20 @@
+# The one extra package of the report code: scripts/make_figure.py draws the figure of the write-up with it.
+# It is needed on the laptop only, and only to draw. No training run and no evaluation run imports it.
+# Install it into the local environment with:
+#     uv pip install --python .venv/bin/python -r scripts/requirements-report.txt
+#
+# Why this file is in scripts/ and not beside the other requirement files. The frozen group "lock" of
+# accessdesk/freeze.py takes every file "requirements*.txt" in the repository root. A new file with such a
+# name there is a difference from MANIFEST.json: `scripts/freeze.py check` reports it, and
+# scripts/gpu/rollout.py then refuses to start a run. This file was written after the freeze, so it stays
+# outside that pattern until an amendment of the manifest gives it a hash and a date. The frozen
+# requirement files (pyproject.toml, requirements-gpu.txt, requirements-gpu-optional.txt) are unchanged.
+#
+# matplotlib 3.11.2 is the version that uv 0.11.19 resolved from pypi.org on 2026-11-19 for Python 3.11
+# on Linux x86_64. It was installed beside numpy 2.4.6 and packaging 26.3, which were there already and
+# did not change. uv added these packages that matplotlib needs (they are not pinned here):
+#     contourpy 1.3.3, cycler 0.12.1, fonttools 4.68.0, kiwisolver 1.5.1, pillow 13.0.0,
+#     pyparsing 3.3.3, python-dateutil 4.0.0, tzdata 2026.6
+# The figure uses the font DejaVu Sans, which is inside the matplotlib package, so the text of the
+# figure does not depend on the fonts of the machine.
+matplotlib==3.11.2

@@ -1,0 +1,6039 @@
+{
+  "what": "The stretch item of the brief: numbers from saved runs, and the arithmetic of a design.",
+  "experiment_was_run": false,
+  "made_by": "scripts/stretch_numbers.py",
+  "code": {
+    "versions_of_the_core_functions": "main",
+    "files_sha256": {
+      "scripts/stretch_numbers.py": "8201f2d97146593c3335db71806e6778da2911b323ac30f668a8f9e319b7e802",
+      "accessdesk/eval/metrics.py": "3bce7f5f3b491373e9c9ce0cffd83da048e4649f8af7a3792183f25e637e8993",
+      "accessdesk/eval/tables.py": "a4aaad48d9ff452fe6efbe8365ba6bf65df4fd29a7abbe209428734b4ecbb7e8",
+      "accessdesk/eval/bootstrap.py": "f52f146b1e50131390a7999102e9f2a292bf84daee5f8a0be7f6a3db39b50cef",
+      "accessdesk/impl.py": "3e631d987ee1a30b432221a7f8b3ffab8d9bf229f38575a657b90b7b92023816",
+      "accessdesk/train/grpo_math.py": "8d203e9e3dae38f9197423cc6e1b1072bb7869cc944852f409f5cf789277811f",
+      "accessdesk/train/grpo.py": "cf18a0e50f2d0e1d7afbb3b9beb56daa308cb0715e8da276f351f454be472c27"
+    }
+  },
+  "arms": [
+    "base",
+    "sft",
+    "grpo_seed1",
+    "grpo_seed2"
+  ],
+  "grpo_arms": [
+    "grpo_seed1",
+    "grpo_seed2"
+  ],
+  "inputs": {
+    "dev": {
+      "base": {
+        "episodes": "results/main/base_dev/episodes.jsonl",
+        "episodes_sha256": "e074b3071398d130adfd2cf4352a679b384be726d9f6d6bb5a2b5fccad27f05f",
+        "run_manifest": "results/main/base_dev/run_manifest.json",
+        "run": "base_dev",
+        "arm_in_records": "base",
+        "adapter": null,
+        "run_seed": 0,
+        "seconds": 1725.1,
+        "gpu": "NVIDIA GeForce RTX 4090",
+        "attempts": 1536,
+        "harness_errors": 0
+      },
+      "sft": {
+        "episodes": "results/main/sft_dev/episodes.jsonl",
+        "episodes_sha256": "748363819924b7840e070dcef5bda0bd53c4a6285c80048dc5bf7cbc7d8ac652",
+        "run_manifest": "results/main/sft_dev/run_manifest.json",
+        "run": "sft_dev",
+        "arm_in_records": "sft",
+        "adapter": "results/main/sft/adapter",
+        "run_seed": 0,
+        "seconds": 1751.0,
+        "gpu": "NVIDIA GeForce RTX 4090",
+        "attempts": 1536,
+        "harness_errors": 0
+      },
+      "grpo_seed1": {
+        "episodes": "results/main/grpo_seed1_dev/episodes.jsonl",
+        "episodes_sha256": "7cd90a353bce266e2ebe30086e8812331e11e6ff96f065f9d39b3f1ae07d80c4",
+        "run_manifest": "results/main/grpo_seed1_dev/run_manifest.json",
+        "run": "grpo_seed1_dev",
+        "arm_in_records": "grpo_seed1",
+        "adapter": "results/main/grpo_seed1/checkpoints/step_00080/adapter",
+        "run_seed": 0,
+        "seconds": 1141.7,
+        "gpu": "NVIDIA GeForce RTX 4090",
+        "attempts": 1536,
+        "harness_errors": 0
+      },
+      "grpo_seed2": {
+        "episodes": "results/main/grpo_seed2_dev/episodes.jsonl",
+        "episodes_sha256": "a073d31f54eabdfb2469c63860e476ecd53dbb59a3d476e1abaa30e3aa7a58bb",
+        "run_manifest": "results/main/grpo_seed2_dev/run_manifest.json",
+        "run": "grpo_seed2_dev",
+        "arm_in_records": "grpo_seed2",
+        "adapter": "results/main/grpo_seed2/checkpoints/step_00080/adapter",
+        "run_seed": 0,
+        "seconds": 1208.3,
+        "gpu": "NVIDIA GeForce RTX 4090",
+        "attempts": 1536,
+        "harness_errors": 0
+      }
+    },
+    "sft_train": {
+      "episodes": "results/main/sft_train/episodes.jsonl",
+      "episodes_sha256": "87b4b6c7e0a9f8615b7718729c7017b6c5e5f35e0b5f78fc6777b34136b072a6",
+      "run_manifest": "results/main/sft_train/run_manifest.json",
+      "run": "sft_train",
+      "arm_in_records": "sft_train",
+      "adapter": "results/main/sft/adapter",
+      "run_seed": 20,
+      "seconds": 3093.7,
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "attempts": 2400,
+      "harness_errors": 0
+    },
+    "saved_tables": [
+      {
+        "file": "results/main/tables/base_sft_grpo_seed1.json",
+        "sha256": "ee6d0a400b92a554698eae9a87f818e8691f13e044d0c9af001f755f6cc029be",
+        "values_compared": 33,
+        "intervals_compared": true,
+        "agrees": true
+      },
+      {
+        "file": "results/main/tables/base_sft_grpo_seed2.json",
+        "sha256": "3f9963868c98db4a3e8d84d83a92ea4e762c99ca4d698c165497c98a8d4f5767",
+        "values_compared": 33,
+        "intervals_compared": true,
+        "agrees": true
+      },
+      {
+        "file": "results/main/tables/base_vs_sft.json",
+        "sha256": "4e6253cf843c70d0db5cca36aa994a63932d0cd1d6fad232d2cc69f822a83e77",
+        "values_compared": 19,
+        "intervals_compared": true,
+        "agrees": true
+      },
+      {
+        "file": "results/main/tables/test_base_sft_grpo_seed1_seed2.json",
+        "sha256": "fc7f2aa98a2992ba5b82cd7c61eb866993ca79f9295e73b6d8c9e2f407664aa5",
+        "values_compared": 41,
+        "intervals_compared": true,
+        "agrees": true
+      }
+    ],
+    "scenario_file": {
+      "file": "data/scenarios/dev.jsonl",
+      "sha256": "fea3e07efa22481bb8ee3e2728f4554087e47a607754ecb98c5dc4641be87dd5",
+      "checked_against_the_records": true
+    },
+    "test": {
+      "base": {
+        "episodes": "results/main/base_test/episodes.jsonl",
+        "episodes_sha256": "6c82db73aad2e779450091a359e42c74ef81ccacb2da44f9f88960c0d124c86a",
+        "run_manifest": "results/main/base_test/run_manifest.json",
+        "run": "base_test",
+        "arm_in_records": "base",
+        "adapter": null,
+        "run_seed": 0,
+        "seconds": 1821.5,
+        "gpu": "NVIDIA GeForce RTX 4090",
+        "attempts": 1536,
+        "harness_errors": 0
+      },
+      "sft": {
+        "episodes": "results/main/sft_test/episodes.jsonl",
+        "episodes_sha256": "27a8ad881f1b1d210320d605695a469a2f29f58f06f3fea2830a67ac81879c5f",
+        "run_manifest": "results/main/sft_test/run_manifest.json",
+        "run": "sft_test",
+        "arm_in_records": "sft",
+        "adapter": "results/main/sft/adapter",
+        "run_seed": 0,
+        "seconds": 1957.3,
+        "gpu": "NVIDIA GeForce RTX 4090",
+        "attempts": 1536,
+        "harness_errors": 0
+      },
+      "grpo_seed1": {
+        "episodes": "results/main/grpo_seed1_test/episodes.jsonl",
+        "episodes_sha256": "164343ea47c75b812efa6edfd018b771143f491a52c0b1c7e27c15febcdcc41f",
+        "run_manifest": "results/main/grpo_seed1_test/run_manifest.json",
+        "run": "grpo_seed1_test",
+        "arm_in_records": "grpo_seed1",
+        "adapter": "results/main/grpo_seed1/checkpoints/step_00080/adapter",
+        "run_seed": 0,
+        "seconds": 1166.9,
+        "gpu": "NVIDIA GeForce RTX 4090",
+        "attempts": 1536,
+        "harness_errors": 0
+      },
+      "grpo_seed2": {
+        "episodes": "results/main/grpo_seed2_test/episodes.jsonl",
+        "episodes_sha256": "1581558554b241692166499ffb9a472f8680e7e7e5d15265687f22a7a8cfa292",
+        "run_manifest": "results/main/grpo_seed2_test/run_manifest.json",
+        "run": "grpo_seed2_test",
+        "arm_in_records": "grpo_seed2",
+        "adapter": "results/main/grpo_seed2/checkpoints/step_00080/adapter",
+        "run_seed": 0,
+        "seconds": 1140.1,
+        "gpu": "NVIDIA GeForce RTX 4090",
+        "attempts": 1536,
+        "harness_errors": 0
+      }
+    },
+    "test_runs_not_there": []
+  },
+  "one_wording_group": {
+    "example": {
+      "passes": 12,
+      "fails": 4,
+      "attempts": 16,
+      "bonus_points": 20,
+      "without": {
+        "reward_of_a_pass": 100.0,
+        "reward_of_a_fail": 0.0,
+        "mean_of_the_group": 75.0,
+        "advantage_of_a_pass": 25.0,
+        "advantage_of_a_fail": -75.0,
+        "kept": true
+      },
+      "with": {
+        "reward_of_a_pass": 120.0,
+        "reward_of_a_fail": 0.0,
+        "mean_of_the_group": 89.99999999999999,
+        "advantage_of_a_pass": 30.000000000000004,
+        "advantage_of_a_fail": -89.99999999999999,
+        "kept": true
+      },
+      "factor": 1.2000000000000002,
+      "factor_by_formula": 1.2
+    },
+    "saved_runs": {
+      "grpo_seed1": {
+        "folder": "results/main/grpo_seed1",
+        "status": "complete",
+        "seed": 1,
+        "steps": 80,
+        "scenarios_per_step": 8,
+        "attempts_per_group": 16,
+        "attempts_per_step": 128,
+        "learning_rate": 1e-05,
+        "tie_tol": 0.0,
+        "styles": [
+          1,
+          2,
+          3
+        ],
+        "pass_reward": 100,
+        "start_adapter": "results/main/sft/adapter",
+        "bonus_points": 20,
+        "factor": 1.2,
+        "groups": 640,
+        "attempts": 10240,
+        "harness_errors": 0,
+        "kept": 91,
+        "kept_with_bonus": 91,
+        "keep_decision_changes": 0,
+        "kept_order_changes": 0,
+        "kept_mixed_full_reward": 47,
+        "kept_one_outcome": 36,
+        "kept_mixed_other": 8,
+        "with_a_pass_and_a_fail": 55,
+        "with_another_wording_of_the_family_in_the_step": 14,
+        "passes": 10140,
+        "passes_below_full_reward": 44,
+        "fails_not_at_zero": 0,
+        "lowest_pass_reward": 81.0,
+        "seconds": 8903.7,
+        "seconds_in_steps": 8885.469999999996,
+        "ended_utc": "2026-11-19T06:01:18Z",
+        "gpu": "NVIDIA GeForce RTX 4090",
+        "train_log_sha256": "b6a080196a1d7c9df18f687d80babe64a51bd31a9981d1d32a211de9960eef87",
+        "run_manifest_sha256": "179abd43528e879fef4792fa2f8ddce7af79e16c184898bd17f63396d8c80c9e",
+        "rollout_files": 80,
+        "rollout_files_sha256": "fe6d4dee87282dbb6818960d50d15ff2f2977b124b61340bd7d7a7ccf60d0e20"
+      },
+      "grpo_seed2": {
+        "folder": "results/main/grpo_seed2",
+        "status": "complete",
+        "seed": 2,
+        "steps": 80,
+        "scenarios_per_step": 8,
+        "attempts_per_group": 16,
+        "attempts_per_step": 128,
+        "learning_rate": 1e-05,
+        "tie_tol": 0.0,
+        "styles": [
+          1,
+          2,
+          3
+        ],
+        "pass_reward": 100,
+        "start_adapter": "results/main/sft/adapter",
+        "bonus_points": 20,
+        "factor": 1.2,
+        "groups": 640,
+        "attempts": 10240,
+        "harness_errors": 0,
+        "kept": 95,
+        "kept_with_bonus": 95,
+        "keep_decision_changes": 0,
+        "kept_order_changes": 0,
+        "kept_mixed_full_reward": 45,
+        "kept_one_outcome": 45,
+        "kept_mixed_other": 5,
+        "with_a_pass_and_a_fail": 50,
+        "with_another_wording_of_the_family_in_the_step": 12,
+        "passes": 10119,
+        "passes_below_full_reward": 52,
+        "fails_not_at_zero": 0,
+        "lowest_pass_reward": 77.0,
+        "seconds": 9427.7,
+        "seconds_in_steps": 9365.890000000001,
+        "ended_utc": "2026-11-19T06:08:48Z",
+        "gpu": "NVIDIA GeForce RTX 4090",
+        "train_log_sha256": "0c02ece824fc47c7956b1fba0411f53d1dee5ea900d55589c12f75403a239b77",
+        "run_manifest_sha256": "1e69c9899ae44c11ac2c2cf1841f84ecff422b35b35a80d93c5c5d6d18cb2837",
+        "rollout_files": 80,
+        "rollout_files_sha256": "3486eba580e5d44ee5a450bf1f3f6e57bce810121a3d2e08f1388738de821a4a"
+      }
+    },
+    "saved_code_refuses_a_group_of_two_scenarios": true
+  },
+  "dev": {
+    "split": "dev",
+    "families": 48,
+    "scenarios": 192,
+    "attempts_per_arm": 1536,
+    "attempts_per_scenario": [
+      8
+    ],
+    "styles": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "points_of_one_family": 0.020833333333333332,
+    "interval": {
+      "level": 0.95,
+      "n_draws": 10000,
+      "seed": 0,
+      "paired_family_bootstrap": "main"
+    },
+    "notes_of_the_frozen_table": [],
+    "arms": {
+      "base": {
+        "attempts": 1536,
+        "valid_attempts": 1536,
+        "harness_errors": 0,
+        "passed_attempts": 611,
+        "failed_attempts": 925,
+        "share_of_passed_attempts": 0.3977864583333333,
+        "pass_rate": 0.3977864583333333,
+        "pass_rate_lo": 0.3138020833333333,
+        "pass_rate_hi": 0.484375,
+        "all_wordings_pass": 0.13440958658854166,
+        "all_wordings_pass_lo": 0.06775881449381511,
+        "all_wordings_pass_hi": 0.20944290161132811,
+        "room": 0.8655904134114584,
+        "families": 48,
+        "families_with_a_failed_attempt": 47,
+        "families_below_one_on_all_wordings": 47,
+        "room_by_family": {
+          "dv-01": 0.020833333333333332,
+          "dv-04": 0.020833333333333332,
+          "dv-05": 0.020833333333333332,
+          "dv-09": 0.020833333333333332,
+          "dv-11": 0.020833333333333332,
+          "dv-12": 0.020833333333333332,
+          "dv-14": 0.020833333333333332,
+          "dv-22": 0.020833333333333332,
+          "dv-25": 0.020833333333333332,
+          "dv-29": 0.020833333333333332,
+          "dv-30": 0.020833333333333332,
+          "dv-32": 0.020833333333333332,
+          "dv-33": 0.020833333333333332,
+          "dv-36": 0.020833333333333332,
+          "dv-39": 0.020833333333333332,
+          "dv-42": 0.020833333333333332,
+          "dv-46": 0.020833333333333332,
+          "dv-41": 0.020823160807291668,
+          "dv-20": 0.020818074544270832,
+          "dv-28": 0.02081298828125,
+          "dv-47": 0.020782470703125,
+          "dv-38": 0.020751953125,
+          "dv-13": 0.020711263020833332,
+          "dv-18": 0.020670572916666668,
+          "dv-34": 0.020650227864583332,
+          "dv-35": 0.020467122395833332,
+          "dv-21": 0.020426432291666668,
+          "dv-43": 0.020426432291666668,
+          "dv-31": 0.02032470703125,
+          "dv-06": 0.020192464192708332,
+          "dv-15": 0.019765218098958332,
+          "dv-45": 0.019612630208333332,
+          "dv-44": 0.0194091796875,
+          "dv-17": 0.019002278645833332,
+          "dv-27": 0.019002278645833332,
+          "dv-19": 0.018544514973958332,
+          "dv-24": 0.017903645833333332,
+          "dv-03": 0.016764322916666668,
+          "dv-00": 0.016382853190104168,
+          "dv-26": 0.016347249348958332,
+          "dv-10": 0.015950520833333332,
+          "dv-37": 0.012288411458333334,
+          "dv-02": 0.011067708333333334,
+          "dv-16": 0.007161458333333333,
+          "dv-07": 0.006876627604166667,
+          "dv-08": 0.0048828125,
+          "dv-40": 0.0026041666666666665
+        },
+        "families_whose_wordings_disagree": [
+          "dv-06",
+          "dv-15",
+          "dv-17",
+          "dv-19",
+          "dv-21",
+          "dv-24",
+          "dv-26",
+          "dv-27",
+          "dv-31",
+          "dv-43",
+          "dv-44",
+          "dv-45",
+          "dv-46",
+          "dv-47"
+        ],
+        "variance_shares": {
+          "wording": 0.14676239127433385,
+          "sampling": 0.8532376087256661,
+          "wording_if_sampling_only": 0.0967741935483871
+        },
+        "smallest_detectable_effect": {
+          "n_families": 48,
+          "n_splits": 200,
+          "se_halves": 0.019480356268431177,
+          "se": 0.013774692017337553,
+          "mde": 0.038569137648545145,
+          "mde_lowest_split": 0.024436748841943832,
+          "mde_highest_split": 0.0497040487276609
+        },
+        "all_wordings_pass_training_styles": 0.19278971354166666
+      },
+      "sft": {
+        "attempts": 1536,
+        "valid_attempts": 1536,
+        "harness_errors": 0,
+        "passed_attempts": 1373,
+        "failed_attempts": 163,
+        "share_of_passed_attempts": 0.8938802083333334,
+        "pass_rate": 0.8938802083333334,
+        "pass_rate_lo": 0.8209635416666666,
+        "pass_rate_hi": 0.9544270833333334,
+        "all_wordings_pass": 0.802581787109375,
+        "all_wordings_pass_lo": 0.7084859212239584,
+        "all_wordings_pass_hi": 0.8871360778808594,
+        "room": 0.197418212890625,
+        "families": 48,
+        "families_with_a_failed_attempt": 23,
+        "families_below_one_on_all_wordings": 23,
+        "room_by_family": {
+          "dv-22": 0.020833333333333332,
+          "dv-32": 0.020833333333333332,
+          "dv-04": 0.020823160807291668,
+          "dv-30": 0.020751953125,
+          "dv-46": 0.0185546875,
+          "dv-09": 0.017171223958333332,
+          "dv-14": 0.013997395833333334,
+          "dv-20": 0.013997395833333334,
+          "dv-02": 0.007161458333333333,
+          "dv-39": 0.007161458333333333,
+          "dv-44": 0.0048828125,
+          "dv-06": 0.0026041666666666665,
+          "dv-08": 0.0026041666666666665,
+          "dv-12": 0.0026041666666666665,
+          "dv-13": 0.0026041666666666665,
+          "dv-16": 0.0026041666666666665,
+          "dv-19": 0.0026041666666666665,
+          "dv-24": 0.0026041666666666665,
+          "dv-31": 0.0026041666666666665,
+          "dv-37": 0.0026041666666666665,
+          "dv-38": 0.0026041666666666665,
+          "dv-41": 0.0026041666666666665,
+          "dv-42": 0.0026041666666666665
+        },
+        "families_whose_wordings_disagree": [
+          "dv-46"
+        ],
+        "variance_shares": {
+          "wording": 0.1584640346133045,
+          "sampling": 0.8415359653866955,
+          "wording_if_sampling_only": 0.0967741935483871
+        },
+        "smallest_detectable_effect": {
+          "n_families": 48,
+          "n_splits": 200,
+          "se_halves": 0.009498241854700176,
+          "se": 0.006716271224808385,
+          "mde": 0.018805559429463475,
+          "mde_lowest_split": 0.010840102691024209,
+          "mde_highest_split": 0.030768631122668175
+        },
+        "all_wordings_pass_training_styles": 0.8414713541666666
+      },
+      "grpo_seed1": {
+        "attempts": 1536,
+        "valid_attempts": 1536,
+        "harness_errors": 0,
+        "passed_attempts": 1515,
+        "failed_attempts": 21,
+        "share_of_passed_attempts": 0.986328125,
+        "pass_rate": 0.986328125,
+        "pass_rate_lo": 0.96484375,
+        "pass_rate_hi": 0.9986979166666666,
+        "all_wordings_pass": 0.9644775390625,
+        "all_wordings_pass_lo": 0.9149983723958334,
+        "all_wordings_pass_hi": 0.9947916666666666,
+        "room": 0.0355224609375,
+        "families": 48,
+        "families_with_a_failed_attempt": 5,
+        "families_below_one_on_all_wordings": 5,
+        "room_by_family": {
+          "dv-46": 0.020833333333333332,
+          "dv-02": 0.006876627604166667,
+          "dv-08": 0.0026041666666666665,
+          "dv-31": 0.0026041666666666665,
+          "dv-37": 0.0026041666666666665
+        },
+        "families_whose_wordings_disagree": [
+          "dv-46"
+        ],
+        "variance_shares": {
+          "wording": 0.5494252873563218,
+          "sampling": 0.45057471264367815,
+          "wording_if_sampling_only": 0.0967741935483871
+        },
+        "smallest_detectable_effect": {
+          "n_families": 48,
+          "n_splits": 200,
+          "se_halves": 0.003393717659921056,
+          "se": 0.00239972077076272,
+          "mde": 0.006719218158135616,
+          "mde_lowest_split": 0.005513814034348479,
+          "mde_highest_split": 0.009385921288415356
+        },
+        "all_wordings_pass_training_styles": 0.9716796875
+      },
+      "grpo_seed2": {
+        "attempts": 1536,
+        "valid_attempts": 1536,
+        "harness_errors": 0,
+        "passed_attempts": 1501,
+        "failed_attempts": 35,
+        "share_of_passed_attempts": 0.9772135416666666,
+        "pass_rate": 0.9772135416666666,
+        "pass_rate_lo": 0.9375,
+        "pass_rate_hi": 0.9986979166666666,
+        "all_wordings_pass": 0.9638671875,
+        "all_wordings_pass_lo": 0.9143880208333334,
+        "all_wordings_pass_hi": 0.9947916666666666,
+        "room": 0.0361328125,
+        "families": 48,
+        "families_with_a_failed_attempt": 5,
+        "families_below_one_on_all_wordings": 5,
+        "room_by_family": {
+          "dv-46": 0.020833333333333332,
+          "dv-31": 0.005208333333333333,
+          "dv-02": 0.0048828125,
+          "dv-09": 0.0026041666666666665,
+          "dv-37": 0.0026041666666666665
+        },
+        "families_whose_wordings_disagree": [],
+        "variance_shares": {
+          "wording": 0.1821561338289963,
+          "sampling": 0.8178438661710037,
+          "wording_if_sampling_only": 0.0967741935483871
+        },
+        "smallest_detectable_effect": {
+          "n_families": 48,
+          "n_splits": 200,
+          "se_halves": 0.003586378823946716,
+          "se": 0.002535952786316558,
+          "mde": 0.007100667801686362,
+          "mde_lowest_split": 0.004369178307467756,
+          "mde_highest_split": 0.011349900989651045
+        },
+        "all_wordings_pass_training_styles": 0.9713541666666666
+      }
+    },
+    "disagree_rule": {
+      "high": [
+        5,
+        8
+      ],
+      "low": [
+        3,
+        8
+      ]
+    },
+    "families_with_fewer_passes_than_sft": {
+      "grpo_seed1": [
+        "dv-46"
+      ],
+      "grpo_seed2": [
+        "dv-31",
+        "dv-46"
+      ]
+    },
+    "families_with_fewer_passes_than_sft_in_every_grpo_arm": [
+      "dv-46"
+    ],
+    "without_those_families": {
+      "base": {
+        "variance_shares": {
+          "wording": 0.14383172256964183,
+          "sampling": 0.8561682774303582,
+          "wording_if_sampling_only": 0.0967741935483871
+        },
+        "failed_attempts": 902,
+        "valid_attempts": 1504
+      },
+      "sft": {
+        "variance_shares": {
+          "wording": 0.09474954737477369,
+          "sampling": 0.9052504526252263,
+          "wording_if_sampling_only": 0.0967741935483871
+        },
+        "failed_attempts": 155,
+        "valid_attempts": 1504
+      },
+      "grpo_seed1": {
+        "variance_shares": {
+          "wording": 0.06666666666666667,
+          "sampling": 0.9333333333333333,
+          "wording_if_sampling_only": 0.0967741935483871
+        },
+        "failed_attempts": 6,
+        "valid_attempts": 1504
+      },
+      "grpo_seed2": {
+        "variance_shares": {
+          "wording": 0.12087912087912088,
+          "sampling": 0.8791208791208791,
+          "wording_if_sampling_only": 0.0967741935483871
+        },
+        "failed_attempts": 6,
+        "valid_attempts": 1504
+      }
+    },
+    "family_rows": {
+      "dv-02": {
+        "outcome": "approval",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                6,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                5,
+                8
+              ]
+            },
+            "passed_attempts": 27,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.46875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "no close": 5
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 5
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                6,
+                8
+              ],
+              "4": [
+                7,
+                8
+              ]
+            },
+            "passed_attempts": 29,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.65625,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "no close": 2,
+              "granted": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRsbnbbb": 1,
+              "no close": 2
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                7,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                7,
+                8
+              ],
+              "4": [
+                7,
+                8
+              ]
+            },
+            "passed_attempts": 29,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.669921875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "no close": 3
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 3
+            }
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                7,
+                8
+              ],
+              "4": [
+                7,
+                8
+              ]
+            },
+            "passed_attempts": 30,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.765625,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "no close": 2
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 2
+            }
+          }
+        }
+      },
+      "dv-06": {
+        "outcome": "grant",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                7,
+                8
+              ],
+              "2": [
+                6,
+                8
+              ],
+              "3": [
+                3,
+                8
+              ],
+              "4": [
+                1,
+                8
+              ]
+            },
+            "passed_attempts": 17,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.03076171875,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "pending": 10,
+              "no close": 4,
+              "granted": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 4,
+              "USRmkdtvq": 11
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                7,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "pending": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRmkdtvq": 1
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "dv-08": {
+        "outcome": "approval",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                7,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                7,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 30,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.765625,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "no close": 1,
+              "pending": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 1,
+              "USRxrf5g3": 1
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                7,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "granted": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRxrf5g3": 1
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                7,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "granted": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRxrf5g3": 1
+            }
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "dv-09": {
+        "outcome": "inactive",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                0,
+                8
+              ],
+              "2": [
+                0,
+                8
+              ],
+              "3": [
+                1,
+                8
+              ],
+              "4": [
+                2,
+                8
+              ]
+            },
+            "passed_attempts": 3,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "pending": 18,
+              "no close": 6,
+              "already": 5
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRevpvjv": 23,
+              "no close": 6
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                5,
+                8
+              ],
+              "2": [
+                6,
+                8
+              ],
+              "3": [
+                6,
+                8
+              ],
+              "4": [
+                4,
+                8
+              ]
+            },
+            "passed_attempts": 21,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.17578125,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "already": 8,
+              "pending": 2,
+              "no close": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRevpvjv": 8,
+              "USRkejk9y": 2,
+              "no close": 1
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                7,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "no close": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 1
+            }
+          }
+        }
+      },
+      "dv-15": {
+        "outcome": "grant",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                6,
+                8
+              ],
+              "2": [
+                7,
+                8
+              ],
+              "3": [
+                5,
+                8
+              ],
+              "4": [
+                1,
+                8
+              ]
+            },
+            "passed_attempts": 19,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.05126953125,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "pending": 11,
+              "granted": 1,
+              "no close": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 1,
+              "USRte5ymt": 12
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "dv-17": {
+        "outcome": "grant",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                5,
+                8
+              ],
+              "2": [
+                6,
+                8
+              ],
+              "3": [
+                3,
+                8
+              ],
+              "4": [
+                4,
+                8
+              ]
+            },
+            "passed_attempts": 18,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.087890625,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "no close": 9,
+              "pending": 3,
+              "granted": 2
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRn3efx2": 3,
+              "no close": 9,
+              "USR6ksqfc": 2
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "dv-19": {
+        "outcome": "grant",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                6,
+                8
+              ],
+              "2": [
+                5,
+                8
+              ],
+              "3": [
+                5,
+                8
+              ],
+              "4": [
+                3,
+                8
+              ]
+            },
+            "passed_attempts": 19,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.10986328125,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "pending": 11,
+              "denied": 1,
+              "no close": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRasm8wc": 12,
+              "no close": 1
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                7,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "pending": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRasm8wc": 1
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "dv-21": {
+        "outcome": "grant",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                4,
+                8
+              ],
+              "2": [
+                5,
+                8
+              ],
+              "3": [
+                4,
+                8
+              ],
+              "4": [
+                1,
+                8
+              ]
+            },
+            "passed_attempts": 14,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.01953125,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "pending": 14,
+              "no close": 3,
+              "granted": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USR28c56p": 15,
+              "no close": 3
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "dv-24": {
+        "outcome": "approval",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                3,
+                8
+              ],
+              "3": [
+                3,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 22,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.140625,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "no close": 9,
+              "granted": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 9,
+              "USRapefmn": 1
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                7,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "no close": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 1
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "dv-26": {
+        "outcome": "approval",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                7,
+                8
+              ],
+              "2": [
+                7,
+                8
+              ],
+              "3": [
+                6,
+                8
+              ],
+              "4": [
+                3,
+                8
+              ]
+            },
+            "passed_attempts": 23,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.21533203125,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "no close": 9
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 9
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "dv-27": {
+        "outcome": "grant",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                3,
+                8
+              ],
+              "2": [
+                6,
+                8
+              ],
+              "3": [
+                5,
+                8
+              ],
+              "4": [
+                4,
+                8
+              ]
+            },
+            "passed_attempts": 18,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.087890625,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "pending": 13,
+              "no close": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRbzpcsk": 13,
+              "no close": 1
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "dv-31": {
+        "outcome": "already",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                5,
+                8
+              ],
+              "2": [
+                1,
+                8
+              ],
+              "3": [
+                5,
+                8
+              ],
+              "4": [
+                4,
+                8
+              ]
+            },
+            "passed_attempts": 15,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.0244140625,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "granted": 9,
+              "no close": 7,
+              "already": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRxjb8p3": 9,
+              "no close": 7,
+              "USRgpymv5": 1
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                7,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "no close": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 1
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                7,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "no close": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 1
+            }
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                6,
+                8
+              ]
+            },
+            "passed_attempts": 30,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.75,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "no close": 2
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 2
+            }
+          }
+        }
+      },
+      "dv-37": {
+        "outcome": "approval",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                7,
+                8
+              ],
+              "3": [
+                5,
+                8
+              ],
+              "4": [
+                6,
+                8
+              ]
+            },
+            "passed_attempts": 26,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.41015625,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "no close": 4,
+              "already": 1,
+              "pending": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 4,
+              "USRuczn54": 2
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                7,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "granted": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRuczn54": 1
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                7,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "pending": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRuczn54": 1
+            }
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                7,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "pending": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRuczn54": 1
+            }
+          }
+        }
+      },
+      "dv-43": {
+        "outcome": "already",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                2,
+                8
+              ],
+              "2": [
+                5,
+                8
+              ],
+              "3": [
+                4,
+                8
+              ],
+              "4": [
+                2,
+                8
+              ]
+            },
+            "passed_attempts": 13,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.01953125,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "granted": 15,
+              "no close": 4
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USR7ruk8f": 15,
+              "no close": 4
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "dv-44": {
+        "outcome": "inactive",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                7,
+                8
+              ],
+              "2": [
+                2,
+                8
+              ],
+              "3": [
+                5,
+                8
+              ],
+              "4": [
+                4,
+                8
+              ]
+            },
+            "passed_attempts": 18,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.068359375,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "pending": 8,
+              "granted": 4,
+              "already": 2
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USReykwk2": 12,
+              "USRcx36dc": 2
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                7,
+                8
+              ],
+              "2": [
+                7,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 30,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.765625,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "granted": 1,
+              "pending": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRcx36dc": 1,
+              "USReykwk2": 1
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "dv-45": {
+        "outcome": "grant",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                3,
+                8
+              ],
+              "2": [
+                5,
+                8
+              ],
+              "3": [
+                4,
+                8
+              ],
+              "4": [
+                4,
+                8
+              ]
+            },
+            "passed_attempts": 16,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.05859375,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "pending": 15,
+              "no close": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRxndr4t": 15,
+              "no close": 1
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "dv-46": {
+        "outcome": "grant",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                2,
+                8
+              ],
+              "2": [
+                5,
+                8
+              ],
+              "3": [
+                2,
+                8
+              ],
+              "4": [
+                0,
+                8
+              ]
+            },
+            "passed_attempts": 9,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.0,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "pending": 11,
+              "denied": 5,
+              "granted": 3,
+              "no close": 3,
+              "already": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRtpt3gh": 8,
+              "USRszegw3": 11,
+              "no close": 3,
+              "USRwqqvmu": 1
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                7,
+                8
+              ],
+              "4": [
+                1,
+                8
+              ]
+            },
+            "passed_attempts": 24,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.109375,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "denied": 5,
+              "already": 2,
+              "granted": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRtpt3gh": 6,
+              "USRmptvtf": 1,
+              "USRszegw3": 1
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                1,
+                8
+              ],
+              "4": [
+                0,
+                8
+              ]
+            },
+            "passed_attempts": 17,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.0,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "denied": 15
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRszegw3": 8,
+              "USRtpt3gh": 7
+            }
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                3,
+                8
+              ],
+              "2": [
+                0,
+                8
+              ],
+              "3": [
+                0,
+                8
+              ],
+              "4": [
+                0,
+                8
+              ]
+            },
+            "passed_attempts": 3,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "denied": 29
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRszegw3": 22,
+              "USRtpt3gh": 7
+            }
+          }
+        }
+      },
+      "dv-47": {
+        "outcome": "already",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                1,
+                8
+              ],
+              "2": [
+                1,
+                8
+              ],
+              "3": [
+                2,
+                8
+              ],
+              "4": [
+                5,
+                8
+              ]
+            },
+            "passed_attempts": 9,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.00244140625,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "granted": 19,
+              "no close": 3,
+              "pending": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USR9qs7n9": 20,
+              "no close": 3
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      }
+    },
+    "comparisons": [
+      {
+        "a": "base",
+        "b": "sft",
+        "families": 48,
+        "in_the_plan": true,
+        "pass_rate": {
+          "diff": 0.49609375000000006,
+          "lo": 0.41080729166666663,
+          "hi": 0.5794270833333333,
+          "width": 0.16861979166666663,
+          "t_lo": 0.40920705430820864,
+          "t_hi": 0.5829804456917914
+        },
+        "all_wordings_pass": {
+          "diff": 0.6681722005208334,
+          "lo": 0.5636329650878906,
+          "hi": 0.7681743621826171,
+          "width": 0.20454139709472652,
+          "families_that_differ": 45
+        }
+      },
+      {
+        "a": "sft",
+        "b": "grpo_seed1",
+        "families": 48,
+        "in_the_plan": true,
+        "pass_rate": {
+          "diff": 0.09244791666666663,
+          "lo": 0.03059895833333326,
+          "hi": 0.16666666666666663,
+          "width": 0.13606770833333337,
+          "t_lo": 0.02092624367769759,
+          "t_hi": 0.16396958965563574
+        },
+        "all_wordings_pass": {
+          "diff": 0.161895751953125,
+          "lo": 0.08087793986002614,
+          "hi": 0.25372746785481765,
+          "width": 0.1728495279947915,
+          "families_that_differ": 20
+        }
+      },
+      {
+        "a": "sft",
+        "b": "grpo_seed2",
+        "families": 48,
+        "in_the_plan": true,
+        "pass_rate": {
+          "diff": 0.08333333333333326,
+          "lo": 0.01497395833333326,
+          "hi": 0.16080729166666663,
+          "width": 0.14583333333333337,
+          "t_lo": 0.006466472316780297,
+          "t_hi": 0.16020019434988636
+        },
+        "all_wordings_pass": {
+          "diff": 0.161285400390625,
+          "lo": 0.08153889973958336,
+          "hi": 0.250543212890625,
+          "width": 0.1690043131510416,
+          "families_that_differ": 22
+        }
+      },
+      {
+        "a": "base",
+        "b": "grpo_seed1",
+        "families": 48,
+        "in_the_plan": true,
+        "pass_rate": {
+          "diff": 0.5885416666666667,
+          "lo": 0.49869791666666663,
+          "hi": 0.6764322916666667,
+          "width": 0.1777343750000001,
+          "t_lo": 0.49685361848044196,
+          "t_hi": 0.6802297148528913
+        },
+        "all_wordings_pass": {
+          "diff": 0.8300679524739584,
+          "lo": 0.7416538238525392,
+          "hi": 0.9100069681803384,
+          "width": 0.16835314432779924,
+          "families_that_differ": 46
+        }
+      },
+      {
+        "a": "base",
+        "b": "grpo_seed2",
+        "families": 48,
+        "in_the_plan": true,
+        "pass_rate": {
+          "diff": 0.5794270833333333,
+          "lo": 0.4850097656250001,
+          "hi": 0.6705729166666667,
+          "width": 0.18556315104166665,
+          "t_lo": 0.4838542460975792,
+          "t_hi": 0.6749999205690875
+        },
+        "all_wordings_pass": {
+          "diff": 0.8294576009114584,
+          "lo": 0.7437573750813803,
+          "hi": 0.9069020589192709,
+          "width": 0.1631446838378906,
+          "families_that_differ": 46
+        }
+      },
+      {
+        "a": "grpo_seed1",
+        "b": "grpo_seed2",
+        "families": 48,
+        "in_the_plan": false,
+        "pass_rate": {
+          "diff": -0.00911458333333337,
+          "lo": -0.02864583333333337,
+          "hi": 0.001953125,
+          "width": 0.03059895833333337,
+          "t_lo": -0.02764085924345141,
+          "t_hi": 0.009411692576784743
+        },
+        "all_wordings_pass": {
+          "diff": -0.0006103515625,
+          "lo": -0.01041666666666674,
+          "hi": 0.008600870768229015,
+          "width": 0.019017537434895756,
+          "families_that_differ": 4
+        }
+      }
+    ],
+    "styles_in_no_training_scenario": [
+      4
+    ],
+    "training_styles": [
+      1,
+      2,
+      3
+    ]
+  },
+  "family_facts": {
+    "dv-46": {
+      "outcome": "grant",
+      "expected_close": "granted",
+      "person_of_the_request": "USRszegw3",
+      "people_with_the_name_of_the_request": 2,
+      "status_of_the_other_people_with_that_name": [
+        "inactive"
+      ]
+    }
+  },
+  "test": {
+    "split": "test",
+    "families": 48,
+    "scenarios": 192,
+    "attempts_per_arm": 1536,
+    "attempts_per_scenario": [
+      8
+    ],
+    "styles": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "points_of_one_family": 0.020833333333333332,
+    "interval": {
+      "level": 0.95,
+      "n_draws": 10000,
+      "seed": 0,
+      "paired_family_bootstrap": "main"
+    },
+    "notes_of_the_frozen_table": [],
+    "arms": {
+      "base": {
+        "attempts": 1536,
+        "valid_attempts": 1536,
+        "harness_errors": 0,
+        "passed_attempts": 634,
+        "failed_attempts": 902,
+        "share_of_passed_attempts": 0.4127604166666667,
+        "pass_rate": 0.4127604166666667,
+        "pass_rate_lo": 0.3215983072916668,
+        "pass_rate_hi": 0.5006510416666666,
+        "all_wordings_pass": 0.15784708658854166,
+        "all_wordings_pass_lo": 0.08437932332356772,
+        "all_wordings_pass_hi": 0.24010289510091146,
+        "room": 0.8421529134114584,
+        "families": 48,
+        "families_with_a_failed_attempt": 46,
+        "families_below_one_on_all_wordings": 46,
+        "room_by_family": {
+          "te-04": 0.020833333333333332,
+          "te-05": 0.020833333333333332,
+          "te-10": 0.020833333333333332,
+          "te-13": 0.020833333333333332,
+          "te-15": 0.020833333333333332,
+          "te-16": 0.020833333333333332,
+          "te-19": 0.020833333333333332,
+          "te-21": 0.020833333333333332,
+          "te-23": 0.020833333333333332,
+          "te-24": 0.020833333333333332,
+          "te-25": 0.020833333333333332,
+          "te-27": 0.020833333333333332,
+          "te-30": 0.020833333333333332,
+          "te-32": 0.020833333333333332,
+          "te-38": 0.020833333333333332,
+          "te-39": 0.020833333333333332,
+          "te-42": 0.020833333333333332,
+          "te-47": 0.020833333333333332,
+          "te-08": 0.020792643229166668,
+          "te-03": 0.020751953125,
+          "te-28": 0.020711263020833332,
+          "te-01": 0.020589192708333332,
+          "te-46": 0.020467122395833332,
+          "te-20": 0.020284016927083332,
+          "te-02": 0.020070393880208332,
+          "te-22": 0.019856770833333332,
+          "te-09": 0.019816080729166668,
+          "te-34": 0.019816080729166668,
+          "te-36": 0.019734700520833332,
+          "te-07": 0.019612630208333332,
+          "te-12": 0.019612630208333332,
+          "te-18": 0.019612630208333332,
+          "te-31": 0.019612630208333332,
+          "te-06": 0.019551595052083332,
+          "te-14": 0.018798828125,
+          "te-29": 0.018636067708333332,
+          "te-11": 0.017842610677083332,
+          "te-00": 0.017171223958333332,
+          "te-35": 0.015848795572916668,
+          "te-26": 0.014424641927083334,
+          "te-40": 0.008870442708333334,
+          "te-41": 0.008870442708333334,
+          "te-33": 0.007161458333333333,
+          "te-43": 0.006876627604166667,
+          "te-45": 0.006876627604166667,
+          "te-37": 0.0048828125
+        },
+        "families_whose_wordings_disagree": [
+          "te-02",
+          "te-06",
+          "te-07",
+          "te-09",
+          "te-11",
+          "te-12",
+          "te-18",
+          "te-27",
+          "te-29",
+          "te-30",
+          "te-31",
+          "te-34",
+          "te-36"
+        ],
+        "variance_shares": {
+          "wording": 0.09659250915235144,
+          "sampling": 0.9034074908476486,
+          "wording_if_sampling_only": 0.0967741935483871
+        },
+        "smallest_detectable_effect": {
+          "n_families": 48,
+          "n_splits": 200,
+          "se_halves": 0.01984259818235328,
+          "se": 0.014030835731101867,
+          "mde": 0.03928634004708523,
+          "mde_lowest_split": 0.029234462430280297,
+          "mde_highest_split": 0.05326496476701364
+        },
+        "all_wordings_pass_training_styles": 0.20845540364583334
+      },
+      "sft": {
+        "attempts": 1536,
+        "valid_attempts": 1536,
+        "harness_errors": 0,
+        "passed_attempts": 1403,
+        "failed_attempts": 133,
+        "share_of_passed_attempts": 0.9134114583333334,
+        "pass_rate": 0.9134114583333334,
+        "pass_rate_lo": 0.859375,
+        "pass_rate_hi": 0.9576822916666666,
+        "all_wordings_pass": 0.795074462890625,
+        "all_wordings_pass_lo": 0.7048014322916667,
+        "all_wordings_pass_hi": 0.8743316650390625,
+        "room": 0.204925537109375,
+        "families": 48,
+        "families_with_a_failed_attempt": 29,
+        "families_below_one_on_all_wordings": 29,
+        "room_by_family": {
+          "te-16": 0.020833333333333332,
+          "te-25": 0.020833333333333332,
+          "te-24": 0.020711263020833332,
+          "te-42": 0.018391927083333332,
+          "te-04": 0.017171223958333332,
+          "te-32": 0.016255696614583332,
+          "te-08": 0.014851888020833334,
+          "te-27": 0.010365804036458334,
+          "te-05": 0.006876627604166667,
+          "te-09": 0.006876627604166667,
+          "te-23": 0.0048828125,
+          "te-00": 0.0026041666666666665,
+          "te-02": 0.0026041666666666665,
+          "te-03": 0.0026041666666666665,
+          "te-07": 0.0026041666666666665,
+          "te-12": 0.0026041666666666665,
+          "te-13": 0.0026041666666666665,
+          "te-14": 0.0026041666666666665,
+          "te-18": 0.0026041666666666665,
+          "te-21": 0.0026041666666666665,
+          "te-29": 0.0026041666666666665,
+          "te-30": 0.0026041666666666665,
+          "te-31": 0.0026041666666666665,
+          "te-33": 0.0026041666666666665,
+          "te-38": 0.0026041666666666665,
+          "te-39": 0.0026041666666666665,
+          "te-40": 0.0026041666666666665,
+          "te-41": 0.0026041666666666665,
+          "te-47": 0.0026041666666666665
+        },
+        "families_whose_wordings_disagree": [
+          "te-25",
+          "te-42"
+        ],
+        "variance_shares": {
+          "wording": 0.14538558786346398,
+          "sampling": 0.854614412136536,
+          "wording_if_sampling_only": 0.0967741935483871
+        },
+        "smallest_detectable_effect": {
+          "n_families": 48,
+          "n_splits": 200,
+          "se_halves": 0.011170630515378758,
+          "se": 0.007898828587553697,
+          "mde": 0.022116720045150348,
+          "mde_lowest_split": 0.014264720988727022,
+          "mde_highest_split": 0.0326764689138559
+        },
+        "all_wordings_pass_training_styles": 0.8164469401041666
+      },
+      "grpo_seed1": {
+        "attempts": 1536,
+        "valid_attempts": 1536,
+        "harness_errors": 0,
+        "passed_attempts": 1529,
+        "failed_attempts": 7,
+        "share_of_passed_attempts": 0.9954427083333334,
+        "pass_rate": 0.9954427083333334,
+        "pass_rate_lo": 0.9895833333333334,
+        "pass_rate_hi": 0.9993489583333334,
+        "all_wordings_pass": 0.9830729166666666,
+        "all_wordings_pass_lo": 0.9609375,
+        "all_wordings_pass_hi": 0.9973958333333334,
+        "room": 0.01692708333333337,
+        "families": 48,
+        "families_with_a_failed_attempt": 4,
+        "families_below_one_on_all_wordings": 4,
+        "room_by_family": {
+          "te-08": 0.009114583333333334,
+          "te-07": 0.0026041666666666665,
+          "te-12": 0.0026041666666666665,
+          "te-31": 0.0026041666666666665
+        },
+        "families_whose_wordings_disagree": [],
+        "variance_shares": {
+          "wording": 0.12195121951219512,
+          "sampling": 0.8780487804878049,
+          "wording_if_sampling_only": 0.0967741935483871
+        },
+        "smallest_detectable_effect": {
+          "n_families": 48,
+          "n_splits": 200,
+          "se_halves": 0.00316696665653978,
+          "se": 0.0022393835986309657,
+          "mde": 0.006270274076166703,
+          "mde_lowest_split": 0.004369178307467756,
+          "mde_highest_split": 0.011349900989651045
+        },
+        "all_wordings_pass_training_styles": 0.9869791666666666
+      },
+      "grpo_seed2": {
+        "attempts": 1536,
+        "valid_attempts": 1536,
+        "harness_errors": 0,
+        "passed_attempts": 1528,
+        "failed_attempts": 8,
+        "share_of_passed_attempts": 0.9947916666666666,
+        "pass_rate": 0.9947916666666666,
+        "pass_rate_lo": 0.9895833333333334,
+        "pass_rate_hi": 0.9986979166666666,
+        "all_wordings_pass": 0.9801025390625,
+        "all_wordings_pass_lo": 0.9611409505208334,
+        "all_wordings_pass_hi": 0.9947916666666666,
+        "room": 0.0198974609375,
+        "families": 48,
+        "families_with_a_failed_attempt": 6,
+        "families_below_one_on_all_wordings": 6,
+        "room_by_family": {
+          "te-23": 0.006876627604166667,
+          "te-03": 0.0026041666666666665,
+          "te-08": 0.0026041666666666665,
+          "te-12": 0.0026041666666666665,
+          "te-14": 0.0026041666666666665,
+          "te-31": 0.0026041666666666665
+        },
+        "families_whose_wordings_disagree": [],
+        "variance_shares": {
+          "wording": 0.0743801652892562,
+          "sampling": 0.9256198347107438,
+          "wording_if_sampling_only": 0.0967741935483871
+        },
+        "smallest_detectable_effect": {
+          "n_families": 48,
+          "n_splits": 200,
+          "se_halves": 0.0036340401016603774,
+          "se": 0.0025696543989879033,
+          "mde": 0.007195032317166129,
+          "mde_lowest_split": 0.005969434000576103,
+          "mde_highest_split": 0.009748044903088213
+        },
+        "all_wordings_pass_training_styles": 0.9827067057291666
+      }
+    },
+    "disagree_rule": {
+      "high": [
+        5,
+        8
+      ],
+      "low": [
+        3,
+        8
+      ]
+    },
+    "families_with_fewer_passes_than_sft": {
+      "grpo_seed1": [],
+      "grpo_seed2": [
+        "te-23"
+      ]
+    },
+    "families_with_fewer_passes_than_sft_in_every_grpo_arm": [],
+    "without_those_families": {},
+    "family_rows": {
+      "te-02": {
+        "outcome": "already",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                5,
+                8
+              ],
+              "2": [
+                3,
+                8
+              ],
+              "3": [
+                2,
+                8
+              ],
+              "4": [
+                5,
+                8
+              ]
+            },
+            "passed_attempts": 15,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.03662109375,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "granted": 11,
+              "no close": 5,
+              "pending": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRqad4kc": 12,
+              "no close": 5
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                7,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "pending": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRqad4kc": 1
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "te-03": {
+        "outcome": "grant",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                2,
+                8
+              ],
+              "2": [
+                2,
+                8
+              ],
+              "3": [
+                4,
+                8
+              ],
+              "4": [
+                1,
+                8
+              ]
+            },
+            "passed_attempts": 9,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.00390625,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "pending": 13,
+              "no close": 8,
+              "denied": 1,
+              "granted": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRzj4vb6": 14,
+              "no close": 8,
+              "USRcufk8p": 1
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                7,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "no close": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 1
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                7,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "denied": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRzj4vb6": 1
+            }
+          }
+        }
+      },
+      "te-06": {
+        "outcome": "grant",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                6,
+                8
+              ],
+              "2": [
+                7,
+                8
+              ],
+              "3": [
+                3,
+                8
+              ],
+              "4": [
+                2,
+                8
+              ]
+            },
+            "passed_attempts": 18,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.0615234375,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "pending": 12,
+              "granted": 1,
+              "no close": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 1,
+              "USRwnxhsk": 12,
+              "USRe8u8f2": 1
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "te-07": {
+        "outcome": "already",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                5,
+                8
+              ],
+              "2": [
+                4,
+                8
+              ],
+              "3": [
+                3,
+                8
+              ],
+              "4": [
+                4,
+                8
+              ]
+            },
+            "passed_attempts": 16,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.05859375,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "no close": 9,
+              "granted": 7
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 9,
+              "USReqmrgv": 7
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                7,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "no close": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 1
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                7,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "no close": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 1
+            }
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "te-08": {
+        "outcome": "grant",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                1,
+                8
+              ],
+              "2": [
+                4,
+                8
+              ],
+              "3": [
+                1,
+                8
+              ],
+              "4": [
+                2,
+                8
+              ]
+            },
+            "passed_attempts": 8,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.001953125,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "no close": 10,
+              "pending": 10,
+              "already": 3,
+              "denied": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRza8nta": 14,
+              "no close": 10
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                7,
+                8
+              ],
+              "2": [
+                4,
+                8
+              ],
+              "3": [
+                7,
+                8
+              ],
+              "4": [
+                6,
+                8
+              ]
+            },
+            "passed_attempts": 24,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.287109375,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "granted": 6,
+              "no close": 2
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 2,
+              "USRxw7bd6": 5,
+              "USRza8nta": 1
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                6,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                6,
+                8
+              ]
+            },
+            "passed_attempts": 28,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.5625,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "denied": 4
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRxw7bd6": 4
+            }
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                7,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "denied": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRxw7bd6": 1
+            }
+          }
+        }
+      },
+      "te-09": {
+        "outcome": "grant",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                5,
+                8
+              ],
+              "2": [
+                5,
+                8
+              ],
+              "3": [
+                4,
+                8
+              ],
+              "4": [
+                2,
+                8
+              ]
+            },
+            "passed_attempts": 16,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.048828125,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "pending": 14,
+              "no close": 2
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRhxbnrh": 14,
+              "no close": 2
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                7,
+                8
+              ],
+              "2": [
+                7,
+                8
+              ],
+              "3": [
+                7,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 29,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.669921875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "no close": 2,
+              "pending": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRhxbnrh": 1,
+              "no close": 2
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "te-11": {
+        "outcome": "grant",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                3,
+                8
+              ],
+              "2": [
+                7,
+                8
+              ],
+              "3": [
+                7,
+                8
+              ],
+              "4": [
+                4,
+                8
+              ]
+            },
+            "passed_attempts": 21,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.1435546875,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "pending": 9,
+              "no close": 2
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRfcsdy3": 9,
+              "no close": 2
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "te-12": {
+        "outcome": "grant",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                4,
+                8
+              ],
+              "2": [
+                4,
+                8
+              ],
+              "3": [
+                5,
+                8
+              ],
+              "4": [
+                3,
+                8
+              ]
+            },
+            "passed_attempts": 16,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.05859375,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "pending": 11,
+              "no close": 4,
+              "granted": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRcrafnn": 11,
+              "no close": 4,
+              "USR9a632m": 1
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                7,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "no close": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 1
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                7,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "no close": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 1
+            }
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                7,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "no close": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 1
+            }
+          }
+        }
+      },
+      "te-14": {
+        "outcome": "grant",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                4,
+                8
+              ],
+              "2": [
+                5,
+                8
+              ],
+              "3": [
+                4,
+                8
+              ],
+              "4": [
+                5,
+                8
+              ]
+            },
+            "passed_attempts": 18,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.09765625,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "pending": 8,
+              "no close": 5,
+              "already": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRsj5vyf": 8,
+              "USRd9ds27": 1,
+              "no close": 5
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                7,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "already": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRd9ds27": 1
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                7,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "already": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRd9ds27": 1
+            }
+          }
+        }
+      },
+      "te-18": {
+        "outcome": "grant",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                5,
+                8
+              ],
+              "2": [
+                4,
+                8
+              ],
+              "3": [
+                6,
+                8
+              ],
+              "4": [
+                2,
+                8
+              ]
+            },
+            "passed_attempts": 17,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.05859375,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "no close": 8,
+              "pending": 7
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 8,
+              "USRwcrhdb": 7
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                7,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "no close": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 1
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "te-23": {
+        "outcome": "already",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                0,
+                8
+              ],
+              "2": [
+                1,
+                8
+              ],
+              "3": [
+                0,
+                8
+              ],
+              "4": [
+                1,
+                8
+              ]
+            },
+            "passed_attempts": 2,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "pending": 19,
+              "no close": 6,
+              "granted": 3,
+              "denied": 2
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 6,
+              "USRgprm9s": 23,
+              "USRzh7v2j": 1
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                7,
+                8
+              ],
+              "3": [
+                7,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 30,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.765625,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "denied": 1,
+              "granted": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRgprm9s": 2
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                7,
+                8
+              ],
+              "2": [
+                7,
+                8
+              ],
+              "3": [
+                7,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 29,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.669921875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "denied": 3
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRgprm9s": 3
+            }
+          }
+        }
+      },
+      "te-25": {
+        "outcome": "inactive",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                0,
+                8
+              ],
+              "2": [
+                1,
+                8
+              ],
+              "3": [
+                0,
+                8
+              ],
+              "4": [
+                0,
+                8
+              ]
+            },
+            "passed_attempts": 1,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "pending": 24,
+              "no close": 7
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USR39b7tj": 24,
+              "no close": 7
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                0,
+                8
+              ],
+              "2": [
+                7,
+                8
+              ],
+              "3": [
+                7,
+                8
+              ],
+              "4": [
+                6,
+                8
+              ]
+            },
+            "passed_attempts": 20,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.0,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "pending": 12
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USR39b7tj": 12
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "te-27": {
+        "outcome": "inactive",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                5,
+                8
+              ],
+              "2": [
+                1,
+                8
+              ],
+              "3": [
+                1,
+                8
+              ],
+              "4": [
+                0,
+                8
+              ]
+            },
+            "passed_attempts": 7,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.0,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "granted": 10,
+              "pending": 9,
+              "no close": 5,
+              "already": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 5,
+              "USR4p3nwr": 20
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                7,
+                8
+              ],
+              "2": [
+                6,
+                8
+              ],
+              "3": [
+                7,
+                8
+              ],
+              "4": [
+                7,
+                8
+              ]
+            },
+            "passed_attempts": 27,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.50244140625,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "already": 4,
+              "pending": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USR4p3nwr": 5
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "te-29": {
+        "outcome": "inactive",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                6,
+                8
+              ],
+              "2": [
+                3,
+                8
+              ],
+              "3": [
+                4,
+                8
+              ],
+              "4": [
+                6,
+                8
+              ]
+            },
+            "passed_attempts": 19,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.10546875,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "granted": 6,
+              "pending": 5,
+              "already": 1,
+              "no close": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRss2bmx": 12,
+              "no close": 1
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                7,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "granted": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRss2bmx": 1
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "te-30": {
+        "outcome": "approval",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                5,
+                8
+              ],
+              "2": [
+                1,
+                8
+              ],
+              "3": [
+                3,
+                8
+              ],
+              "4": [
+                0,
+                8
+              ]
+            },
+            "passed_attempts": 9,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.0,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "pending": 19,
+              "no close": 4
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 4,
+              "USRyzzgjs": 18,
+              "USR7jt5zk": 1
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                7,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "pending": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRyzzgjs": 1
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "te-31": {
+        "outcome": "grant",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                4,
+                8
+              ],
+              "2": [
+                4,
+                8
+              ],
+              "3": [
+                5,
+                8
+              ],
+              "4": [
+                3,
+                8
+              ]
+            },
+            "passed_attempts": 16,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.05859375,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "pending": 7,
+              "granted": 3,
+              "no close": 3,
+              "already": 2,
+              "denied": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USR3dyxwd": 12,
+              "no close": 3,
+              "USRd9p3rj": 1
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                7,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "already": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRd9p3rj": 1
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                7,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "already": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRd9p3rj": 1
+            }
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                7,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 31,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.875,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "already": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRd9p3rj": 1
+            }
+          }
+        }
+      },
+      "te-34": {
+        "outcome": "already",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                5,
+                8
+              ],
+              "2": [
+                4,
+                8
+              ],
+              "3": [
+                5,
+                8
+              ],
+              "4": [
+                2,
+                8
+              ]
+            },
+            "passed_attempts": 16,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.048828125,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "granted": 7,
+              "no close": 7,
+              "pending": 2
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "no close": 7,
+              "USRtqjwbu": 5,
+              "USR9cp6bs": 2,
+              "USRcqmhz4": 2
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "te-36": {
+        "outcome": "grant",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                3,
+                8
+              ],
+              "2": [
+                6,
+                8
+              ],
+              "3": [
+                3,
+                8
+              ],
+              "4": [
+                4,
+                8
+              ]
+            },
+            "passed_attempts": 16,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.052734375,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "pending": 14,
+              "already": 1,
+              "no close": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRry8gw9": 15,
+              "no close": 1
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      },
+      "te-42": {
+        "outcome": "inactive",
+        "arms": {
+          "base": {
+            "passes_by_style": {
+              "1": [
+                1,
+                8
+              ],
+              "2": [
+                2,
+                8
+              ],
+              "3": [
+                1,
+                8
+              ],
+              "4": [
+                0,
+                8
+              ]
+            },
+            "passed_attempts": 4,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {
+              "granted": 8,
+              "pending": 8,
+              "no close": 7,
+              "already": 5
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRc7ep9t": 20,
+              "no close": 7,
+              "USRfv8csr": 1
+            }
+          },
+          "sft": {
+            "passes_by_style": {
+              "1": [
+                2,
+                8
+              ],
+              "2": [
+                6,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                5,
+                8
+              ]
+            },
+            "passed_attempts": 21,
+            "valid_attempts": 32,
+            "all_wordings_pass": 0.1171875,
+            "wordings_disagree": true,
+            "closes_of_the_failed_attempts": {
+              "already": 6,
+              "granted": 4,
+              "pending": 1
+            },
+            "person_of_the_close_in_failed_attempts": {
+              "USRc7ep9t": 11
+            }
+          },
+          "grpo_seed1": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          },
+          "grpo_seed2": {
+            "passes_by_style": {
+              "1": [
+                8,
+                8
+              ],
+              "2": [
+                8,
+                8
+              ],
+              "3": [
+                8,
+                8
+              ],
+              "4": [
+                8,
+                8
+              ]
+            },
+            "passed_attempts": 32,
+            "valid_attempts": 32,
+            "all_wordings_pass": 1.0,
+            "wordings_disagree": false,
+            "closes_of_the_failed_attempts": {},
+            "person_of_the_close_in_failed_attempts": {}
+          }
+        }
+      }
+    },
+    "comparisons": [
+      {
+        "a": "base",
+        "b": "sft",
+        "families": 48,
+        "in_the_plan": true,
+        "pass_rate": {
+          "diff": 0.5006510416666667,
+          "lo": 0.421875,
+          "hi": 0.5813964843749998,
+          "width": 0.1595214843749998,
+          "t_lo": 0.4182799130489804,
+          "t_hi": 0.5830221702843529
+        },
+        "all_wordings_pass": {
+          "diff": 0.6372273763020834,
+          "lo": 0.5387837727864584,
+          "hi": 0.7314671834309895,
+          "width": 0.1926834106445311,
+          "families_that_differ": 44
+        }
+      },
+      {
+        "a": "sft",
+        "b": "grpo_seed1",
+        "families": 48,
+        "in_the_plan": true,
+        "pass_rate": {
+          "diff": 0.08203125,
+          "lo": 0.0390625,
+          "hi": 0.13606770833333326,
+          "width": 0.09700520833333326,
+          "t_lo": 0.03074759778223634,
+          "t_hi": 0.13331490221776365
+        },
+        "all_wordings_pass": {
+          "diff": 0.18799845377604163,
+          "lo": 0.11155166625976559,
+          "hi": 0.2775599161783854,
+          "width": 0.1660082499186198,
+          "families_that_differ": 26
+        }
+      },
+      {
+        "a": "sft",
+        "b": "grpo_seed2",
+        "families": 48,
+        "in_the_plan": true,
+        "pass_rate": {
+          "diff": 0.08138020833333326,
+          "lo": 0.037109375,
+          "hi": 0.13541666666666674,
+          "width": 0.09830729166666674,
+          "t_lo": 0.02951520617612527,
+          "t_hi": 0.1332452104905414
+        },
+        "all_wordings_pass": {
+          "diff": 0.185028076171875,
+          "lo": 0.10555013020833337,
+          "hi": 0.2774088541666666,
+          "width": 0.17185872395833324,
+          "families_that_differ": 25
+        }
+      },
+      {
+        "a": "base",
+        "b": "grpo_seed1",
+        "families": 48,
+        "in_the_plan": true,
+        "pass_rate": {
+          "diff": 0.5826822916666667,
+          "lo": 0.4954264322916667,
+          "hi": 0.673828125,
+          "width": 0.17840169270833328,
+          "t_lo": 0.49093395688133806,
+          "t_hi": 0.6744306264519953
+        },
+        "all_wordings_pass": {
+          "diff": 0.825225830078125,
+          "lo": 0.7439135233561197,
+          "hi": 0.8999643961588542,
+          "width": 0.15605087280273444,
+          "families_that_differ": 46
+        }
+      },
+      {
+        "a": "base",
+        "b": "grpo_seed2",
+        "families": 48,
+        "in_the_plan": true,
+        "pass_rate": {
+          "diff": 0.58203125,
+          "lo": 0.4947753906250001,
+          "hi": 0.6725260416666667,
+          "width": 0.17775065104166665,
+          "t_lo": 0.49072054510789725,
+          "t_hi": 0.6733419548921027
+        },
+        "all_wordings_pass": {
+          "diff": 0.8222554524739584,
+          "lo": 0.7413299560546875,
+          "hi": 0.8948572794596353,
+          "width": 0.1535273234049478,
+          "families_that_differ": 46
+        }
+      },
+      {
+        "a": "grpo_seed1",
+        "b": "grpo_seed2",
+        "families": 48,
+        "in_the_plan": false,
+        "pass_rate": {
+          "diff": -0.0006510416666667407,
+          "lo": -0.006510416666666741,
+          "hi": 0.005208333333333259,
+          "width": 0.01171875,
+          "t_lo": -0.006713469093617924,
+          "t_hi": 0.00541138576028459
+        },
+        "all_wordings_pass": {
+          "diff": -0.0029703776041666297,
+          "lo": -0.0245361328125,
+          "hi": 0.01692708333333326,
+          "width": 0.04146321614583326,
+          "families_that_differ": 5
+        }
+      }
+    ],
+    "styles_in_no_training_scenario": [
+      4
+    ],
+    "training_styles": [
+      1,
+      2,
+      3
+    ]
+  },
+  "design": {
+    "numbers": [
+      {
+        "part": "arms",
+        "value": 2,
+        "origin": "the brief: with the bonus and without it"
+      },
+      {
+        "part": "wordings in a family group",
+        "value": 3,
+        "origin": "the saved runs: the wording styles that training uses"
+      },
+      {
+        "part": "attempts per wording",
+        "value": 4,
+        "origin": "judgement"
+      },
+      {
+        "part": "attempts per family group",
+        "value": 12,
+        "origin": "own calculation"
+      },
+      {
+        "part": "family groups per step",
+        "value": 10,
+        "origin": "judgement"
+      },
+      {
+        "part": "attempts per step",
+        "value": 120,
+        "origin": "own calculation"
+      },
+      {
+        "part": "steps",
+        "value": 80,
+        "origin": "the saved runs"
+      },
+      {
+        "part": "learning rate",
+        "value": 1e-05,
+        "origin": "the saved runs"
+      },
+      {
+        "part": "largest bonus of a pass, in points",
+        "value": 20,
+        "origin": "judgement"
+      },
+      {
+        "part": "training runs (seeds) per arm",
+        "value": 3,
+        "origin": "judgement"
+      }
+    ],
+    "parts": [
+      {
+        "part": "start of both arms",
+        "value": "the adapter that the saved GRPO runs started from (results/main/sft/adapter)",
+        "origin": "the saved runs"
+      },
+      {
+        "part": "group",
+        "value": "the attempts of one family in all its training wordings",
+        "origin": "judgement"
+      },
+      {
+        "part": "advantage, both arms",
+        "value": "the reward minus the mean reward of the family group; a group with equal rewards is dropped, as in the saved runs",
+        "origin": "judgement"
+      },
+      {
+        "part": "reward of arm 1",
+        "value": "the reward of the saved runs: pass or fail, with small penalties for malformed calls and extra turns",
+        "origin": "the saved runs"
+      },
+      {
+        "part": "other settings",
+        "value": "as in grpo_config of the run manifest of the saved GRPO runs",
+        "origin": "the saved runs"
+      },
+      {
+        "part": "bonus when another wording has no valid attempt",
+        "value": "a pass with no valid attempt in another wording of its group gets no bonus",
+        "origin": "judgement"
+      },
+      {
+        "part": "reward of arm 2",
+        "value": "the reward of arm 1, and the bonus below for a passing attempt",
+        "origin": "judgement"
+      },
+      {
+        "part": "measures, on dev",
+        "value": "all wordings pass, and the variance due to wording; the pass rate must not fall",
+        "origin": "judgement"
+      },
+      {
+        "part": "rule for the result",
+        "value": "the bonus helps if every run of arm 2 is above every run of arm 1 on all wordings pass",
+        "origin": "judgement"
+      }
+    ],
+    "bonus_points": 20,
+    "attempts_per_wording": 4,
+    "wordings": 3,
+    "families_per_step": 10,
+    "attempts_per_group": 12,
+    "attempts_per_step": 120,
+    "seeds_per_arm": 3,
+    "arms": 2,
+    "example": {
+      "wordings": {
+        "A": {
+          "passes": 4,
+          "attempts": 4,
+          "share_of_passes_in_the_other_wordings": 0.25,
+          "bonus_of_a_pass": -1.6666666666666667,
+          "arm1_advantage_of_a_pass": 50.0,
+          "arm2_advantage_of_a_pass": 48.33333333333333
+        },
+        "B": {
+          "passes": 2,
+          "attempts": 4,
+          "share_of_passes_in_the_other_wordings": 0.5,
+          "bonus_of_a_pass": 3.3333333333333335,
+          "arm1_advantage_of_a_pass": 50.0,
+          "arm2_advantage_of_a_pass": 53.33333333333332,
+          "arm1_advantage_of_a_fail": -50.0,
+          "arm2_advantage_of_a_fail": -50.0
+        },
+        "C": {
+          "passes": 0,
+          "attempts": 4,
+          "arm1_advantage_of_a_fail": -50.0,
+          "arm2_advantage_of_a_fail": -50.0
+        }
+      },
+      "mean_share": 0.3333333333333333,
+      "bonus_points": 20,
+      "sum_of_the_bonuses": 0.0,
+      "attempts": 12
+    },
+    "on_saved_attempts": [
+      {
+        "draw": 1,
+        "sample_positions": [
+          1,
+          4
+        ],
+        "groups": 100,
+        "attempts_per_group": 12,
+        "groups_with_equal_rewards": 68,
+        "groups_kept": 32,
+        "groups_where_the_arms_keep_differently": 0,
+        "groups_with_a_pass_and_a_fail": 23,
+        "groups_where_the_bonus_is_not_zero": 20,
+        "groups_where_the_order_of_the_attempts_changes": 20,
+        "passes_in_those_groups": 214,
+        "mean_size_of_the_bonus_points": 1.065467761729444,
+        "largest_bonus_points": 5.625,
+        "mean_size_of_the_arm1_advantage_points": 18.454166666666666,
+        "families_left_out": 0
+      },
+      {
+        "draw": 2,
+        "sample_positions": [
+          5,
+          8
+        ],
+        "groups": 100,
+        "attempts_per_group": 12,
+        "groups_with_equal_rewards": 79,
+        "groups_kept": 21,
+        "groups_where_the_arms_keep_differently": 0,
+        "groups_with_a_pass_and_a_fail": 13,
+        "groups_where_the_bonus_is_not_zero": 10,
+        "groups_where_the_order_of_the_attempts_changes": 10,
+        "passes_in_those_groups": 102,
+        "mean_size_of_the_bonus_points": 1.2103386809269163,
+        "largest_bonus_points": 5.625,
+        "mean_size_of_the_arm1_advantage_points": 23.597222222222225,
+        "families_left_out": 0
+      }
+    ],
+    "rank_rule": {
+      "2": {
+        "runs": 4,
+        "ways": 6,
+        "chance": 0.16666666666666666
+      },
+      "3": {
+        "runs": 6,
+        "ways": 20,
+        "chance": 0.05
+      }
+    }
+  },
+  "effect": {
+    "families_that_must_gain": {
+      "families": 48,
+      "level": 0.95,
+      "tail": 0.025000000000000022,
+      "lines": [
+        {
+          "families_that_gain": 1,
+          "share_of_draws_without_them": 0.3640137484848344,
+          "lower_end_above_zero_by_the_formula": false,
+          "lower_end_above_zero_by_the_frozen_bootstrap": false
+        },
+        {
+          "families_that_gain": 2,
+          "share_of_draws_without_them": 0.12965716658823495,
+          "lower_end_above_zero_by_the_formula": false,
+          "lower_end_above_zero_by_the_frozen_bootstrap": false
+        },
+        {
+          "families_that_gain": 3,
+          "share_of_draws_without_them": 0.045146206860228515,
+          "lower_end_above_zero_by_the_formula": false,
+          "lower_end_above_zero_by_the_frozen_bootstrap": false
+        },
+        {
+          "families_that_gain": 4,
+          "share_of_draws_without_them": 0.015351438507406662,
+          "lower_end_above_zero_by_the_formula": true,
+          "lower_end_above_zero_by_the_frozen_bootstrap": true
+        },
+        {
+          "families_that_gain": 5,
+          "share_of_draws_without_them": 0.005092211974183981,
+          "lower_end_above_zero_by_the_formula": true,
+          "lower_end_above_zero_by_the_frozen_bootstrap": true
+        },
+        {
+          "families_that_gain": 6,
+          "share_of_draws_without_them": 0.001645835952590162,
+          "lower_end_above_zero_by_the_formula": true,
+          "lower_end_above_zero_by_the_frozen_bootstrap": true
+        },
+        {
+          "families_that_gain": 7,
+          "share_of_draws_without_them": 0.0005176613356135428,
+          "lower_end_above_zero_by_the_formula": true,
+          "lower_end_above_zero_by_the_frozen_bootstrap": true
+        },
+        {
+          "families_that_gain": 8,
+          "share_of_draws_without_them": 0.0001582341395287284,
+          "lower_end_above_zero_by_the_formula": true,
+          "lower_end_above_zero_by_the_frozen_bootstrap": true
+        }
+      ],
+      "families_needed": 4,
+      "families_with_room": 5
+    },
+    "spread_between_the_grpo_arms": {
+      "pass_rate": 0.00911458333333337,
+      "all_wordings_pass": 0.0006103515625,
+      "variance_share_of_wording": 0.3672691535273255
+    },
+    "largest_room_after_grpo": 0.0361328125,
+    "little_room_is_below": 0.05,
+    "room_is_little": true
+  },
+  "cost": {
+    "saved": {
+      "grpo_seed1": {
+        "training_hours": 2.47325,
+        "dev_run_hours": 0.3171388888888889,
+        "training_seconds": 8903.7,
+        "dev_run_seconds": 1141.7,
+        "gpu": "NVIDIA GeForce RTX 4090"
+      },
+      "grpo_seed2": {
+        "training_hours": 2.618805555555556,
+        "dev_run_hours": 0.3356388888888889,
+        "training_seconds": 9427.7,
+        "dev_run_seconds": 1208.3,
+        "gpu": "NVIDIA GeForce RTX 4090"
+      }
+    },
+    "hours_of_one_design_run": 2.872416666666667,
+    "designs": {
+      "2": {
+        "seeds_per_arm": 2,
+        "runs": 4,
+        "gpu_hours": 11.489666666666668,
+        "usd_low": 5.400143333333334,
+        "usd_high": 6.313571833333334
+      },
+      "3": {
+        "seeds_per_arm": 3,
+        "runs": 6,
+        "gpu_hours": 17.234500000000004,
+        "usd_low": 8.100215000000002,
+        "usd_high": 9.470357750000002
+      }
+    },
+    "prices": {
+      "file": "results/spend_ledger.csv",
+      "rule": "the rent lines with a time at or before the end of the last saved GRPO training run",
+      "until_utc": "2026-11-19T06:08:48Z",
+      "rentals": [
+        "61045163",
+        "61047327",
+        "61098966",
+        "61182932",
+        "61285391",
+        "61312835",
+        "61313315",
+        "61368330"
+      ],
+      "lowest_usd_per_hour": 0.47,
+      "highest_usd_per_hour": 0.5495
+    },
+    "gpus": [
+      "NVIDIA GeForce RTX 4090"
+    ]
+  },
+  "analysis_plan": {
+    "file": "ANALYSIS_PLAN.md",
+    "sha256": "70c6a5b914ddf0bb761b14d8c982c3e9837e786bc533b19190ee5e749241ed44",
+    "section": 3,
+    "has_planned_extras": true,
+    "words_found": [],
+    "lists_the_experiment": false
+  },
+  "outputs": {
+    "numbers": "results/main/report/stretch/stretch_numbers.json",
+    "tables": "results/main/report/stretch/stretch_numbers.md",
+    "document": "results/stretch.md"
+  }
+}

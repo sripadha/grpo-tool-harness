@@ -1,0 +1,22 @@
+dry run of Qwen/Qwen3.5-2B; results in /workspace/repo/results/_smoke/dryrun_2b/dryrun
+Loading weights:   0%|          | 0/320 [00:00<?, ?it/s]Loading weights: 100%|██████████| 320/320 [00:00<00:00, 15345.48it/s]
+/workspace/venv/lib/python3.11/site-packages/transformers/modeling_utils.py:3303: FutureWarning: `is_gradient_checkpointing` is deprecated and will be removed in v6. Use `is_activation_checkpointing` instead.
+  warnings.warn(
+/workspace/venv/lib/python3.11/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+DONE  setup            6.3 s  wrapped_modules=150  trainable_parameters=15630336  gated_delta_rule='fla'  causal_conv1d='causal_conv1d'  gpu='NVIDIA GeForce RTX 4090'
+DONE  dev_before      44.5 s  families=8  episodes=32  harness_errors=0  harness_error_rate=0  pass_rate=0.1875  pass_rate_by_outcome={grant: 0, approval: 0.25, already: 0.1667, inactive: 0.375}  invalid_call_rate=0.1937  truncated_turn_rate=0.02252  tokens_per_turn=40.97  max_tokens_per_turn=160  n_episodes=32  mean_turns=6.938  share_at_turn_limit=0.625  share_closed=0.375  seconds=44.5
+DONE  rollout        244.0 s  scenarios=40  samples=4  episodes=160  harness_errors=0  harness_error_rate=0  pass_rate=0.2619  pass_rate_by_outcome={grant: 0.25, approval: 0.125, already: 0.1667, inactive: 0.5556}  invalid_call_rate=0.2366  truncated_turn_rate=0.02347  tokens_per_turn=41.42  max_tokens_per_turn=160  n_episodes=160  mean_turns=6.656  share_at_turn_limit=0.6312  share_closed=0.3688  seconds=244  episodes_per_hour=2361
+DONE  sft_data         0.0 s  source='clean passes'  examples=16  loss_tokens=2701  clean_passes=27  passes=44  families_covered=9  families=14
+DONE  sft              9.8 s  steps=4  first_loss=0.01909  last_loss=0.01766  first_grad_norm=0.8846  seconds=9.7  config={lr: 0.0001, epochs: 2, batch_episodes: 8, micro_batch: 2, max_grad_norm: 1, gradient_checkpointing: 1, seed: 0}
+Loading weights:   0%|          | 0/320 [00:00<?, ?it/s]Loading weights: 100%|██████████| 320/320 [00:00<00:00, 14522.11it/s]
+      restart: {'adapter': 'grpo/checkpoints/step_00002/adapter', 'fingerprint_before': 62302.21588247382, 'fingerprint_after': 62302.21588247382, 'trainable_parameters_after': 15630336}
+      step 0: reward 0.685, pass rate 0.6875, kept groups 3/4, zero variance exact 0.25 / pass-fail 0.25, invalid calls 0.0070921985815602835, trained episodes 24, loss -0.03497085468552541, gap 0.0014870390679158625, grad norm 0.1420852690935135, rollout 23.44 s, step 32.29 s
+      step 1: reward 0.625, pass rate 0.625, kept groups 3/4, zero variance exact 0.25 / pass-fail 0.25, invalid calls 0.0, trained episodes 24, loss -0.00399226254739915, gap 0.0005086823803016349, grad norm 0.12844660878181458, rollout 19.93 s, step 27.89 s
+      step 2: reward 0.5909375, pass rate 0.59375, kept groups 4/4, zero variance exact 0.0 / pass-fail 0.0, invalid calls 0.00847457627118644, trained episodes 32, loss -0.0018523836642998504, gap 0.0005610983774882521, grad norm 0.09976502507925034, rollout 19.27 s, step 29.89 s
+DONE  grpo            93.4 s  steps=3  trained_episodes=80  max_logprob_gap_mean=0.001487  checkpoint='checkpoints/step_00003'
+DONE  gradient         0.0 s  needed=False
+DONE  dev_after       19.0 s  families=8  episodes=32  harness_errors=0  harness_error_rate=0  pass_rate=0.8438  pass_rate_by_outcome={grant: 0.75, approval: 1, already: 1, inactive: 0.625}  invalid_call_rate=0.008772  truncated_turn_rate=0  tokens_per_turn=47.51  max_tokens_per_turn=67  n_episodes=32  mean_turns=3.562  share_at_turn_limit=0.03125  share_closed=0.9688  seconds=19
+DONE  weights          0.1 s  weight_change_by_block={linear_attn: 0.4301, mlp: 0.5822, self_attn: 0.2095}  weight_change_total=0.7535
+DRYRUN PASSED: all 9 stages ran. Its numbers are not results.
+JOB_EXIT_CODE=0

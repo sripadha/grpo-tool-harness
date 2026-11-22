@@ -1,0 +1,169 @@
+# Audit labels (ANALYSIS_PLAN.md section 8, lines 1 and 3).
+# Read each attempt in the sheet audit_sheet.md. Then write yes or no behind the colon
+# of each label, with a space after the colon. A note is free text in the quote marks.
+#   end_state_right   the final state is what the rules ask for
+#   path_acceptable   you accept how the model got to its final state
+# Fill both labels of every attempt. Change nothing else.
+# Do not open audit_key.json before the check has run. Then run:
+#   .venv/bin/python scripts/audit_sheet.py check --form results/main/audit/audit_labels.yaml
+
+form: audit_labels
+version: "2"
+key_file: "audit_key.json"
+key_sha256: "48ad32217bb5dee05c4733bc9844cf0dcdc874909718642f978daf10dd48f9af"
+attempts:
+
+- id: A001
+  end_state_right: yes
+  path_acceptable: no
+  note: "wrong person id"
+
+- id: A002
+  end_state_right: yes
+  path_acceptable: yes
+  note: ""
+
+- id: A003
+  end_state_right: yes
+  path_acceptable: no
+  note: "Looked for the wrong person"
+
+- id: A004
+  end_state_right: yes
+  path_acceptable: no
+  note: "invalid tool called"
+
+- id: A005
+  end_state_right: yes
+  path_acceptable: yes
+  note: ""
+
+- id: A006
+  end_state_right: no
+  path_acceptable: no
+  note: "wrong. Role already called. inactive"
+
+- id: A007
+  end_state_right: yes
+  path_acceptable: no
+  note: "It messed up the person ID"
+
+- id: A008
+  end_state_right: yes
+  path_acceptable: yes
+  note: ""
+
+- id: A009
+  end_state_right: yes
+  path_acceptable: yes
+  note: ""
+
+- id: A010
+  end_state_right: yes
+  path_acceptable: yes
+  note: ""
+
+- id: A011
+  end_state_right: yes
+  path_acceptable: no
+  note: "It messed up the role name while calling the tool"
+
+- id: A012
+  end_state_right: yes
+  path_acceptable: no
+  note: "wrong person ID card"
+
+- id: A013
+  end_state_right: yes
+  path_acceptable: yes
+  note: ""
+
+- id: A014
+  end_state_right: yes
+  path_acceptable: no
+  note: "wrong person ID"
+
+- id: A015
+  end_state_right: no
+  path_acceptable: no
+  note: ""
+
+- id: A016
+  end_state_right: no
+  path_acceptable: no
+  note: ""
+
+- id: A017
+  end_state_right: yes
+  path_acceptable: yes
+  note: ""
+
+- id: A018
+  end_state_right: yes
+  path_acceptable: yes
+  note: ""
+
+- id: A019
+  end_state_right: yes
+  path_acceptable: no
+  note: ""
+
+- id: A020
+  end_state_right: yes
+  path_acceptable: yes
+  note: ""
+
+- id: A021
+  end_state_right: yes
+  path_acceptable: no
+  note: ""
+
+- id: A022
+  end_state_right: yes
+  path_acceptable: yes
+  note: ""
+
+- id: A023
+  end_state_right: yes
+  path_acceptable: yes
+  note: ""
+
+- id: A024
+  end_state_right: yes
+  path_acceptable: no
+  note: ""
+
+- id: A025
+  end_state_right: no
+  path_acceptable: yes
+  note: ""
+
+- id: A026
+  end_state_right: yes
+  path_acceptable: yes
+  note: ""
+
+- id: A027
+  end_state_right: yes
+  path_acceptable: yes
+  note: ""
+
+- id: A028
+  end_state_right: yes
+  path_acceptable: yes
+  note: ""
+
+- id: A029
+  end_state_right: yes
+  path_acceptable: yes
+  note: ""
+
+- id: A030
+  end_state_right: yes
+  path_acceptable: yes
+  note: ""
+
+- id: A031
+  end_state_right: yes
+  path_acceptable: yes
+  note: ""

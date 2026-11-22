@@ -1,0 +1,24 @@
+=== run 1 at 2026-11-18 19:41:30 UTC, SHA-256 of the form 82f54c8bf39835a7f7275c815c0fe070f8d979437fa9cefb4532c1877148e23a
+form hand_states/form.yaml: seed 0, split dev, rule set default
+split file data/scenarios/dev.jsonl, SHA-256 fea3e07efa22481bb8ee3e2728f4554087e47a607754ecb98c5dc4641be87dd5
+verifier: the main version
+dv-08    CANNOT BE READ: asked_to_approve: 'ROLEgprp36' is not none and not a person id of this family
+dv-19    MATCH
+dv-36    MATCH
+dv-13    MATCH
+dv-04    MATCH
+dv-22    MATCH
+5 of 6 match; open: dv-08 (cannot be read)
+
+=== run 2 at 2026-11-18 19:46:41 UTC, SHA-256 of the form b21eb28802359eabefdade3048542820c3f9aa1046ba60a80d83113bdb69e9f5
+form hand_states/form.yaml: seed 0, split dev, rule set default
+split file data/scenarios/dev.jsonl, SHA-256 fea3e07efa22481bb8ee3e2728f4554087e47a607754ecb98c5dc4641be87dd5
+verifier: the main version
+dv-08    MATCH
+dv-19    MATCH
+dv-36    MATCH
+dv-13    MATCH
+dv-04    MATCH
+dv-22    MATCH
+6 of 6 match
+

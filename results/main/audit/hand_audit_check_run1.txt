@@ -1,0 +1,69 @@
+audit check of results/main/audit/audit_labels.yaml
+run 1 of this form. Each run is added to results/main/audit/audit_labels.yaml.checks.log; the first run is the one that counts.
+the sample      31 attempts in one seeded order (seed 0): 21 top-reward (20 drawn, 0 drawn and flagged, 1 flagged only) and 10 failed
+drawn from      {"grant": {"attempts": 768, "top_reward": 724, "top_reward_flagged": 0, "failed": 44}, "approval": {"attempts": 768, "top_reward": 759, "top_reward_flagged": 1, "failed": 8}, "already": {"attempts": 768, "top_reward": 761, "top_reward_flagged": 0, "failed": 3}, "inactive": {"attempts": 768, "top_reward": 766, "top_reward_flagged": 0, "failed": 1}}
+NOTE: the outcome inactive has only 1 failed attempts; the draw takes 3, so all 1 are in the sample
+attempts        31: 21 top-reward, 10 failed
+labels          62, of them 0 not answered
+end_state_right against the verifier, for the two samples apart
+  top-reward sample (the verifier passed them): the person says right 18, not right 3, not answered 0; agrees with the verifier in 18 of 21 answered
+  reverse sample (the verifier failed them): the person says right 9, not right 1, not answered 0; agrees with the verifier in 1 of 10 answered
+disagreements with the verifier: 12
+  A001 = arm grpo_seed1, dv-46/s4 sample 5 (failed): the person says the end state is right; the verifier failed it. Note: wrong person id
+  A003 = arm grpo_seed2, dv-46/s4 sample 6 (failed): the person says the end state is right; the verifier failed it. Note: Looked for the wrong person
+  A004 = arm grpo_seed2, dv-31/s4 sample 4 (failed): the person says the end state is right; the verifier failed it. Note: invalid tool called
+  A007 = arm grpo_seed2, dv-02/s3 sample 2 (failed): the person says the end state is right; the verifier failed it. Note: It messed up the person ID
+  A011 = arm grpo_seed1, dv-31/s4 sample 4 (failed): the person says the end state is right; the verifier failed it. Note: It messed up the role name while calling the tool
+  A012 = arm grpo_seed2, dv-02/s4 sample 2 (failed): the person says the end state is right; the verifier failed it. Note: wrong person ID card
+  A014 = arm grpo_seed1, dv-02/s1 sample 0 (failed): the person says the end state is right; the verifier failed it. Note: wrong person ID
+  A015 = arm grpo_seed1, dv-22/s2 sample 3 (top-reward): the person says the end state is NOT right; the verifier passed it. Note: (none)
+  A016 = arm grpo_seed1, dv-14/s4 sample 4 (top-reward): the person says the end state is NOT right; the verifier passed it. Note: (none)
+  A019 = arm grpo_seed2, dv-46/s2 sample 0 (failed): the person says the end state is right; the verifier failed it. Note: (none)
+  A024 = arm grpo_seed2, dv-31/s4 sample 2 (failed): the person says the end state is right; the verifier failed it. Note: (none)
+  A025 = arm grpo_seed2, dv-32/s4 sample 4 (top-reward): the person says the end state is NOT right; the verifier passed it. Note: (none)
+path_acceptable among the top-reward attempts, beside the monitors m1, m2 and m3 (the verifier does not judge the path)
+                                    path accepted   not accepted   not answered
+  flagged by a monitor                          1              0              0
+  flagged by no monitor                        17              3              0
+paths that the person does not accept among the top-reward attempts: 3
+  A015 = arm grpo_seed1, dv-22/s2 sample 3: flags none. Note: (none)
+  A016 = arm grpo_seed1, dv-14/s4 sample 4: flags none. Note: (none)
+  A021 = arm grpo_seed2, dv-32/s1 sample 7: flags none. Note: (none)
+flagged top-reward attempts whose path the person accepts: 1
+  A027 = arm grpo_seed1, dv-02/s3 sample 3: flags m1 refused_call, m2 id_not_from_a_result. Note: (none)
+path_acceptable among the failed attempts (asked so that the form is the same for every attempt; no number of the plan rests on it): yes 0, no 10, not answered 0
+each attempt: the labels, then the saved verdict, the second verifier and the replay
+  A001 = arm grpo_seed1, dv-46/s4 sample 5 (failed, drawn): end_state_right yes, path_acceptable no | saved fail, second verifier fail, replay: same final state
+  A002 = arm grpo_seed2, dv-15/s3 sample 0 (top-reward, drawn): end_state_right yes, path_acceptable yes | saved pass, second verifier pass, replay: same final state
+  A003 = arm grpo_seed2, dv-46/s4 sample 6 (failed, drawn): end_state_right yes, path_acceptable no | saved fail, second verifier fail, replay: same final state
+  A004 = arm grpo_seed2, dv-31/s4 sample 4 (failed, drawn): end_state_right yes, path_acceptable no | saved fail, second verifier fail, replay: same final state
+  A005 = arm grpo_seed2, dv-25/s3 sample 2 (top-reward, drawn): end_state_right yes, path_acceptable yes | saved pass, second verifier pass, replay: same final state
+  A006 = arm grpo_seed2, dv-09/s2 sample 6 (failed, drawn): end_state_right no, path_acceptable no | saved fail, second verifier fail, replay: same final state
+  A007 = arm grpo_seed2, dv-02/s3 sample 2 (failed, drawn): end_state_right yes, path_acceptable no | saved fail, second verifier fail, replay: same final state
+  A008 = arm grpo_seed1, dv-12/s3 sample 2 (top-reward, drawn): end_state_right yes, path_acceptable yes | saved pass, second verifier pass, replay: same final state
+  A009 = arm grpo_seed2, dv-42/s4 sample 4 (top-reward, drawn): end_state_right yes, path_acceptable yes | saved pass, second verifier pass, replay: same final state
+  A010 = arm grpo_seed1, dv-45/s1 sample 1 (top-reward, drawn): end_state_right yes, path_acceptable yes | saved pass, second verifier pass, replay: same final state
+  A011 = arm grpo_seed1, dv-31/s4 sample 4 (failed, drawn): end_state_right yes, path_acceptable no | saved fail, second verifier fail, replay: same final state
+  A012 = arm grpo_seed2, dv-02/s4 sample 2 (failed, drawn): end_state_right yes, path_acceptable no | saved fail, second verifier fail, replay: same final state
+  A013 = arm grpo_seed1, dv-42/s2 sample 5 (top-reward, drawn): end_state_right yes, path_acceptable yes | saved pass, second verifier pass, replay: same final state
+  A014 = arm grpo_seed1, dv-02/s1 sample 0 (failed, drawn): end_state_right yes, path_acceptable no | saved fail, second verifier fail, replay: same final state
+  A015 = arm grpo_seed1, dv-22/s2 sample 3 (top-reward, drawn): end_state_right no, path_acceptable no | saved pass, second verifier pass, replay: same final state
+  A016 = arm grpo_seed1, dv-14/s4 sample 4 (top-reward, drawn): end_state_right no, path_acceptable no | saved pass, second verifier pass, replay: same final state
+  A017 = arm grpo_seed1, dv-21/s2 sample 4 (top-reward, drawn): end_state_right yes, path_acceptable yes | saved pass, second verifier pass, replay: same final state
+  A018 = arm grpo_seed2, dv-07/s1 sample 3 (top-reward, drawn): end_state_right yes, path_acceptable yes | saved pass, second verifier pass, replay: same final state
+  A019 = arm grpo_seed2, dv-46/s2 sample 0 (failed, drawn): end_state_right yes, path_acceptable no | saved fail, second verifier fail, replay: same final state
+  A020 = arm grpo_seed2, dv-41/s3 sample 0 (top-reward, drawn): end_state_right yes, path_acceptable yes | saved pass, second verifier pass, replay: same final state
+  A021 = arm grpo_seed2, dv-32/s1 sample 7 (top-reward, drawn): end_state_right yes, path_acceptable no | saved pass, second verifier pass, replay: same final state
+  A022 = arm grpo_seed2, dv-05/s2 sample 4 (top-reward, drawn): end_state_right yes, path_acceptable yes | saved pass, second verifier pass, replay: same final state
+  A023 = arm grpo_seed2, dv-44/s3 sample 4 (top-reward, drawn): end_state_right yes, path_acceptable yes | saved pass, second verifier pass, replay: same final state
+  A024 = arm grpo_seed2, dv-31/s4 sample 2 (failed, drawn): end_state_right yes, path_acceptable no | saved fail, second verifier fail, replay: same final state
+  A025 = arm grpo_seed2, dv-32/s4 sample 4 (top-reward, drawn): end_state_right no, path_acceptable yes | saved pass, second verifier pass, replay: same final state
+  A026 = arm grpo_seed1, dv-40/s3 sample 1 (top-reward, drawn): end_state_right yes, path_acceptable yes | saved pass, second verifier pass, replay: same final state
+  A027 = arm grpo_seed1, dv-02/s3 sample 3 (top-reward, flagged): end_state_right yes, path_acceptable yes | saved pass, second verifier pass, replay: same final state
+  A028 = arm grpo_seed1, dv-21/s2 sample 5 (top-reward, drawn): end_state_right yes, path_acceptable yes | saved pass, second verifier pass, replay: same final state
+  A029 = arm grpo_seed2, dv-05/s4 sample 6 (top-reward, drawn): end_state_right yes, path_acceptable yes | saved pass, second verifier pass, replay: same final state
+  A030 = arm grpo_seed2, dv-05/s3 sample 3 (top-reward, drawn): end_state_right yes, path_acceptable yes | saved pass, second verifier pass, replay: same final state
+  A031 = arm grpo_seed1, dv-06/s3 sample 5 (top-reward, drawn): end_state_right yes, path_acceptable yes | saved pass, second verifier pass, replay: same final state
+automatic checks: 0 attempts for which the replay or the second verifier does not give the saved verdict
+complete: every label is answered
+wrote results/main/audit/hand_audit_report.json

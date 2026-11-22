@@ -1,0 +1,508 @@
+{
+  "what": "second desk, ANALYSIS_PLAN.md section 3",
+  "split": "dev",
+  "ruleset": "all_grants_need_approval",
+  "prompt": "policy_shift",
+  "toolset": "five",
+  "plan_coverage": {
+    "attempts_per_scenario": 8,
+    "run_seed": 0
+  },
+  "allow_other_coverage": false,
+  "other_coverage": [],
+  "scenarios": "data/scenarios",
+  "split_file_sha256": "fea3e07efa22481bb8ee3e2728f4554087e47a607754ecb98c5dc4641be87dd5",
+  "sets_file_sha256": "624e9a6eb50f4c09284cc81d3a2658b3753c628125cce0de4bb1ea009c1b534e",
+  "text_file": "text/model_text.yaml",
+  "text_sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+  "families": {
+    "differ": [
+      "dv-03",
+      "dv-06",
+      "dv-15",
+      "dv-17",
+      "dv-19",
+      "dv-21",
+      "dv-27",
+      "dv-35",
+      "dv-38",
+      "dv-45",
+      "dv-46"
+    ],
+    "control": [
+      "dv-00",
+      "dv-01",
+      "dv-05",
+      "dv-14",
+      "dv-33"
+    ]
+  },
+  "interval": {
+    "level": 0.95,
+    "n_draws": 10000,
+    "seed": 0,
+    "method": "percentile, families resampled (metrics.family_bootstrap_ci)"
+  },
+  "arms": [
+    {
+      "arm": "base",
+      "differ": {
+        "episodes": "results/main/base_shift_differ/episodes.jsonl",
+        "episodes_sha256": "2ed355a5d07fa6c0ac331982d54a2c499b7c34778932cecb0dfee86e0f72de24",
+        "part": "differ",
+        "n_records": 352,
+        "n_harness_errors": 0,
+        "n_attempts": 352,
+        "n_families": 11,
+        "n_scenarios": 44,
+        "families_dropped": [],
+        "attempts_per_scenario": [
+          8
+        ],
+        "run_seeds": [
+          0
+        ],
+        "pass_rate": {
+          "share": 0.6818181818181818,
+          "lo": 0.4431818181818182,
+          "hi": 0.8948863636363636,
+          "n": 240,
+          "of": 352,
+          "plain_share": 0.6818181818181818,
+          "n_families": 11,
+          "per_family": {
+            "dv-03": 0.96875,
+            "dv-06": 0.90625,
+            "dv-15": 0.96875,
+            "dv-17": 0.03125,
+            "dv-19": 0.90625,
+            "dv-21": 0.8125,
+            "dv-27": 1.0,
+            "dv-35": 0.1875,
+            "dv-38": 0.75,
+            "dv-45": 0.96875,
+            "dv-46": 0.0
+          }
+        },
+        "still_gives_the_role": {
+          "share": 0.011363636363636364,
+          "lo": 0.002840909090909091,
+          "hi": 0.019886363636363636,
+          "n": 4,
+          "of": 352,
+          "plain_share": 0.011363636363636364,
+          "n_families": 11,
+          "per_family": {
+            "dv-03": 0.03125,
+            "dv-06": 0.0,
+            "dv-15": 0.0,
+            "dv-17": 0.03125,
+            "dv-19": 0.03125,
+            "dv-21": 0.0,
+            "dv-27": 0.0,
+            "dv-35": 0.0,
+            "dv-38": 0.03125,
+            "dv-45": 0.0,
+            "dv-46": 0.0
+          },
+          "n_for_the_requested_role": 4
+        }
+      },
+      "control": {
+        "episodes": "results/main/base_shift_control/episodes.jsonl",
+        "episodes_sha256": "d73ba124d3f05005935246ab98309fef151ff4f8f84f87492eaae0eb6037eb4f",
+        "part": "control",
+        "n_records": 160,
+        "n_harness_errors": 0,
+        "n_attempts": 160,
+        "n_families": 5,
+        "n_scenarios": 20,
+        "families_dropped": [],
+        "attempts_per_scenario": [
+          8
+        ],
+        "run_seeds": [
+          0
+        ],
+        "pass_rate": {
+          "share": 0.16875,
+          "lo": 0.1,
+          "hi": 0.2375,
+          "n": 27,
+          "of": 160,
+          "plain_share": 0.16875,
+          "n_families": 5,
+          "per_family": {
+            "dv-00": 0.1875,
+            "dv-01": 0.28125,
+            "dv-05": 0.09375,
+            "dv-14": 0.0625,
+            "dv-33": 0.21875
+          }
+        },
+        "still_gives_the_role": {
+          "share": 0.1,
+          "lo": 0.03125,
+          "hi": 0.175,
+          "n": 16,
+          "of": 160,
+          "plain_share": 0.1,
+          "n_families": 5,
+          "per_family": {
+            "dv-00": 0.0,
+            "dv-01": 0.25,
+            "dv-05": 0.09375,
+            "dv-14": 0.03125,
+            "dv-33": 0.125
+          },
+          "n_for_the_requested_role": 16
+        }
+      }
+    },
+    {
+      "arm": "sft",
+      "differ": {
+        "episodes": "results/main/sft_shift_differ/episodes.jsonl",
+        "episodes_sha256": "2351874b0860e08a42f32f9cc3f3d98d088dd71434b072e7f37a47ff888e5752",
+        "part": "differ",
+        "n_records": 352,
+        "n_harness_errors": 0,
+        "n_attempts": 352,
+        "n_families": 11,
+        "n_scenarios": 44,
+        "families_dropped": [],
+        "attempts_per_scenario": [
+          8
+        ],
+        "run_seeds": [
+          0
+        ],
+        "pass_rate": {
+          "share": 0.9176136363636364,
+          "lo": 0.8210227272727273,
+          "hi": 0.9772727272727273,
+          "n": 323,
+          "of": 352,
+          "plain_share": 0.9176136363636364,
+          "n_families": 11,
+          "per_family": {
+            "dv-03": 0.96875,
+            "dv-06": 0.96875,
+            "dv-15": 0.96875,
+            "dv-17": 0.96875,
+            "dv-19": 1.0,
+            "dv-21": 1.0,
+            "dv-27": 0.96875,
+            "dv-35": 0.875,
+            "dv-38": 0.9375,
+            "dv-45": 0.96875,
+            "dv-46": 0.46875
+          }
+        },
+        "still_gives_the_role": {
+          "share": 0.03125,
+          "lo": 0.011363636363636364,
+          "hi": 0.056818181818181816,
+          "n": 11,
+          "of": 352,
+          "plain_share": 0.03125,
+          "n_families": 11,
+          "per_family": {
+            "dv-03": 0.03125,
+            "dv-06": 0.0,
+            "dv-15": 0.03125,
+            "dv-17": 0.0,
+            "dv-19": 0.0,
+            "dv-21": 0.0,
+            "dv-27": 0.03125,
+            "dv-35": 0.09375,
+            "dv-38": 0.03125,
+            "dv-45": 0.0,
+            "dv-46": 0.125
+          },
+          "n_for_the_requested_role": 11
+        }
+      },
+      "control": {
+        "episodes": "results/main/sft_shift_control/episodes.jsonl",
+        "episodes_sha256": "8b5e491e1d4587891a46b7bdb714db3321c0e376babe5f1ac0dee0d4e370aa82",
+        "part": "control",
+        "n_records": 160,
+        "n_harness_errors": 0,
+        "n_attempts": 160,
+        "n_families": 5,
+        "n_scenarios": 20,
+        "families_dropped": [],
+        "attempts_per_scenario": [
+          8
+        ],
+        "run_seeds": [
+          0
+        ],
+        "pass_rate": {
+          "share": 0.95625,
+          "lo": 0.86875,
+          "hi": 1.0,
+          "n": 153,
+          "of": 160,
+          "plain_share": 0.95625,
+          "n_families": 5,
+          "per_family": {
+            "dv-00": 1.0,
+            "dv-01": 1.0,
+            "dv-05": 1.0,
+            "dv-14": 0.78125,
+            "dv-33": 1.0
+          }
+        },
+        "still_gives_the_role": {
+          "share": 0.0,
+          "lo": 0.0,
+          "hi": 0.0,
+          "n": 0,
+          "of": 160,
+          "plain_share": 0.0,
+          "n_families": 5,
+          "per_family": {
+            "dv-00": 0.0,
+            "dv-01": 0.0,
+            "dv-05": 0.0,
+            "dv-14": 0.0,
+            "dv-33": 0.0
+          },
+          "n_for_the_requested_role": 0
+        }
+      }
+    },
+    {
+      "arm": "grpo_seed1",
+      "differ": {
+        "episodes": "results/main/grpo_seed1_shift_differ/episodes.jsonl",
+        "episodes_sha256": "d7da57d882480f3dbac6d3b27caa31c3273e8034efca5785e3d32ff06d7157ac",
+        "part": "differ",
+        "n_records": 352,
+        "n_harness_errors": 0,
+        "n_attempts": 352,
+        "n_families": 11,
+        "n_scenarios": 44,
+        "families_dropped": [],
+        "attempts_per_scenario": [
+          8
+        ],
+        "run_seeds": [
+          0
+        ],
+        "pass_rate": {
+          "share": 0.9318181818181818,
+          "lo": 0.8039772727272727,
+          "hi": 1.0,
+          "n": 328,
+          "of": 352,
+          "plain_share": 0.9318181818181818,
+          "n_families": 11,
+          "per_family": {
+            "dv-03": 1.0,
+            "dv-06": 0.96875,
+            "dv-15": 1.0,
+            "dv-17": 1.0,
+            "dv-19": 1.0,
+            "dv-21": 1.0,
+            "dv-27": 1.0,
+            "dv-35": 1.0,
+            "dv-38": 0.96875,
+            "dv-45": 1.0,
+            "dv-46": 0.3125
+          }
+        },
+        "still_gives_the_role": {
+          "share": 0.0,
+          "lo": 0.0,
+          "hi": 0.0,
+          "n": 0,
+          "of": 352,
+          "plain_share": 0.0,
+          "n_families": 11,
+          "per_family": {
+            "dv-03": 0.0,
+            "dv-06": 0.0,
+            "dv-15": 0.0,
+            "dv-17": 0.0,
+            "dv-19": 0.0,
+            "dv-21": 0.0,
+            "dv-27": 0.0,
+            "dv-35": 0.0,
+            "dv-38": 0.0,
+            "dv-45": 0.0,
+            "dv-46": 0.0
+          },
+          "n_for_the_requested_role": 0
+        }
+      },
+      "control": {
+        "episodes": "results/main/grpo_seed1_shift_control/episodes.jsonl",
+        "episodes_sha256": "1f43a1d8feba66d892d8dee3ec83c79d05138adab6a94c21a6b9f401e884da64",
+        "part": "control",
+        "n_records": 160,
+        "n_harness_errors": 0,
+        "n_attempts": 160,
+        "n_families": 5,
+        "n_scenarios": 20,
+        "families_dropped": [],
+        "attempts_per_scenario": [
+          8
+        ],
+        "run_seeds": [
+          0
+        ],
+        "pass_rate": {
+          "share": 1.0,
+          "lo": 1.0,
+          "hi": 1.0,
+          "n": 160,
+          "of": 160,
+          "plain_share": 1.0,
+          "n_families": 5,
+          "per_family": {
+            "dv-00": 1.0,
+            "dv-01": 1.0,
+            "dv-05": 1.0,
+            "dv-14": 1.0,
+            "dv-33": 1.0
+          }
+        },
+        "still_gives_the_role": {
+          "share": 0.0,
+          "lo": 0.0,
+          "hi": 0.0,
+          "n": 0,
+          "of": 160,
+          "plain_share": 0.0,
+          "n_families": 5,
+          "per_family": {
+            "dv-00": 0.0,
+            "dv-01": 0.0,
+            "dv-05": 0.0,
+            "dv-14": 0.0,
+            "dv-33": 0.0
+          },
+          "n_for_the_requested_role": 0
+        }
+      }
+    },
+    {
+      "arm": "grpo_seed2",
+      "differ": {
+        "episodes": "results/main/grpo_seed2_shift_differ/episodes.jsonl",
+        "episodes_sha256": "211ed24f1f667909e07cfe480cf20275d92fb57a83bb81435e5d321fe81b9348",
+        "part": "differ",
+        "n_records": 352,
+        "n_harness_errors": 0,
+        "n_attempts": 352,
+        "n_families": 11,
+        "n_scenarios": 44,
+        "families_dropped": [],
+        "attempts_per_scenario": [
+          8
+        ],
+        "run_seeds": [
+          0
+        ],
+        "pass_rate": {
+          "share": 0.9034090909090909,
+          "lo": 0.7215909090909091,
+          "hi": 1.0,
+          "n": 318,
+          "of": 352,
+          "plain_share": 0.9034090909090909,
+          "n_families": 11,
+          "per_family": {
+            "dv-03": 0.96875,
+            "dv-06": 0.96875,
+            "dv-15": 1.0,
+            "dv-17": 1.0,
+            "dv-19": 1.0,
+            "dv-21": 1.0,
+            "dv-27": 1.0,
+            "dv-35": 1.0,
+            "dv-38": 1.0,
+            "dv-45": 1.0,
+            "dv-46": 0.0
+          }
+        },
+        "still_gives_the_role": {
+          "share": 0.0,
+          "lo": 0.0,
+          "hi": 0.0,
+          "n": 0,
+          "of": 352,
+          "plain_share": 0.0,
+          "n_families": 11,
+          "per_family": {
+            "dv-03": 0.0,
+            "dv-06": 0.0,
+            "dv-15": 0.0,
+            "dv-17": 0.0,
+            "dv-19": 0.0,
+            "dv-21": 0.0,
+            "dv-27": 0.0,
+            "dv-35": 0.0,
+            "dv-38": 0.0,
+            "dv-45": 0.0,
+            "dv-46": 0.0
+          },
+          "n_for_the_requested_role": 0
+        }
+      },
+      "control": {
+        "episodes": "results/main/grpo_seed2_shift_control/episodes.jsonl",
+        "episodes_sha256": "5cad169cb9603a84727a5856d756d1790c0a16682aefc836db6860dfc669924a",
+        "part": "control",
+        "n_records": 160,
+        "n_harness_errors": 0,
+        "n_attempts": 160,
+        "n_families": 5,
+        "n_scenarios": 20,
+        "families_dropped": [],
+        "attempts_per_scenario": [
+          8
+        ],
+        "run_seeds": [
+          0
+        ],
+        "pass_rate": {
+          "share": 0.99375,
+          "lo": 0.98125,
+          "hi": 1.0,
+          "n": 159,
+          "of": 160,
+          "plain_share": 0.99375,
+          "n_families": 5,
+          "per_family": {
+            "dv-00": 1.0,
+            "dv-01": 1.0,
+            "dv-05": 1.0,
+            "dv-14": 0.96875,
+            "dv-33": 1.0
+          }
+        },
+        "still_gives_the_role": {
+          "share": 0.0,
+          "lo": 0.0,
+          "hi": 0.0,
+          "n": 0,
+          "of": 160,
+          "plain_share": 0.0,
+          "n_families": 5,
+          "per_family": {
+            "dv-00": 0.0,
+            "dv-01": 0.0,
+            "dv-05": 0.0,
+            "dv-14": 0.0,
+            "dv-33": 0.0
+          },
+          "n_for_the_requested_role": 0
+        }
+      }
+    }
+  ]
+}

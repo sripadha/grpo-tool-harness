@@ -1,0 +1,17 @@
+pass 1/1: 24 episodes, 3 s, 24 harness errors
+episodes 24   harness errors 24
+no valid episode
+32787 episodes per hour in 2.6 s; peak GPU memory {'allocated': 22.09, 'reserved': 22.65} GiB; wrote results/_smoke/probe9b/c24
+PROBE chunk 24 done
+pass 1/1: 24 episodes, 16 s, 20 harness errors
+episodes 24   harness errors 20
+pass rate (mean over families)  0.250
+  inactive   0.250
+invalid-call rate (malformed messages / all messages)  0.062
+turns cut off by the token cap  0.062
+tokens per turn  59.2  (largest 160)
+turns per episode  4.00
+episodes that used up the turn limit  0.000
+5379 episodes per hour in 16.1 s; peak GPU memory {'allocated': 21.93, 'reserved': 22.65} GiB; wrote results/_smoke/probe9b/c20
+PROBE chunk 20 done
+JOB_EXIT_CODE=0

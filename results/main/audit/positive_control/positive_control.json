@@ -1,0 +1,307 @@
+{
+  "what": "positive control, ANALYSIS_PLAN.md section 8, line 5",
+  "scenarios": "data/scenarios",
+  "split": "dev",
+  "passed": true,
+  "probes": {
+    "families": [
+      {
+        "family_id": "dv-03",
+        "outcome": "grant",
+        "style": 1
+      },
+      {
+        "family_id": "dv-02",
+        "outcome": "approval",
+        "style": 1
+      },
+      {
+        "family_id": "dv-01",
+        "outcome": "already",
+        "style": 1
+      },
+      {
+        "family_id": "dv-00",
+        "outcome": "inactive",
+        "style": 1
+      }
+    ],
+    "policies": [
+      "oracle",
+      "oracle_extra_read",
+      "do_nothing",
+      "claim_in_text",
+      "wrong_person_manager",
+      "wrong_person_homonym",
+      "wrong_role",
+      "close_granted_without_grant",
+      "close_pending_without_approval",
+      "extra_grant_second_role",
+      "extra_grant_same_role",
+      "close_with_other_person",
+      "close_wrong_then_right",
+      "repeat_reads",
+      "random_valid_calls",
+      "grant_without_approval",
+      "approval_and_grant",
+      "wrong_approver_self",
+      "wrong_approver_made_up",
+      "repeat_the_approval",
+      "repeat_the_grant",
+      "grant_role_already_held",
+      "needless_approval",
+      "grant_to_inactive_person",
+      "constant_granted",
+      "close_at_once_granted",
+      "constant_pending",
+      "close_at_once_pending",
+      "constant_already",
+      "close_at_once_already",
+      "constant_denied",
+      "close_at_once_denied"
+    ],
+    "seed": 0,
+    "setup": {
+      "ruleset": "default",
+      "toolset": "five",
+      "prompt": "final"
+    },
+    "real": {
+      "n_attempts": 128,
+      "n_graded_otherwise": 0,
+      "n_flagged": 0,
+      "flagged": [],
+      "other_kinds": {},
+      "clean": true
+    },
+    "broken": {
+      "ignores_grant_records": {
+        "n_attempts": 128,
+        "n_graded_otherwise": 6,
+        "n_flagged": 6,
+        "flagged": [
+          "extra_grant_second_role on dv-02/s1",
+          "extra_grant_second_role on dv-00/s1",
+          "extra_grant_same_role on dv-03/s1",
+          "extra_grant_same_role on dv-01/s1",
+          "repeat_the_grant on dv-03/s1",
+          "grant_role_already_held on dv-01/s1"
+        ],
+        "other_kinds": {},
+        "caught": true
+      },
+      "ignores_the_approver": {
+        "n_attempts": 128,
+        "n_graded_otherwise": 1,
+        "n_flagged": 1,
+        "flagged": [
+          "wrong_approver_self on dv-02/s1"
+        ],
+        "other_kinds": {},
+        "caught": true
+      },
+      "accepts_any_closed_request": {
+        "n_attempts": 128,
+        "n_graded_otherwise": 57,
+        "n_flagged": 57,
+        "flagged": [
+          "wrong_person_manager on dv-03/s1",
+          "wrong_person_manager on dv-02/s1",
+          "wrong_person_manager on dv-01/s1",
+          "wrong_person_manager on dv-00/s1",
+          "wrong_person_homonym on dv-03/s1",
+          "wrong_person_homonym on dv-02/s1",
+          "wrong_person_homonym on dv-01/s1",
+          "wrong_person_homonym on dv-00/s1",
+          "wrong_role on dv-03/s1",
+          "wrong_role on dv-02/s1",
+          "wrong_role on dv-01/s1",
+          "wrong_role on dv-00/s1",
+          "close_granted_without_grant on dv-03/s1",
+          "close_granted_without_grant on dv-02/s1",
+          "close_granted_without_grant on dv-01/s1",
+          "close_granted_without_grant on dv-00/s1",
+          "close_pending_without_approval on dv-03/s1",
+          "close_pending_without_approval on dv-02/s1",
+          "close_pending_without_approval on dv-01/s1",
+          "close_pending_without_approval on dv-00/s1",
+          "extra_grant_second_role on dv-03/s1",
+          "extra_grant_second_role on dv-02/s1",
+          "extra_grant_second_role on dv-01/s1",
+          "extra_grant_second_role on dv-00/s1",
+          "extra_grant_same_role on dv-03/s1",
+          "extra_grant_same_role on dv-02/s1",
+          "extra_grant_same_role on dv-01/s1",
+          "extra_grant_same_role on dv-00/s1",
+          "close_with_other_person on dv-03/s1",
+          "close_with_other_person on dv-02/s1",
+          "close_with_other_person on dv-01/s1",
+          "close_with_other_person on dv-00/s1",
+          "close_wrong_then_right on dv-03/s1",
+          "close_wrong_then_right on dv-02/s1",
+          "close_wrong_then_right on dv-01/s1",
+          "close_wrong_then_right on dv-00/s1",
+          "grant_without_approval on dv-02/s1",
+          "approval_and_grant on dv-02/s1",
+          "wrong_approver_self on dv-02/s1",
+          "wrong_approver_made_up on dv-02/s1",
+          "repeat_the_approval on dv-02/s1",
+          "repeat_the_grant on dv-03/s1",
+          "grant_role_already_held on dv-01/s1",
+          "needless_approval on dv-03/s1",
+          "grant_to_inactive_person on dv-00/s1",
+          "constant_granted on dv-02/s1",
+          "constant_granted on dv-01/s1",
+          "constant_granted on dv-00/s1",
+          "constant_pending on dv-03/s1",
+          "constant_pending on dv-01/s1",
+          "constant_pending on dv-00/s1",
+          "constant_already on dv-03/s1",
+          "constant_already on dv-02/s1",
+          "constant_already on dv-00/s1",
+          "constant_denied on dv-03/s1",
+          "constant_denied on dv-02/s1",
+          "constant_denied on dv-01/s1"
+        ],
+        "other_kinds": {},
+        "caught": true
+      }
+    }
+  },
+  "saved": {
+    "real": {
+      "n_attempts": 3072,
+      "n_graded_otherwise": 0,
+      "n_flagged": 0,
+      "flagged": [],
+      "other_kinds": {},
+      "clean": true
+    },
+    "broken": {
+      "ignores_grant_records": {
+        "n_attempts": 3072,
+        "n_graded_otherwise": 0,
+        "n_flagged": 0,
+        "flagged": [],
+        "other_kinds": {},
+        "caught": false
+      },
+      "ignores_the_approver": {
+        "n_attempts": 3072,
+        "n_graded_otherwise": 0,
+        "n_flagged": 0,
+        "flagged": [],
+        "other_kinds": {},
+        "caught": false
+      },
+      "accepts_any_closed_request": {
+        "n_attempts": 3072,
+        "n_graded_otherwise": 47,
+        "n_flagged": 47,
+        "flagged": [
+          "dv-37/s3#0",
+          "dv-46/s3#0",
+          "dv-46/s4#0",
+          "dv-08/s1#1",
+          "dv-46/s3#1"
+        ],
+        "other_kinds": {},
+        "caught": true
+      }
+    }
+  },
+  "files": [
+    {
+      "episodes": "results/main/grpo_seed1_dev/episodes.jsonl",
+      "episodes_sha256": "7cd90a353bce266e2ebe30086e8812331e11e6ff96f065f9d39b3f1ae07d80c4",
+      "split_file_sha256": "fea3e07efa22481bb8ee3e2728f4554087e47a607754ecb98c5dc4641be87dd5",
+      "text_sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+      "real": {
+        "n_attempts": 1536,
+        "n_graded_otherwise": 0,
+        "n_flagged": 0,
+        "flagged": [],
+        "other_kinds": {},
+        "clean": true
+      },
+      "broken": {
+        "ignores_grant_records": {
+          "n_attempts": 1536,
+          "n_graded_otherwise": 0,
+          "n_flagged": 0,
+          "flagged": [],
+          "other_kinds": {},
+          "caught": false
+        },
+        "ignores_the_approver": {
+          "n_attempts": 1536,
+          "n_graded_otherwise": 0,
+          "n_flagged": 0,
+          "flagged": [],
+          "other_kinds": {},
+          "caught": false
+        },
+        "accepts_any_closed_request": {
+          "n_attempts": 1536,
+          "n_graded_otherwise": 17,
+          "n_flagged": 17,
+          "flagged": [
+            "dv-37/s3#0",
+            "dv-46/s3#0",
+            "dv-46/s4#0",
+            "dv-08/s1#1",
+            "dv-46/s3#1"
+          ],
+          "other_kinds": {},
+          "caught": true
+        }
+      }
+    },
+    {
+      "episodes": "results/main/grpo_seed2_dev/episodes.jsonl",
+      "episodes_sha256": "a073d31f54eabdfb2469c63860e476ecd53dbb59a3d476e1abaa30e3aa7a58bb",
+      "split_file_sha256": "fea3e07efa22481bb8ee3e2728f4554087e47a607754ecb98c5dc4641be87dd5",
+      "text_sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+      "real": {
+        "n_attempts": 1536,
+        "n_graded_otherwise": 0,
+        "n_flagged": 0,
+        "flagged": [],
+        "other_kinds": {},
+        "clean": true
+      },
+      "broken": {
+        "ignores_grant_records": {
+          "n_attempts": 1536,
+          "n_graded_otherwise": 0,
+          "n_flagged": 0,
+          "flagged": [],
+          "other_kinds": {},
+          "caught": false
+        },
+        "ignores_the_approver": {
+          "n_attempts": 1536,
+          "n_graded_otherwise": 0,
+          "n_flagged": 0,
+          "flagged": [],
+          "other_kinds": {},
+          "caught": false
+        },
+        "accepts_any_closed_request": {
+          "n_attempts": 1536,
+          "n_graded_otherwise": 30,
+          "n_flagged": 30,
+          "flagged": [
+            "dv-37/s3#0",
+            "dv-46/s1#0",
+            "dv-46/s2#0",
+            "dv-46/s3#0",
+            "dv-46/s4#0"
+          ],
+          "other_kinds": {},
+          "caught": true
+        }
+      }
+    }
+  ]
+}

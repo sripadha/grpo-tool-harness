@@ -1,0 +1,13 @@
+table results/main/tables/base_vs_sft; families 48; records per arm {'base': 1536, 'sft': 1536}
+input checks failed: 0; structure problems: 0
+base        pass 611/1536 = 0.3977864583  interval: my seed 0.3118..0.4844  seed 0 0.3138..0.4844  exact 0.3132..0.4850
+sft         pass 1373/1536 = 0.8938802083  interval: my seed 0.8216..0.9551  seed 0 0.8210..0.9544  exact 0.8203..0.9551
+sft         minus base  diff +0.4960937500  boot: my seed +0.4128..+0.5781  seed 0 +0.4108..+0.5794  exact +0.4121..+0.5794  t +0.409207..+0.582980
+.json numbers without a random part: 119 compared, mismatches 0, largest absolute difference 1.55e-15
+.md printed numbers without a random part: 96 compared, mismatches 0
+.md printed numbers against their .json value: 101 compared, mismatches 0
+interval ends: 6; outside the 95% band 0; outside the 99.9% band 0; outside the range of 200 seeds 0
+numbers with a random part, my code with seed 0: .json 16 compared, mismatches 0, largest absolute difference 1.39e-17; .md 12 compared, mismatches 0
+table entries not made again (settings and labels): 8; parts of the .md not covered: 0
+in all: 350 comparisons (the lines above added up), 0 differ
+wrote report_base_vs_sft.md and my_numbers_base_vs_sft.json in results/main/audit/recount

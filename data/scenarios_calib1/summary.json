@@ -1,0 +1,108 @@
+{
+  "text_file": "model_text.yaml",
+  "text_sha256": "934127e8d68413d5c41ba4aab0b2daf9e6bb65f107ee112c6a24e38dff0b17de",
+  "text_is_placeholder": false,
+  "name_files_sha256": {
+    "first_names.txt": "be99b057c35573b35dd4c5f352846490c22c7417abdf06fe447d1793bd05bd9c",
+    "last_names.txt": "785f1a001034646c828027893ac29575224eb588d4734403224dc421e8f4c362"
+  },
+  "config": {
+    "turn_limit": 8,
+    "max_new_tokens": 160,
+    "parser_strict": true,
+    "temperature": 1.0,
+    "top_k": 0,
+    "top_p": 1.0,
+    "chunk_size": 32,
+    "pass_reward": 100,
+    "malformed_penalty": 5,
+    "malformed_cap": 15,
+    "turn_penalty": 2,
+    "turn_cap": 10,
+    "penalise_malformed_on_fail": false,
+    "n_people": 8,
+    "n_roles": 6,
+    "n_departments": 3,
+    "homonym_share": 0.2,
+    "n_train": 200,
+    "n_dev": 48,
+    "n_test": 48,
+    "n_calib": 24,
+    "data_seed": 1,
+    "calib_seed": 2
+  },
+  "config_sha256": "4ad9282080a55a2bb3f6a86fec6967ab3bb08785e4145d472c98cdcf3cca7259",
+  "splits": {
+    "train": {
+      "families": 200,
+      "scenarios": 600,
+      "outcomes": {
+        "grant": 50,
+        "approval": 50,
+        "already": 50,
+        "inactive": 50
+      },
+      "homonyms": {
+        "grant": 10,
+        "approval": 10,
+        "already": 10,
+        "inactive": 10
+      }
+    },
+    "dev": {
+      "families": 48,
+      "scenarios": 192,
+      "outcomes": {
+        "grant": 12,
+        "approval": 12,
+        "already": 12,
+        "inactive": 12
+      },
+      "homonyms": {
+        "grant": 2,
+        "approval": 2,
+        "already": 2,
+        "inactive": 2
+      }
+    },
+    "test": {
+      "families": 48,
+      "scenarios": 192,
+      "outcomes": {
+        "grant": 12,
+        "approval": 12,
+        "already": 12,
+        "inactive": 12
+      },
+      "homonyms": {
+        "grant": 2,
+        "approval": 2,
+        "already": 2,
+        "inactive": 2
+      }
+    },
+    "calib": {
+      "families": 24,
+      "scenarios": 96,
+      "outcomes": {
+        "grant": 6,
+        "approval": 6,
+        "already": 6,
+        "inactive": 6
+      },
+      "homonyms": {
+        "grant": 1,
+        "approval": 1,
+        "already": 1,
+        "inactive": 1
+      }
+    }
+  },
+  "files_sha256": {
+    "train.jsonl": "22cb0641002d5014d77fce5841eedc1b412b2d595fb43a27897d41f62d7f7565",
+    "dev.jsonl": "bb17561ce0acdae2c5584ac99c26d38330363e179863d99924e1f03dab9d9b89",
+    "test.jsonl": "e59f4b517c113f89b821abe74c03026ec6877ecc89f35cd8547455b22d7cd618",
+    "calib.jsonl": "750b36c5acc4ab3b96946f245fb3a0c4dba55011ece0265b994ee14423860cca",
+    "sets.json": "69b0070c62430cb0c9d454b3aa1fde1bd2a4f70f3e477ed3a1ca423b72b87b1a"
+  }
+}

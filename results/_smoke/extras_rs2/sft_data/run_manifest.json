@@ -1,0 +1,169 @@
+{
+  "complete": true,
+  "script": "scripts/gpu/sft_data.py",
+  "command": [
+    "scripts/gpu/sft_data.py",
+    "--episodes",
+    "results/_smoke/extras_rs2/sft_train_full/episodes.jsonl",
+    "--tokens",
+    "results/_smoke/extras_rs2/sft_train_full/tokens.jsonl",
+    "--scenarios",
+    "data/scenarios",
+    "--out",
+    "results/_smoke/extras_rs2/sft_data"
+  ],
+  "started_utc": "2026-11-19T16:50:36Z",
+  "ended_utc": "2026-11-19T16:50:36Z",
+  "seconds": 0.07,
+  "python": "3.11.17",
+  "allow_penalised": false,
+  "config": {
+    "turn_limit": 8,
+    "max_new_tokens": 260,
+    "parser_strict": true,
+    "temperature": 1.0,
+    "top_k": 0,
+    "top_p": 1.0,
+    "chunk_size": 32,
+    "pass_reward": 100,
+    "malformed_penalty": 5,
+    "malformed_cap": 15,
+    "turn_penalty": 2,
+    "turn_cap": 10,
+    "penalise_malformed_on_fail": false,
+    "n_people": 8,
+    "n_roles": 6,
+    "n_departments": 3,
+    "homonym_share": 0.5,
+    "mix_facts": true,
+    "n_train": 200,
+    "n_dev": 48,
+    "n_test": 48,
+    "n_calib": 24,
+    "data_seed": 20261118,
+    "calib_seed": 20261119,
+    "placeholder_data_seed": 9001,
+    "placeholder_calib_seed": 9002
+  },
+  "config_sha256": "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475",
+  "config_source": "run_manifest.json of the rollout",
+  "records_config_sha256": "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475",
+  "records_settings": {
+    "turn_limit": 8,
+    "max_new_tokens": 260,
+    "parser_strict": true,
+    "temperature": 1.0,
+    "top_k": 0,
+    "top_p": 1.0,
+    "pass_reward": 100,
+    "malformed_penalty": 5,
+    "malformed_cap": 15,
+    "turn_penalty": 2,
+    "turn_cap": 10,
+    "penalise_malformed_on_fail": false
+  },
+  "impl": {
+    "verify": "main",
+    "reward": "main",
+    "build_loss_mask": "main",
+    "group_advantages": "main",
+    "policy_loss": "main",
+    "paired_family_bootstrap": "main"
+  },
+  "code_sha256": "a157f32175cc4a24092f916a8dcf2a382a0ac4764b81d60d94f28a02963202f3",
+  "frozen": {
+    "manifest_sha256": "f7eaa77fade932ce24c690f0fb987f62f06c5fd1d025bfed4a2f5d794a294d81",
+    "code_sha256": "a157f32175cc4a24092f916a8dcf2a382a0ac4764b81d60d94f28a02963202f3",
+    "matches": true,
+    "differences": []
+  },
+  "frozen_note": null,
+  "training_code": {
+    "sha256": "c62a6064a766ff81144d2c81de26942fe0e876ad0cd7c5d46f4aec6c90c74920",
+    "files": {
+      "accessdesk/_second/grpo_math.py": "1b3793232d5452e8ea0867314e808b48da8d6b19ce790c721d6f566a0765d3dd",
+      "accessdesk/_second/loss_mask.py": "c70bbdbcf71d25b0abb9acc6c90a85fb00e3f4c488caf1a3e1b68d4c29e8be92",
+      "accessdesk/train/__init__.py": "20ca27ddc874c92c4ba81f9ae1fcf255496de787333ef23cd3684c6d1a4c4e43",
+      "accessdesk/train/distill.py": "ed7d7f0f440b3546e17392a5b2dd4e495f491a0233f490149056961b3c0ad502",
+      "accessdesk/train/forward.py": "9c957343fb4eb6f20e67da68a4d7ae1b9ebae200e07f5fd588f3faa4021b5489",
+      "accessdesk/train/grpo.py": "cf18a0e50f2d0e1d7afbb3b9beb56daa308cb0715e8da276f351f454be472c27",
+      "accessdesk/train/grpo_math.py": "8d203e9e3dae38f9197423cc6e1b1072bb7869cc944852f409f5cf789277811f",
+      "accessdesk/train/lora.py": "9b86324257684d26da53e6a20acbc34fb7579fdbe43800ad7cf60a599a034daa",
+      "accessdesk/train/loss_mask.py": "c4894b141befd82b34a12cfd59be1b2185d3f23634ba188f6e451ce7044a33c6",
+      "accessdesk/train/sft.py": "6f4bebaee39c70d6434027ea9aae238a872620a1d20d07061d267b5221522e25",
+      "scripts/gpu/chain_stage1.sh": "6d7a5446eed99e8ce14874b7d3f29ea439a16d4b43cac0fb2409f9aca319ef20",
+      "scripts/gpu/chain_stage2.sh": "f807ebc2544b2f9cabf1067407bb927a79af52f88f4c7149978e3d479abca00c",
+      "scripts/gpu/sft_data.py": "d94e8cff1da1eb4e5b23f367607b56dfc251e1e29d0ce957db4b274ced8bcb54",
+      "scripts/gpu/train_grpo.py": "68846c03e24e65a4ac32a9c86f233179b899c8eb4c609712a9585ceef1c57613",
+      "scripts/gpu/train_sft.py": "aa8027a8d45d995e37110f02a74cf6c0a4aec8b8e6758e286b809e4d5f5a95e0"
+    }
+  },
+  "split": "train",
+  "text_sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+  "text_is_placeholder": false,
+  "data_sha256": "330e7022f6d378ae4d00dd5c3fbe75c8799d2a7ea804ad0b0af89bb46c34bf79",
+  "scenarios_config_sha256": "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475",
+  "source_run": {
+    "manifest": {
+      "path": "results/_smoke/extras_rs2/sft_train_full/run_manifest.json",
+      "sha256": "29c6656ea05d75c94d8a3256b8225fe04d0467c43dc43cf6e155572e3f0d74f6",
+      "bytes": 6786
+    },
+    "complete": true,
+    "model": "Qwen/Qwen3.5-2B",
+    "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+    "adapter": "results/main/sft/adapter",
+    "split": "train",
+    "samples": 8,
+    "run_seed": 30,
+    "families": 4,
+    "scenarios": 12,
+    "config_sha256": "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475",
+    "text_sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+    "split_file_sha256": "330e7022f6d378ae4d00dd5c3fbe75c8799d2a7ea804ad0b0af89bb46c34bf79"
+  },
+  "inputs": {
+    "episodes": {
+      "path": "results/_smoke/extras_rs2/sft_train_full/episodes.jsonl",
+      "sha256": "50f6921b20fcce2d2d1b6c7d6b3491aafe093e50a6584f737f7ee791c0574002",
+      "bytes": 337661
+    },
+    "tokens": {
+      "path": "results/_smoke/extras_rs2/sft_train_full/tokens.jsonl",
+      "sha256": "99f9ed44f7ed680693a5334823894df8f728a6988033f2f53b8c7af303958cac",
+      "bytes": 1196282
+    },
+    "summary": {
+      "path": "data/scenarios/summary.json",
+      "sha256": "8d848237e9ae96e8ef863ae3d0a97264edc7d528111302ae08ba12c920de2b0d",
+      "bytes": 6114
+    },
+    "train_file": {
+      "path": "data/scenarios/train.jsonl",
+      "sha256": "330e7022f6d378ae4d00dd5c3fbe75c8799d2a7ea804ad0b0af89bb46c34bf79",
+      "bytes": 879872
+    }
+  },
+  "outputs": {
+    "sft_records.jsonl": {
+      "path": "results/_smoke/extras_rs2/sft_data/sft_records.jsonl",
+      "sha256": "3d187da6ce67d7a28ad0f13fa744bef47285ad71148f1a4d57d181c37fe893a1",
+      "bytes": 188403
+    },
+    "sft_report.json": {
+      "path": "results/_smoke/extras_rs2/sft_data/sft_report.json",
+      "sha256": "55922748ee5e575c1334f78b053f2b02ebb7f04b8dda46da1cca53fd2a205a4e",
+      "bytes": 1066
+    },
+    "sft_report.md": {
+      "path": "results/_smoke/extras_rs2/sft_data/sft_report.md",
+      "sha256": "c3d875a715b21f70cfbdd529c128dce05387d798718c3c438e0a9f8fa3841826",
+      "bytes": 1116
+    }
+  },
+  "counts": {
+    "records": 96,
+    "chosen": 12,
+    "loss_tokens": 2049
+  }
+}

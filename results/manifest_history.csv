@@ -1,0 +1,5 @@
+sha256,state,utc,source
+f1ea719eadb4e16a25af51ee9b4ec7050097de3df451469d0b001833b85a99e9,the freeze,2026-11-18T21:48:10Z,MANIFEST.json at the freeze (utc: its frozen_at). That state is in the working history (not published)
+f7eaa77fade932ce24c690f0fb987f62f06c5fd1d025bfed4a2f5d794a294d81,after amendment 1,2026-11-19T06:53:40Z,MANIFEST.json after amendment 1 (utc: the time of amendment 1). Working history (not published)
+be197c17417cba62d86265a4ff1cb0cccb517523ab4a0deaf29113538abfdacf,after amendment 2,2026-11-19T18:06:30Z,MANIFEST.json after amendment 2 (utc: the time of amendment 2). Working history (not published)
+87fbe6aab089e5fe9e0a5752176164bd228775a58ace48b645fc6d6295ae20f0,after amendment 3,2026-11-21T22:43:31Z,MANIFEST.json of the package (utc: the time of its amendment 3)

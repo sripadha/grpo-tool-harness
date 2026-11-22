@@ -1,0 +1,571 @@
+{
+  "complete": true,
+  "status": "complete",
+  "script": "scripts/gpu/train_sft.py",
+  "command": [
+    "scripts/gpu/train_sft.py",
+    "--model",
+    "Qwen/Qwen3.5-2B",
+    "--revision",
+    "15852e8c16360a2fea060d615a32b45270f8a8fc",
+    "--data",
+    "results/_smoke/trial_1118/sft_data",
+    "--out",
+    "results/_smoke/trial_1118/sft_nearbase",
+    "--seed",
+    "0",
+    "--lr",
+    "1e-9",
+    "--epochs",
+    "1"
+  ],
+  "started_utc": "2026-11-18T16:58:57Z",
+  "ended_utc": "2026-11-18T16:59:12Z",
+  "seconds": 14.9,
+  "model": "Qwen/Qwen3.5-2B",
+  "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+  "seed": 0,
+  "seeds": {
+    "lora_start_values": {
+      "value": 0,
+      "set_by": "--seed",
+      "used_for": "the random start values of lora_A (accessdesk.train.lora.add_lora, argument seed)"
+    },
+    "example_order": {
+      "value": 0,
+      "set_by": "--seed",
+      "used_for": "the order of the examples in each epoch (SFTConfig.seed, accessdesk.train.sft.epoch_order)"
+    }
+  },
+  "sft_config": {
+    "lr": 1e-09,
+    "epochs": 1,
+    "batch_episodes": 8,
+    "micro_batch": 2,
+    "max_grad_norm": 1.0,
+    "gradient_checkpointing": true,
+    "seed": 0
+  },
+  "sft_config_sha256": "0776fe8869273434d6086f87be6614300a2ca8d5c0f6dccec52dc95aa45689b1",
+  "config": {
+    "turn_limit": 8,
+    "max_new_tokens": 260,
+    "parser_strict": true,
+    "temperature": 1.0,
+    "top_k": 0,
+    "top_p": 1.0,
+    "chunk_size": 32,
+    "pass_reward": 100,
+    "malformed_penalty": 5,
+    "malformed_cap": 15,
+    "turn_penalty": 2,
+    "turn_cap": 10,
+    "penalise_malformed_on_fail": false,
+    "n_people": 8,
+    "n_roles": 6,
+    "n_departments": 3,
+    "homonym_share": 0.2,
+    "mix_facts": false,
+    "n_train": 200,
+    "n_dev": 48,
+    "n_test": 48,
+    "n_calib": 24,
+    "data_seed": 1,
+    "calib_seed": 2,
+    "placeholder_data_seed": 9001,
+    "placeholder_calib_seed": 9002
+  },
+  "config_sha256": "1b0664feb7cb3aef4e908ce0ae5b7a84cd2d7c075af3ef8f953994c88bd5112c",
+  "config_source": "run_manifest.json of the data folder (the config of the rollout)",
+  "lora": {
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.0,
+    "targets": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "in_proj_qkv",
+      "in_proj_z",
+      "out_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "seed": 0,
+    "wrapped_modules": 150,
+    "trainable_parameters": 15630336,
+    "coverage": [
+      {
+        "layer_type": "full_attention",
+        "block": "mlp",
+        "module": "down_proj",
+        "wrapped": 6,
+        "of": 6,
+        "shape": [
+          2048,
+          6144
+        ],
+        "lora_params": 786432
+      },
+      {
+        "layer_type": "full_attention",
+        "block": "mlp",
+        "module": "gate_proj",
+        "wrapped": 6,
+        "of": 6,
+        "shape": [
+          6144,
+          2048
+        ],
+        "lora_params": 786432
+      },
+      {
+        "layer_type": "full_attention",
+        "block": "mlp",
+        "module": "up_proj",
+        "wrapped": 6,
+        "of": 6,
+        "shape": [
+          6144,
+          2048
+        ],
+        "lora_params": 786432
+      },
+      {
+        "layer_type": "full_attention",
+        "block": "self_attn",
+        "module": "k_proj",
+        "wrapped": 6,
+        "of": 6,
+        "shape": [
+          512,
+          2048
+        ],
+        "lora_params": 245760
+      },
+      {
+        "layer_type": "full_attention",
+        "block": "self_attn",
+        "module": "o_proj",
+        "wrapped": 6,
+        "of": 6,
+        "shape": [
+          2048,
+          2048
+        ],
+        "lora_params": 393216
+      },
+      {
+        "layer_type": "full_attention",
+        "block": "self_attn",
+        "module": "q_proj",
+        "wrapped": 6,
+        "of": 6,
+        "shape": [
+          4096,
+          2048
+        ],
+        "lora_params": 589824
+      },
+      {
+        "layer_type": "full_attention",
+        "block": "self_attn",
+        "module": "v_proj",
+        "wrapped": 6,
+        "of": 6,
+        "shape": [
+          512,
+          2048
+        ],
+        "lora_params": 245760
+      },
+      {
+        "layer_type": "linear_attention",
+        "block": "linear_attn",
+        "module": "in_proj_a",
+        "wrapped": 0,
+        "of": 18,
+        "shape": [
+          16,
+          2048
+        ],
+        "lora_params": 0
+      },
+      {
+        "layer_type": "linear_attention",
+        "block": "linear_attn",
+        "module": "in_proj_b",
+        "wrapped": 0,
+        "of": 18,
+        "shape": [
+          16,
+          2048
+        ],
+        "lora_params": 0
+      },
+      {
+        "layer_type": "linear_attention",
+        "block": "linear_attn",
+        "module": "in_proj_qkv",
+        "wrapped": 18,
+        "of": 18,
+        "shape": [
+          6144,
+          2048
+        ],
+        "lora_params": 2359296
+      },
+      {
+        "layer_type": "linear_attention",
+        "block": "linear_attn",
+        "module": "in_proj_z",
+        "wrapped": 18,
+        "of": 18,
+        "shape": [
+          2048,
+          2048
+        ],
+        "lora_params": 1179648
+      },
+      {
+        "layer_type": "linear_attention",
+        "block": "linear_attn",
+        "module": "out_proj",
+        "wrapped": 18,
+        "of": 18,
+        "shape": [
+          2048,
+          2048
+        ],
+        "lora_params": 1179648
+      },
+      {
+        "layer_type": "linear_attention",
+        "block": "mlp",
+        "module": "down_proj",
+        "wrapped": 18,
+        "of": 18,
+        "shape": [
+          2048,
+          6144
+        ],
+        "lora_params": 2359296
+      },
+      {
+        "layer_type": "linear_attention",
+        "block": "mlp",
+        "module": "gate_proj",
+        "wrapped": 18,
+        "of": 18,
+        "shape": [
+          6144,
+          2048
+        ],
+        "lora_params": 2359296
+      },
+      {
+        "layer_type": "linear_attention",
+        "block": "mlp",
+        "module": "up_proj",
+        "wrapped": 18,
+        "of": 18,
+        "shape": [
+          6144,
+          2048
+        ],
+        "lora_params": 2359296
+      },
+      {
+        "layer_type": null,
+        "block": null,
+        "module": "lm_head",
+        "wrapped": 0,
+        "of": 1,
+        "shape": [
+          248320,
+          2048
+        ],
+        "lora_params": 0
+      }
+    ]
+  },
+  "data": {
+    "folder": "results/_smoke/trial_1118/sft_data",
+    "manifest": {
+      "path": "results/_smoke/trial_1118/sft_data/run_manifest.json",
+      "sha256": "82133b2ee2adee27a19a345189e75402c92381e04c72cd3ef3b868511a5236b8",
+      "bytes": 6391
+    },
+    "records": {
+      "path": "results/_smoke/trial_1118/sft_data/sft_records.jsonl",
+      "sha256": "a569937ab0a68b3542b2356c45ed2feafe4a77035c37865ad47ddc72814c74f8",
+      "bytes": 224999
+    },
+    "examples": 14,
+    "loss_tokens": 2491,
+    "text_sha256": "e4118288ed14b14ab185da4e304040fdc5b30140c61635b8b479d84a7a808709",
+    "text_is_placeholder": false,
+    "data_sha256": "664862bf4c847edeef2c3762e3eae895ed5de3722a3adf92e452c681d85d49e8",
+    "allow_penalised": false,
+    "source_run": {
+      "manifest": {
+        "path": "results/_smoke/trial_1118/base_train/run_manifest.json",
+        "sha256": "fd43184b535fa703ed1534d6ba1022f15f2ff4afbf792ba3e99ff2651d3e8356",
+        "bytes": 6757
+      },
+      "complete": true,
+      "model": "Qwen/Qwen3.5-2B",
+      "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+      "adapter": null,
+      "split": "train",
+      "samples": 4,
+      "run_seed": 99,
+      "families": 8,
+      "scenarios": 24,
+      "config_sha256": "1b0664feb7cb3aef4e908ce0ae5b7a84cd2d7c075af3ef8f953994c88bd5112c",
+      "text_sha256": "e4118288ed14b14ab185da4e304040fdc5b30140c61635b8b479d84a7a808709",
+      "split_file_sha256": "664862bf4c847edeef2c3762e3eae895ed5de3722a3adf92e452c681d85d49e8"
+    },
+    "source_note": null
+  },
+  "impl": {
+    "verify": "main",
+    "reward": "main",
+    "build_loss_mask": "main",
+    "group_advantages": "main",
+    "policy_loss": "main",
+    "paired_family_bootstrap": "main"
+  },
+  "code_sha256": "9004c62504ffdb4dc4a50fa49c9131c6c3c589fd61b24fb85e52ce53866d52d2",
+  "frozen": {
+    "manifest_sha256": null,
+    "code_sha256": "9004c62504ffdb4dc4a50fa49c9131c6c3c589fd61b24fb85e52ce53866d52d2",
+    "matches": false,
+    "differences": [
+      "MANIFEST.json is missing: the tree is not frozen"
+    ]
+  },
+  "frozen_note": null,
+  "training_code": {
+    "sha256": "4528eebef22fe4f992e87aee1bc651bbb1cc6e2c6db220f886e0dc28218a4986",
+    "files": {
+      "accessdesk/_second/grpo_math.py": "1b3793232d5452e8ea0867314e808b48da8d6b19ce790c721d6f566a0765d3dd",
+      "accessdesk/_second/loss_mask.py": "c70bbdbcf71d25b0abb9acc6c90a85fb00e3f4c488caf1a3e1b68d4c29e8be92",
+      "accessdesk/train/__init__.py": "20ca27ddc874c92c4ba81f9ae1fcf255496de787333ef23cd3684c6d1a4c4e43",
+      "accessdesk/train/forward.py": "9c957343fb4eb6f20e67da68a4d7ae1b9ebae200e07f5fd588f3faa4021b5489",
+      "accessdesk/train/grpo.py": "cf18a0e50f2d0e1d7afbb3b9beb56daa308cb0715e8da276f351f454be472c27",
+      "accessdesk/train/grpo_math.py": "8d203e9e3dae38f9197423cc6e1b1072bb7869cc944852f409f5cf789277811f",
+      "accessdesk/train/lora.py": "9b86324257684d26da53e6a20acbc34fb7579fdbe43800ad7cf60a599a034daa",
+      "accessdesk/train/loss_mask.py": "c4894b141befd82b34a12cfd59be1b2185d3f23634ba188f6e451ce7044a33c6",
+      "accessdesk/train/sft.py": "6f4bebaee39c70d6434027ea9aae238a872620a1d20d07061d267b5221522e25",
+      "scripts/gpu/chain_stage1.sh": "6d7a5446eed99e8ce14874b7d3f29ea439a16d4b43cac0fb2409f9aca319ef20",
+      "scripts/gpu/chain_stage2.sh": "f807ebc2544b2f9cabf1067407bb927a79af52f88f4c7149978e3d479abca00c",
+      "scripts/gpu/sft_data.py": "d94e8cff1da1eb4e5b23f367607b56dfc251e1e29d0ce957db4b274ced8bcb54",
+      "scripts/gpu/train_grpo.py": "9e594c0f23b2070ead8232668c718500c35efc228726ecafd162b4ddd1545be6",
+      "scripts/gpu/train_sft.py": "a0e975302e6e84f382e2350ffba476c99f422f2543397e86a11704215d5ef431"
+    }
+  },
+  "environment": {
+    "python": "3.11.17",
+    "packages": {
+      "torch": "2.15.0",
+      "transformers": "5.23.0",
+      "peft": "0.21.3",
+      "accelerate": "1.16.0",
+      "flash-linear-attention": "0.6.0",
+      "fla-core": "0.6.0",
+      "causal-conv1d": "1.7.0",
+      "kernels": "0.18.3",
+      "safetensors": "0.8.0",
+      "tokenizers": "0.23.3",
+      "numpy": "2.4.6"
+    },
+    "cuda_version": "13.2",
+    "gpu_name": "NVIDIA GeForce RTX 4090",
+    "gpu_memory_gb": 23.5
+  },
+  "kernels": {
+    "imports": {
+      "fla": {
+        "ok": true,
+        "error": null
+      },
+      "fla.ops": {
+        "ok": true,
+        "error": null
+      },
+      "fla.ops.gated_delta_rule": {
+        "ok": true,
+        "error": null
+      },
+      "causal_conv1d": {
+        "ok": true,
+        "error": null
+      },
+      "kernels": {
+        "ok": true,
+        "error": null
+      }
+    },
+    "use_kernels": false,
+    "fallback_warnings": [],
+    "torch_fallback_functions": [],
+    "gated_delta_rule": "fla",
+    "causal_conv1d": "causal_conv1d",
+    "fast_path": true
+  },
+  "sampler": {
+    "temperature": 1.0,
+    "top_k": 0,
+    "top_p": 1.0,
+    "max_new_tokens": 260,
+    "chunk_size": 32,
+    "stop_id": 248046,
+    "pad_id": 248044,
+    "padding_side": "left",
+    "logits_processors": [
+      "LogprobRecorder"
+    ],
+    "generate_effective_config": {
+      "max_length": 20,
+      "max_new_tokens": 260,
+      "min_length": 0,
+      "min_new_tokens": null,
+      "early_stopping": false,
+      "max_time": null,
+      "stop_strings": null,
+      "do_sample": true,
+      "num_beams": 1,
+      "use_mtp": null,
+      "use_cache": true,
+      "cache_implementation": null,
+      "cache_config": null,
+      "max_cache_len": null,
+      "temperature": 1.0,
+      "top_k": 0,
+      "top_p": 1.0,
+      "min_p": null,
+      "top_h": null,
+      "typical_p": 1.0,
+      "epsilon_cutoff": 0.0,
+      "eta_cutoff": 0.0,
+      "repetition_penalty": 1.0,
+      "encoder_repetition_penalty": 1.0,
+      "length_penalty": 1.0,
+      "no_repeat_ngram_size": 0,
+      "bad_words_ids": null,
+      "renormalize_logits": false,
+      "forced_bos_token_id": null,
+      "forced_eos_token_id": null,
+      "remove_invalid_values": false,
+      "exponential_decay_length_penalty": null,
+      "suppress_tokens": null,
+      "begin_suppress_tokens": null,
+      "sequence_bias": null,
+      "token_healing": null,
+      "guidance_scale": null,
+      "watermarking_config": null,
+      "num_return_sequences": 1,
+      "output_attentions": null,
+      "output_hidden_states": null,
+      "output_scores": false,
+      "output_logits": false,
+      "return_dict_in_generate": false,
+      "pad_token_id": 248044,
+      "bos_token_id": null,
+      "eos_token_id": 248046,
+      "encoder_no_repeat_ngram_size": 0,
+      "decoder_start_token_id": null,
+      "is_assistant": null,
+      "num_assistant_tokens": 20,
+      "num_assistant_tokens_schedule": "constant",
+      "assistant_confidence_threshold": 0.4,
+      "prompt_lookup_num_tokens": null,
+      "max_matching_ngram_size": null,
+      "assistant_early_exit": null,
+      "assistant_lookbehind": 10,
+      "target_lookbehind": 10,
+      "assistant_ensemble_weight": null,
+      "speculation_type": null,
+      "compile_config": null,
+      "disable_compile": null,
+      "continuous_batching_config": null,
+      "low_memory": null,
+      "penalty_alpha": null,
+      "dola_layers": null,
+      "diversity_penalty": 0.0,
+      "num_beam_groups": 1,
+      "constraints": null,
+      "force_words_ids": null,
+      "prefill_chunk_size": null,
+      "_from_model_config": true,
+      "transformers_version": "5.23.0"
+    }
+  },
+  "error": null,
+  "summary": {
+    "steps": 2,
+    "first_loss": 0.04134766000788659,
+    "last_loss": 0.005234107840806246,
+    "mean_loss_by_epoch": [
+      0.025791722041095255
+    ],
+    "max_grad_norm_seen": 0.5548113584518433,
+    "clipped_steps": 0,
+    "seconds_in_steps": 4.9
+  },
+  "weight_change": {
+    "by_layer_type": {
+      "full_attention": 2.806098527252821e-06,
+      "linear_attention": 5.181469558230179e-06
+    },
+    "by_block": {
+      "linear_attn": 3.3466000463151897e-06,
+      "mlp": 4.567273435025763e-06,
+      "self_attn": 1.6315934626087575e-06
+    },
+    "by_module": {
+      "down_proj": 1.7319966534275476e-06,
+      "gate_proj": 2.9727241611394913e-06,
+      "in_proj_qkv": 2.5904885259757085e-06,
+      "in_proj_z": 1.494124986349769e-06,
+      "k_proj": 4.3897383792649386e-07,
+      "o_proj": 8.707688023871658e-07,
+      "out_proj": 1.5022288746893179e-06,
+      "q_proj": 1.2347688451233748e-06,
+      "up_proj": 3.0038450833199295e-06,
+      "v_proj": 4.3186431751839295e-07
+    },
+    "total": 5.892522017567392e-06
+  },
+  "outputs": {
+    "log": {
+      "path": "results/_smoke/trial_1118/sft_nearbase/sft_log.jsonl",
+      "sha256": "01d99d36a47934eaabb33c244a1aa6033e6d00e96c1881e4dc4b6e6653f40adb",
+      "bytes": 305
+    },
+    "coverage": {
+      "path": "results/_smoke/trial_1118/sft_nearbase/lora_coverage.json",
+      "sha256": "9e22890f23f8b12abf220e8bc2c6f3424a610ddc86bfaeaea45143ae2e4cd1e1",
+      "bytes": 52214
+    },
+    "adapter": {
+      "adapter_config.json": {
+        "path": "results/_smoke/trial_1118/sft_nearbase/adapter/adapter_config.json",
+        "sha256": "9fe0c5587b821bc1d8681d2ae5c61ebec618c9447e1786b57173e76e4e6f3fa0",
+        "bytes": 1221
+      },
+      "adapter_model.safetensors": {
+        "path": "results/_smoke/trial_1118/sft_nearbase/adapter/adapter_model.safetensors",
+        "sha256": "22419a87a392077ac5d8240a8ce09f66fcc7b7d27d23cbfdf33daf692b68d772",
+        "bytes": 62561688
+      }
+    }
+  },
+  "peak_gpu_memory_gb": {
+    "allocated": 5.21,
+    "reserved": 9.82
+  }
+}

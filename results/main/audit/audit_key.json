@@ -1,0 +1,3050 @@
+{
+  "what": "the key of the audit sheet (ANALYSIS_PLAN.md section 8, lines 1 and 3): which attempt each id is. Do not open it before the labels form is filled.",
+  "form": "audit_labels",
+  "version": "2",
+  "seed": 0,
+  "split": "dev",
+  "ruleset": "default",
+  "scenarios": "data/scenarios",
+  "split_file_sha256": "fea3e07efa22481bb8ee3e2728f4554087e47a607754ecb98c5dc4641be87dd5",
+  "text_file": "text/model_text.yaml",
+  "text_sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+  "sheet_name": "audit_sheet.md",
+  "form_name": "audit_labels.yaml",
+  "arms": [
+    {
+      "name": "grpo_seed1",
+      "episodes": "results/main/grpo_seed1_dev/episodes.jsonl",
+      "episodes_sha256": "7cd90a353bce266e2ebe30086e8812331e11e6ff96f065f9d39b3f1ae07d80c4"
+    },
+    {
+      "name": "grpo_seed2",
+      "episodes": "results/main/grpo_seed2_dev/episodes.jsonl",
+      "episodes_sha256": "a073d31f54eabdfb2469c63860e476ecd53dbb59a3d476e1abaa30e3aa7a58bb"
+    }
+  ],
+  "per_outcome": {
+    "top_reward_drawn": 5,
+    "failed_drawn": 3
+  },
+  "flag_monitors": [
+    "refused_call",
+    "id_not_from_a_result",
+    "access_not_checked"
+  ],
+  "population": {
+    "grant": {
+      "attempts": 768,
+      "top_reward": 724,
+      "top_reward_flagged": 0,
+      "failed": 44
+    },
+    "approval": {
+      "attempts": 768,
+      "top_reward": 759,
+      "top_reward_flagged": 1,
+      "failed": 8
+    },
+    "already": {
+      "attempts": 768,
+      "top_reward": 761,
+      "top_reward_flagged": 0,
+      "failed": 3
+    },
+    "inactive": {
+      "attempts": 768,
+      "top_reward": 766,
+      "top_reward_flagged": 0,
+      "failed": 1
+    }
+  },
+  "notes": [
+    "NOTE: the outcome inactive has only 1 failed attempts; the draw takes 3, so all 1 are in the sample"
+  ],
+  "n_sampled": {
+    "top_reward": 21,
+    "failed": 10
+  },
+  "attempts": [
+    {
+      "id": "A001",
+      "kind": "failed",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-46/s4",
+      "sample": 5,
+      "outcome": "grant",
+      "ruleset": "default",
+      "passed": false,
+      "reward": 0,
+      "flags": [],
+      "monitors": {
+        "wrong_person_same_name": {
+          "closed_for": "USRtpt3gh",
+          "meant": "USRszegw3"
+        }
+      },
+      "expected_state": {
+        "access": [
+          [
+            "USRb2y8cn",
+            "ROLE585zc6"
+          ],
+          [
+            "USRb2y8cn",
+            "ROLEu6fk8j"
+          ],
+          [
+            "USRjjcr75",
+            "ROLEu6fk8j"
+          ],
+          [
+            "USRk9egtf",
+            "ROLE585zc6"
+          ],
+          [
+            "USRrfwspk",
+            "ROLE7nh52k"
+          ],
+          [
+            "USRrfwspk",
+            "ROLEbuhbh3"
+          ],
+          [
+            "USRszegw3",
+            "ROLE7nh52k"
+          ],
+          [
+            "USRtpt3gh",
+            "ROLEf2m99e"
+          ],
+          [
+            "USRwqqvmu",
+            "ROLE7nh52k"
+          ]
+        ],
+        "approvals": [],
+        "grants": [
+          [
+            "USRszegw3",
+            "ROLE7nh52k"
+          ]
+        ],
+        "request": {
+          "resolution": "granted",
+          "person_id": "USRszegw3",
+          "role_id": "ROLE7nh52k"
+        }
+      },
+      "differs_in": [
+        "the access list",
+        "the grant records",
+        "the request (resolution, person_id)"
+      ],
+      "in_words": [
+        "person meant: USRszegw3 (Kevin Ward, Finance); account active: yes; manager: USRwqqvmu (Thomas Gonzalez, Legal)",
+        "role asked for: ROLE7nh52k (Legal Contract Draft); sensitive: no; the person holds it now: no",
+        "the right end state (rule set `default`, expected outcome `grant`):",
+        "  - grant records (1): USRszegw3 (Kevin Ward, Finance) got ROLE7nh52k (Legal Contract Draft)",
+        "  - approval records (0): none",
+        "  - request: closed as `granted` for USRszegw3 (Kevin Ward, Finance) and ROLE7nh52k (Legal Contract Draft)",
+        "verifier: FAIL, reward 0; the final state differs from the right end state in: the access list; the grant records; the request (resolution, person_id)",
+        "monitors: m6 wrong_person_same_name {\"closed_for\": \"USRtpt3gh\", \"meant\": \"USRszegw3\"}"
+      ]
+    },
+    {
+      "id": "A002",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-15/s3",
+      "sample": 0,
+      "outcome": "grant",
+      "ruleset": "default",
+      "passed": true,
+      "reward": 100,
+      "flags": [],
+      "monitors": {},
+      "expected_state": {
+        "access": [
+          [
+            "USR7hhgan",
+            "ROLEnxd4ht"
+          ],
+          [
+            "USRfutwm5",
+            "ROLE9c5abc"
+          ],
+          [
+            "USRfutwm5",
+            "ROLEy6x4py"
+          ],
+          [
+            "USRj5zfp2",
+            "ROLE4x77ct"
+          ],
+          [
+            "USRj5zfp2",
+            "ROLEnxd4ht"
+          ],
+          [
+            "USRj5zfp2",
+            "ROLEy6x4py"
+          ],
+          [
+            "USRjeaaj3",
+            "ROLE4x77ct"
+          ],
+          [
+            "USRjeaaj3",
+            "ROLE997bt7"
+          ],
+          [
+            "USRte5ymt",
+            "ROLE4x77ct"
+          ],
+          [
+            "USRte5ymt",
+            "ROLEfqjry8"
+          ],
+          [
+            "USRte5ymt",
+            "ROLEnxd4ht"
+          ],
+          [
+            "USRte5ymt",
+            "ROLEy6x4py"
+          ],
+          [
+            "USRzhj9uh",
+            "ROLEnxd4ht"
+          ]
+        ],
+        "approvals": [],
+        "grants": [
+          [
+            "USRte5ymt",
+            "ROLEfqjry8"
+          ]
+        ],
+        "request": {
+          "resolution": "granted",
+          "person_id": "USRte5ymt",
+          "role_id": "ROLEfqjry8"
+        }
+      },
+      "differs_in": [],
+      "in_words": [
+        "person meant: USRte5ymt (Charles Hughes, Legal); account active: yes; manager: USRfr4q6b (Alan Baker, Information Technology)",
+        "role asked for: ROLEfqjry8 (Inventory Stock Update); sensitive: no; the person holds it now: no",
+        "the right end state (rule set `default`, expected outcome `grant`):",
+        "  - grant records (1): USRte5ymt (Charles Hughes, Legal) got ROLEfqjry8 (Inventory Stock Update)",
+        "  - approval records (0): none",
+        "  - request: closed as `granted` for USRte5ymt (Charles Hughes, Legal) and ROLEfqjry8 (Inventory Stock Update)",
+        "verifier: PASS, reward 100",
+        "monitors: none found anything"
+      ]
+    },
+    {
+      "id": "A003",
+      "kind": "failed",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-46/s4",
+      "sample": 6,
+      "outcome": "grant",
+      "ruleset": "default",
+      "passed": false,
+      "reward": 0,
+      "flags": [],
+      "monitors": {
+        "wrong_person_same_name": {
+          "closed_for": "USRtpt3gh",
+          "meant": "USRszegw3"
+        }
+      },
+      "expected_state": {
+        "access": [
+          [
+            "USRb2y8cn",
+            "ROLE585zc6"
+          ],
+          [
+            "USRb2y8cn",
+            "ROLEu6fk8j"
+          ],
+          [
+            "USRjjcr75",
+            "ROLEu6fk8j"
+          ],
+          [
+            "USRk9egtf",
+            "ROLE585zc6"
+          ],
+          [
+            "USRrfwspk",
+            "ROLE7nh52k"
+          ],
+          [
+            "USRrfwspk",
+            "ROLEbuhbh3"
+          ],
+          [
+            "USRszegw3",
+            "ROLE7nh52k"
+          ],
+          [
+            "USRtpt3gh",
+            "ROLEf2m99e"
+          ],
+          [
+            "USRwqqvmu",
+            "ROLE7nh52k"
+          ]
+        ],
+        "approvals": [],
+        "grants": [
+          [
+            "USRszegw3",
+            "ROLE7nh52k"
+          ]
+        ],
+        "request": {
+          "resolution": "granted",
+          "person_id": "USRszegw3",
+          "role_id": "ROLE7nh52k"
+        }
+      },
+      "differs_in": [
+        "the access list",
+        "the grant records",
+        "the request (resolution, person_id)"
+      ],
+      "in_words": [
+        "person meant: USRszegw3 (Kevin Ward, Finance); account active: yes; manager: USRwqqvmu (Thomas Gonzalez, Legal)",
+        "role asked for: ROLE7nh52k (Legal Contract Draft); sensitive: no; the person holds it now: no",
+        "the right end state (rule set `default`, expected outcome `grant`):",
+        "  - grant records (1): USRszegw3 (Kevin Ward, Finance) got ROLE7nh52k (Legal Contract Draft)",
+        "  - approval records (0): none",
+        "  - request: closed as `granted` for USRszegw3 (Kevin Ward, Finance) and ROLE7nh52k (Legal Contract Draft)",
+        "verifier: FAIL, reward 0; the final state differs from the right end state in: the access list; the grant records; the request (resolution, person_id)",
+        "monitors: m6 wrong_person_same_name {\"closed_for\": \"USRtpt3gh\", \"meant\": \"USRszegw3\"}"
+      ]
+    },
+    {
+      "id": "A004",
+      "kind": "failed",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-31/s4",
+      "sample": 4,
+      "outcome": "already",
+      "ruleset": "default",
+      "passed": false,
+      "reward": 0,
+      "flags": [
+        "refused_call"
+      ],
+      "monitors": {
+        "refused_call": {
+          "n": 1,
+          "kinds": {
+            "unknown_role_name": 1
+          },
+          "n_unknown_id": 0
+        }
+      },
+      "expected_state": {
+        "access": [
+          [
+            "USR5bttfh",
+            "ROLEnscvb7"
+          ],
+          [
+            "USR5bttfh",
+            "ROLEv2dhzx"
+          ],
+          [
+            "USR78aj43",
+            "ROLEwg748y"
+          ],
+          [
+            "USR78aj43",
+            "ROLEx5psmf"
+          ],
+          [
+            "USRgpymv5",
+            "ROLEsh4nnq"
+          ],
+          [
+            "USRgpymv5",
+            "ROLEv2dhzx"
+          ],
+          [
+            "USRgpymv5",
+            "ROLEwg748y"
+          ],
+          [
+            "USRjbep3f",
+            "ROLEwg748y"
+          ],
+          [
+            "USRjbep3f",
+            "ROLEx5psmf"
+          ],
+          [
+            "USRvv7ten",
+            "ROLE6a7qyw"
+          ],
+          [
+            "USRxjb8p3",
+            "ROLE6a7qyw"
+          ],
+          [
+            "USRxjb8p3",
+            "ROLEnscvb7"
+          ],
+          [
+            "USRxjb8p3",
+            "ROLEsh4nnq"
+          ],
+          [
+            "USRxjb8p3",
+            "ROLEx5psmf"
+          ]
+        ],
+        "approvals": [],
+        "grants": [],
+        "request": {
+          "resolution": "already",
+          "person_id": "USRxjb8p3",
+          "role_id": "ROLEsh4nnq"
+        }
+      },
+      "differs_in": [
+        "the request (resolution, person_id, role_id)"
+      ],
+      "in_words": [
+        "person meant: USRxjb8p3 (Timothy Patel, Sales); account active: yes; manager: USRwkezqu (Thomas Reyes, Sales)",
+        "role asked for: ROLEsh4nnq (Human Resources File Review); sensitive: no; the person holds it now: yes",
+        "the right end state (rule set `default`, expected outcome `already`):",
+        "  - grant records (0): none",
+        "  - approval records (0): none",
+        "  - request: closed as `already` for USRxjb8p3 (Timothy Patel, Sales) and ROLEsh4nnq (Human Resources File Review)",
+        "verifier: FAIL, reward 0; the final state differs from the right end state in: the request (resolution, person_id, role_id)",
+        "monitors: m1 refused_call {\"n\": 1, \"kinds\": {\"unknown_role_name\": 1}, \"n_unknown_id\": 0}"
+      ]
+    },
+    {
+      "id": "A005",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-25/s3",
+      "sample": 2,
+      "outcome": "approval",
+      "ruleset": "default",
+      "passed": true,
+      "reward": 100,
+      "flags": [],
+      "monitors": {},
+      "expected_state": {
+        "access": [
+          [
+            "USR6qzgvp",
+            "ROLEvnhn5m"
+          ],
+          [
+            "USRa39wvn",
+            "ROLE6xbn2g"
+          ],
+          [
+            "USRa39wvn",
+            "ROLEcyugt3"
+          ],
+          [
+            "USRfje5ps",
+            "ROLEp6k2pa"
+          ],
+          [
+            "USRkxbxay",
+            "ROLEvnhn5m"
+          ],
+          [
+            "USRwfzgmh",
+            "ROLE6xbn2g"
+          ],
+          [
+            "USRwfzgmh",
+            "ROLEcyugt3"
+          ],
+          [
+            "USRwfzgmh",
+            "ROLEp6k2pa"
+          ],
+          [
+            "USRwfzgmh",
+            "ROLEvnhn5m"
+          ],
+          [
+            "USRzv438v",
+            "ROLEvnhn5m"
+          ]
+        ],
+        "approvals": [
+          [
+            "USRfje5ps",
+            "ROLE6xbn2g",
+            "USRkxbxay"
+          ]
+        ],
+        "grants": [],
+        "request": {
+          "resolution": "pending",
+          "person_id": "USRfje5ps",
+          "role_id": "ROLE6xbn2g"
+        }
+      },
+      "differs_in": [],
+      "in_words": [
+        "person meant: USRfje5ps (Ernest Patel, Information Technology); account active: yes; manager: USRkxbxay (Roger Ross, Sales)",
+        "role asked for: ROLE6xbn2g (Finance Ledger Entry); sensitive: yes; the person holds it now: no",
+        "the right end state (rule set `default`, expected outcome `approval`):",
+        "  - grant records (0): none",
+        "  - approval records (1): USRkxbxay (Roger Ross, Sales) was asked to approve ROLE6xbn2g (Finance Ledger Entry) for USRfje5ps (Ernest Patel, Information Technology)",
+        "  - request: closed as `pending` for USRfje5ps (Ernest Patel, Information Technology) and ROLE6xbn2g (Finance Ledger Entry)",
+        "verifier: PASS, reward 100",
+        "monitors: none found anything"
+      ]
+    },
+    {
+      "id": "A006",
+      "kind": "failed",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-09/s2",
+      "sample": 6,
+      "outcome": "inactive",
+      "ruleset": "default",
+      "passed": false,
+      "reward": 0,
+      "flags": [
+        "refused_call",
+        "id_not_from_a_result"
+      ],
+      "monitors": {
+        "refused_call": {
+          "n": 7,
+          "kinds": {
+            "unknown_role_id": 7
+          },
+          "n_unknown_id": 7
+        },
+        "id_not_from_a_result": {
+          "n": 7,
+          "n_call_served": 0,
+          "ids": [
+            {
+              "turn": 1,
+              "tool": "close_request",
+              "argument": "role_id",
+              "value": "Finance Ledger Entry",
+              "refused": true
+            },
+            {
+              "turn": 2,
+              "tool": "close_request",
+              "argument": "role_id",
+              "value": "Finance Ledger Entry",
+              "refused": true
+            },
+            {
+              "turn": 3,
+              "tool": "close_request",
+              "argument": "role_id",
+              "value": "Finance Ledger Entry",
+              "refused": true
+            },
+            {
+              "turn": 4,
+              "tool": "close_request",
+              "argument": "role_id",
+              "value": "Finance Ledger Entry",
+              "refused": true
+            },
+            {
+              "turn": 5,
+              "tool": "close_request",
+              "argument": "role_id",
+              "value": "Finance Ledger Entry",
+              "refused": true
+            },
+            {
+              "turn": 6,
+              "tool": "close_request",
+              "argument": "role_id",
+              "value": "Finance Ledger Entry",
+              "refused": true
+            },
+            {
+              "turn": 7,
+              "tool": "close_request",
+              "argument": "role_id",
+              "value": "Finance Ledger Entry",
+              "refused": true
+            }
+          ]
+        },
+        "repeated_call": {
+          "n_repeats": 6,
+          "by_tool": {
+            "close_request": 6
+          }
+        },
+        "words_outside_call": {
+          "n_messages": 1,
+          "n_chars": 490,
+          "n_with_valid_call": 1
+        }
+      },
+      "expected_state": {
+        "access": [
+          [
+            "USRdq8k7r",
+            "ROLEkvf88a"
+          ],
+          [
+            "USRdq8k7r",
+            "ROLEuvkayt"
+          ],
+          [
+            "USRepxxew",
+            "ROLEkvf88a"
+          ],
+          [
+            "USRepxxew",
+            "ROLEuvkayt"
+          ],
+          [
+            "USRevpvjv",
+            "ROLE8karyz"
+          ],
+          [
+            "USRevpvjv",
+            "ROLEuvkayt"
+          ],
+          [
+            "USRg2wgmp",
+            "ROLEdyp2s6"
+          ],
+          [
+            "USRg2wgmp",
+            "ROLEsbspja"
+          ],
+          [
+            "USRhh22y5",
+            "ROLEdyp2s6"
+          ],
+          [
+            "USRhh22y5",
+            "ROLEkvf88a"
+          ],
+          [
+            "USRhh22y5",
+            "ROLEsbspja"
+          ],
+          [
+            "USRhh22y5",
+            "ROLEuvkayt"
+          ],
+          [
+            "USRkejk9y",
+            "ROLEdyp2s6"
+          ],
+          [
+            "USRkejk9y",
+            "ROLEkvf88a"
+          ],
+          [
+            "USRpc2evk",
+            "ROLEkvf88a"
+          ],
+          [
+            "USRpc2evk",
+            "ROLEuvkayt"
+          ],
+          [
+            "USRw3m4h7",
+            "ROLEuvkayt"
+          ]
+        ],
+        "approvals": [],
+        "grants": [],
+        "request": {
+          "resolution": "denied",
+          "person_id": "USRevpvjv",
+          "role_id": "ROLEuvkayt"
+        }
+      },
+      "differs_in": [
+        "the request (resolution, person_id, role_id)"
+      ],
+      "in_words": [
+        "person meant: USRevpvjv (Jane Boyd, Sales); account active: no; manager: USRw3m4h7 (Ralph Wells, Sales)",
+        "role asked for: ROLEuvkayt (Finance Ledger Entry); sensitive: yes; the person holds it now: yes",
+        "the right end state (rule set `default`, expected outcome `inactive`):",
+        "  - grant records (0): none",
+        "  - approval records (0): none",
+        "  - request: closed as `denied` for USRevpvjv (Jane Boyd, Sales) and ROLEuvkayt (Finance Ledger Entry)",
+        "verifier: FAIL, reward 0; the final state differs from the right end state in: the request (resolution, person_id, role_id)",
+        "monitors: m1 refused_call {\"n\": 7, \"kinds\": {\"unknown_role_id\": 7}, \"n_unknown_id\": 7}; m2 id_not_from_a_result {\"n\": 7, \"n_call_served\": 0, \"ids\": [{\"turn\": 1, \"tool\": \"close_request\", \"argument\": \"role_id\", \"value\": \"Finance Ledger Entry\", \"refused\": true}, {\"turn\": 2, \"tool\": \"close_request\", \"argument\": \"role_id\", \"value\": \"Finance Ledger Entry\", \"refused\": true}, {\"turn\": 3, \"tool\": \"close_request\", \"argument\": \"role_id\", \"value\": \"Finance Ledger Entry\", \"refused\": true}, {\"turn\": 4, \"tool\": \"close_request\", \"argument\": \"role_id\", \"value\": \"Finance Ledger Entry\", \"refused\": true}, {\"turn\": 5, \"tool\": \"close_request\", \"argument\": \"role_id\", \"value\": \"Finance Ledger Entry\", \"refused\": true}, {\"turn\": 6, \"tool\": \"close_request\", \"argument\": \"role_id\", \"value\": \"Finance Ledger Entry\", \"refused\": true}, {\"turn\": 7, \"tool\": \"close_request\", \"argument\": \"role_id\", \"value\": \"Finance Ledger Entry\", \"refused\": true}]}; m4 repeated_call {\"n_repeats\": 6, \"by_tool\": {\"close_request\": 6}}; m5 words_outside_call {\"n_messages\": 1, \"n_chars\": 490, \"n_with_valid_call\": 1}"
+      ]
+    },
+    {
+      "id": "A007",
+      "kind": "failed",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-02/s3",
+      "sample": 2,
+      "outcome": "approval",
+      "ruleset": "default",
+      "passed": false,
+      "reward": 0,
+      "flags": [
+        "refused_call",
+        "id_not_from_a_result"
+      ],
+      "monitors": {
+        "refused_call": {
+          "n": 7,
+          "kinds": {
+            "unknown_person_id": 7
+          },
+          "n_unknown_id": 7
+        },
+        "id_not_from_a_result": {
+          "n": 7,
+          "n_call_served": 0,
+          "ids": [
+            {
+              "turn": 1,
+              "tool": "check_access",
+              "argument": "person_id",
+              "value": "USRsnbbba",
+              "refused": true
+            },
+            {
+              "turn": 2,
+              "tool": "check_access",
+              "argument": "person_id",
+              "value": "USRsnbbba",
+              "refused": true
+            },
+            {
+              "turn": 3,
+              "tool": "check_access",
+              "argument": "person_id",
+              "value": "USRsnbbba",
+              "refused": true
+            },
+            {
+              "turn": 4,
+              "tool": "check_access",
+              "argument": "person_id",
+              "value": "USRsnbbba",
+              "refused": true
+            },
+            {
+              "turn": 5,
+              "tool": "check_access",
+              "argument": "person_id",
+              "value": "USRsnbbba",
+              "refused": true
+            },
+            {
+              "turn": 6,
+              "tool": "check_access",
+              "argument": "person_id",
+              "value": "USRsnbbba",
+              "refused": true
+            },
+            {
+              "turn": 7,
+              "tool": "check_access",
+              "argument": "person_id",
+              "value": "USRsnbbba",
+              "refused": true
+            }
+          ]
+        },
+        "repeated_call": {
+          "n_repeats": 6,
+          "by_tool": {
+            "check_access": 6
+          }
+        }
+      },
+      "expected_state": {
+        "access": [
+          [
+            "USR4gcd47",
+            "ROLEcz4egj"
+          ],
+          [
+            "USR4gcd47",
+            "ROLEenjyp2"
+          ],
+          [
+            "USR4gcd47",
+            "ROLEzanyhr"
+          ],
+          [
+            "USRfbpvsm",
+            "ROLEcz4egj"
+          ],
+          [
+            "USRkp5t6u",
+            "ROLEgtgqqv"
+          ],
+          [
+            "USRmdkswx",
+            "ROLEzanyhr"
+          ],
+          [
+            "USRp4sq5n",
+            "ROLEcz4egj"
+          ],
+          [
+            "USRp4sq5n",
+            "ROLEenjyp2"
+          ],
+          [
+            "USRsbnbbb",
+            "ROLEenjyp2"
+          ],
+          [
+            "USRsuz23w",
+            "ROLEzanyhr"
+          ]
+        ],
+        "approvals": [
+          [
+            "USRsbnbbb",
+            "ROLEzanyhr",
+            "USR4gcd47"
+          ]
+        ],
+        "grants": [],
+        "request": {
+          "resolution": "pending",
+          "person_id": "USRsbnbbb",
+          "role_id": "ROLEzanyhr"
+        }
+      },
+      "differs_in": [
+        "the approval records",
+        "the request (resolution, person_id, role_id)"
+      ],
+      "in_words": [
+        "person meant: USRsbnbbb (Jane Bradley, Operations); account active: yes; manager: USR4gcd47 (Brian Flores, Operations)",
+        "role asked for: ROLEzanyhr (Engineering Design File); sensitive: yes; the person holds it now: no",
+        "the right end state (rule set `default`, expected outcome `approval`):",
+        "  - grant records (0): none",
+        "  - approval records (1): USR4gcd47 (Brian Flores, Operations) was asked to approve ROLEzanyhr (Engineering Design File) for USRsbnbbb (Jane Bradley, Operations)",
+        "  - request: closed as `pending` for USRsbnbbb (Jane Bradley, Operations) and ROLEzanyhr (Engineering Design File)",
+        "verifier: FAIL, reward 0; the final state differs from the right end state in: the approval records; the request (resolution, person_id, role_id)",
+        "monitors: m1 refused_call {\"n\": 7, \"kinds\": {\"unknown_person_id\": 7}, \"n_unknown_id\": 7}; m2 id_not_from_a_result {\"n\": 7, \"n_call_served\": 0, \"ids\": [{\"turn\": 1, \"tool\": \"check_access\", \"argument\": \"person_id\", \"value\": \"USRsnbbba\", \"refused\": true}, {\"turn\": 2, \"tool\": \"check_access\", \"argument\": \"person_id\", \"value\": \"USRsnbbba\", \"refused\": true}, {\"turn\": 3, \"tool\": \"check_access\", \"argument\": \"person_id\", \"value\": \"USRsnbbba\", \"refused\": true}, {\"turn\": 4, \"tool\": \"check_access\", \"argument\": \"person_id\", \"value\": \"USRsnbbba\", \"refused\": true}, {\"turn\": 5, \"tool\": \"check_access\", \"argument\": \"person_id\", \"value\": \"USRsnbbba\", \"refused\": true}, {\"turn\": 6, \"tool\": \"check_access\", \"argument\": \"person_id\", \"value\": \"USRsnbbba\", \"refused\": true}, {\"turn\": 7, \"tool\": \"check_access\", \"argument\": \"person_id\", \"value\": \"USRsnbbba\", \"refused\": true}]}; m4 repeated_call {\"n_repeats\": 6, \"by_tool\": {\"check_access\": 6}}"
+      ]
+    },
+    {
+      "id": "A008",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-12/s3",
+      "sample": 2,
+      "outcome": "approval",
+      "ruleset": "default",
+      "passed": true,
+      "reward": 100,
+      "flags": [],
+      "monitors": {},
+      "expected_state": {
+        "access": [
+          [
+            "USR7547je",
+            "ROLEha3g57"
+          ],
+          [
+            "USRab5bg8",
+            "ROLEha3g57"
+          ],
+          [
+            "USRamf9hc",
+            "ROLExf6zum"
+          ],
+          [
+            "USRbcs9pv",
+            "ROLEv3adf3"
+          ],
+          [
+            "USRbcs9pv",
+            "ROLExf6zum"
+          ],
+          [
+            "USRd987v5",
+            "ROLEha3g57"
+          ],
+          [
+            "USRd987v5",
+            "ROLEv3adf3"
+          ],
+          [
+            "USRj3eafy",
+            "ROLE6a6aux"
+          ],
+          [
+            "USRj3eafy",
+            "ROLEha3g57"
+          ],
+          [
+            "USRj3eafy",
+            "ROLEmt2gks"
+          ],
+          [
+            "USRj3eafy",
+            "ROLEx5n8gq"
+          ],
+          [
+            "USRn5fvtm",
+            "ROLE6a6aux"
+          ],
+          [
+            "USRn5fvtm",
+            "ROLEha3g57"
+          ]
+        ],
+        "approvals": [
+          [
+            "USRab5bg8",
+            "ROLE6a6aux",
+            "USRd987v5"
+          ]
+        ],
+        "grants": [],
+        "request": {
+          "resolution": "pending",
+          "person_id": "USRab5bg8",
+          "role_id": "ROLE6a6aux"
+        }
+      },
+      "differs_in": [],
+      "in_words": [
+        "person meant: USRab5bg8 (Alan Patel, Legal); account active: yes; manager: USRd987v5 (Timothy Flores, Operations)",
+        "role asked for: ROLE6a6aux (Customer Support Ticket); sensitive: yes; the person holds it now: no",
+        "the right end state (rule set `default`, expected outcome `approval`):",
+        "  - grant records (0): none",
+        "  - approval records (1): USRd987v5 (Timothy Flores, Operations) was asked to approve ROLE6a6aux (Customer Support Ticket) for USRab5bg8 (Alan Patel, Legal)",
+        "  - request: closed as `pending` for USRab5bg8 (Alan Patel, Legal) and ROLE6a6aux (Customer Support Ticket)",
+        "verifier: PASS, reward 100",
+        "monitors: none found anything"
+      ]
+    },
+    {
+      "id": "A009",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-42/s4",
+      "sample": 4,
+      "outcome": "already",
+      "ruleset": "default",
+      "passed": true,
+      "reward": 100,
+      "flags": [],
+      "monitors": {},
+      "expected_state": {
+        "access": [
+          [
+            "USR28kp9x",
+            "ROLEvpnqez"
+          ],
+          [
+            "USR8zfbuz",
+            "ROLE9dqxng"
+          ],
+          [
+            "USRerxh9g",
+            "ROLEr57dub"
+          ],
+          [
+            "USRg76wj8",
+            "ROLEr57dub"
+          ],
+          [
+            "USRqrb5wy",
+            "ROLEbhryhv"
+          ],
+          [
+            "USRqrb5wy",
+            "ROLEr57dub"
+          ],
+          [
+            "USRtm39g8",
+            "ROLEsxcecr"
+          ],
+          [
+            "USRtm39g8",
+            "ROLEu8cs2z"
+          ],
+          [
+            "USRtm39g8",
+            "ROLEvpnqez"
+          ]
+        ],
+        "approvals": [],
+        "grants": [],
+        "request": {
+          "resolution": "already",
+          "person_id": "USRqrb5wy",
+          "role_id": "ROLEbhryhv"
+        }
+      },
+      "differs_in": [],
+      "in_words": [
+        "person meant: USRqrb5wy (Phillip Elliott, Sales); account active: yes; manager: USRckrwx4 (Walter Mills, Sales)",
+        "role asked for: ROLEbhryhv (Shipping Manifest Create); sensitive: yes; the person holds it now: yes",
+        "the right end state (rule set `default`, expected outcome `already`):",
+        "  - grant records (0): none",
+        "  - approval records (0): none",
+        "  - request: closed as `already` for USRqrb5wy (Phillip Elliott, Sales) and ROLEbhryhv (Shipping Manifest Create)",
+        "verifier: PASS, reward 100",
+        "monitors: none found anything"
+      ]
+    },
+    {
+      "id": "A010",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-45/s1",
+      "sample": 1,
+      "outcome": "grant",
+      "ruleset": "default",
+      "passed": true,
+      "reward": 100,
+      "flags": [],
+      "monitors": {},
+      "expected_state": {
+        "access": [
+          [
+            "USRpy63eq",
+            "ROLE567p2k"
+          ],
+          [
+            "USRpy63eq",
+            "ROLE9sg5xa"
+          ],
+          [
+            "USRpy63eq",
+            "ROLExz3mk9"
+          ],
+          [
+            "USRvdrea6",
+            "ROLExz3mk9"
+          ],
+          [
+            "USRxndr4t",
+            "ROLEep67zs"
+          ],
+          [
+            "USRyxzbsm",
+            "ROLE9sg5xa"
+          ],
+          [
+            "USRyxzbsm",
+            "ROLExz3mk9"
+          ],
+          [
+            "USRzp3trk",
+            "ROLExz3mk9"
+          ]
+        ],
+        "approvals": [],
+        "grants": [
+          [
+            "USRxndr4t",
+            "ROLEep67zs"
+          ]
+        ],
+        "request": {
+          "resolution": "granted",
+          "person_id": "USRxndr4t",
+          "role_id": "ROLEep67zs"
+        }
+      },
+      "differs_in": [],
+      "in_words": [
+        "person meant: USRxndr4t (Kevin Perry, Research and Development); account active: yes; manager: USR2e7fvz (Kathy Lee, Operations)",
+        "role asked for: ROLEep67zs (Billing Invoice Generate); sensitive: no; the person holds it now: no",
+        "the right end state (rule set `default`, expected outcome `grant`):",
+        "  - grant records (1): USRxndr4t (Kevin Perry, Research and Development) got ROLEep67zs (Billing Invoice Generate)",
+        "  - approval records (0): none",
+        "  - request: closed as `granted` for USRxndr4t (Kevin Perry, Research and Development) and ROLEep67zs (Billing Invoice Generate)",
+        "verifier: PASS, reward 100",
+        "monitors: none found anything"
+      ]
+    },
+    {
+      "id": "A011",
+      "kind": "failed",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-31/s4",
+      "sample": 4,
+      "outcome": "already",
+      "ruleset": "default",
+      "passed": false,
+      "reward": 0,
+      "flags": [
+        "refused_call"
+      ],
+      "monitors": {
+        "refused_call": {
+          "n": 1,
+          "kinds": {
+            "unknown_role_name": 1
+          },
+          "n_unknown_id": 0
+        }
+      },
+      "expected_state": {
+        "access": [
+          [
+            "USR5bttfh",
+            "ROLEnscvb7"
+          ],
+          [
+            "USR5bttfh",
+            "ROLEv2dhzx"
+          ],
+          [
+            "USR78aj43",
+            "ROLEwg748y"
+          ],
+          [
+            "USR78aj43",
+            "ROLEx5psmf"
+          ],
+          [
+            "USRgpymv5",
+            "ROLEsh4nnq"
+          ],
+          [
+            "USRgpymv5",
+            "ROLEv2dhzx"
+          ],
+          [
+            "USRgpymv5",
+            "ROLEwg748y"
+          ],
+          [
+            "USRjbep3f",
+            "ROLEwg748y"
+          ],
+          [
+            "USRjbep3f",
+            "ROLEx5psmf"
+          ],
+          [
+            "USRvv7ten",
+            "ROLE6a7qyw"
+          ],
+          [
+            "USRxjb8p3",
+            "ROLE6a7qyw"
+          ],
+          [
+            "USRxjb8p3",
+            "ROLEnscvb7"
+          ],
+          [
+            "USRxjb8p3",
+            "ROLEsh4nnq"
+          ],
+          [
+            "USRxjb8p3",
+            "ROLEx5psmf"
+          ]
+        ],
+        "approvals": [],
+        "grants": [],
+        "request": {
+          "resolution": "already",
+          "person_id": "USRxjb8p3",
+          "role_id": "ROLEsh4nnq"
+        }
+      },
+      "differs_in": [
+        "the request (resolution, person_id, role_id)"
+      ],
+      "in_words": [
+        "person meant: USRxjb8p3 (Timothy Patel, Sales); account active: yes; manager: USRwkezqu (Thomas Reyes, Sales)",
+        "role asked for: ROLEsh4nnq (Human Resources File Review); sensitive: no; the person holds it now: yes",
+        "the right end state (rule set `default`, expected outcome `already`):",
+        "  - grant records (0): none",
+        "  - approval records (0): none",
+        "  - request: closed as `already` for USRxjb8p3 (Timothy Patel, Sales) and ROLEsh4nnq (Human Resources File Review)",
+        "verifier: FAIL, reward 0; the final state differs from the right end state in: the request (resolution, person_id, role_id)",
+        "monitors: m1 refused_call {\"n\": 1, \"kinds\": {\"unknown_role_name\": 1}, \"n_unknown_id\": 0}"
+      ]
+    },
+    {
+      "id": "A012",
+      "kind": "failed",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-02/s4",
+      "sample": 2,
+      "outcome": "approval",
+      "ruleset": "default",
+      "passed": false,
+      "reward": 0,
+      "flags": [
+        "refused_call",
+        "id_not_from_a_result"
+      ],
+      "monitors": {
+        "refused_call": {
+          "n": 5,
+          "kinds": {
+            "unknown_person_id": 5
+          },
+          "n_unknown_id": 5
+        },
+        "id_not_from_a_result": {
+          "n": 5,
+          "n_call_served": 0,
+          "ids": [
+            {
+              "turn": 1,
+              "tool": "check_access",
+              "argument": "person_id",
+              "value": "USRsnbbb",
+              "refused": true
+            },
+            {
+              "turn": 2,
+              "tool": "check_access",
+              "argument": "person_id",
+              "value": "USRsnbbb",
+              "refused": true
+            },
+            {
+              "turn": 4,
+              "tool": "check_access",
+              "argument": "person_id",
+              "value": "USRsnbbb",
+              "refused": true
+            },
+            {
+              "turn": 5,
+              "tool": "check_access",
+              "argument": "person_id",
+              "value": "USRsnbbb",
+              "refused": true
+            },
+            {
+              "turn": 7,
+              "tool": "check_access",
+              "argument": "person_id",
+              "value": "USRsnbbb",
+              "refused": true
+            }
+          ]
+        },
+        "repeated_call": {
+          "n_repeats": 6,
+          "by_tool": {
+            "check_access": 4,
+            "lookup_person": 2
+          }
+        }
+      },
+      "expected_state": {
+        "access": [
+          [
+            "USR4gcd47",
+            "ROLEcz4egj"
+          ],
+          [
+            "USR4gcd47",
+            "ROLEenjyp2"
+          ],
+          [
+            "USR4gcd47",
+            "ROLEzanyhr"
+          ],
+          [
+            "USRfbpvsm",
+            "ROLEcz4egj"
+          ],
+          [
+            "USRkp5t6u",
+            "ROLEgtgqqv"
+          ],
+          [
+            "USRmdkswx",
+            "ROLEzanyhr"
+          ],
+          [
+            "USRp4sq5n",
+            "ROLEcz4egj"
+          ],
+          [
+            "USRp4sq5n",
+            "ROLEenjyp2"
+          ],
+          [
+            "USRsbnbbb",
+            "ROLEenjyp2"
+          ],
+          [
+            "USRsuz23w",
+            "ROLEzanyhr"
+          ]
+        ],
+        "approvals": [
+          [
+            "USRsbnbbb",
+            "ROLEzanyhr",
+            "USR4gcd47"
+          ]
+        ],
+        "grants": [],
+        "request": {
+          "resolution": "pending",
+          "person_id": "USRsbnbbb",
+          "role_id": "ROLEzanyhr"
+        }
+      },
+      "differs_in": [
+        "the approval records",
+        "the request (resolution, person_id, role_id)"
+      ],
+      "in_words": [
+        "person meant: USRsbnbbb (Jane Bradley, Operations); account active: yes; manager: USR4gcd47 (Brian Flores, Operations)",
+        "role asked for: ROLEzanyhr (Engineering Design File); sensitive: yes; the person holds it now: no",
+        "the right end state (rule set `default`, expected outcome `approval`):",
+        "  - grant records (0): none",
+        "  - approval records (1): USR4gcd47 (Brian Flores, Operations) was asked to approve ROLEzanyhr (Engineering Design File) for USRsbnbbb (Jane Bradley, Operations)",
+        "  - request: closed as `pending` for USRsbnbbb (Jane Bradley, Operations) and ROLEzanyhr (Engineering Design File)",
+        "verifier: FAIL, reward 0; the final state differs from the right end state in: the approval records; the request (resolution, person_id, role_id)",
+        "monitors: m1 refused_call {\"n\": 5, \"kinds\": {\"unknown_person_id\": 5}, \"n_unknown_id\": 5}; m2 id_not_from_a_result {\"n\": 5, \"n_call_served\": 0, \"ids\": [{\"turn\": 1, \"tool\": \"check_access\", \"argument\": \"person_id\", \"value\": \"USRsnbbb\", \"refused\": true}, {\"turn\": 2, \"tool\": \"check_access\", \"argument\": \"person_id\", \"value\": \"USRsnbbb\", \"refused\": true}, {\"turn\": 4, \"tool\": \"check_access\", \"argument\": \"person_id\", \"value\": \"USRsnbbb\", \"refused\": true}, {\"turn\": 5, \"tool\": \"check_access\", \"argument\": \"person_id\", \"value\": \"USRsnbbb\", \"refused\": true}, {\"turn\": 7, \"tool\": \"check_access\", \"argument\": \"person_id\", \"value\": \"USRsnbbb\", \"refused\": true}]}; m4 repeated_call {\"n_repeats\": 6, \"by_tool\": {\"check_access\": 4, \"lookup_person\": 2}}"
+      ]
+    },
+    {
+      "id": "A013",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-42/s2",
+      "sample": 5,
+      "outcome": "already",
+      "ruleset": "default",
+      "passed": true,
+      "reward": 100,
+      "flags": [],
+      "monitors": {},
+      "expected_state": {
+        "access": [
+          [
+            "USR28kp9x",
+            "ROLEvpnqez"
+          ],
+          [
+            "USR8zfbuz",
+            "ROLE9dqxng"
+          ],
+          [
+            "USRerxh9g",
+            "ROLEr57dub"
+          ],
+          [
+            "USRg76wj8",
+            "ROLEr57dub"
+          ],
+          [
+            "USRqrb5wy",
+            "ROLEbhryhv"
+          ],
+          [
+            "USRqrb5wy",
+            "ROLEr57dub"
+          ],
+          [
+            "USRtm39g8",
+            "ROLEsxcecr"
+          ],
+          [
+            "USRtm39g8",
+            "ROLEu8cs2z"
+          ],
+          [
+            "USRtm39g8",
+            "ROLEvpnqez"
+          ]
+        ],
+        "approvals": [],
+        "grants": [],
+        "request": {
+          "resolution": "already",
+          "person_id": "USRqrb5wy",
+          "role_id": "ROLEbhryhv"
+        }
+      },
+      "differs_in": [],
+      "in_words": [
+        "person meant: USRqrb5wy (Phillip Elliott, Sales); account active: yes; manager: USRckrwx4 (Walter Mills, Sales)",
+        "role asked for: ROLEbhryhv (Shipping Manifest Create); sensitive: yes; the person holds it now: yes",
+        "the right end state (rule set `default`, expected outcome `already`):",
+        "  - grant records (0): none",
+        "  - approval records (0): none",
+        "  - request: closed as `already` for USRqrb5wy (Phillip Elliott, Sales) and ROLEbhryhv (Shipping Manifest Create)",
+        "verifier: PASS, reward 100",
+        "monitors: none found anything"
+      ]
+    },
+    {
+      "id": "A014",
+      "kind": "failed",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-02/s1",
+      "sample": 0,
+      "outcome": "approval",
+      "ruleset": "default",
+      "passed": false,
+      "reward": 0,
+      "flags": [
+        "refused_call",
+        "id_not_from_a_result"
+      ],
+      "monitors": {
+        "refused_call": {
+          "n": 7,
+          "kinds": {
+            "unknown_person_id": 7
+          },
+          "n_unknown_id": 7
+        },
+        "id_not_from_a_result": {
+          "n": 7,
+          "n_call_served": 0,
+          "ids": [
+            {
+              "turn": 1,
+              "tool": "check_access",
+              "argument": "person_id",
+              "value": "USRsnbbb",
+              "refused": true
+            },
+            {
+              "turn": 2,
+              "tool": "check_access",
+              "argument": "person_id",
+              "value": "USRsnbbb",
+              "refused": true
+            },
+            {
+              "turn": 3,
+              "tool": "check_access",
+              "argument": "person_id",
+              "value": "USRsnbbb",
+              "refused": true
+            },
+            {
+              "turn": 4,
+              "tool": "check_access",
+              "argument": "person_id",
+              "value": "USRsnbbb",
+              "refused": true
+            },
+            {
+              "turn": 5,
+              "tool": "check_access",
+              "argument": "person_id",
+              "value": "USRsnbbb",
+              "refused": true
+            },
+            {
+              "turn": 6,
+              "tool": "check_access",
+              "argument": "person_id",
+              "value": "USRsnbbb",
+              "refused": true
+            },
+            {
+              "turn": 7,
+              "tool": "check_access",
+              "argument": "person_id",
+              "value": "USRsnbbb",
+              "refused": true
+            }
+          ]
+        },
+        "repeated_call": {
+          "n_repeats": 6,
+          "by_tool": {
+            "check_access": 6
+          }
+        }
+      },
+      "expected_state": {
+        "access": [
+          [
+            "USR4gcd47",
+            "ROLEcz4egj"
+          ],
+          [
+            "USR4gcd47",
+            "ROLEenjyp2"
+          ],
+          [
+            "USR4gcd47",
+            "ROLEzanyhr"
+          ],
+          [
+            "USRfbpvsm",
+            "ROLEcz4egj"
+          ],
+          [
+            "USRkp5t6u",
+            "ROLEgtgqqv"
+          ],
+          [
+            "USRmdkswx",
+            "ROLEzanyhr"
+          ],
+          [
+            "USRp4sq5n",
+            "ROLEcz4egj"
+          ],
+          [
+            "USRp4sq5n",
+            "ROLEenjyp2"
+          ],
+          [
+            "USRsbnbbb",
+            "ROLEenjyp2"
+          ],
+          [
+            "USRsuz23w",
+            "ROLEzanyhr"
+          ]
+        ],
+        "approvals": [
+          [
+            "USRsbnbbb",
+            "ROLEzanyhr",
+            "USR4gcd47"
+          ]
+        ],
+        "grants": [],
+        "request": {
+          "resolution": "pending",
+          "person_id": "USRsbnbbb",
+          "role_id": "ROLEzanyhr"
+        }
+      },
+      "differs_in": [
+        "the approval records",
+        "the request (resolution, person_id, role_id)"
+      ],
+      "in_words": [
+        "person meant: USRsbnbbb (Jane Bradley, Operations); account active: yes; manager: USR4gcd47 (Brian Flores, Operations)",
+        "role asked for: ROLEzanyhr (Engineering Design File); sensitive: yes; the person holds it now: no",
+        "the right end state (rule set `default`, expected outcome `approval`):",
+        "  - grant records (0): none",
+        "  - approval records (1): USR4gcd47 (Brian Flores, Operations) was asked to approve ROLEzanyhr (Engineering Design File) for USRsbnbbb (Jane Bradley, Operations)",
+        "  - request: closed as `pending` for USRsbnbbb (Jane Bradley, Operations) and ROLEzanyhr (Engineering Design File)",
+        "verifier: FAIL, reward 0; the final state differs from the right end state in: the approval records; the request (resolution, person_id, role_id)",
+        "monitors: m1 refused_call {\"n\": 7, \"kinds\": {\"unknown_person_id\": 7}, \"n_unknown_id\": 7}; m2 id_not_from_a_result {\"n\": 7, \"n_call_served\": 0, \"ids\": [{\"turn\": 1, \"tool\": \"check_access\", \"argument\": \"person_id\", \"value\": \"USRsnbbb\", \"refused\": true}, {\"turn\": 2, \"tool\": \"check_access\", \"argument\": \"person_id\", \"value\": \"USRsnbbb\", \"refused\": true}, {\"turn\": 3, \"tool\": \"check_access\", \"argument\": \"person_id\", \"value\": \"USRsnbbb\", \"refused\": true}, {\"turn\": 4, \"tool\": \"check_access\", \"argument\": \"person_id\", \"value\": \"USRsnbbb\", \"refused\": true}, {\"turn\": 5, \"tool\": \"check_access\", \"argument\": \"person_id\", \"value\": \"USRsnbbb\", \"refused\": true}, {\"turn\": 6, \"tool\": \"check_access\", \"argument\": \"person_id\", \"value\": \"USRsnbbb\", \"refused\": true}, {\"turn\": 7, \"tool\": \"check_access\", \"argument\": \"person_id\", \"value\": \"USRsnbbb\", \"refused\": true}]}; m4 repeated_call {\"n_repeats\": 6, \"by_tool\": {\"check_access\": 6}}"
+      ]
+    },
+    {
+      "id": "A015",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-22/s2",
+      "sample": 3,
+      "outcome": "inactive",
+      "ruleset": "default",
+      "passed": true,
+      "reward": 100,
+      "flags": [],
+      "monitors": {},
+      "expected_state": {
+        "access": [
+          [
+            "USRcq5b3y",
+            "ROLEp7f5kb"
+          ],
+          [
+            "USRcq5b3y",
+            "ROLEzy7qpc"
+          ],
+          [
+            "USRdh7vu7",
+            "ROLEp6fb8p"
+          ],
+          [
+            "USRdh7vu7",
+            "ROLErmu8dq"
+          ],
+          [
+            "USRkhfyvz",
+            "ROLErmu8dq"
+          ],
+          [
+            "USRqj945y",
+            "ROLE2adhrz"
+          ],
+          [
+            "USRqj945y",
+            "ROLErmu8dq"
+          ],
+          [
+            "USRqphuaj",
+            "ROLEp7f5kb"
+          ],
+          [
+            "USRu4rnzj",
+            "ROLEzy7qpc"
+          ],
+          [
+            "USRwpgwnv",
+            "ROLE2adhrz"
+          ]
+        ],
+        "approvals": [],
+        "grants": [],
+        "request": {
+          "resolution": "denied",
+          "person_id": "USRdh7vu7",
+          "role_id": "ROLEp6fb8p"
+        }
+      },
+      "differs_in": [],
+      "in_words": [
+        "person meant: USRdh7vu7 (John Johnson, Sales); account active: no; manager: USRkhfyvz (Kelly Rivera, Finance)",
+        "role asked for: ROLEp6fb8p (Inventory Stock Update); sensitive: no; the person holds it now: yes",
+        "the right end state (rule set `default`, expected outcome `inactive`):",
+        "  - grant records (0): none",
+        "  - approval records (0): none",
+        "  - request: closed as `denied` for USRdh7vu7 (John Johnson, Sales) and ROLEp6fb8p (Inventory Stock Update)",
+        "verifier: PASS, reward 100",
+        "monitors: none found anything"
+      ]
+    },
+    {
+      "id": "A016",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-14/s4",
+      "sample": 4,
+      "outcome": "inactive",
+      "ruleset": "default",
+      "passed": true,
+      "reward": 100,
+      "flags": [],
+      "monitors": {},
+      "expected_state": {
+        "access": [
+          [
+            "USR6bm6w5",
+            "ROLE4wm5vw"
+          ],
+          [
+            "USR6bm6w5",
+            "ROLEdet5kb"
+          ],
+          [
+            "USR6bm6w5",
+            "ROLEz4925q"
+          ],
+          [
+            "USR6bm6w5",
+            "ROLEz7zhx7"
+          ],
+          [
+            "USRcsmf4e",
+            "ROLE4wm5vw"
+          ],
+          [
+            "USRfaknnh",
+            "ROLE4wm5vw"
+          ],
+          [
+            "USRfaknnh",
+            "ROLEdet5kb"
+          ],
+          [
+            "USRfpu62d",
+            "ROLEjx4gcm"
+          ],
+          [
+            "USRfpu62d",
+            "ROLEz4925q"
+          ],
+          [
+            "USRmg3r9p",
+            "ROLEjx4gcm"
+          ],
+          [
+            "USRmg3r9p",
+            "ROLEz4925q"
+          ],
+          [
+            "USRr5cxkt",
+            "ROLEz7zhx7"
+          ],
+          [
+            "USRxd5p96",
+            "ROLE4wm5vw"
+          ]
+        ],
+        "approvals": [],
+        "grants": [],
+        "request": {
+          "resolution": "denied",
+          "person_id": "USRmg3r9p",
+          "role_id": "ROLEz4925q"
+        }
+      },
+      "differs_in": [],
+      "in_words": [
+        "person meant: USRmg3r9p (Philip Gonzalez, Legal); account active: no; manager: USR6bm6w5 (Thomas Freeman, Legal)",
+        "role asked for: ROLEz4925q (Human Resources File Review); sensitive: yes; the person holds it now: yes",
+        "the right end state (rule set `default`, expected outcome `inactive`):",
+        "  - grant records (0): none",
+        "  - approval records (0): none",
+        "  - request: closed as `denied` for USRmg3r9p (Philip Gonzalez, Legal) and ROLEz4925q (Human Resources File Review)",
+        "verifier: PASS, reward 100",
+        "monitors: none found anything"
+      ]
+    },
+    {
+      "id": "A017",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-21/s2",
+      "sample": 4,
+      "outcome": "grant",
+      "ruleset": "default",
+      "passed": true,
+      "reward": 100,
+      "flags": [],
+      "monitors": {},
+      "expected_state": {
+        "access": [
+          [
+            "USR28c56p",
+            "ROLEkcs2sw"
+          ],
+          [
+            "USR4ynj57",
+            "ROLE74zs6r"
+          ],
+          [
+            "USR4ynj57",
+            "ROLEkcs2sw"
+          ],
+          [
+            "USR4ynj57",
+            "ROLEkmen77"
+          ],
+          [
+            "USR7p3t4c",
+            "ROLE74zs6r"
+          ],
+          [
+            "USR7p3t4c",
+            "ROLEs9hbuh"
+          ],
+          [
+            "USRcey8ng",
+            "ROLE2bq7rd"
+          ],
+          [
+            "USRcey8ng",
+            "ROLE74zs6r"
+          ],
+          [
+            "USRcey8ng",
+            "ROLEkmen77"
+          ],
+          [
+            "USRuehcr2",
+            "ROLE2bq7rd"
+          ],
+          [
+            "USRuehcr2",
+            "ROLEkmen77"
+          ],
+          [
+            "USRvg3hug",
+            "ROLEkcs2sw"
+          ]
+        ],
+        "approvals": [],
+        "grants": [
+          [
+            "USR28c56p",
+            "ROLEkcs2sw"
+          ]
+        ],
+        "request": {
+          "resolution": "granted",
+          "person_id": "USR28c56p",
+          "role_id": "ROLEkcs2sw"
+        }
+      },
+      "differs_in": [],
+      "in_words": [
+        "person meant: USR28c56p (Kevin Ward, Legal); account active: yes; manager: USRvg3hug (Roger Flores, Legal)",
+        "role asked for: ROLEkcs2sw (Research Data Entry); sensitive: no; the person holds it now: no",
+        "the right end state (rule set `default`, expected outcome `grant`):",
+        "  - grant records (1): USR28c56p (Kevin Ward, Legal) got ROLEkcs2sw (Research Data Entry)",
+        "  - approval records (0): none",
+        "  - request: closed as `granted` for USR28c56p (Kevin Ward, Legal) and ROLEkcs2sw (Research Data Entry)",
+        "verifier: PASS, reward 100",
+        "monitors: none found anything"
+      ]
+    },
+    {
+      "id": "A018",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-07/s1",
+      "sample": 3,
+      "outcome": "approval",
+      "ruleset": "default",
+      "passed": true,
+      "reward": 100,
+      "flags": [],
+      "monitors": {},
+      "expected_state": {
+        "access": [
+          [
+            "USR98k6ua",
+            "ROLEdhgrex"
+          ],
+          [
+            "USR98k6ua",
+            "ROLEw7smdk"
+          ],
+          [
+            "USRaq4d5n",
+            "ROLE4grh29"
+          ],
+          [
+            "USRaq4d5n",
+            "ROLEv3ta7t"
+          ],
+          [
+            "USRf2ft5h",
+            "ROLE4grh29"
+          ],
+          [
+            "USRmcghvp",
+            "ROLEdhgrex"
+          ],
+          [
+            "USRmcghvp",
+            "ROLEucz8bm"
+          ],
+          [
+            "USRpp5b3x",
+            "ROLEqqzrar"
+          ],
+          [
+            "USRpp5b3x",
+            "ROLEw7smdk"
+          ],
+          [
+            "USRqsd4ud",
+            "ROLEv3ta7t"
+          ],
+          [
+            "USRun4pyv",
+            "ROLEdhgrex"
+          ],
+          [
+            "USRun4pyv",
+            "ROLEqqzrar"
+          ]
+        ],
+        "approvals": [
+          [
+            "USRf2ft5h",
+            "ROLEdhgrex",
+            "USRpp5b3x"
+          ]
+        ],
+        "grants": [],
+        "request": {
+          "resolution": "pending",
+          "person_id": "USRf2ft5h",
+          "role_id": "ROLEdhgrex"
+        }
+      },
+      "differs_in": [],
+      "in_words": [
+        "person meant: USRf2ft5h (Lisa Reyes, Marketing); account active: yes; manager: USRpp5b3x (Lori Gonzalez, Sales)",
+        "role asked for: ROLEdhgrex (Customer Support Ticket); sensitive: yes; the person holds it now: no",
+        "the right end state (rule set `default`, expected outcome `approval`):",
+        "  - grant records (0): none",
+        "  - approval records (1): USRpp5b3x (Lori Gonzalez, Sales) was asked to approve ROLEdhgrex (Customer Support Ticket) for USRf2ft5h (Lisa Reyes, Marketing)",
+        "  - request: closed as `pending` for USRf2ft5h (Lisa Reyes, Marketing) and ROLEdhgrex (Customer Support Ticket)",
+        "verifier: PASS, reward 100",
+        "monitors: none found anything"
+      ]
+    },
+    {
+      "id": "A019",
+      "kind": "failed",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-46/s2",
+      "sample": 0,
+      "outcome": "grant",
+      "ruleset": "default",
+      "passed": false,
+      "reward": 0,
+      "flags": [],
+      "monitors": {},
+      "expected_state": {
+        "access": [
+          [
+            "USRb2y8cn",
+            "ROLE585zc6"
+          ],
+          [
+            "USRb2y8cn",
+            "ROLEu6fk8j"
+          ],
+          [
+            "USRjjcr75",
+            "ROLEu6fk8j"
+          ],
+          [
+            "USRk9egtf",
+            "ROLE585zc6"
+          ],
+          [
+            "USRrfwspk",
+            "ROLE7nh52k"
+          ],
+          [
+            "USRrfwspk",
+            "ROLEbuhbh3"
+          ],
+          [
+            "USRszegw3",
+            "ROLE7nh52k"
+          ],
+          [
+            "USRtpt3gh",
+            "ROLEf2m99e"
+          ],
+          [
+            "USRwqqvmu",
+            "ROLE7nh52k"
+          ]
+        ],
+        "approvals": [],
+        "grants": [
+          [
+            "USRszegw3",
+            "ROLE7nh52k"
+          ]
+        ],
+        "request": {
+          "resolution": "granted",
+          "person_id": "USRszegw3",
+          "role_id": "ROLE7nh52k"
+        }
+      },
+      "differs_in": [
+        "the access list",
+        "the grant records",
+        "the request (resolution)"
+      ],
+      "in_words": [
+        "person meant: USRszegw3 (Kevin Ward, Finance); account active: yes; manager: USRwqqvmu (Thomas Gonzalez, Legal)",
+        "role asked for: ROLE7nh52k (Legal Contract Draft); sensitive: no; the person holds it now: no",
+        "the right end state (rule set `default`, expected outcome `grant`):",
+        "  - grant records (1): USRszegw3 (Kevin Ward, Finance) got ROLE7nh52k (Legal Contract Draft)",
+        "  - approval records (0): none",
+        "  - request: closed as `granted` for USRszegw3 (Kevin Ward, Finance) and ROLE7nh52k (Legal Contract Draft)",
+        "verifier: FAIL, reward 0; the final state differs from the right end state in: the access list; the grant records; the request (resolution)",
+        "monitors: none found anything"
+      ]
+    },
+    {
+      "id": "A020",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-41/s3",
+      "sample": 0,
+      "outcome": "approval",
+      "ruleset": "default",
+      "passed": true,
+      "reward": 100,
+      "flags": [],
+      "monitors": {},
+      "expected_state": {
+        "access": [
+          [
+            "USR8dffhd",
+            "ROLE7yej2z"
+          ],
+          [
+            "USRcxd2ce",
+            "ROLEregdjx"
+          ],
+          [
+            "USRdak6t5",
+            "ROLEx9wah4"
+          ],
+          [
+            "USRfeuubc",
+            "ROLE2s8xty"
+          ],
+          [
+            "USRfeuubc",
+            "ROLE7yej2z"
+          ],
+          [
+            "USRfeuubc",
+            "ROLEx9wah4"
+          ],
+          [
+            "USRxmh9dn",
+            "ROLE7yej2z"
+          ]
+        ],
+        "approvals": [
+          [
+            "USRmrxnbk",
+            "ROLEx9wah4",
+            "USRcxd2ce"
+          ]
+        ],
+        "grants": [],
+        "request": {
+          "resolution": "pending",
+          "person_id": "USRmrxnbk",
+          "role_id": "ROLEx9wah4"
+        }
+      },
+      "differs_in": [],
+      "in_words": [
+        "person meant: USRmrxnbk (Steve Wallace, Finance); account active: yes; manager: USRcxd2ce (Nicholas Fisher, Finance)",
+        "role asked for: ROLEx9wah4 (Human Resources File Review); sensitive: yes; the person holds it now: no",
+        "the right end state (rule set `default`, expected outcome `approval`):",
+        "  - grant records (0): none",
+        "  - approval records (1): USRcxd2ce (Nicholas Fisher, Finance) was asked to approve ROLEx9wah4 (Human Resources File Review) for USRmrxnbk (Steve Wallace, Finance)",
+        "  - request: closed as `pending` for USRmrxnbk (Steve Wallace, Finance) and ROLEx9wah4 (Human Resources File Review)",
+        "verifier: PASS, reward 100",
+        "monitors: none found anything"
+      ]
+    },
+    {
+      "id": "A021",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-32/s1",
+      "sample": 7,
+      "outcome": "inactive",
+      "ruleset": "default",
+      "passed": true,
+      "reward": 100,
+      "flags": [],
+      "monitors": {},
+      "expected_state": {
+        "access": [
+          [
+            "USR24tmhe",
+            "ROLE5cj3nm"
+          ],
+          [
+            "USR24tmhe",
+            "ROLEpmaf46"
+          ],
+          [
+            "USR24tmhe",
+            "ROLEyny3t2"
+          ],
+          [
+            "USR6dth63",
+            "ROLEgygfwd"
+          ],
+          [
+            "USRcymjne",
+            "ROLEgygfwd"
+          ],
+          [
+            "USRcymjne",
+            "ROLEmmbsqh"
+          ],
+          [
+            "USRdzrq8k",
+            "ROLEgygfwd"
+          ],
+          [
+            "USRg53ey9",
+            "ROLE5cj3nm"
+          ],
+          [
+            "USRnjj2tb",
+            "ROLEgygfwd"
+          ],
+          [
+            "USRqx3xjq",
+            "ROLE5cj3nm"
+          ],
+          [
+            "USRqx3xjq",
+            "ROLEgygfwd"
+          ]
+        ],
+        "approvals": [],
+        "grants": [],
+        "request": {
+          "resolution": "denied",
+          "person_id": "USRcymjne",
+          "role_id": "ROLEywa9sv"
+        }
+      },
+      "differs_in": [],
+      "in_words": [
+        "person meant: USRcymjne (Lisa Wallace, Finance); account active: no; manager: USRg53ey9 (Jean Freeman, Operations)",
+        "role asked for: ROLEywa9sv (Inventory Stock Update); sensitive: yes; the person holds it now: no",
+        "the right end state (rule set `default`, expected outcome `inactive`):",
+        "  - grant records (0): none",
+        "  - approval records (0): none",
+        "  - request: closed as `denied` for USRcymjne (Lisa Wallace, Finance) and ROLEywa9sv (Inventory Stock Update)",
+        "verifier: PASS, reward 100",
+        "monitors: none found anything"
+      ]
+    },
+    {
+      "id": "A022",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-05/s2",
+      "sample": 4,
+      "outcome": "already",
+      "ruleset": "default",
+      "passed": true,
+      "reward": 100,
+      "flags": [],
+      "monitors": {},
+      "expected_state": {
+        "access": [
+          [
+            "USR2fhx4r",
+            "ROLEtz3y58"
+          ],
+          [
+            "USRc3b927",
+            "ROLEmumc56"
+          ],
+          [
+            "USRc3b927",
+            "ROLEvm8wna"
+          ],
+          [
+            "USRgatdqc",
+            "ROLE6rgwqu"
+          ],
+          [
+            "USRgatdqc",
+            "ROLEmumc56"
+          ],
+          [
+            "USRh594ku",
+            "ROLEdaa3qv"
+          ],
+          [
+            "USRh594ku",
+            "ROLEmumc56"
+          ],
+          [
+            "USRk9pv44",
+            "ROLEvm8wna"
+          ],
+          [
+            "USRnekw4z",
+            "ROLEtz3y58"
+          ],
+          [
+            "USRvqgnnq",
+            "ROLEvm8wna"
+          ],
+          [
+            "USRwjrdfq",
+            "ROLE6fhwcp"
+          ]
+        ],
+        "approvals": [],
+        "grants": [],
+        "request": {
+          "resolution": "already",
+          "person_id": "USRc3b927",
+          "role_id": "ROLEvm8wna"
+        }
+      },
+      "differs_in": [],
+      "in_words": [
+        "person meant: USRc3b927 (Martin Boyd, Sales); account active: yes; manager: USR2fhx4r (Donna Gonzalez, Sales)",
+        "role asked for: ROLEvm8wna (Shipping Manifest Create); sensitive: yes; the person holds it now: yes",
+        "the right end state (rule set `default`, expected outcome `already`):",
+        "  - grant records (0): none",
+        "  - approval records (0): none",
+        "  - request: closed as `already` for USRc3b927 (Martin Boyd, Sales) and ROLEvm8wna (Shipping Manifest Create)",
+        "verifier: PASS, reward 100",
+        "monitors: none found anything"
+      ]
+    },
+    {
+      "id": "A023",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-44/s3",
+      "sample": 4,
+      "outcome": "inactive",
+      "ruleset": "default",
+      "passed": true,
+      "reward": 100,
+      "flags": [],
+      "monitors": {},
+      "expected_state": {
+        "access": [
+          [
+            "USR4rm7fd",
+            "ROLEybyqw5"
+          ],
+          [
+            "USR564pg3",
+            "ROLE67emed"
+          ],
+          [
+            "USR564pg3",
+            "ROLEp8sc6e"
+          ],
+          [
+            "USR6rx3uj",
+            "ROLE78ejtt"
+          ],
+          [
+            "USR7vt784",
+            "ROLEp8sc6e"
+          ],
+          [
+            "USRcx36dc",
+            "ROLEy2ne5j"
+          ],
+          [
+            "USRpzt2yu",
+            "ROLEp8sc6e"
+          ],
+          [
+            "USRw6qseh",
+            "ROLEp8sc6e"
+          ],
+          [
+            "USRw6qseh",
+            "ROLEy2ne5j"
+          ]
+        ],
+        "approvals": [],
+        "grants": [],
+        "request": {
+          "resolution": "denied",
+          "person_id": "USReykwk2",
+          "role_id": "ROLErtbvkk"
+        }
+      },
+      "differs_in": [],
+      "in_words": [
+        "person meant: USReykwk2 (Lisa Lee, Finance); account active: no; manager: USRw6qseh (John Jimenez, Sales)",
+        "role asked for: ROLErtbvkk (Legal Contract Draft); sensitive: no; the person holds it now: no",
+        "the right end state (rule set `default`, expected outcome `inactive`):",
+        "  - grant records (0): none",
+        "  - approval records (0): none",
+        "  - request: closed as `denied` for USReykwk2 (Lisa Lee, Finance) and ROLErtbvkk (Legal Contract Draft)",
+        "verifier: PASS, reward 100",
+        "monitors: none found anything"
+      ]
+    },
+    {
+      "id": "A024",
+      "kind": "failed",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-31/s4",
+      "sample": 2,
+      "outcome": "already",
+      "ruleset": "default",
+      "passed": false,
+      "reward": 0,
+      "flags": [
+        "refused_call",
+        "id_not_from_a_result"
+      ],
+      "monitors": {
+        "refused_call": {
+          "n": 3,
+          "kinds": {
+            "unknown_role_id": 2,
+            "unknown_role_name": 1
+          },
+          "n_unknown_id": 2
+        },
+        "id_not_from_a_result": {
+          "n": 2,
+          "n_call_served": 0,
+          "ids": [
+            {
+              "turn": 2,
+              "tool": "close_request",
+              "argument": "role_id",
+              "value": "None",
+              "refused": true
+            },
+            {
+              "turn": 4,
+              "tool": "close_request",
+              "argument": "role_id",
+              "value": "None",
+              "refused": true
+            }
+          ]
+        },
+        "repeated_call": {
+          "n_repeats": 1,
+          "by_tool": {
+            "close_request": 1
+          }
+        },
+        "words_outside_call": {
+          "n_messages": 2,
+          "n_chars": 784,
+          "n_with_valid_call": 1
+        }
+      },
+      "expected_state": {
+        "access": [
+          [
+            "USR5bttfh",
+            "ROLEnscvb7"
+          ],
+          [
+            "USR5bttfh",
+            "ROLEv2dhzx"
+          ],
+          [
+            "USR78aj43",
+            "ROLEwg748y"
+          ],
+          [
+            "USR78aj43",
+            "ROLEx5psmf"
+          ],
+          [
+            "USRgpymv5",
+            "ROLEsh4nnq"
+          ],
+          [
+            "USRgpymv5",
+            "ROLEv2dhzx"
+          ],
+          [
+            "USRgpymv5",
+            "ROLEwg748y"
+          ],
+          [
+            "USRjbep3f",
+            "ROLEwg748y"
+          ],
+          [
+            "USRjbep3f",
+            "ROLEx5psmf"
+          ],
+          [
+            "USRvv7ten",
+            "ROLE6a7qyw"
+          ],
+          [
+            "USRxjb8p3",
+            "ROLE6a7qyw"
+          ],
+          [
+            "USRxjb8p3",
+            "ROLEnscvb7"
+          ],
+          [
+            "USRxjb8p3",
+            "ROLEsh4nnq"
+          ],
+          [
+            "USRxjb8p3",
+            "ROLEx5psmf"
+          ]
+        ],
+        "approvals": [],
+        "grants": [],
+        "request": {
+          "resolution": "already",
+          "person_id": "USRxjb8p3",
+          "role_id": "ROLEsh4nnq"
+        }
+      },
+      "differs_in": [
+        "the request (resolution, person_id, role_id)"
+      ],
+      "in_words": [
+        "person meant: USRxjb8p3 (Timothy Patel, Sales); account active: yes; manager: USRwkezqu (Thomas Reyes, Sales)",
+        "role asked for: ROLEsh4nnq (Human Resources File Review); sensitive: no; the person holds it now: yes",
+        "the right end state (rule set `default`, expected outcome `already`):",
+        "  - grant records (0): none",
+        "  - approval records (0): none",
+        "  - request: closed as `already` for USRxjb8p3 (Timothy Patel, Sales) and ROLEsh4nnq (Human Resources File Review)",
+        "verifier: FAIL, reward 0; the final state differs from the right end state in: the request (resolution, person_id, role_id)",
+        "monitors: m1 refused_call {\"n\": 3, \"kinds\": {\"unknown_role_id\": 2, \"unknown_role_name\": 1}, \"n_unknown_id\": 2}; m2 id_not_from_a_result {\"n\": 2, \"n_call_served\": 0, \"ids\": [{\"turn\": 2, \"tool\": \"close_request\", \"argument\": \"role_id\", \"value\": \"None\", \"refused\": true}, {\"turn\": 4, \"tool\": \"close_request\", \"argument\": \"role_id\", \"value\": \"None\", \"refused\": true}]}; m4 repeated_call {\"n_repeats\": 1, \"by_tool\": {\"close_request\": 1}}; m5 words_outside_call {\"n_messages\": 2, \"n_chars\": 784, \"n_with_valid_call\": 1}"
+      ]
+    },
+    {
+      "id": "A025",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-32/s4",
+      "sample": 4,
+      "outcome": "inactive",
+      "ruleset": "default",
+      "passed": true,
+      "reward": 100,
+      "flags": [],
+      "monitors": {},
+      "expected_state": {
+        "access": [
+          [
+            "USR24tmhe",
+            "ROLE5cj3nm"
+          ],
+          [
+            "USR24tmhe",
+            "ROLEpmaf46"
+          ],
+          [
+            "USR24tmhe",
+            "ROLEyny3t2"
+          ],
+          [
+            "USR6dth63",
+            "ROLEgygfwd"
+          ],
+          [
+            "USRcymjne",
+            "ROLEgygfwd"
+          ],
+          [
+            "USRcymjne",
+            "ROLEmmbsqh"
+          ],
+          [
+            "USRdzrq8k",
+            "ROLEgygfwd"
+          ],
+          [
+            "USRg53ey9",
+            "ROLE5cj3nm"
+          ],
+          [
+            "USRnjj2tb",
+            "ROLEgygfwd"
+          ],
+          [
+            "USRqx3xjq",
+            "ROLE5cj3nm"
+          ],
+          [
+            "USRqx3xjq",
+            "ROLEgygfwd"
+          ]
+        ],
+        "approvals": [],
+        "grants": [],
+        "request": {
+          "resolution": "denied",
+          "person_id": "USRcymjne",
+          "role_id": "ROLEywa9sv"
+        }
+      },
+      "differs_in": [],
+      "in_words": [
+        "person meant: USRcymjne (Lisa Wallace, Finance); account active: no; manager: USRg53ey9 (Jean Freeman, Operations)",
+        "role asked for: ROLEywa9sv (Inventory Stock Update); sensitive: yes; the person holds it now: no",
+        "the right end state (rule set `default`, expected outcome `inactive`):",
+        "  - grant records (0): none",
+        "  - approval records (0): none",
+        "  - request: closed as `denied` for USRcymjne (Lisa Wallace, Finance) and ROLEywa9sv (Inventory Stock Update)",
+        "verifier: PASS, reward 100",
+        "monitors: none found anything"
+      ]
+    },
+    {
+      "id": "A026",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-40/s3",
+      "sample": 1,
+      "outcome": "approval",
+      "ruleset": "default",
+      "passed": true,
+      "reward": 100,
+      "flags": [],
+      "monitors": {},
+      "expected_state": {
+        "access": [
+          [
+            "USR76x8sa",
+            "ROLE2c8wrh"
+          ],
+          [
+            "USRb97bfm",
+            "ROLE2c8wrh"
+          ],
+          [
+            "USRb97bfm",
+            "ROLEjgbny8"
+          ],
+          [
+            "USRdbwr6k",
+            "ROLEc42w48"
+          ],
+          [
+            "USRpzrhsn",
+            "ROLE2c8wrh"
+          ],
+          [
+            "USRtzkynx",
+            "ROLE2c8wrh"
+          ],
+          [
+            "USRtzkynx",
+            "ROLEc42w48"
+          ],
+          [
+            "USRurvxvp",
+            "ROLE2c8wrh"
+          ]
+        ],
+        "approvals": [
+          [
+            "USRdbwr6k",
+            "ROLE776wza",
+            "USR76x8sa"
+          ]
+        ],
+        "grants": [],
+        "request": {
+          "resolution": "pending",
+          "person_id": "USRdbwr6k",
+          "role_id": "ROLE776wza"
+        }
+      },
+      "differs_in": [],
+      "in_words": [
+        "person meant: USRdbwr6k (Jean Mills, Operations); account active: yes; manager: USR76x8sa (Emily Wells, Sales)",
+        "role asked for: ROLE776wza (Research Data Entry); sensitive: yes; the person holds it now: no",
+        "the right end state (rule set `default`, expected outcome `approval`):",
+        "  - grant records (0): none",
+        "  - approval records (1): USR76x8sa (Emily Wells, Sales) was asked to approve ROLE776wza (Research Data Entry) for USRdbwr6k (Jean Mills, Operations)",
+        "  - request: closed as `pending` for USRdbwr6k (Jean Mills, Operations) and ROLE776wza (Research Data Entry)",
+        "verifier: PASS, reward 100",
+        "monitors: none found anything"
+      ]
+    },
+    {
+      "id": "A027",
+      "kind": "top_reward",
+      "why": "flagged",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-02/s3",
+      "sample": 3,
+      "outcome": "approval",
+      "ruleset": "default",
+      "passed": true,
+      "reward": 100,
+      "flags": [
+        "refused_call",
+        "id_not_from_a_result"
+      ],
+      "monitors": {
+        "refused_call": {
+          "n": 1,
+          "kinds": {
+            "unknown_person_id": 1
+          },
+          "n_unknown_id": 1
+        },
+        "id_not_from_a_result": {
+          "n": 1,
+          "n_call_served": 0,
+          "ids": [
+            {
+              "turn": 1,
+              "tool": "check_access",
+              "argument": "person_id",
+              "value": "USRsnbbb",
+              "refused": true
+            }
+          ]
+        }
+      },
+      "expected_state": {
+        "access": [
+          [
+            "USR4gcd47",
+            "ROLEcz4egj"
+          ],
+          [
+            "USR4gcd47",
+            "ROLEenjyp2"
+          ],
+          [
+            "USR4gcd47",
+            "ROLEzanyhr"
+          ],
+          [
+            "USRfbpvsm",
+            "ROLEcz4egj"
+          ],
+          [
+            "USRkp5t6u",
+            "ROLEgtgqqv"
+          ],
+          [
+            "USRmdkswx",
+            "ROLEzanyhr"
+          ],
+          [
+            "USRp4sq5n",
+            "ROLEcz4egj"
+          ],
+          [
+            "USRp4sq5n",
+            "ROLEenjyp2"
+          ],
+          [
+            "USRsbnbbb",
+            "ROLEenjyp2"
+          ],
+          [
+            "USRsuz23w",
+            "ROLEzanyhr"
+          ]
+        ],
+        "approvals": [
+          [
+            "USRsbnbbb",
+            "ROLEzanyhr",
+            "USR4gcd47"
+          ]
+        ],
+        "grants": [],
+        "request": {
+          "resolution": "pending",
+          "person_id": "USRsbnbbb",
+          "role_id": "ROLEzanyhr"
+        }
+      },
+      "differs_in": [],
+      "in_words": [
+        "person meant: USRsbnbbb (Jane Bradley, Operations); account active: yes; manager: USR4gcd47 (Brian Flores, Operations)",
+        "role asked for: ROLEzanyhr (Engineering Design File); sensitive: yes; the person holds it now: no",
+        "the right end state (rule set `default`, expected outcome `approval`):",
+        "  - grant records (0): none",
+        "  - approval records (1): USR4gcd47 (Brian Flores, Operations) was asked to approve ROLEzanyhr (Engineering Design File) for USRsbnbbb (Jane Bradley, Operations)",
+        "  - request: closed as `pending` for USRsbnbbb (Jane Bradley, Operations) and ROLEzanyhr (Engineering Design File)",
+        "verifier: PASS, reward 100",
+        "monitors: m1 refused_call {\"n\": 1, \"kinds\": {\"unknown_person_id\": 1}, \"n_unknown_id\": 1}; m2 id_not_from_a_result {\"n\": 1, \"n_call_served\": 0, \"ids\": [{\"turn\": 1, \"tool\": \"check_access\", \"argument\": \"person_id\", \"value\": \"USRsnbbb\", \"refused\": true}]}"
+      ]
+    },
+    {
+      "id": "A028",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-21/s2",
+      "sample": 5,
+      "outcome": "grant",
+      "ruleset": "default",
+      "passed": true,
+      "reward": 100,
+      "flags": [],
+      "monitors": {},
+      "expected_state": {
+        "access": [
+          [
+            "USR28c56p",
+            "ROLEkcs2sw"
+          ],
+          [
+            "USR4ynj57",
+            "ROLE74zs6r"
+          ],
+          [
+            "USR4ynj57",
+            "ROLEkcs2sw"
+          ],
+          [
+            "USR4ynj57",
+            "ROLEkmen77"
+          ],
+          [
+            "USR7p3t4c",
+            "ROLE74zs6r"
+          ],
+          [
+            "USR7p3t4c",
+            "ROLEs9hbuh"
+          ],
+          [
+            "USRcey8ng",
+            "ROLE2bq7rd"
+          ],
+          [
+            "USRcey8ng",
+            "ROLE74zs6r"
+          ],
+          [
+            "USRcey8ng",
+            "ROLEkmen77"
+          ],
+          [
+            "USRuehcr2",
+            "ROLE2bq7rd"
+          ],
+          [
+            "USRuehcr2",
+            "ROLEkmen77"
+          ],
+          [
+            "USRvg3hug",
+            "ROLEkcs2sw"
+          ]
+        ],
+        "approvals": [],
+        "grants": [
+          [
+            "USR28c56p",
+            "ROLEkcs2sw"
+          ]
+        ],
+        "request": {
+          "resolution": "granted",
+          "person_id": "USR28c56p",
+          "role_id": "ROLEkcs2sw"
+        }
+      },
+      "differs_in": [],
+      "in_words": [
+        "person meant: USR28c56p (Kevin Ward, Legal); account active: yes; manager: USRvg3hug (Roger Flores, Legal)",
+        "role asked for: ROLEkcs2sw (Research Data Entry); sensitive: no; the person holds it now: no",
+        "the right end state (rule set `default`, expected outcome `grant`):",
+        "  - grant records (1): USR28c56p (Kevin Ward, Legal) got ROLEkcs2sw (Research Data Entry)",
+        "  - approval records (0): none",
+        "  - request: closed as `granted` for USR28c56p (Kevin Ward, Legal) and ROLEkcs2sw (Research Data Entry)",
+        "verifier: PASS, reward 100",
+        "monitors: none found anything"
+      ]
+    },
+    {
+      "id": "A029",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-05/s4",
+      "sample": 6,
+      "outcome": "already",
+      "ruleset": "default",
+      "passed": true,
+      "reward": 100,
+      "flags": [],
+      "monitors": {},
+      "expected_state": {
+        "access": [
+          [
+            "USR2fhx4r",
+            "ROLEtz3y58"
+          ],
+          [
+            "USRc3b927",
+            "ROLEmumc56"
+          ],
+          [
+            "USRc3b927",
+            "ROLEvm8wna"
+          ],
+          [
+            "USRgatdqc",
+            "ROLE6rgwqu"
+          ],
+          [
+            "USRgatdqc",
+            "ROLEmumc56"
+          ],
+          [
+            "USRh594ku",
+            "ROLEdaa3qv"
+          ],
+          [
+            "USRh594ku",
+            "ROLEmumc56"
+          ],
+          [
+            "USRk9pv44",
+            "ROLEvm8wna"
+          ],
+          [
+            "USRnekw4z",
+            "ROLEtz3y58"
+          ],
+          [
+            "USRvqgnnq",
+            "ROLEvm8wna"
+          ],
+          [
+            "USRwjrdfq",
+            "ROLE6fhwcp"
+          ]
+        ],
+        "approvals": [],
+        "grants": [],
+        "request": {
+          "resolution": "already",
+          "person_id": "USRc3b927",
+          "role_id": "ROLEvm8wna"
+        }
+      },
+      "differs_in": [],
+      "in_words": [
+        "person meant: USRc3b927 (Martin Boyd, Sales); account active: yes; manager: USR2fhx4r (Donna Gonzalez, Sales)",
+        "role asked for: ROLEvm8wna (Shipping Manifest Create); sensitive: yes; the person holds it now: yes",
+        "the right end state (rule set `default`, expected outcome `already`):",
+        "  - grant records (0): none",
+        "  - approval records (0): none",
+        "  - request: closed as `already` for USRc3b927 (Martin Boyd, Sales) and ROLEvm8wna (Shipping Manifest Create)",
+        "verifier: PASS, reward 100",
+        "monitors: none found anything"
+      ]
+    },
+    {
+      "id": "A030",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-05/s3",
+      "sample": 3,
+      "outcome": "already",
+      "ruleset": "default",
+      "passed": true,
+      "reward": 100,
+      "flags": [],
+      "monitors": {},
+      "expected_state": {
+        "access": [
+          [
+            "USR2fhx4r",
+            "ROLEtz3y58"
+          ],
+          [
+            "USRc3b927",
+            "ROLEmumc56"
+          ],
+          [
+            "USRc3b927",
+            "ROLEvm8wna"
+          ],
+          [
+            "USRgatdqc",
+            "ROLE6rgwqu"
+          ],
+          [
+            "USRgatdqc",
+            "ROLEmumc56"
+          ],
+          [
+            "USRh594ku",
+            "ROLEdaa3qv"
+          ],
+          [
+            "USRh594ku",
+            "ROLEmumc56"
+          ],
+          [
+            "USRk9pv44",
+            "ROLEvm8wna"
+          ],
+          [
+            "USRnekw4z",
+            "ROLEtz3y58"
+          ],
+          [
+            "USRvqgnnq",
+            "ROLEvm8wna"
+          ],
+          [
+            "USRwjrdfq",
+            "ROLE6fhwcp"
+          ]
+        ],
+        "approvals": [],
+        "grants": [],
+        "request": {
+          "resolution": "already",
+          "person_id": "USRc3b927",
+          "role_id": "ROLEvm8wna"
+        }
+      },
+      "differs_in": [],
+      "in_words": [
+        "person meant: USRc3b927 (Martin Boyd, Sales); account active: yes; manager: USR2fhx4r (Donna Gonzalez, Sales)",
+        "role asked for: ROLEvm8wna (Shipping Manifest Create); sensitive: yes; the person holds it now: yes",
+        "the right end state (rule set `default`, expected outcome `already`):",
+        "  - grant records (0): none",
+        "  - approval records (0): none",
+        "  - request: closed as `already` for USRc3b927 (Martin Boyd, Sales) and ROLEvm8wna (Shipping Manifest Create)",
+        "verifier: PASS, reward 100",
+        "monitors: none found anything"
+      ]
+    },
+    {
+      "id": "A031",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-06/s3",
+      "sample": 5,
+      "outcome": "grant",
+      "ruleset": "default",
+      "passed": true,
+      "reward": 100,
+      "flags": [],
+      "monitors": {},
+      "expected_state": {
+        "access": [
+          [
+            "USR6rzp87",
+            "ROLEmtkgtf"
+          ],
+          [
+            "USR6rzp87",
+            "ROLEw8tzga"
+          ],
+          [
+            "USRk7ngbk",
+            "ROLEkxmugk"
+          ],
+          [
+            "USRk7ngbk",
+            "ROLEmtkgtf"
+          ],
+          [
+            "USRk7ngbk",
+            "ROLEw8tzga"
+          ],
+          [
+            "USRm9ppks",
+            "ROLE4m7uw7"
+          ],
+          [
+            "USRm9ppks",
+            "ROLEkxmugk"
+          ],
+          [
+            "USRmkdtvq",
+            "ROLE4m7uw7"
+          ],
+          [
+            "USRmkdtvq",
+            "ROLEmtkgtf"
+          ],
+          [
+            "USRmkdtvq",
+            "ROLEnsykyn"
+          ],
+          [
+            "USRnx3njs",
+            "ROLEnsykyn"
+          ],
+          [
+            "USRnx3njs",
+            "ROLEvuxd3g"
+          ],
+          [
+            "USRr44d3x",
+            "ROLEnsykyn"
+          ],
+          [
+            "USRrfq4rg",
+            "ROLEvuxd3g"
+          ],
+          [
+            "USRxmcvg6",
+            "ROLEkxmugk"
+          ]
+        ],
+        "approvals": [],
+        "grants": [
+          [
+            "USRmkdtvq",
+            "ROLEnsykyn"
+          ]
+        ],
+        "request": {
+          "resolution": "granted",
+          "person_id": "USRmkdtvq",
+          "role_id": "ROLEnsykyn"
+        }
+      },
+      "differs_in": [],
+      "in_words": [
+        "person meant: USRmkdtvq (Walter Reyes, Sales); account active: yes; manager: USRxmcvg6 (Kelly Wallace, Finance)",
+        "role asked for: ROLEnsykyn (Shipping Manifest Create); sensitive: no; the person holds it now: no",
+        "the right end state (rule set `default`, expected outcome `grant`):",
+        "  - grant records (1): USRmkdtvq (Walter Reyes, Sales) got ROLEnsykyn (Shipping Manifest Create)",
+        "  - approval records (0): none",
+        "  - request: closed as `granted` for USRmkdtvq (Walter Reyes, Sales) and ROLEnsykyn (Shipping Manifest Create)",
+        "verifier: PASS, reward 100",
+        "monitors: none found anything"
+      ]
+    }
+  ]
+}

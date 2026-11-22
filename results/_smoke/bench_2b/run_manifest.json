@@ -1,0 +1,110 @@
+{
+  "command": [
+    "scripts/gpu/bench.py",
+    "--model",
+    "Qwen/Qwen3.5-2B",
+    "--text",
+    "text/model_text.yaml",
+    "--name",
+    "bench_2b",
+    "--chunk-sizes",
+    "16,32,64",
+    "--micro-batches",
+    "2,4,8",
+    "--checkpointing",
+    "on",
+    "--step-sizes",
+    "16,8",
+    "--skip",
+    "sft"
+  ],
+  "config": {
+    "turn_limit": 8,
+    "max_new_tokens": 160,
+    "parser_strict": true,
+    "temperature": 1.0,
+    "top_k": 0,
+    "top_p": 1.0,
+    "chunk_size": 32,
+    "pass_reward": 100,
+    "malformed_penalty": 5,
+    "malformed_cap": 15,
+    "turn_penalty": 2,
+    "turn_cap": 10,
+    "penalise_malformed_on_fail": false,
+    "n_people": 8,
+    "n_roles": 6,
+    "n_departments": 3,
+    "homonym_share": 0.2,
+    "n_train": 200,
+    "n_dev": 48,
+    "n_test": 48,
+    "n_calib": 24,
+    "data_seed": 1,
+    "calib_seed": 2
+  },
+  "config_sha256": "4ad9282080a55a2bb3f6a86fec6967ab3bb08785e4145d472c98cdcf3cca7259",
+  "text_file": "model_text.yaml",
+  "text_sha256": "934127e8d68413d5c41ba4aab0b2daf9e6bb65f107ee112c6a24e38dff0b17de",
+  "text_is_placeholder": false,
+  "impl": {
+    "verify": "main",
+    "reward": "main",
+    "build_loss_mask": "main",
+    "group_advantages": "main",
+    "policy_loss": "main",
+    "paired_family_bootstrap": "main"
+  },
+  "model": "Qwen/Qwen3.5-2B",
+  "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+  "environment": {
+    "python": "3.11.17",
+    "packages": {
+      "torch": "2.15.0",
+      "transformers": "5.23.0",
+      "peft": "0.21.3",
+      "accelerate": "1.16.0",
+      "flash-linear-attention": "0.6.0",
+      "fla-core": "0.6.0",
+      "causal-conv1d": "1.7.0",
+      "kernels": "0.18.3",
+      "safetensors": "0.8.0",
+      "tokenizers": "0.23.3",
+      "numpy": "2.4.6"
+    },
+    "cuda_version": "13.2",
+    "gpu_name": "NVIDIA GeForce RTX 4090",
+    "gpu_memory_gb": 23.6
+  },
+  "kernels": {
+    "imports": {
+      "fla": {
+        "ok": true,
+        "error": null
+      },
+      "fla.ops": {
+        "ok": true,
+        "error": null
+      },
+      "fla.ops.gated_delta_rule": {
+        "ok": true,
+        "error": null
+      },
+      "causal_conv1d": {
+        "ok": true,
+        "error": null
+      },
+      "kernels": {
+        "ok": true,
+        "error": null
+      }
+    },
+    "use_kernels": false,
+    "fallback_warnings": [],
+    "torch_fallback_functions": [],
+    "gated_delta_rule": "fla",
+    "causal_conv1d": "causal_conv1d",
+    "fast_path": true
+  },
+  "complete": true
+}

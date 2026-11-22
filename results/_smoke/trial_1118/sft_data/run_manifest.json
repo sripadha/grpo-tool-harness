@@ -1,0 +1,170 @@
+{
+  "complete": true,
+  "script": "scripts/gpu/sft_data.py",
+  "command": [
+    "scripts/gpu/sft_data.py",
+    "--episodes",
+    "results/_smoke/trial_1118/base_train/episodes.jsonl",
+    "--tokens",
+    "results/_smoke/trial_1118/base_train/tokens.jsonl",
+    "--scenarios",
+    "data/scenarios_calib5_mixed",
+    "--out",
+    "results/_smoke/trial_1118/sft_data"
+  ],
+  "started_utc": "2026-11-18T16:51:00Z",
+  "ended_utc": "2026-11-18T16:51:00Z",
+  "seconds": 0.06,
+  "python": "3.11.17",
+  "allow_penalised": false,
+  "config": {
+    "turn_limit": 8,
+    "max_new_tokens": 260,
+    "parser_strict": true,
+    "temperature": 1.0,
+    "top_k": 0,
+    "top_p": 1.0,
+    "chunk_size": 32,
+    "pass_reward": 100,
+    "malformed_penalty": 5,
+    "malformed_cap": 15,
+    "turn_penalty": 2,
+    "turn_cap": 10,
+    "penalise_malformed_on_fail": false,
+    "n_people": 8,
+    "n_roles": 6,
+    "n_departments": 3,
+    "homonym_share": 0.2,
+    "mix_facts": false,
+    "n_train": 200,
+    "n_dev": 48,
+    "n_test": 48,
+    "n_calib": 24,
+    "data_seed": 1,
+    "calib_seed": 2,
+    "placeholder_data_seed": 9001,
+    "placeholder_calib_seed": 9002
+  },
+  "config_sha256": "1b0664feb7cb3aef4e908ce0ae5b7a84cd2d7c075af3ef8f953994c88bd5112c",
+  "config_source": "run_manifest.json of the rollout",
+  "records_config_sha256": "1b0664feb7cb3aef4e908ce0ae5b7a84cd2d7c075af3ef8f953994c88bd5112c",
+  "records_settings": {
+    "turn_limit": 8,
+    "max_new_tokens": 260,
+    "parser_strict": true,
+    "temperature": 1.0,
+    "top_k": 0,
+    "top_p": 1.0,
+    "pass_reward": 100,
+    "malformed_penalty": 5,
+    "malformed_cap": 15,
+    "turn_penalty": 2,
+    "turn_cap": 10,
+    "penalise_malformed_on_fail": false
+  },
+  "impl": {
+    "verify": "main",
+    "reward": "main",
+    "build_loss_mask": "main",
+    "group_advantages": "main",
+    "policy_loss": "main",
+    "paired_family_bootstrap": "main"
+  },
+  "code_sha256": "9004c62504ffdb4dc4a50fa49c9131c6c3c589fd61b24fb85e52ce53866d52d2",
+  "frozen": {
+    "manifest_sha256": null,
+    "code_sha256": "9004c62504ffdb4dc4a50fa49c9131c6c3c589fd61b24fb85e52ce53866d52d2",
+    "matches": false,
+    "differences": [
+      "MANIFEST.json is missing: the tree is not frozen"
+    ]
+  },
+  "frozen_note": null,
+  "training_code": {
+    "sha256": "4528eebef22fe4f992e87aee1bc651bbb1cc6e2c6db220f886e0dc28218a4986",
+    "files": {
+      "accessdesk/_second/grpo_math.py": "1b3793232d5452e8ea0867314e808b48da8d6b19ce790c721d6f566a0765d3dd",
+      "accessdesk/_second/loss_mask.py": "c70bbdbcf71d25b0abb9acc6c90a85fb00e3f4c488caf1a3e1b68d4c29e8be92",
+      "accessdesk/train/__init__.py": "20ca27ddc874c92c4ba81f9ae1fcf255496de787333ef23cd3684c6d1a4c4e43",
+      "accessdesk/train/forward.py": "9c957343fb4eb6f20e67da68a4d7ae1b9ebae200e07f5fd588f3faa4021b5489",
+      "accessdesk/train/grpo.py": "cf18a0e50f2d0e1d7afbb3b9beb56daa308cb0715e8da276f351f454be472c27",
+      "accessdesk/train/grpo_math.py": "8d203e9e3dae38f9197423cc6e1b1072bb7869cc944852f409f5cf789277811f",
+      "accessdesk/train/lora.py": "9b86324257684d26da53e6a20acbc34fb7579fdbe43800ad7cf60a599a034daa",
+      "accessdesk/train/loss_mask.py": "c4894b141befd82b34a12cfd59be1b2185d3f23634ba188f6e451ce7044a33c6",
+      "accessdesk/train/sft.py": "6f4bebaee39c70d6434027ea9aae238a872620a1d20d07061d267b5221522e25",
+      "scripts/gpu/chain_stage1.sh": "6d7a5446eed99e8ce14874b7d3f29ea439a16d4b43cac0fb2409f9aca319ef20",
+      "scripts/gpu/chain_stage2.sh": "f807ebc2544b2f9cabf1067407bb927a79af52f88f4c7149978e3d479abca00c",
+      "scripts/gpu/sft_data.py": "d94e8cff1da1eb4e5b23f367607b56dfc251e1e29d0ce957db4b274ced8bcb54",
+      "scripts/gpu/train_grpo.py": "9e594c0f23b2070ead8232668c718500c35efc228726ecafd162b4ddd1545be6",
+      "scripts/gpu/train_sft.py": "a0e975302e6e84f382e2350ffba476c99f422f2543397e86a11704215d5ef431"
+    }
+  },
+  "split": "train",
+  "text_sha256": "e4118288ed14b14ab185da4e304040fdc5b30140c61635b8b479d84a7a808709",
+  "text_is_placeholder": false,
+  "data_sha256": "664862bf4c847edeef2c3762e3eae895ed5de3722a3adf92e452c681d85d49e8",
+  "scenarios_config_sha256": "bb0e1495c02ac3db2afbd2486482c128d5017fded92f6be381564e584cd9b344",
+  "source_run": {
+    "manifest": {
+      "path": "results/_smoke/trial_1118/base_train/run_manifest.json",
+      "sha256": "fd43184b535fa703ed1534d6ba1022f15f2ff4afbf792ba3e99ff2651d3e8356",
+      "bytes": 6757
+    },
+    "complete": true,
+    "model": "Qwen/Qwen3.5-2B",
+    "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+    "adapter": null,
+    "split": "train",
+    "samples": 4,
+    "run_seed": 99,
+    "families": 8,
+    "scenarios": 24,
+    "config_sha256": "1b0664feb7cb3aef4e908ce0ae5b7a84cd2d7c075af3ef8f953994c88bd5112c",
+    "text_sha256": "e4118288ed14b14ab185da4e304040fdc5b30140c61635b8b479d84a7a808709",
+    "split_file_sha256": "664862bf4c847edeef2c3762e3eae895ed5de3722a3adf92e452c681d85d49e8"
+  },
+  "inputs": {
+    "episodes": {
+      "path": "results/_smoke/trial_1118/base_train/episodes.jsonl",
+      "sha256": "9add46de1d423f04badb97e8b93ca3d39fdf8972fc89d514b9ba521eab1e6359",
+      "bytes": 381839
+    },
+    "tokens": {
+      "path": "results/_smoke/trial_1118/base_train/tokens.jsonl",
+      "sha256": "8c839f120d0d1adcd23d7a21b0b4f3020be7646b56dda2c170996ba99c1d32b3",
+      "bytes": 1361146
+    },
+    "summary": {
+      "path": "data/scenarios_calib5_mixed/summary.json",
+      "sha256": "3322404eb0fb115ce3e963fb96cd88ba5e66880a4a57ef2478c23d3c24dbf1b5",
+      "bytes": 6107
+    },
+    "train_file": {
+      "path": "data/scenarios_calib5_mixed/train.jsonl",
+      "sha256": "664862bf4c847edeef2c3762e3eae895ed5de3722a3adf92e452c681d85d49e8",
+      "bytes": 866607
+    }
+  },
+  "outputs": {
+    "sft_records.jsonl": {
+      "path": "results/_smoke/trial_1118/sft_data/sft_records.jsonl",
+      "sha256": "a569937ab0a68b3542b2356c45ed2feafe4a77035c37865ad47ddc72814c74f8",
+      "bytes": 224999
+    },
+    "sft_report.json": {
+      "path": "results/_smoke/trial_1118/sft_data/sft_report.json",
+      "sha256": "36072eed3481b1bb332145cef168d0016c5ebcd7d270e61327b5334e54145545",
+      "bytes": 1144
+    },
+    "sft_report.md": {
+      "path": "results/_smoke/trial_1118/sft_data/sft_report.md",
+      "sha256": "fe64428c8f7d27be9af0ef1d00ce4135838183d9c44007bb1503be4cb991bdd9",
+      "bytes": 1111
+    }
+  },
+  "counts": {
+    "records": 96,
+    "chosen": 14,
+    "loss_tokens": 2491
+  }
+}

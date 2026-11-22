@@ -1,0 +1,798 @@
+{
+  "median_family_pass_rate": 1.0,
+  "median_as_fraction": "1/1",
+  "rule": "median above 0.8 -> groups of 16 on 8 scenarios per step; else groups of 8 on 16",
+  "threshold": 0.8,
+  "group_size": 16,
+  "scenarios_per_step": 8,
+  "n_families": 100,
+  "n_always_pass": 70,
+  "n_always_fail": 1,
+  "n_mixed": 29,
+  "pass_rate": 0.9354166666666666,
+  "episodes": 2400,
+  "harness_errors": 0,
+  "attempts_per_scenario": {
+    "8": 300
+  },
+  "by_outcome": {
+    "grant": {
+      "n_families": 25,
+      "median_family_pass_rate": 1.0,
+      "median_as_fraction": "1/1",
+      "n_always_pass": 23,
+      "n_always_fail": 0,
+      "n_mixed": 2
+    },
+    "approval": {
+      "n_families": 25,
+      "median_family_pass_rate": 1.0,
+      "median_as_fraction": "1/1",
+      "n_always_pass": 18,
+      "n_always_fail": 0,
+      "n_mixed": 7
+    },
+    "already": {
+      "n_families": 25,
+      "median_family_pass_rate": 1.0,
+      "median_as_fraction": "1/1",
+      "n_always_pass": 18,
+      "n_always_fail": 0,
+      "n_mixed": 7
+    },
+    "inactive": {
+      "n_families": 25,
+      "median_family_pass_rate": 0.9583333333333334,
+      "median_as_fraction": "23/24",
+      "n_always_pass": 11,
+      "n_always_fail": 1,
+      "n_mixed": 13
+    }
+  },
+  "families": {
+    "tr-000": {
+      "outcome": "approval",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-001": {
+      "outcome": "inactive",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-002": {
+      "outcome": "approval",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-003": {
+      "outcome": "inactive",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-004": {
+      "outcome": "approval",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-005": {
+      "outcome": "already",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-006": {
+      "outcome": "grant",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-007": {
+      "outcome": "inactive",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-008": {
+      "outcome": "grant",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-009": {
+      "outcome": "grant",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-010": {
+      "outcome": "grant",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-011": {
+      "outcome": "approval",
+      "passed": 23,
+      "episodes": 24,
+      "pass_rate": 0.9583333333333334,
+      "profile": "mixed"
+    },
+    "tr-012": {
+      "outcome": "already",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-013": {
+      "outcome": "already",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-014": {
+      "outcome": "inactive",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-015": {
+      "outcome": "approval",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-016": {
+      "outcome": "inactive",
+      "passed": 23,
+      "episodes": 24,
+      "pass_rate": 0.9583333333333334,
+      "profile": "mixed"
+    },
+    "tr-017": {
+      "outcome": "already",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-018": {
+      "outcome": "inactive",
+      "passed": 5,
+      "episodes": 24,
+      "pass_rate": 0.20833333333333334,
+      "profile": "mixed"
+    },
+    "tr-019": {
+      "outcome": "inactive",
+      "passed": 16,
+      "episodes": 24,
+      "pass_rate": 0.6666666666666666,
+      "profile": "mixed"
+    },
+    "tr-020": {
+      "outcome": "inactive",
+      "passed": 17,
+      "episodes": 24,
+      "pass_rate": 0.7083333333333334,
+      "profile": "mixed"
+    },
+    "tr-021": {
+      "outcome": "approval",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-022": {
+      "outcome": "already",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-023": {
+      "outcome": "already",
+      "passed": 23,
+      "episodes": 24,
+      "pass_rate": 0.9583333333333334,
+      "profile": "mixed"
+    },
+    "tr-024": {
+      "outcome": "approval",
+      "passed": 23,
+      "episodes": 24,
+      "pass_rate": 0.9583333333333334,
+      "profile": "mixed"
+    },
+    "tr-025": {
+      "outcome": "approval",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-026": {
+      "outcome": "approval",
+      "passed": 23,
+      "episodes": 24,
+      "pass_rate": 0.9583333333333334,
+      "profile": "mixed"
+    },
+    "tr-027": {
+      "outcome": "grant",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-028": {
+      "outcome": "already",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-029": {
+      "outcome": "inactive",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-030": {
+      "outcome": "inactive",
+      "passed": 23,
+      "episodes": 24,
+      "pass_rate": 0.9583333333333334,
+      "profile": "mixed"
+    },
+    "tr-031": {
+      "outcome": "grant",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-032": {
+      "outcome": "approval",
+      "passed": 23,
+      "episodes": 24,
+      "pass_rate": 0.9583333333333334,
+      "profile": "mixed"
+    },
+    "tr-033": {
+      "outcome": "inactive",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-034": {
+      "outcome": "approval",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-035": {
+      "outcome": "approval",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-036": {
+      "outcome": "already",
+      "passed": 23,
+      "episodes": 24,
+      "pass_rate": 0.9583333333333334,
+      "profile": "mixed"
+    },
+    "tr-037": {
+      "outcome": "inactive",
+      "passed": 22,
+      "episodes": 24,
+      "pass_rate": 0.9166666666666666,
+      "profile": "mixed"
+    },
+    "tr-038": {
+      "outcome": "grant",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-039": {
+      "outcome": "inactive",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-040": {
+      "outcome": "grant",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-041": {
+      "outcome": "approval",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-042": {
+      "outcome": "grant",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-043": {
+      "outcome": "grant",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-044": {
+      "outcome": "grant",
+      "passed": 23,
+      "episodes": 24,
+      "pass_rate": 0.9583333333333334,
+      "profile": "mixed"
+    },
+    "tr-045": {
+      "outcome": "approval",
+      "passed": 23,
+      "episodes": 24,
+      "pass_rate": 0.9583333333333334,
+      "profile": "mixed"
+    },
+    "tr-046": {
+      "outcome": "already",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-047": {
+      "outcome": "grant",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-048": {
+      "outcome": "inactive",
+      "passed": 2,
+      "episodes": 24,
+      "pass_rate": 0.08333333333333333,
+      "profile": "mixed"
+    },
+    "tr-049": {
+      "outcome": "inactive",
+      "passed": 1,
+      "episodes": 24,
+      "pass_rate": 0.041666666666666664,
+      "profile": "mixed"
+    },
+    "tr-050": {
+      "outcome": "grant",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-051": {
+      "outcome": "grant",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-052": {
+      "outcome": "already",
+      "passed": 23,
+      "episodes": 24,
+      "pass_rate": 0.9583333333333334,
+      "profile": "mixed"
+    },
+    "tr-053": {
+      "outcome": "grant",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-054": {
+      "outcome": "grant",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-055": {
+      "outcome": "approval",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-056": {
+      "outcome": "already",
+      "passed": 22,
+      "episodes": 24,
+      "pass_rate": 0.9166666666666666,
+      "profile": "mixed"
+    },
+    "tr-057": {
+      "outcome": "inactive",
+      "passed": 0,
+      "episodes": 24,
+      "pass_rate": 0.0,
+      "profile": "always_fail"
+    },
+    "tr-058": {
+      "outcome": "grant",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-059": {
+      "outcome": "approval",
+      "passed": 23,
+      "episodes": 24,
+      "pass_rate": 0.9583333333333334,
+      "profile": "mixed"
+    },
+    "tr-060": {
+      "outcome": "inactive",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-061": {
+      "outcome": "already",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-062": {
+      "outcome": "approval",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-063": {
+      "outcome": "already",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-064": {
+      "outcome": "grant",
+      "passed": 23,
+      "episodes": 24,
+      "pass_rate": 0.9583333333333334,
+      "profile": "mixed"
+    },
+    "tr-065": {
+      "outcome": "already",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-066": {
+      "outcome": "grant",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-067": {
+      "outcome": "already",
+      "passed": 23,
+      "episodes": 24,
+      "pass_rate": 0.9583333333333334,
+      "profile": "mixed"
+    },
+    "tr-068": {
+      "outcome": "approval",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-069": {
+      "outcome": "grant",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-070": {
+      "outcome": "approval",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-071": {
+      "outcome": "approval",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-072": {
+      "outcome": "already",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-073": {
+      "outcome": "approval",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-074": {
+      "outcome": "grant",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-075": {
+      "outcome": "inactive",
+      "passed": 23,
+      "episodes": 24,
+      "pass_rate": 0.9583333333333334,
+      "profile": "mixed"
+    },
+    "tr-076": {
+      "outcome": "inactive",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-077": {
+      "outcome": "already",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-078": {
+      "outcome": "inactive",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-079": {
+      "outcome": "grant",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-080": {
+      "outcome": "already",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-081": {
+      "outcome": "inactive",
+      "passed": 23,
+      "episodes": 24,
+      "pass_rate": 0.9583333333333334,
+      "profile": "mixed"
+    },
+    "tr-082": {
+      "outcome": "inactive",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-083": {
+      "outcome": "inactive",
+      "passed": 1,
+      "episodes": 24,
+      "pass_rate": 0.041666666666666664,
+      "profile": "mixed"
+    },
+    "tr-084": {
+      "outcome": "already",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-085": {
+      "outcome": "already",
+      "passed": 23,
+      "episodes": 24,
+      "pass_rate": 0.9583333333333334,
+      "profile": "mixed"
+    },
+    "tr-086": {
+      "outcome": "approval",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-087": {
+      "outcome": "inactive",
+      "passed": 21,
+      "episodes": 24,
+      "pass_rate": 0.875,
+      "profile": "mixed"
+    },
+    "tr-088": {
+      "outcome": "approval",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-089": {
+      "outcome": "grant",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-090": {
+      "outcome": "grant",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-091": {
+      "outcome": "approval",
+      "passed": 23,
+      "episodes": 24,
+      "pass_rate": 0.9583333333333334,
+      "profile": "mixed"
+    },
+    "tr-092": {
+      "outcome": "inactive",
+      "passed": 21,
+      "episodes": 24,
+      "pass_rate": 0.875,
+      "profile": "mixed"
+    },
+    "tr-093": {
+      "outcome": "already",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-094": {
+      "outcome": "already",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-095": {
+      "outcome": "already",
+      "passed": 23,
+      "episodes": 24,
+      "pass_rate": 0.9583333333333334,
+      "profile": "mixed"
+    },
+    "tr-096": {
+      "outcome": "grant",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-097": {
+      "outcome": "already",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-098": {
+      "outcome": "approval",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    },
+    "tr-103": {
+      "outcome": "already",
+      "passed": 24,
+      "episodes": 24,
+      "pass_rate": 1.0,
+      "profile": "always_pass"
+    }
+  },
+  "source": {
+    "episodes": {
+      "path": "results/main/sft_train/episodes.jsonl",
+      "sha256": "87b4b6c7e0a9f8615b7718729c7017b6c5e5f35e0b5f78fc6777b34136b072a6",
+      "bytes": 8606520
+    },
+    "run_manifest": {
+      "path": "results/main/sft_train/run_manifest.json",
+      "sha256": "ff5bd5150520d51b20d71d8647b2215174bf820125c5abbe7cb130e56fc2f25e",
+      "bytes": 6852
+    },
+    "run": "sft_train",
+    "arm": "sft_train",
+    "model": "Qwen/Qwen3.5-2B",
+    "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+    "adapter": "results/main/sft/adapter",
+    "split": "train",
+    "samples": 8,
+    "run_seed": 20,
+    "scenarios": 300,
+    "split_file_sha256": "330e7022f6d378ae4d00dd5c3fbe75c8799d2a7ea804ad0b0af89bb46c34bf79",
+    "text_sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+    "config_sha256": "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475",
+    "max_new_tokens": 260,
+    "adapter_sha256": {
+      "adapter_config.json": "9fe0c5587b821bc1d8681d2ae5c61ebec618c9447e1786b57173e76e4e6f3fa0",
+      "adapter_model.safetensors": "c7c7c55110eb921eb03483ee5c5da2cbba04ecc0e35f44a1925fa51ccac1ca8b"
+    },
+    "train_file": {
+      "path": "data/scenarios/train.jsonl",
+      "sha256": "330e7022f6d378ae4d00dd5c3fbe75c8799d2a7ea804ad0b0af89bb46c34bf79",
+      "bytes": 879872
+    },
+    "families_file": {
+      "path": "results/main/sft_profile/families.txt",
+      "sha256": "f3fac1170b719a1f4e447d6a4409ac56a41f29b0fc755c46766503bbc1e031c3",
+      "bytes": 700
+    }
+  },
+  "script": {
+    "path": "scripts/sft_profile.py",
+    "sha256": "f76711123e13af9982805025469178bdc36d0d6f56396378b95e7ce4d253aae7",
+    "bytes": 21925
+  }
+}

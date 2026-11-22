@@ -1,0 +1,295 @@
+{
+  "level": 0.95,
+  "n_draws": 10000,
+  "seed": 0,
+  "baseline_arm": "base",
+  "paired_family_bootstrap": "main",
+  "text_sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+  "text_is_placeholder": false,
+  "splits": [
+    "dev"
+  ],
+  "n_families": 48,
+  "n_scenarios": 192,
+  "n_episodes_per_arm": 1536,
+  "arms": [
+    {
+      "arm": "base",
+      "splits": [
+        "dev"
+      ],
+      "ruleset": "default",
+      "toolset": "five",
+      "prompt": "final",
+      "text_is_placeholder": false,
+      "config_sha256": [
+        "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475"
+      ],
+      "n_families": 48,
+      "n_episodes": 1536,
+      "n_harness_errors": 0,
+      "pass_rate": 0.3977864583333333,
+      "pass_rate_lo": 0.3138020833333333,
+      "pass_rate_hi": 0.484375,
+      "pass_rate_by_outcome": {
+        "grant": 0.4765625,
+        "approval": 0.6927083333333334,
+        "already": 0.21354166666666666,
+        "inactive": 0.20833333333333334
+      },
+      "pass_rate_seen": 0.41753472222222227,
+      "pass_rate_held_out": 0.3385416666666667,
+      "zero_variance_equal_reward": 0.265625,
+      "zero_variance_equal_passfail": 0.3125,
+      "invalid_call_rate": 0.04552107728337237,
+      "pass_at_8": 0.7864583333333334,
+      "pass_hat_k": {
+        "1": 0.3977864583333333,
+        "2": 0.25409226190476203,
+        "4": 0.15572916666666672,
+        "8": 0.09895833333333333
+      },
+      "n_scenarios_left_out": {
+        "1": 0,
+        "2": 0,
+        "4": 0,
+        "8": 0
+      },
+      "all_wordings_pass": 0.13440958658854166,
+      "variance_shares": {
+        "wording": 0.14676239127433385,
+        "sampling": 0.8532376087256661,
+        "wording_if_sampling_only": 0.0967741935483871
+      },
+      "turn_stats": {
+        "n_episodes": 1536,
+        "mean_turns": 4.447916666666667,
+        "share_at_turn_limit": 0.10677083333333333,
+        "share_closed": 0.8932291666666666
+      },
+      "outcome_labels": {
+        "closed_correctly": 0.3977864583333333,
+        "closed_wrongly": 0.4954427083333333,
+        "never_closed": 0.10677083333333333,
+        "malformed_only": 0.0
+      },
+      "reward_distribution": {
+        "0": 925,
+        "79": 1,
+        "81": 1,
+        "82": 1,
+        "84": 3,
+        "87": 2,
+        "88": 3,
+        "91": 4,
+        "92": 1,
+        "93": 2,
+        "94": 8,
+        "95": 21,
+        "96": 8,
+        "98": 3,
+        "100": 553
+      },
+      "smallest_detectable_effect": {
+        "n_families": 48,
+        "n_splits": 200,
+        "se_halves": 0.019480356268431177,
+        "se": 0.013774692017337553,
+        "mde": 0.038569137648545145,
+        "mde_lowest_split": 0.024436748841943832,
+        "mde_highest_split": 0.0497040487276609
+      }
+    },
+    {
+      "arm": "sft",
+      "splits": [
+        "dev"
+      ],
+      "ruleset": "default",
+      "toolset": "five",
+      "prompt": "final",
+      "text_is_placeholder": false,
+      "config_sha256": [
+        "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475"
+      ],
+      "n_families": 48,
+      "n_episodes": 1536,
+      "n_harness_errors": 0,
+      "pass_rate": 0.8938802083333334,
+      "pass_rate_lo": 0.8209635416666666,
+      "pass_rate_hi": 0.9544270833333334,
+      "pass_rate_by_outcome": {
+        "grant": 0.9713541666666666,
+        "approval": 0.9765625,
+        "already": 0.984375,
+        "inactive": 0.6432291666666666
+      },
+      "pass_rate_seen": 0.9019097222222224,
+      "pass_rate_held_out": 0.8697916666666666,
+      "zero_variance_equal_reward": 0.71875,
+      "zero_variance_equal_passfail": 0.78125,
+      "invalid_call_rate": 0.007245064299945662,
+      "pass_at_8": 0.9791666666666666,
+      "pass_hat_k": {
+        "1": 0.8938802083333334,
+        "2": 0.8577008928571429,
+        "4": 0.8171875000000001,
+        "8": 0.7604166666666666
+      },
+      "n_scenarios_left_out": {
+        "1": 0,
+        "2": 0,
+        "4": 0,
+        "8": 0
+      },
+      "all_wordings_pass": 0.802581787109375,
+      "variance_shares": {
+        "wording": 0.1584640346133045,
+        "sampling": 0.8415359653866955,
+        "wording_if_sampling_only": 0.0967741935483871
+      },
+      "turn_stats": {
+        "n_episodes": 1536,
+        "mean_turns": 3.5944010416666665,
+        "share_at_turn_limit": 0.004557291666666667,
+        "share_closed": 0.9954427083333334
+      },
+      "outcome_labels": {
+        "closed_correctly": 0.8938802083333334,
+        "closed_wrongly": 0.1015625,
+        "never_closed": 0.004557291666666667,
+        "malformed_only": 0.0
+      },
+      "reward_distribution": {
+        "0": 163,
+        "81": 1,
+        "88": 1,
+        "91": 3,
+        "93": 1,
+        "94": 1,
+        "95": 8,
+        "96": 1,
+        "98": 1,
+        "100": 1356
+      },
+      "smallest_detectable_effect": {
+        "n_families": 48,
+        "n_splits": 200,
+        "se_halves": 0.009498241854700176,
+        "se": 0.006716271224808385,
+        "mde": 0.018805559429463475,
+        "mde_lowest_split": 0.010840102691024209,
+        "mde_highest_split": 0.030768631122668175
+      }
+    },
+    {
+      "arm": "grpo_seed1",
+      "splits": [
+        "dev"
+      ],
+      "ruleset": "default",
+      "toolset": "five",
+      "prompt": "final",
+      "text_is_placeholder": false,
+      "config_sha256": [
+        "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475"
+      ],
+      "n_families": 48,
+      "n_episodes": 1536,
+      "n_harness_errors": 0,
+      "pass_rate": 0.986328125,
+      "pass_rate_lo": 0.96484375,
+      "pass_rate_hi": 0.9986979166666666,
+      "pass_rate_by_outcome": {
+        "grant": 0.9609375,
+        "approval": 0.9869791666666666,
+        "already": 0.9973958333333334,
+        "inactive": 1.0
+      },
+      "pass_rate_seen": 0.990451388888889,
+      "pass_rate_held_out": 0.9739583333333334,
+      "zero_variance_equal_reward": 0.9479166666666666,
+      "zero_variance_equal_passfail": 0.9635416666666666,
+      "invalid_call_rate": 0.001483679525222552,
+      "pass_at_8": 0.9947916666666666,
+      "pass_hat_k": {
+        "1": 0.986328125,
+        "2": 0.9817708333333334,
+        "4": 0.9739583333333334,
+        "8": 0.9583333333333334
+      },
+      "n_scenarios_left_out": {
+        "1": 0,
+        "2": 0,
+        "4": 0,
+        "8": 0
+      },
+      "all_wordings_pass": 0.9644775390625,
+      "variance_shares": {
+        "wording": 0.5494252873563218,
+        "sampling": 0.45057471264367815,
+        "wording_if_sampling_only": 0.0967741935483871
+      },
+      "turn_stats": {
+        "n_episodes": 1536,
+        "mean_turns": 3.5104166666666665,
+        "share_at_turn_limit": 0.0026041666666666665,
+        "share_closed": 0.9973958333333334
+      },
+      "outcome_labels": {
+        "closed_correctly": 0.986328125,
+        "closed_wrongly": 0.011067708333333334,
+        "never_closed": 0.0026041666666666665,
+        "malformed_only": 0.0
+      },
+      "reward_distribution": {
+        "0": 21,
+        "92": 1,
+        "95": 2,
+        "100": 1512
+      },
+      "smallest_detectable_effect": {
+        "n_families": 48,
+        "n_splits": 200,
+        "se_halves": 0.003393717659921056,
+        "se": 0.00239972077076272,
+        "mde": 0.006719218158135616,
+        "mde_lowest_split": 0.005513814034348479,
+        "mde_highest_split": 0.009385921288415356
+      }
+    }
+  ],
+  "pairs": [
+    {
+      "a": "base",
+      "b": "sft",
+      "n_families": 48,
+      "diff": 0.49609375000000006,
+      "lo": 0.41080729166666663,
+      "hi": 0.5794270833333333,
+      "t_lo": 0.40920705430820864,
+      "t_hi": 0.5829804456917914
+    },
+    {
+      "a": "sft",
+      "b": "grpo_seed1",
+      "n_families": 48,
+      "diff": 0.09244791666666663,
+      "lo": 0.03059895833333326,
+      "hi": 0.16666666666666663,
+      "t_lo": 0.02092624367769759,
+      "t_hi": 0.16396958965563574
+    },
+    {
+      "a": "base",
+      "b": "grpo_seed1",
+      "n_families": 48,
+      "diff": 0.5885416666666667,
+      "lo": 0.49869791666666663,
+      "hi": 0.6764322916666667,
+      "t_lo": 0.49685361848044196,
+      "t_hi": 0.6802297148528913
+    }
+  ],
+  "notes": []
+}

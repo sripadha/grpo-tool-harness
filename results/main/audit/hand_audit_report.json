@@ -1,0 +1,833 @@
+{
+  "attempts": [
+    {
+      "id": "A001",
+      "kind": "failed",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-46/s4",
+      "sample": 5,
+      "flags": [],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": false
+      },
+      "note": "wrong person id",
+      "agrees": false,
+      "automatic": {
+        "saved": false,
+        "replay": "same final state",
+        "second_verifier": false,
+        "main_again": false,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A002",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-15/s3",
+      "sample": 0,
+      "flags": [],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": true
+      },
+      "note": "",
+      "agrees": true,
+      "automatic": {
+        "saved": true,
+        "replay": "same final state",
+        "second_verifier": true,
+        "main_again": true,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A003",
+      "kind": "failed",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-46/s4",
+      "sample": 6,
+      "flags": [],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": false
+      },
+      "note": "Looked for the wrong person",
+      "agrees": false,
+      "automatic": {
+        "saved": false,
+        "replay": "same final state",
+        "second_verifier": false,
+        "main_again": false,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A004",
+      "kind": "failed",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-31/s4",
+      "sample": 4,
+      "flags": [
+        "m1 refused_call"
+      ],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": false
+      },
+      "note": "invalid tool called",
+      "agrees": false,
+      "automatic": {
+        "saved": false,
+        "replay": "same final state",
+        "second_verifier": false,
+        "main_again": false,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A005",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-25/s3",
+      "sample": 2,
+      "flags": [],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": true
+      },
+      "note": "",
+      "agrees": true,
+      "automatic": {
+        "saved": true,
+        "replay": "same final state",
+        "second_verifier": true,
+        "main_again": true,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A006",
+      "kind": "failed",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-09/s2",
+      "sample": 6,
+      "flags": [
+        "m1 refused_call",
+        "m2 id_not_from_a_result"
+      ],
+      "labels": {
+        "end_state_right": false,
+        "path_acceptable": false
+      },
+      "note": "wrong. Role already called. inactive",
+      "agrees": true,
+      "automatic": {
+        "saved": false,
+        "replay": "same final state",
+        "second_verifier": false,
+        "main_again": false,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A007",
+      "kind": "failed",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-02/s3",
+      "sample": 2,
+      "flags": [
+        "m1 refused_call",
+        "m2 id_not_from_a_result"
+      ],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": false
+      },
+      "note": "It messed up the person ID",
+      "agrees": false,
+      "automatic": {
+        "saved": false,
+        "replay": "same final state",
+        "second_verifier": false,
+        "main_again": false,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A008",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-12/s3",
+      "sample": 2,
+      "flags": [],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": true
+      },
+      "note": "",
+      "agrees": true,
+      "automatic": {
+        "saved": true,
+        "replay": "same final state",
+        "second_verifier": true,
+        "main_again": true,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A009",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-42/s4",
+      "sample": 4,
+      "flags": [],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": true
+      },
+      "note": "",
+      "agrees": true,
+      "automatic": {
+        "saved": true,
+        "replay": "same final state",
+        "second_verifier": true,
+        "main_again": true,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A010",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-45/s1",
+      "sample": 1,
+      "flags": [],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": true
+      },
+      "note": "",
+      "agrees": true,
+      "automatic": {
+        "saved": true,
+        "replay": "same final state",
+        "second_verifier": true,
+        "main_again": true,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A011",
+      "kind": "failed",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-31/s4",
+      "sample": 4,
+      "flags": [
+        "m1 refused_call"
+      ],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": false
+      },
+      "note": "It messed up the role name while calling the tool",
+      "agrees": false,
+      "automatic": {
+        "saved": false,
+        "replay": "same final state",
+        "second_verifier": false,
+        "main_again": false,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A012",
+      "kind": "failed",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-02/s4",
+      "sample": 2,
+      "flags": [
+        "m1 refused_call",
+        "m2 id_not_from_a_result"
+      ],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": false
+      },
+      "note": "wrong person ID card",
+      "agrees": false,
+      "automatic": {
+        "saved": false,
+        "replay": "same final state",
+        "second_verifier": false,
+        "main_again": false,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A013",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-42/s2",
+      "sample": 5,
+      "flags": [],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": true
+      },
+      "note": "",
+      "agrees": true,
+      "automatic": {
+        "saved": true,
+        "replay": "same final state",
+        "second_verifier": true,
+        "main_again": true,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A014",
+      "kind": "failed",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-02/s1",
+      "sample": 0,
+      "flags": [
+        "m1 refused_call",
+        "m2 id_not_from_a_result"
+      ],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": false
+      },
+      "note": "wrong person ID",
+      "agrees": false,
+      "automatic": {
+        "saved": false,
+        "replay": "same final state",
+        "second_verifier": false,
+        "main_again": false,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A015",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-22/s2",
+      "sample": 3,
+      "flags": [],
+      "labels": {
+        "end_state_right": false,
+        "path_acceptable": false
+      },
+      "note": "",
+      "agrees": false,
+      "automatic": {
+        "saved": true,
+        "replay": "same final state",
+        "second_verifier": true,
+        "main_again": true,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A016",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-14/s4",
+      "sample": 4,
+      "flags": [],
+      "labels": {
+        "end_state_right": false,
+        "path_acceptable": false
+      },
+      "note": "",
+      "agrees": false,
+      "automatic": {
+        "saved": true,
+        "replay": "same final state",
+        "second_verifier": true,
+        "main_again": true,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A017",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-21/s2",
+      "sample": 4,
+      "flags": [],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": true
+      },
+      "note": "",
+      "agrees": true,
+      "automatic": {
+        "saved": true,
+        "replay": "same final state",
+        "second_verifier": true,
+        "main_again": true,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A018",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-07/s1",
+      "sample": 3,
+      "flags": [],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": true
+      },
+      "note": "",
+      "agrees": true,
+      "automatic": {
+        "saved": true,
+        "replay": "same final state",
+        "second_verifier": true,
+        "main_again": true,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A019",
+      "kind": "failed",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-46/s2",
+      "sample": 0,
+      "flags": [],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": false
+      },
+      "note": "",
+      "agrees": false,
+      "automatic": {
+        "saved": false,
+        "replay": "same final state",
+        "second_verifier": false,
+        "main_again": false,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A020",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-41/s3",
+      "sample": 0,
+      "flags": [],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": true
+      },
+      "note": "",
+      "agrees": true,
+      "automatic": {
+        "saved": true,
+        "replay": "same final state",
+        "second_verifier": true,
+        "main_again": true,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A021",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-32/s1",
+      "sample": 7,
+      "flags": [],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": false
+      },
+      "note": "",
+      "agrees": true,
+      "automatic": {
+        "saved": true,
+        "replay": "same final state",
+        "second_verifier": true,
+        "main_again": true,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A022",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-05/s2",
+      "sample": 4,
+      "flags": [],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": true
+      },
+      "note": "",
+      "agrees": true,
+      "automatic": {
+        "saved": true,
+        "replay": "same final state",
+        "second_verifier": true,
+        "main_again": true,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A023",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-44/s3",
+      "sample": 4,
+      "flags": [],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": true
+      },
+      "note": "",
+      "agrees": true,
+      "automatic": {
+        "saved": true,
+        "replay": "same final state",
+        "second_verifier": true,
+        "main_again": true,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A024",
+      "kind": "failed",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-31/s4",
+      "sample": 2,
+      "flags": [
+        "m1 refused_call",
+        "m2 id_not_from_a_result"
+      ],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": false
+      },
+      "note": "",
+      "agrees": false,
+      "automatic": {
+        "saved": false,
+        "replay": "same final state",
+        "second_verifier": false,
+        "main_again": false,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A025",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-32/s4",
+      "sample": 4,
+      "flags": [],
+      "labels": {
+        "end_state_right": false,
+        "path_acceptable": true
+      },
+      "note": "",
+      "agrees": false,
+      "automatic": {
+        "saved": true,
+        "replay": "same final state",
+        "second_verifier": true,
+        "main_again": true,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A026",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-40/s3",
+      "sample": 1,
+      "flags": [],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": true
+      },
+      "note": "",
+      "agrees": true,
+      "automatic": {
+        "saved": true,
+        "replay": "same final state",
+        "second_verifier": true,
+        "main_again": true,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A027",
+      "kind": "top_reward",
+      "why": "flagged",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-02/s3",
+      "sample": 3,
+      "flags": [
+        "m1 refused_call",
+        "m2 id_not_from_a_result"
+      ],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": true
+      },
+      "note": "",
+      "agrees": true,
+      "automatic": {
+        "saved": true,
+        "replay": "same final state",
+        "second_verifier": true,
+        "main_again": true,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A028",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-21/s2",
+      "sample": 5,
+      "flags": [],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": true
+      },
+      "note": "",
+      "agrees": true,
+      "automatic": {
+        "saved": true,
+        "replay": "same final state",
+        "second_verifier": true,
+        "main_again": true,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A029",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-05/s4",
+      "sample": 6,
+      "flags": [],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": true
+      },
+      "note": "",
+      "agrees": true,
+      "automatic": {
+        "saved": true,
+        "replay": "same final state",
+        "second_verifier": true,
+        "main_again": true,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A030",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed2",
+      "scenario_id": "dv-05/s3",
+      "sample": 3,
+      "flags": [],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": true
+      },
+      "note": "",
+      "agrees": true,
+      "automatic": {
+        "saved": true,
+        "replay": "same final state",
+        "second_verifier": true,
+        "main_again": true,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    },
+    {
+      "id": "A031",
+      "kind": "top_reward",
+      "why": "drawn",
+      "arm": "grpo_seed1",
+      "scenario_id": "dv-06/s3",
+      "sample": 5,
+      "flags": [],
+      "labels": {
+        "end_state_right": true,
+        "path_acceptable": true
+      },
+      "note": "",
+      "agrees": true,
+      "automatic": {
+        "saved": true,
+        "replay": "same final state",
+        "second_verifier": true,
+        "main_again": true,
+        "verdict_differences": [],
+        "other_kinds": []
+      }
+    }
+  ],
+  "n_labels": 62,
+  "n_blank": 0,
+  "end_state": {
+    "top_reward": {
+      "answered": 21,
+      "agree": 18,
+      "disagree": 3,
+      "blank": 0
+    },
+    "failed": {
+      "answered": 10,
+      "agree": 1,
+      "disagree": 9,
+      "blank": 0
+    }
+  },
+  "disagreements": [
+    "A001",
+    "A003",
+    "A004",
+    "A007",
+    "A011",
+    "A012",
+    "A014",
+    "A015",
+    "A016",
+    "A019",
+    "A024",
+    "A025"
+  ],
+  "path": {
+    "top_reward": {
+      "flagged": {
+        "acceptable": 1,
+        "not_acceptable": 0,
+        "blank": 0
+      },
+      "not_flagged": {
+        "acceptable": 17,
+        "not_acceptable": 3,
+        "blank": 0
+      }
+    },
+    "failed": {
+      "acceptable": 0,
+      "not_acceptable": 10,
+      "blank": 0
+    }
+  },
+  "paths_not_accepted": [
+    "A015",
+    "A016",
+    "A021"
+  ],
+  "flagged_paths_accepted": [
+    "A027"
+  ],
+  "automatic_differ": [],
+  "sample": {
+    "seed": 0,
+    "n_sampled": {
+      "top_reward": 21,
+      "failed": 10
+    },
+    "population": {
+      "grant": {
+        "attempts": 768,
+        "top_reward": 724,
+        "top_reward_flagged": 0,
+        "failed": 44
+      },
+      "approval": {
+        "attempts": 768,
+        "top_reward": 759,
+        "top_reward_flagged": 1,
+        "failed": 8
+      },
+      "already": {
+        "attempts": 768,
+        "top_reward": 761,
+        "top_reward_flagged": 0,
+        "failed": 3
+      },
+      "inactive": {
+        "attempts": 768,
+        "top_reward": 766,
+        "top_reward_flagged": 0,
+        "failed": 1
+      }
+    },
+    "notes": [
+      "NOTE: the outcome inactive has only 1 failed attempts; the draw takes 3, so all 1 are in the sample"
+    ]
+  }
+}

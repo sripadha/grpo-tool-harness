@@ -1,0 +1,35 @@
+{
+  "completed_steps": 80,
+  "n_episodes": 10240,
+  "n_harness_errors": 0,
+  "invalid_call_rate_step0": 0.0,
+  "checkpoint": "checkpoints/step_00080",
+  "lora_fingerprint": 66578.681436953,
+  "grpo_config": {
+    "n_scenarios": 8,
+    "group_size": 16,
+    "reference_tokens": 200,
+    "steps": 80,
+    "lr": 1e-05,
+    "max_grad_norm": 1.0,
+    "micro_batch": 4,
+    "gradient_checkpointing": true,
+    "tie_tol": 0.0,
+    "save_every": 10,
+    "seed": 2,
+    "max_harness_error_rate": 0.01,
+    "max_logprob_gap": 0.02,
+    "max_invalid_call_rate": 0.05,
+    "usd_per_hour": null
+  },
+  "run_config_sha256": "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475",
+  "sampling_run_seed": 8888994274034250,
+  "start_adapter": {
+    "lora_fingerprint": 66522.18147596584,
+    "files_sha256": {
+      "adapter_config.json": "9fe0c5587b821bc1d8681d2ae5c61ebec618c9447e1786b57173e76e4e6f3fa0",
+      "adapter_model.safetensors": "c7c7c55110eb921eb03483ee5c5da2cbba04ecc0e35f44a1925fa51ccac1ca8b"
+    }
+  },
+  "data_sha256": "330e7022f6d378ae4d00dd5c3fbe75c8799d2a7ea804ad0b0af89bb46c34bf79"
+}

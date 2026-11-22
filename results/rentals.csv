@@ -1,0 +1,11 @@
+instance_id,rented_utc,stopped_utc,stopped_from,purpose
+61045163,2026-11-17T08:44:05Z,2026-11-17T09:03:43Z,,nothing ran: the machine never started (an error while its container was built); the script stopped it after 20 minutes
+61047327,2026-11-17T09:05:08Z,2026-11-17T13:06Z,work log,"the first GPU sessions: set-up, the backend and the training code tried on the GPU, the speed of the 4B and the 2B"
+61098966,2026-11-17T16:51:32Z,2026-11-17T18:43:21Z,,"the 9B wrote the text that the model reads; calibration round 1 of the 2B, 4B and 9B; a speed test of the 2B; a dry run"
+61182932,2026-11-18T04:49:59Z,2026-11-18T15:27:20Z,,"new drafts of the text and calibration rounds 2 to 4 of the 2B and the 4B, with the three short runs of round 4b"
+61285391,2026-11-18T16:37:15Z,2026-11-18T17:40:09Z,,"GPU tests, a trial of the training scripts and one full GRPO step at the final token cap"
+61312835,2026-11-18T20:04:28Z,2026-11-18T20:08:20Z,,nothing ran: the machine did not start; the script stopped it
+61313315,2026-11-18T20:08:34Z,2026-11-19T06:46:45Z,,"gradient checks before the freeze; after it a dress rehearsal on throwaway data, stage 1 (base and SFT), the overfit check, the pilot, the second-desk rollouts of base and sft, the layout-gradient check, then GRPO seed 1 with its dev rollout, dev curve and second-desk rollouts"
+61368330,2026-11-19T03:26:18Z,2026-11-19T06:52:33Z,,"GRPO seed 2 with its dev rollout, dev curve and second-desk rollouts"
+61405905,2026-11-19T07:54:56Z,2026-11-19T11:16:44Z,,"two rehearsals of the test chain on calibration families, then the test run (the four test rollouts)"
+61480327,2026-11-19T16:36:50Z,2026-11-19T18:11:52Z,,"the first runs of the code of two extras on a GPU: the GPU tests and the rehearsals of rs2 and distill, and the measurement of gradient noise for a test of distill; no real run"

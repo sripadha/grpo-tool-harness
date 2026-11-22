@@ -1,0 +1,209 @@
+# Placeholder written by the coding assistant (a closed API model) for tests and the smoke test only. Nothing here is
+# used in any reported run. Do not copy a sentence from this file into model_text.yaml.
+#
+# Structure: see accessdesk/text.py. Keys on the left are internal and are never shown to the model.
+# Values on the right are what the model reads.
+
+meta:
+  written_by: "the coding assistant (a closed API model)"
+  placeholder: true
+
+system_prompt: |
+  You work at the IT access desk of a company. Each conversation is one request: a person needs a role.
+  Resolve the request with the tools.
+
+  How to work:
+  - Call exactly one tool in each message, and write nothing after the tool call.
+  - Use only ids that a tool has returned. Never make up an id.
+
+  Rules, in this order:
+  1. Look the person up with find_person, using the full name in the request. If more than one person has
+     that name, the department in the request tells you which person is meant.
+  2. Check the requested role for that person with check_role_access.
+  3. Then take the first case that applies:
+     a. The person's account is inactive: close the ticket with the outcome denied.
+     b. The person already has the role: close the ticket with the outcome already_has_role.
+     c. The role is sensitive: ask the person's manager for approval with ask_for_approval, then close the
+        ticket with the outcome pending_approval.
+     d. In every other case: give the role with give_role, then close the ticket with the outcome granted.
+
+  Do not give a role in cases a, b and c. Always finish with close_ticket, with the id of the person and the
+  id of the role.
+
+plain_system_prompt: |
+  You work at the IT access desk of a company. Each conversation is one request: a person needs a role.
+  Resolve the request with the tools. Call exactly one tool in each message. Use only ids that a tool has
+  returned.
+
+policy_shift:
+  variant: all_grants_need_approval
+  system_prompt: |
+    You work at the IT access desk of a company. Each conversation is one request: a person needs a role.
+    Resolve the request with the tools.
+
+    How to work:
+    - Call exactly one tool in each message, and write nothing after the tool call.
+    - Use only ids that a tool has returned. Never make up an id.
+
+    Rules, in this order:
+    1. Look the person up with find_person, using the full name in the request. If more than one person has
+       that name, the department in the request tells you which person is meant.
+    2. Check the requested role for that person with check_role_access.
+    3. Then take the first case that applies:
+       a. The person's account is inactive: close the ticket with the outcome denied.
+       b. The person already has the role: close the ticket with the outcome already_has_role.
+       c. In every other case, for a sensitive role and for any other role alike: ask the person's manager
+          for approval with ask_for_approval, then close the ticket with the outcome pending_approval.
+
+    The desk never gives a role itself: do not call give_role. Always finish with close_ticket, with the id
+    of the person and the id of the role.
+
+id_prefixes:
+  person: "per_"
+  role: "rol_"
+
+tools:
+  lookup_person:
+    name: "find_person"
+    description: "Find people by full name. Returns every person with that name: person id, full name, department, account status and manager id."
+    params:
+      name:
+        name: "full_name"
+        description: "The full name of the person, as written in the request."
+  check_access:
+    name: "check_role_access"
+    description: "Look up one role by its name for one person. Returns the role id, whether the role is sensitive, and whether the person already has the role."
+    params:
+      person_id:
+        name: "person_id"
+        description: "The id of the person, as returned by find_person."
+      role_name:
+        name: "role_name"
+        description: "The name of the role, as written in the request."
+  request_approval:
+    name: "ask_for_approval"
+    description: "Ask an approver to approve a role for a person. This writes an approval record. It does not give the role."
+    params:
+      person_id:
+        name: "person_id"
+        description: "The id of the person who needs the role."
+      role_id:
+        name: "role_id"
+        description: "The id of the role, as returned by check_role_access."
+      approver_id:
+        name: "approver_id"
+        description: "The person id of the approver."
+  grant_role:
+    name: "give_role"
+    description: "Give a role to a person now. This writes the access and a grant record."
+    params:
+      person_id:
+        name: "person_id"
+        description: "The id of the person who gets the role."
+      role_id:
+        name: "role_id"
+        description: "The id of the role, as returned by check_role_access."
+  close_request:
+    name: "close_ticket"
+    description: "Close the request with its outcome. This ends the work on the request."
+    params:
+      resolution:
+        name: "outcome"
+        description: "The outcome of the request."
+      person_id:
+        name: "person_id"
+        description: "The id of the person the request is about."
+      role_id:
+        name: "role_id"
+        description: "The id of the requested role."
+  department_info:
+    name: "department_summary"
+    description: "Show the number of people in one department."
+    params:
+      department:
+        name: "department_name"
+        description: "The name of the department."
+
+result_keys:
+  matches: "people"
+  person_id: "person_id"
+  name: "full_name"
+  department: "department"
+  status: "account_status"
+  manager_id: "manager_id"
+  role_id: "role_id"
+  sensitive: "sensitive"
+  has_access: "has_role"
+  result: "message"
+  error: "error"
+  member_count: "people_count"
+
+values:
+  status:
+    active: "active"
+    inactive: "inactive"
+  resolution:
+    granted: "granted"
+    pending: "pending_approval"
+    already: "already_has_role"
+    denied: "denied"
+  confirmation:
+    approval_requested: "approval requested"
+    role_granted: "role given"
+    request_closed: "ticket closed"
+
+errors:
+  unknown_person_id: "No person has the id {value}."
+  unknown_role_name: "No role has the name {value}."
+  unknown_role_id: "No role has the id {value}."
+  unknown_approver_id: "The approver must be a person, and no person has the id {value}."
+  unknown_department: "No department has the name {value}."
+  malformed_call: "The message was not one valid tool call. Send exactly one tool call, with every parameter of the tool."
+
+request_templates:
+  # Style 1: one plain sentence.
+  style_1:
+    - "Please give {person_name} from {department} access to the {role_name} role."
+    - "{person_name} in the {department} department needs the {role_name} role."
+    - "Access request: the {role_name} role for {person_name} of the {department} department."
+  # Style 2: a form with fields.
+  style_2:
+    - "Request type: access. Person: {person_name}. Department: {department}. Role: {role_name}."
+    - "New ticket. Employee name: {person_name}. Employee department: {department}. Role wanted: {role_name}."
+    - "Role: {role_name} | For: {person_name} | Team: {department}"
+  # Style 3: a casual chat message.
+  style_3:
+    - "hi, can you add {role_name} for {person_name}? they sit in {department}. thanks"
+    - "Hey desk, {person_name} ({department}) is stuck without {role_name}. Could you sort it out?"
+    - "quick one: {person_name} over in {department} is asking for {role_name}"
+  # Style 4 (held out: dev, test and calibration only): a request passed on by somebody else.
+  style_4:
+    - "Passing on a request from the {department} team lead: one of their people, {person_name}, should be set up with {role_name} if the rules allow it."
+    - "I was asked to send this to you. The role in question is {role_name}. It is for a colleague in {department} whose name is {person_name}."
+    - "After yesterday's meeting, the {department} department would like {role_name} to be arranged for {person_name}."
+
+departments:
+  - "Finance"
+  - "Engineering"
+  - "Sales"
+  - "Customer Support"
+  - "Human Resources"
+  - "Legal"
+  - "Marketing"
+  - "Operations"
+
+roles:
+  - "Billing Viewer"
+  - "Billing Editor"
+  - "Payroll Editor"
+  - "Source Code Reader"
+  - "Source Code Maintainer"
+  - "Database Reader"
+  - "Database Operator"
+  - "Wiki Editor"
+  - "Help Desk Agent"
+  - "Sales Reports Viewer"
+  - "Contract Reviewer"
+  - "Expense Reports Viewer"
+  - "Server Operator"
+  - "Build Pipeline Operator"

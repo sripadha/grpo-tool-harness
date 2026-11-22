@@ -1,0 +1,30 @@
+Loading weights:   0%|          | 0/320 [00:00<?, ?it/s]Loading weights: 100%|██████████| 320/320 [00:00<00:00, 16569.07it/s]
+/workspace/venv/lib/python3.11/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+benchmark of Qwen/Qwen3.5-2B; results in /workspace/repo/results/_smoke/bench_2b
+warm_up                                                    ok           peak 4.15 GiB allocated, 4.22 GiB reserved
+/workspace/venv/lib/python3.11/site-packages/transformers/modeling_utils.py:3303: FutureWarning: `is_gradient_checkpointing` is deprecated and will be removed in v6. Use `is_activation_checkpointing` instead.
+  warnings.warn(
+sampling  with LoRA     chunk  16                          ok         128 episodes in 214.0 s  2153 episodes/hour  165.2 sampled tokens/s  peak 7.19 GiB allocated, 16.36 GiB reserved
+sampling  with LoRA     chunk  32                          ok         128 episodes in 180.7 s  2549 episodes/hour  194.6 sampled tokens/s  peak 10.34 GiB allocated, 22.0 GiB reserved
+sampling  with LoRA     chunk  64                          ok         128 episodes in 181.4 s  2541 episodes/hour  194.3 sampled tokens/s  peak 16.46 GiB allocated, 22.08 GiB reserved
+step_rollout                                               ok         rollout_seconds=179.5  peak 11.47 GiB allocated, 21.7 GiB reserved
+step_rollout                                               ok         rollout_seconds=89.8  peak 11.47 GiB allocated, 21.7 GiB reserved
+training  16 x 8  checkpointing on   micro-batch  2        ok         90.59 s for 128 episodes (optimiser step 0.125 s)  peak 7.56 GiB allocated, 15.31 GiB reserved
+training  16 x 8  checkpointing on   micro-batch  4        ok         63.87 s for 128 episodes (optimiser step 0.012 s)  peak 10.25 GiB allocated, 22.0 GiB reserved
+training  16 x 8  checkpointing on   micro-batch  8        ok         84.49 s for 128 episodes (optimiser step 0.011 s)  peak 14.75 GiB allocated, 21.76 GiB reserved
+training   8 x 8  checkpointing on   micro-batch  2        ok         22.66 s for 64 episodes (optimiser step 0.011 s)  peak 7.12 GiB allocated, 12.21 GiB reserved
+training   8 x 8  checkpointing on   micro-batch  4        ok         26.17 s for 64 episodes (optimiser step 0.011 s)  peak 9.06 GiB allocated, 15.62 GiB reserved
+training   8 x 8  checkpointing on   micro-batch  8        ok         28.9 s for 64 episodes (optimiser step 0.011 s)  peak 13.82 GiB allocated, 21.76 GiB reserved
+whole step 16 x 8  chunk 32  micro-batch 4  ckpt on        ok         215.4 s = rollout 162.9 s + update 52.44 s (128 episodes trained)  peak 10.3 GiB allocated, 21.18 GiB reserved
+whole step  8 x 8  chunk 32  micro-batch 2  ckpt on        ok         107.9 s = rollout 84.7 s + update 23.21 s (64 episodes trained)  peak 10.06 GiB allocated, 18.12 GiB reserved
+
+One GRPO step, parts added up = the rollout of 16 x 8 (scaled for 8 x 8) + the fastest update setting that ran (every episode trained):
+  16 x 8:    243 s = rollout 180 s + update 64 s (micro-batch 4, checkpointing on, peak 10.25 GiB)
+   8 x 8:    112 s = rollout 90 s + update 23 s (micro-batch 2, checkpointing on, peak 7.12 GiB)
+One GRPO step, measured in one piece (fresh rollout, then the update over every episode):
+  16 x 8: 215.4 s  (ok; rollout 162.9 s at chunk 32, update 52.44 s; the real rewards would keep 0.8125 of the groups)
+   8 x 8: 107.9 s  (ok; rollout 84.7 s at chunk 32, update 23.21 s; the real rewards would keep 0.75 of the groups)
+PLAN section 7: up to 180 s for 16 x 8 keeps 16 x 8; 180 to 300 s means 8 x 8; more means the 2B model.
+14 settings; 0 did not finish (oom, timeout or error); wrote /workspace/repo/results/_smoke/bench_2b/bench.json
+JOB_EXIT_CODE=0

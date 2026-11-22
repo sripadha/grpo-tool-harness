@@ -1,0 +1,186 @@
+# ==============================================================================
+# The end states of six requests, written by hand
+#
+# What to do
+#   1. This form holds six requests to the access desk; a fixed rule and a seed chose them.
+#   2. Each request comes with the facts that the tools of the desk would show.
+#   3. Work out with the rules below what the desk must do, and write four answers under each one.
+#   4. Do not open the scenario file and do not run the generator before the form is checked.
+#   5. Then run the check: it builds the end state from your answers with the tools of the desk and
+#      compares it with the end state that the generator stored.
+#
+#      .venv/bin/python scripts/hand_states.py check --form hand_states/form.yaml --scenarios data/scenarios --split dev
+#
+#      Each run of the check is added to a log beside this form. The first run is the one that
+#      counts: if an answer differs, find out why before you change it.
+#
+# Who is meant
+#   The request names a person and a department. The person meant is the one with this full name.
+#   If two people have this full name, it is the one who works in the department of the request.
+#
+# The rules of the desk (rule set: default)
+#   Take the rules in this order. The first rule that fits decides, and no later rule is looked at.
+#   1. The account of the person is not active.
+#        The desk does not give the role. It asks nobody. Resolution: refused.
+#   2. The person holds the role now.
+#        The desk does not give the role. It asks nobody. Resolution: held before.
+#   3. The role is sensitive.
+#        The desk does not give the role. It asks the manager of the person to approve. Resolution: manager asked.
+#   4. In every other case.
+#        The desk gives the role. It asks nobody. Resolution: role given.
+#   This list is printed from the code (accessdesk/env/rules.py): it is what the generator follows.
+#   Read it once against the rules in the system prompt that the model reads. That prompt is in
+#   the file text/model_text.yaml, under the key system_prompt.
+#   If the two differ, stop: that is a finding, and the answers below would only repeat it.
+#
+# The four answers
+#   person            the person id of the person meant
+#   resolution        one of: role given | manager asked | held before | refused
+#   role_given        yes if the desk gives the role in this request, else no
+#   asked_to_approve  the person id of the manager whom the desk asks, or none
+#   Write each answer behind the colon, with a space after the colon. Leave no answer empty.
+#   Change nothing else in this file.
+# ==============================================================================
+
+form: hand_states
+version: "2"
+split: dev
+split_file_sha256: "fea3e07efa22481bb8ee3e2728f4554087e47a607754ecb98c5dc4641be87dd5"
+seed: "0"
+ruleset: default
+families:
+
+# ------------------------------------------------------------------------------
+# Request 1 of 6: the next two lines name it and its rule set. Do not change them.
+# ------------------------------------------------------------------------------
+- family: "dv-08"
+  ruleset: default
+  # The request:
+  #   Please grant the role of Payroll Payment Process to Timothy Lee from the Finance.
+  #
+  # People with the full name "Timothy Lee":
+  #   person id   department   account   manager id   holds the role now
+  #   USRxrf5g3   Finance      active    USR2rn24q    no
+  #
+  # The role of the request:
+  #   role id      name                      sensitive
+  #   ROLEgprp36   Payroll Payment Process   yes
+  #
+  # Your answers (the words to use are at the top of the form):
+  person: USRxrf5g3
+  resolution: manager asked
+  role_given: no
+  asked_to_approve: USR2rn24q
+
+# ------------------------------------------------------------------------------
+# Request 2 of 6: the next two lines name it and its rule set. Do not change them.
+# ------------------------------------------------------------------------------
+- family: "dv-19"
+  ruleset: default
+  # The request:
+  #   We request that Thomas Dunn in Marketing be assigned the Marketing Campaign Setup.
+  #
+  # People with the full name "Thomas Dunn":
+  #   person id   department   account   manager id   holds the role now
+  #   USRasm8wc   Marketing    active    USRn3jtzc    no
+  #
+  # The role of the request:
+  #   role id      name                       sensitive
+  #   ROLEcqdfbb   Marketing Campaign Setup   no
+  #
+  # Your answers (the words to use are at the top of the form):
+  person: USRasm8wc
+  resolution: role given
+  role_given: yes
+  asked_to_approve: none
+
+# ------------------------------------------------------------------------------
+# Request 3 of 6: the next two lines name it and its rule set. Do not change them.
+# ------------------------------------------------------------------------------
+- family: "dv-36"
+  ruleset: default
+  # The request:
+  #   Please grant the role of Engineering Design File to Philip Boyd from the Legal.
+  #
+  # People with the full name "Philip Boyd":
+  #   person id   department        account      manager id   holds the role now
+  #   USRp5snhj   Legal             active       USRgyf84f    yes
+  #   USRshkhhd   Human Resources   not active   USRz9xczw    no
+  #
+  # The role of the request:
+  #   role id      name                      sensitive
+  #   ROLEemujyx   Engineering Design File   yes
+  #
+  # Your answers (the words to use are at the top of the form):
+  person: USRp5snhj
+  resolution: held before
+  role_given: no
+  asked_to_approve: none
+
+# ------------------------------------------------------------------------------
+# Request 4 of 6: the next two lines name it and its rule set. Do not change them.
+# ------------------------------------------------------------------------------
+- family: "dv-13"
+  ruleset: default
+  # The request:
+  #   We request that Charles Rivera in Information Technology be assigned the Shipping Manifest Create.
+  #
+  # People with the full name "Charles Rivera":
+  #   person id   department               account   manager id   holds the role now
+  #   USR6gvxv5   Information Technology   active    USRbyst7k    yes
+  #
+  # The role of the request:
+  #   role id      name                       sensitive
+  #   ROLEg53zez   Shipping Manifest Create   no
+  #
+  # Your answers (the words to use are at the top of the form):
+  person: USR6gvxv5
+  resolution: held before
+  role_given: no
+  asked_to_approve: none
+
+# ------------------------------------------------------------------------------
+# Request 5 of 6: the next two lines name it and its rule set. Do not change them.
+# ------------------------------------------------------------------------------
+- family: "dv-04"
+  ruleset: default
+  # The request:
+  #   Please grant the role of Customer Support Ticket to Alan Flores from the Operations.
+  #
+  # People with the full name "Alan Flores":
+  #   person id   department   account      manager id   holds the role now
+  #   USRfdd5qt   Legal        active       USR2wqv29    no
+  #   USRbkwds9   Operations   not active   USRa3tmbu    no
+  #
+  # The role of the request:
+  #   role id      name                      sensitive
+  #   ROLE728dxp   Customer Support Ticket   yes
+  #
+  # Your answers (the words to use are at the top of the form):
+  person: USRbkwds9
+  resolution: refused
+  role_given: no
+  asked_to_approve: none
+
+# ------------------------------------------------------------------------------
+# Request 6 of 6: the next two lines name it and its rule set. Do not change them.
+# ------------------------------------------------------------------------------
+- family: "dv-22"
+  ruleset: default
+  # The request:
+  #   Please grant the role of Inventory Stock Update to John Johnson from the Sales.
+  #
+  # People with the full name "John Johnson":
+  #   person id   department   account      manager id   holds the role now
+  #   USRwpgwnv   Finance      active       USRu4rnzj    no
+  #   USRdh7vu7   Sales        not active   USRkhfyvz    yes
+  #
+  # The role of the request:
+  #   role id      name                     sensitive
+  #   ROLEp6fb8p   Inventory Stock Update   no
+  #
+  # Your answers (the words to use are at the top of the form):
+  person: USRdh7vu7
+  resolution: refused
+  role_given: no
+  asked_to_approve: none

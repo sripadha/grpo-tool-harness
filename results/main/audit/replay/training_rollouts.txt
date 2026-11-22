@@ -1,0 +1,4 @@
+grpo_seed1: 80 rollout files replayed, 0 with a difference or an error
+grpo_seed2: 80 rollout files replayed, 0 with a difference or an error
+checks/pilot: 15 rollout files replayed, 0 with a difference or an error
+checks/overfit: 30 rollout files replayed, 0 with a difference or an error

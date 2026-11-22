@@ -1,0 +1,156 @@
+{
+  "complete": true,
+  "script": "scripts/gpu/measure_layout_gradients.py",
+  "stage": "bfloat16",
+  "loss": "grpo",
+  "command": [
+    "/workspace/repo/scripts/gpu/measure_layout_gradients.py",
+    "--model",
+    "Qwen/Qwen3.5-2B",
+    "--revision",
+    "15852e8c16360a2fea060d615a32b45270f8a8fc",
+    "--adapter",
+    "results/main/sft/adapter",
+    "--episodes",
+    "results/main/checks/pilot/rollouts/step_00000.episodes.jsonl",
+    "--tokens",
+    "results/main/checks/pilot/rollouts/step_00000.tokens.jsonl",
+    "--out",
+    "results/main/checks/layout_gradients",
+    "--stage",
+    "bfloat16"
+  ],
+  "started_utc": "2026-11-19T03:11:41Z",
+  "saved_utc": "2026-11-19T03:12:14Z",
+  "stamp": {
+    "identity": {
+      "model": "Qwen/Qwen3.5-2B",
+      "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+      "episodes_sha256": "ba95c58411d09bef362d0f06007a51724af89df789dcaf3904fdc2e45fbd0cc0",
+      "tokens_sha256": "8c89748d329344bf5ad289fd91cd7a008b559b89e34531ceae8c2e6cc4573452",
+      "adapter_sha256": {
+        "adapter_config.json": "9fe0c5587b821bc1d8681d2ae5c61ebec618c9447e1786b57173e76e4e6f3fa0",
+        "adapter_model.safetensors": "c7c7c55110eb921eb03483ee5c5da2cbba04ecc0e35f44a1925fa51ccac1ca8b"
+      },
+      "settings": {
+        "n_scenarios": 8,
+        "group_size": 16,
+        "reference_tokens": 200,
+        "micro_batch": 4,
+        "tie_tol": 0.0,
+        "gradient_checkpointing": true
+      },
+      "splits": 20,
+      "split_seed": 0,
+      "step": {
+        "n_episodes": 128,
+        "n_harness_errors": 0,
+        "n_groups": 8,
+        "group_size": 16,
+        "n_kept_groups": 3,
+        "kept_groups": [
+          {
+            "group": 0,
+            "scenario_id": "tr-019/s1"
+          },
+          {
+            "group": 1,
+            "scenario_id": "tr-057/s1"
+          },
+          {
+            "group": 4,
+            "scenario_id": "tr-036/s2"
+          }
+        ],
+        "norm_const": 25600.0,
+        "grpo": {
+          "n_episodes": 48,
+          "n_loss_tokens": 9803
+        },
+        "sft_style": {
+          "n_episodes": 128,
+          "n_loss_tokens": 25631
+        }
+      }
+    },
+    "code": {
+      "code_sha256": "a157f32175cc4a24092f916a8dcf2a382a0ac4764b81d60d94f28a02963202f3",
+      "frozen": {
+        "manifest_sha256": "f1ea719eadb4e16a25af51ee9b4ec7050097de3df451469d0b001833b85a99e9",
+        "code_sha256": "a157f32175cc4a24092f916a8dcf2a382a0ac4764b81d60d94f28a02963202f3",
+        "matches": true,
+        "differences": []
+      },
+      "frozen_note": null,
+      "training_code": {
+        "sha256": "d547e6d138b205f1a1fe4f863938a99dc8607c60240c49259310c8e19d43d97c",
+        "files": {
+          "accessdesk/_second/grpo_math.py": "1b3793232d5452e8ea0867314e808b48da8d6b19ce790c721d6f566a0765d3dd",
+          "accessdesk/_second/loss_mask.py": "c70bbdbcf71d25b0abb9acc6c90a85fb00e3f4c488caf1a3e1b68d4c29e8be92",
+          "accessdesk/train/__init__.py": "20ca27ddc874c92c4ba81f9ae1fcf255496de787333ef23cd3684c6d1a4c4e43",
+          "accessdesk/train/forward.py": "9c957343fb4eb6f20e67da68a4d7ae1b9ebae200e07f5fd588f3faa4021b5489",
+          "accessdesk/train/grpo.py": "cf18a0e50f2d0e1d7afbb3b9beb56daa308cb0715e8da276f351f454be472c27",
+          "accessdesk/train/grpo_math.py": "8d203e9e3dae38f9197423cc6e1b1072bb7869cc944852f409f5cf789277811f",
+          "accessdesk/train/lora.py": "9b86324257684d26da53e6a20acbc34fb7579fdbe43800ad7cf60a599a034daa",
+          "accessdesk/train/loss_mask.py": "c4894b141befd82b34a12cfd59be1b2185d3f23634ba188f6e451ce7044a33c6",
+          "accessdesk/train/sft.py": "6f4bebaee39c70d6434027ea9aae238a872620a1d20d07061d267b5221522e25",
+          "scripts/gpu/chain_stage1.sh": "6d7a5446eed99e8ce14874b7d3f29ea439a16d4b43cac0fb2409f9aca319ef20",
+          "scripts/gpu/chain_stage2.sh": "f807ebc2544b2f9cabf1067407bb927a79af52f88f4c7149978e3d479abca00c",
+          "scripts/gpu/sft_data.py": "d94e8cff1da1eb4e5b23f367607b56dfc251e1e29d0ce957db4b274ced8bcb54",
+          "scripts/gpu/train_grpo.py": "68846c03e24e65a4ac32a9c86f233179b899c8eb4c609712a9585ceef1c57613",
+          "scripts/gpu/train_sft.py": "a0e975302e6e84f382e2350ffba476c99f422f2543397e86a11704215d5ef431"
+        }
+      },
+      "impl": {
+        "verify": "main",
+        "reward": "main",
+        "build_loss_mask": "main",
+        "group_advantages": "main",
+        "policy_loss": "main",
+        "paired_family_bootstrap": "main"
+      },
+      "this_script": {
+        "path": "/workspace/repo/scripts/gpu/measure_layout_gradients.py",
+        "sha256": "447e616719185f1dd7e7ba1b506082a0b33854a5819dada6b302823186985f28",
+        "bytes": 96816
+      }
+    }
+  },
+  "way": "bfloat16_trainer_layout",
+  "numbers": {
+    "dtype": "bfloat16",
+    "micro_batch": 4,
+    "loss": -0.0031112588405903807,
+    "n_episodes": 48,
+    "n_loss_tokens": 9803,
+    "logprob_gap_to_sampler": {
+      "n": 9803,
+      "mean": 0.0017919845512672356,
+      "p99": 0.06222003698348999,
+      "max": 0.3654627799987793
+    },
+    "seconds_gradient_pass": 17.77,
+    "seconds_logprob_pass": 4.82,
+    "peak_gpu_memory_gb_gradient_pass": {
+      "allocated": 8.35,
+      "reserved": 9.13
+    },
+    "peak_gpu_memory_gb_logprob_pass": {
+      "allocated": 6.05,
+      "reserved": 9.13
+    },
+    "gradient_norm": 0.0887073025528934,
+    "logprob_gap_to_sampler_second_pass": {
+      "n": 9803,
+      "mean": 0.0017919845512672124,
+      "p99": 0.06222003698348999,
+      "max": 0.3654627799987793
+    },
+    "lora_fingerprint_after": 66522.18147596584,
+    "arrays": {
+      "path": "results/main/checks/layout_gradients/stage_bfloat16.grpo.bfloat16_trainer_layout.npz",
+      "sha256": "c49f4cc78430666e13b76ba04867672e4518ec2c3fa2166f1aa2a797dbae940e",
+      "bytes": 62600410
+    }
+  }
+}

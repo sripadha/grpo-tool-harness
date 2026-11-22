@@ -1,0 +1,1259 @@
+# The instructions that the open-weight model is given when it writes text/model_text.yaml.
+#
+# Who wrote this file: the coding assistant (a closed API model). Nothing in this file is shown to the model
+# that is trained. It is shown to the open-weight model that writes the text (scripts/gpu/draft_text.py), one
+# field at a time. The program that reads this file is accessdesk/drafting.py.
+#
+# What an instruction may do: state the CONTENT that a text must have (the facts of the desk and its rules)
+# and its FORM (length, one line or several, plain English). What it may not do: give the wording. So, where
+# the text to write is a sentence or more (confirmations, descriptions, error texts, system prompts), the
+# content is given as NOTES: short fragments in the pattern "topic -> fact", in telegram style, which are not
+# sentences and cannot be used as they stand. The program holds the writer to it: a candidate that repeats a
+# run of 8 or more words of what it was shown, or the arrow of the notes, is refused (accessdesk/drafting.py,
+# COPY_LIMIT). What neither the notes nor that rule can prevent: a writer can join short fragments of the
+# notes (up to 7 words of ours in a row) with words of its own. The log gives the longest shared run of
+# every candidate, and the header of the written file gives the largest one among the values taken. No
+# instruction quotes text/placeholder_text.yaml (a test checks it).
+#
+# Changed on 2026-11-17, after the first text had been used in a calibration (768 episodes each of three
+# untrained models). Five places of that text were unclear. Each got a mechanical check in
+# accessdesk/drafting.py (C1 to C5, where the measured problem of each is told), and the instruction of the
+# field now says, as a statement about FORM, what the check demands: where tool names stand in the two rule
+# prompts (forms.system_prompt and the notes of both prompts), the word before "parameter" in a description
+# (forms.parameter_description, forms.tool_description), and what may follow the variable for the role name
+# in a request template (forms.request_templates). The word lists in those forms are the lists of the
+# program (a test compares them). Values written before this change are kept only where --only keeps them;
+# the header of the text file then gives the SHA-256 of both versions of this file.
+#
+# Changed again on 2026-11-17, after the second calibration (six fields had been written again; 768
+# episodes each of two untrained models). Five new faults were found. Each got a mechanical check in
+# accessdesk/drafting.py (C6 to C10, where the measured problem of each is told), and the instructions now
+# say what each check demands: the line that tells the order of the cases, the order of the case lines,
+# and where the account state is read in the case of a switched-off account (forms.system_prompt, checks
+# four to six, and the notes of both prompts); what stands between the variable for the role name and the
+# variable for the department, and no two templates of one list that are nearly one sentence
+# (forms.request_templates); no word in the short prompt that tells what the desk does with a request
+# (plain_system_prompt). The numbers and the words in those texts are those of the program (a test
+# compares them).
+#
+# Changed on 2026-11-18, after two drafting runs in which all 16 candidates of the main system prompt were
+# refused (run seeds 4 and 5 in text/drafting_log.jsonl). Three causes were measured there. (1) 14 of 16
+# were one paragraph, and the checks read lines: the program now lays out the lines itself, at the markers
+# Step, Case and Finally, and forms.system_prompt tells the writer to begin those sentences with the
+# markers. (2) 15 of 16 repeated 13 words in a row of the BACKGROUND text below (writer.desk), which every
+# request shows: its second paragraph is now in note form, so that it holds no sentence to repeat. (3) The
+# check of the account state asked for more than the writer gave: it now accepts the result key in the
+# line of step 1 (forms.system_prompt, sixth check). In the same change, after a review of the checks: the
+# sentence on the order of the cases (fourth check), the marks and the number of words between the role
+# variable and the department variable (forms.request_templates), and a rule for the resolution value of
+# a request that waits for approval (values.resolution.pending).
+#
+# Changed again on 2026-11-18, after the third calibration (1536 episodes each of two untrained models
+# with the round-3 text). Nine faults were found. Each got a mechanical check in accessdesk/drafting.py
+# (C12 to C20, where the measured problem of each is told), and the instructions now say what each check
+# demands: forms.system_prompt (seventh to thirteenth check), the notes of the three system prompts, and
+# the instructions of the resolution values. The notes of step 1 now give what the tool result holds as
+# a fact. The round-3 notes said "shown with" there, and the writer made an order to show of it.
+#
+# Changed again on 2026-11-18, after text round 4 (run seeds 9 to 12). One field was wrong: case c of the
+# second desk had the condition of case c of the first desk ("IF the value of is_sensitive is true"), so
+# a role that is not sensitive fitted no case. It got a mechanical check (C21 in accessdesk/drafting.py),
+# and the instruction of policy_shift.system_prompt was changed in three places. (1) The note of case c
+# now says what stands in its line: the condition of the last case of the first desk (no case before
+# fits), then the request for approval, then the closing call. The note of before named the result key
+# for a sensitive role as a thing to leave out, and all 5 candidates of run seed 12 wrote that key into
+# case c (counted in text/drafting_log.jsonl). (2) One line tells what check C21 demands. (3) The last
+# paragraph names the condition of case c in place of that key, and it says "one earlier run" where it
+# said "the last run": that sentence is about run seed 11.
+#
+# Changed again on 2026-11-18, before run seed 13, after a review of check C21
+# (_dev/round4/c21_report.json). The check has three parts now, and the instruction of
+# policy_shift.system_prompt tells each of them in positive words: the condition of case c is only that
+# no case above fits; exactly three lines begin with Case; the line of step 2 is the one line that
+# speaks of a sensitive role. The note of case c no longer sends the writer to the last case of the
+# first desk: that case is case d, the one that gives a role. The note on the end rules now lists what
+# the Finally line of the second desk holds, thing by thing: 4 of the 5 candidates of run seed 12 kept
+# the first desk's sentence "Giving a role happens at most once." there and failed check C18 (counted
+# in text/drafting_log.jsonl). No candidate has been drawn with these notes yet.
+#
+# Changed once more on 2026-11-18, before run seed 13, after a second review of check C21. The check
+# refuses three more kinds of wrong prompts (a condition of case c made of listed words, a word for a
+# kind of role in another line, a limit behind the action of case c). The instruction of
+# policy_shift.system_prompt tells the two new rules: the line of case c has no second condition behind
+# its first one, and every line but the line of step 2 says "the role" with no word for a kind of role.
+#
+# The order of `fields` is the order of writing. A field may be given only values of fields that stand above
+# it. Kinds of entries in `fields`:
+#   ask: line   the model writes one line
+#   ask: text   the model writes several lines
+#   ask: list   the model writes items, one per line, and more of them than are needed; the first `want`
+#               valid items are kept
+#   fixed:      the value is not asked from the model; `source` says where it comes from
+#   same_as:    the value is copied by the program from the named field (one name for one thing in every tool)
+# `uses` names the earlier fields (or groups of them, see `groups`) whose values are shown with the
+# instruction. `form` names an entry of `forms`; its text is put after the instruction.
+
+meta:
+  written_by: "the coding assistant (a closed API model)"
+
+# ------------------------------------------------------------------------------------------------------------
+# What every request to the writing model looks like
+# ------------------------------------------------------------------------------------------------------------
+writer:
+  # The system message. It is the same for every field.
+  system_message: |
+    You write short texts for a simulated IT access desk. A small language model will read your texts while it
+    works at that desk: its instructions, the names and descriptions of its tools, the words in the tool
+    results, and the requests that it receives. Write plain, clear English that a small model cannot misread.
+    You decide the wording. Reply with the requested text only: no introduction, no explanation, no remarks
+    of your own, no quotation marks around the text, no markdown and no code fences.
+
+    Many tasks give the content as NOTES: short fragments in the pattern "topic -> fact", divided by
+    semicolons. Notes are not sentences. They tell you what your text must say, and they are not text for
+    the small model. Never copy a note or its arrow into your text. Say the same thing in normal English of
+    your own.
+
+  # The first part of every user message: a short description of the simulated desk.
+  desk: |
+    BACKGROUND
+    A company has people and roles. Every person has an id, a full name, a department, an account
+    that is either in use or switched off, and in most cases a manager, who is another person of the company.
+    Every role has an id and a name, and is either sensitive or not sensitive. A person either holds a role or
+    does not hold it. All of this is simulated and is different in every conversation: the ids are random, and
+    which roles are sensitive changes as well.
+
+    NOTES on the work at the desk (facts for you, in note form; they are not wording):
+    1 conversation = 1 request; sender of request -> somebody, in writing; receiver -> the IT access desk
+      of the company.
+    request -> asks: a role for a person; things named in request -> 3: the person (by full name);
+      department of that person; the role (by name).
+    who deals with request -> an assistant; assistant -> a small language model; question from assistant
+      to sender -> not possible.
+    acting of assistant -> by tool calls only; tool calls in each message of assistant -> 1; after each
+      call -> assistant reads the tool result; tool result -> a small JSON object.
+    tools of the desk -> 5: tool 1 -> finds people, by name; tool 2 -> checks 1 role, for 1 person;
+      tool 3 -> records a request for approval; tool 4 -> gives a role, to a person; tool 5 -> closes
+      the request, records its ending.
+    sixth tool -> shown in some tests only; needed for the work on a request -> never.
+
+    The assistant knows nothing but your texts and the tool results.
+
+  # The headings of the two other parts of a user message.
+  task_heading: "WHAT TO WRITE NOW"
+  earlier_heading: >-
+    VALUES THAT ARE ALREADY FIXED (where your text uses one of them, write it exactly as it stands here)
+
+# ------------------------------------------------------------------------------------------------------------
+# Notes on form that several fields share
+# ------------------------------------------------------------------------------------------------------------
+forms:
+  id_prefix: |
+    Form: two to four letters and then, if you like, one underscore or one hyphen. Nothing else. Reply with
+    the prefix alone.
+  identifier: |
+    Form: one identifier in lower case, made of one to three English words that are joined by underscores.
+    Only letters, digits and underscores, and no digit at the start. It must differ from every name listed
+    below. Reply with the identifier alone.
+  result_key: |
+    Form: one JSON key in lower case, made of one to three English words that are joined by underscores. Only
+    letters, digits and underscores, and no digit at the start. It must differ from every result key listed
+    below. Reply with the key alone, without quotation marks.
+  status_word: |
+    Form: one English word in lower case, or two words joined by an underscore. Letters and underscores only.
+    Reply with the word alone.
+  resolution_value: |
+    Form: one value in lower case: one English word, or two or three words joined by underscores. Letters and
+    underscores only. The value must differ from every resolution value listed below, and it must not occur
+    inside any of the result keys and account words listed below. No word of the value (cut at the
+    underscores) may begin with one of these: chang, done, clos, ok, complet, finish, success, fail, error,
+    resolv, updat, process. Such a word fits more than one ending of a request, and the program refuses
+    it. Reply with the value alone.
+  confirmation: |
+    Form: one line of plain English with two to six words. No id, no name, no variable. It must differ from
+    every confirmation listed below. Choose the words yourself: no arrow, and not the words of the notes in
+    their order.
+  tool_description: |
+    Form: one line of plain English: one to three short sentences, at most 28 words and at most 200 characters
+    in all. Say only what the tool does, what it returns and what it writes. Do not say in which situation the
+    desk wants the tool to be called, or forbids it: the assistant is told that elsewhere, and one test leaves
+    it out. Do not name any other tool. No markdown. Write normal sentences of your own: no arrow, and
+    nothing from the notes word for word.
+    Names of parameters: write a parameter's name only as it is listed below, letter for letter, and name no
+    parameter that is not listed below. If you write the word "parameter", the word directly before it must
+    be such a name, or one of these words: a, an, the, this, that, each, every, its, one, single, only,
+    required, first, second, third, last. The program refuses any other word at that place.
+  parameter_description: |
+    Form: one line of plain English, at most 18 words. Say which value the parameter expects, and nothing
+    more. Do not say which rule of the desk decides the value. Do not name any other tool. No markdown.
+    Write a normal phrase or sentence of your own: no arrow, and nothing from the notes word for word.
+    The name of the parameter: the assistant must write this name in its calls, so never call the parameter
+    by a shorter name, by a part of its name or by any other word. If you write the word "parameter", the
+    word directly before it must be the parameter's name exactly as it is listed below, letter for letter, or
+    one of these words: a, an, the, this, that, each, every, its, one, single, only, required, first, second,
+    third, last. The program refuses any other word at that place.
+  error_text: |
+    Form: one line of plain English, at most 20 words. You may write {value} once, with the braces, at the
+    place where the program shall put the value that was not found. No other braces. Do not name a tool. No
+    markdown. Write a normal sentence of your own: no arrow, and nothing from the notes word for word.
+  system_prompt: |
+    Form: between 200 and 350 words of plain English, in short sentences, spoken to the assistant as "you".
+    The program refuses a prompt of more than 400 words.
+    Markers: begin the sentence of each step with the word Step and its number, and the sentence of each
+    case with the word Case and its letter. Begin the end rules (the last call, and what is done once at
+    most) with the word Finally. The program starts a new line in front of each of these
+    sentences, so you need not write line breaks, but you may. A line runs from one marker to the next.
+    The program checks these things about the lines, and refuses a prompt that fails one:
+    Check of the markers: at least two lines begin with the word Step and a number, and for each case one
+    line begins with the word Case and a letter.
+    First check: a line that names two or more of the tools that the desk uses, the closing tool not
+    counted, is a list of tools. Each tool that the desk uses must be named on at least one line that is
+    not such a list.
+    Second check: each resolution value that the desk uses must stand on at least one line that holds no
+    other resolution value that the desk uses.
+    Third check: the line that names the people-finding tool, or the line directly after it, must hold the
+    word "list" and the word "department".
+    Fourth check: above the line of the first case, one sentence tells in which order the cases are
+    tested and which case the assistant follows (the first one that fits). It names no tool. The program
+    looks for the words "order", "first" and "case" in one sentence, or in two sentences that stand one
+    directly after the other on one line.
+    Fifth check: the lines of the cases stand in the order in which the cases are tested. For each
+    resolution value the program takes the first line that holds it, so no resolution value stands above
+    the line of its own case.
+    Sixth check: the line of the case for a switched-off account holds the account word for a switched-off
+    account, and not the account word for an account in use. And the result key of the account state,
+    letter for letter, stands in the line that names the people-finding tool or in the line directly
+    after it; or it stands in the line of that case, together with the name of the people-finding tool
+    or with "step 1" (the number may be written as a word).
+    Seventh check (step 1 gives facts): in the line of step 1, each sentence that holds the result key of
+    the account state or the result key of the manager id begins with one of these words: the, each,
+    every, for, in, it, this, that, these, those, all, both, its, their, there, a, an, any. The name of
+    the people-finding tool may begin it too. Such a sentence says what the result holds. It never
+    tells the assistant to show, list or write a value.
+    Eighth check (step 2, every request): the line of step 2 holds one of these: always, every, even,
+    regardless, whatever, "no matter", "all cases", "each case", "any case", "all requests", "each
+    request".
+    Ninth check (whose): the line of the case for a switched-off account and the line of the case with
+    the request for approval each hold the word "person" (or "person's"), or "step 1", or the name of
+    the people-finding tool.
+    Tenth check (keys in the cases): the line of the case for a role that is held already holds the
+    result key for a held role, letter for letter. At a desk that gives roles itself, the line of the
+    case for a sensitive role holds the result key for a sensitive role, letter for letter.
+    Eleventh check (two messages): in the line of a case with two calls, the closing tool is named
+    after the other tool. Behind the name of the other tool, and before the end of the sentence that
+    names the closing tool, stands one of these: then, next, after, afterwards, once, later, following,
+    "new message", "next message", "separate message", "another message", "second message". No
+    sentence of a case begins with the word Finally: the program would start a new line there.
+    Twelfth check (the two working rules): above the line of step 1, one sentence holds "one" or
+    "single", a word that begins with "call", and a word that begins with one of: message, repl, turn,
+    respons. And one sentence holds "id" or "ids", a word that begins with "result" or "return", and
+    one of: only, never, not, no.
+    Thirteenth check (lists of tools): a sentence that names three or more of the five tools and holds
+    no resolution value names all five. No list of tools is needed.
+    No markdown: no headings, no bold type, no bullet signs, no tables, no code fences. No example of a name
+    or of an id. Nothing in curly braces. Do not speak of tests, of training or of a sixth tool. The notes
+    above say what the prompt must contain. They are not its wording: write every sentence yourself, as
+    complete sentences with their articles and verbs. Do not write an arrow, do not write IF and THEN in
+    capitals, and take no line of the notes over as it stands.
+  request_templates: |
+    Form: write six templates, one per line, each on a single line, without numbers and without bullet signs.
+    Each template contains each of these three variables exactly once, written exactly like this, with the
+    braces: {person_name} for the full name of the person (a first name and a last name), {department} for the
+    name of the person's department (one to three words), {role_name} for the name of the role (a title of two
+    or three words). The program puts the real values in their places. No other braces. At most 35 words per
+    template. The six templates differ from each other in how they are built, not only in single words, and
+    the three variables do not always come in the same order. A template tells nothing that could decide the
+    request: nothing about the state of the account, about roles that the person holds, about sensitive roles,
+    about managers or about approval. It names no tool, tells the desk nothing about how to do its work, and
+    names no second person, department or role.
+    The place directly after the variable for the role name: the assistant must be able to see where the
+    name of the role ends. So directly after that variable comes the end of the template, or a punctuation
+    mark, or one of these words: and, as, asap, at, because, but, by, can, could, for, from, has, he, if, in,
+    is, now, of, on, or, please, pls, role, she, should, since, so, soon, thanks, that, they, thx, to, today,
+    was, when, while, will, with, within, would. No other word may follow that variable directly, and no
+    other variable: a reader could take such a word for the last word of the role's name. The program
+    refuses a template that breaks this.
+    The place between the variable for the role name and the variable for the department: if the variable
+    for the department is the next variable after the variable for the role name, the assistant can take
+    the department for a part of the role's name. So between these two variables there must stand at least
+    four words, or one of these marks: . , ; : ( ) ? ! | (a hyphen, a slash, an "and" sign or a quotation
+    mark does not count). The program refuses a template that has neither there. And the variable for the
+    role name never stands directly after the variable for the department with only a space between them:
+    the two would read as one name. The program refuses that too.
+    No two templates that are nearly one sentence: the program refuses a template that shares a run of five
+    or more words in a row with an earlier template of the same list. A variable counts as one word;
+    capital letters and punctuation marks make no difference. So every template begins in its own way.
+
+# ------------------------------------------------------------------------------------------------------------
+# Groups of fields, for `uses`. A group stands for those of its members that are above the field that uses it.
+# ------------------------------------------------------------------------------------------------------------
+groups:
+  five_tool_names:
+    - tools.lookup_person.name
+    - tools.check_access.name
+    - tools.request_approval.name
+    - tools.grant_role.name
+    - tools.close_request.name
+  parameter_names:
+    - tools.lookup_person.params.name.name
+    - tools.check_access.params.person_id.name
+    - tools.check_access.params.role_name.name
+    - tools.request_approval.params.role_id.name
+    - tools.request_approval.params.approver_id.name
+    - tools.close_request.params.resolution.name
+    - tools.department_info.params.department.name
+  result_keys:
+    - result_keys.matches
+    - result_keys.person_id
+    - result_keys.name
+    - result_keys.department
+    - result_keys.status
+    - result_keys.manager_id
+    - result_keys.role_id
+    - result_keys.sensitive
+    - result_keys.has_access
+    - result_keys.result
+    - result_keys.error
+    - result_keys.member_count
+  person_entry_keys:
+    - result_keys.matches
+    - result_keys.person_id
+    - result_keys.name
+    - result_keys.department
+    - result_keys.status
+    - result_keys.manager_id
+  role_check_keys:
+    - result_keys.role_id
+    - result_keys.sensitive
+    - result_keys.has_access
+  status_words:
+    - values.status.active
+    - values.status.inactive
+  resolution_values:
+    - values.resolution.granted
+    - values.resolution.pending
+    - values.resolution.already
+    - values.resolution.denied
+  confirmations:
+    - values.confirmation.approval_requested
+    - values.confirmation.role_granted
+    - values.confirmation.request_closed
+
+# ------------------------------------------------------------------------------------------------------------
+# Words that a role name may not contain. In the simulation, whether a role is sensitive is drawn at random
+# for every conversation, so a role name must give no hint of it. A name is refused if one of its words (split
+# at spaces and hyphens, case ignored) is in this list. The instruction for `roles` shows the same list to the
+# model.
+# ------------------------------------------------------------------------------------------------------------
+sensitivity_words:
+  [admin, administrator, root, superuser, super, master, owner, privileged, elevated, sensitive, restricted,
+   confidential, secret, classified, protected, critical, secure, security, high, low, limited, basic,
+   standard, general, public, open, guest, unrestricted, common, default, safe, full, only, readonly]
+
+# ------------------------------------------------------------------------------------------------------------
+# The fields, in the order of writing
+# ------------------------------------------------------------------------------------------------------------
+fields:
+
+  # ---- Values that are not asked from the model ------------------------------------------------------------
+  policy_shift.variant:
+    label: "internal key of the second rule set (never shown to a model)"
+    fixed: all_grants_need_approval
+    source: >-
+      An internal key of accessdesk/env/rules.py. It is not text that a model reads. It says which rule set
+      the instruction for policy_shift.system_prompt below describes.
+
+  tools.lookup_person.name:
+    label: "name of the tool that finds people by their full name"
+    fixed: lookup_person
+    source: &brief_names >-
+      The names of the five tools are not asked from the open-weight model. They are the example list of tools
+      in the brief of the exercise (lookup_person, check_access, request_approval, grant_role, close_request),
+      used as identifiers.
+  tools.check_access.name:
+    label: "name of the tool that checks one role for one person"
+    fixed: check_access
+    source: *brief_names
+  tools.request_approval.name:
+    label: "name of the tool that records a request for approval"
+    fixed: request_approval
+    source: *brief_names
+  tools.grant_role.name:
+    label: "name of the tool that gives a role to a person"
+    fixed: grant_role
+    source: *brief_names
+  tools.close_request.name:
+    label: "name of the tool that closes the request and records its resolution"
+    fixed: close_request
+    source: *brief_names
+
+  # ---- Id prefixes -----------------------------------------------------------------------------------------
+  id_prefixes.person:
+    label: "prefix of every person id"
+    ask: line
+    form: id_prefix
+    instruction: |
+      Every person in the simulation has an id. The program builds each id from a short prefix and six random
+      characters (lower-case letters and digits). Write the prefix for the ids of people. A reader should see
+      from it that the id belongs to a person.
+
+  id_prefixes.role:
+    label: "prefix of every role id"
+    ask: line
+    form: id_prefix
+    uses: [id_prefixes.person]
+    instruction: |
+      Every role in the simulation has an id. The program builds each id from a short prefix and six random
+      characters (lower-case letters and digits). Write the prefix for the ids of roles. A reader should see
+      from it that the id belongs to a role. It must not begin like the prefix of person ids, which is listed
+      below, and must be easy to tell apart from it.
+
+  # ---- The name of the sixth tool --------------------------------------------------------------------------
+  tools.department_info.name:
+    label: "name of the sixth tool, which counts the people of a department"
+    ask: line
+    form: identifier
+    uses: [five_tool_names]
+    instruction: |
+      The sixth tool is shown to the assistant in some tests only, and the work on a request never needs it.
+      It takes the name of a department and returns that name and the number of people in the department. It
+      changes nothing. Write a name for this tool, in the manner of the names of the five other tools, which
+      are listed below. The new name must not contain one of those names and must not be a part of one of
+      them.
+
+  # ---- Parameter names -------------------------------------------------------------------------------------
+  tools.lookup_person.params.name.name:
+    label: "parameter of the people-finding tool: the full name to search for"
+    ask: line
+    form: identifier
+    uses: [tools.lookup_person.name]
+    instruction: |
+      The tool that finds people has one parameter: the full name of the person to find, as the request gives
+      it. Write the name of this parameter.
+
+  tools.check_access.params.person_id.name:
+    label: "person-id parameter (whose id: person of the request; same name in four tools)"
+    ask: line
+    form: identifier
+    uses: [parameter_names]
+    instruction: |
+      Four tools have a parameter that takes the id of one person: the person whom the request is about. The
+      four tools are the one that checks a role, the one that records a request for approval, the one that
+      gives a role, and the one that closes the request. The program uses one name for this parameter in all
+      four. Write that name.
+  tools.request_approval.params.person_id.name: {same_as: tools.check_access.params.person_id.name}
+  tools.grant_role.params.person_id.name: {same_as: tools.check_access.params.person_id.name}
+  tools.close_request.params.person_id.name: {same_as: tools.check_access.params.person_id.name}
+
+  tools.check_access.params.role_name.name:
+    label: "parameter of the role-checking tool: the name of the role (not its id)"
+    ask: line
+    form: identifier
+    uses: [parameter_names]
+    instruction: |
+      The tool that checks a role for a person has a second parameter: the name of the role, as the request
+      gives it. It takes the name of the role and not the id of the role. Write the name of this parameter.
+
+  tools.request_approval.params.role_id.name:
+    label: "parameter that takes the id of a role (the same in three tools)"
+    ask: line
+    form: identifier
+    uses: [parameter_names]
+    instruction: |
+      Three tools have a parameter that takes the id of one role: the tool that records a request for
+      approval, the tool that gives a role, and the tool that closes the request. It takes the id of the role
+      and not its name. The program uses one name for this parameter in all three. Write that name. A reader
+      must be able to tell it apart from the parameter that takes the name of a role.
+  tools.grant_role.params.role_id.name: {same_as: tools.request_approval.params.role_id.name}
+  tools.close_request.params.role_id.name: {same_as: tools.request_approval.params.role_id.name}
+
+  tools.request_approval.params.approver_id.name:
+    label: "approver parameter of the approval tool (a person id; whose: person asked to approve)"
+    ask: line
+    form: identifier
+    uses: [parameter_names]
+    instruction: |
+      The tool that records a request for approval has a third parameter: the id of the person who is asked to
+      approve. Its value is a person id like any other. Write the name of this parameter.
+
+  tools.close_request.params.resolution.name:
+    label: "parameter of the closing tool: the resolution of the request (how it ended)"
+    ask: line
+    form: identifier
+    uses: [parameter_names]
+    instruction: |
+      The tool that closes the request has a parameter that takes the resolution of the request, which tells
+      how the request ended. The resolution is one of four fixed values. Write the name of this parameter.
+
+  tools.department_info.params.department.name:
+    label: "parameter of the sixth tool: the name of a department"
+    ask: line
+    form: identifier
+    uses: [tools.department_info.name, parameter_names]
+    instruction: |
+      The sixth tool has one parameter: the name of a department. Write the name of this parameter.
+
+  # ---- Keys in tool results --------------------------------------------------------------------------------
+  result_keys.matches:
+    label: "result key of the list of people that the people-finding tool returns"
+    ask: line
+    form: result_key
+    uses: [tools.lookup_person.name]
+    instruction: |
+      Tool results are JSON objects. The tool that finds people returns an object with one entry: a list of
+      the people who have the name that was searched for. The list holds no person, one person or several
+      people. Write the key of this list.
+
+  result_keys.person_id:
+    label: "result key of a person's id"
+    ask: line
+    form: result_key
+    uses: [tools.check_access.params.person_id.name, result_keys]
+    instruction: |
+      Each person in the list that the people-finding tool returns is a JSON object. One of its entries is the
+      id of the person. Write the key of this entry. It may be the same word as the parameter that takes a
+      person id, which is listed below, if you find that clearest.
+
+  result_keys.name:
+    label: "result key of a person's full name"
+    ask: line
+    form: result_key
+    uses: [tools.lookup_person.params.name.name, result_keys]
+    instruction: |
+      Each person in the list that the people-finding tool returns is a JSON object. One of its entries is the
+      full name of the person. Write the key of this entry. It may be the same word as the parameter that
+      takes the name to search for, which is listed below, if you find that clearest.
+
+  result_keys.department:
+    label: "result key of a department's name"
+    ask: line
+    form: result_key
+    uses: [tools.department_info.params.department.name, result_keys]
+    instruction: |
+      Each person in the list that the people-finding tool returns is a JSON object. One of its entries is the
+      name of the department of the person. The sixth tool uses the same key for the department's name in its
+      own result. Write the key of this entry.
+
+  result_keys.status:
+    label: "result key of the state of a person's account"
+    ask: line
+    form: result_key
+    uses: [result_keys]
+    instruction: |
+      Each person in the list that the people-finding tool returns is a JSON object. One of its entries tells
+      the state of the account of the person. Its value is one of two words: one word for an account that is
+      in use, another word for an account that is switched off. Write the key of this entry (the key, not the
+      two words).
+
+  result_keys.manager_id:
+    label: "result key of the id of a person's manager"
+    ask: line
+    form: result_key
+    uses: [result_keys]
+    instruction: |
+      Each person in the list that the people-finding tool returns is a JSON object. One of its entries is the
+      id of the manager of the person. The value is the id of another person, or JSON null for a person who
+      has no manager. Write the key of this entry.
+
+  result_keys.role_id:
+    label: "result key of a role's id"
+    ask: line
+    form: result_key
+    uses: [tools.request_approval.params.role_id.name, result_keys]
+    instruction: |
+      The tool that checks a role for a person returns a JSON object with three entries. The first entry is
+      the id of the role. Write the key of this entry. It may be the same word as the parameter that takes a
+      role id, which is listed below, if you find that clearest.
+
+  result_keys.sensitive:
+    label: "result key: role sensitive or not (true or false)"
+    ask: line
+    form: result_key
+    uses: [result_keys]
+    instruction: |
+      The tool that checks a role for a person returns a JSON object with three entries. The second entry is
+      true for a sensitive role and false for a role that is not sensitive. Write the key of this entry.
+
+  result_keys.has_access:
+    label: "result key: role held by person already or not (true or false)"
+    ask: line
+    form: result_key
+    uses: [result_keys]
+    instruction: |
+      The tool that checks a role for a person returns a JSON object with three entries. The third entry is
+      true if the person holds the role already and false if the person does not hold it. Write the key of
+      this entry.
+
+  result_keys.result:
+    label: "result key of the confirmation that a writing tool returns"
+    ask: line
+    form: result_key
+    uses: [result_keys]
+    instruction: |
+      Three tools write something: the tool that records a request for approval, the tool that gives a role,
+      and the tool that closes the request. When such a call has worked, the tool returns a JSON object with
+      one entry: a short text that confirms what was done. Write the key of this entry.
+
+  result_keys.error:
+    label: "result key of the text that a failed call returns"
+    ask: line
+    form: result_key
+    uses: [result_keys]
+    instruction: |
+      When a call cannot be carried out, for instance because it names an id that does not exist, the tool
+      changes nothing and returns a JSON object with one entry: a text that says what was wrong. Write the key
+      of this entry.
+
+  result_keys.member_count:
+    label: "result key of the number of people in a department (sixth tool)"
+    ask: line
+    form: result_key
+    uses: [tools.department_info.name, result_keys]
+    instruction: |
+      The sixth tool returns a JSON object with two entries: the name of the department, and the number of
+      people in the department. Write the key of the number.
+
+  # ---- The two account words -------------------------------------------------------------------------------
+  values.status.active:
+    label: "word that tool results show for an account that is in use"
+    ask: line
+    form: status_word
+    uses: [result_keys.status]
+    instruction: |
+      The account of a person is in one of two states. Tool results show the state as a word, under the result
+      key that is listed below. Write the word for an account that is in use. The word states this fact
+      only: it says nothing about what the desk may or may not do for the person.
+
+  values.status.inactive:
+    label: "word that tool results show for an account that is switched off"
+    ask: line
+    form: status_word
+    uses: [result_keys.status, values.status.active]
+    instruction: |
+      The account of a person is in one of two states. Tool results show the state as a word, under the result
+      key that is listed below. Write the word for an account that is switched off. The word states this
+      fact only: it says nothing about what the desk may or may not do for the person. It must differ from
+      the word for the other state, which is listed below, and the two words should read as a pair.
+
+  # ---- The four resolution values --------------------------------------------------------------------------
+  values.resolution.granted:
+    label: "resolution value meaning GIVEN (role given to person)"
+    ask: line
+    form: resolution_value
+    uses: [resolution_values, result_keys, status_words]
+    instruction: |
+      When the assistant closes a request, it states the resolution, which tells how the request ended, with
+      one of four fixed values. Write the value for this ending: the role was given to the person in this
+      conversation.
+
+  values.resolution.pending:
+    label: "resolution value meaning WAITS FOR APPROVAL (approval requested; request waiting for it)"
+    ask: line
+    form: resolution_value
+    uses: [resolution_values, result_keys, status_words]
+    instruction: |
+      When the assistant closes a request, it states the resolution, which tells how the request ended, with
+      one of four fixed values. Write the value for this ending: approval was requested, the role has not been
+      given, and the request now waits for the approver. The value must tell this ending by itself, and not
+      only that the request was closed. The program checks it: cut at the underscores, the value must hold
+      a word that begins with one of these: pend, approv, wait, await. Any other value is refused.
+
+  values.resolution.already:
+    label: "resolution value meaning HELD BEFORE (role held by person before request)"
+    ask: line
+    form: resolution_value
+    uses: [resolution_values, result_keys, status_words]
+    instruction: |
+      When the assistant closes a request, it states the resolution, which tells how the request ended, with
+      one of four fixed values. Write the value for this ending: the person held the role before the request
+      came in. The value must tell this fact by itself. It must not only say that nothing was done: that
+      is true of a refused request as well. The program checks it: cut at the underscores, the value
+      must hold a word that begins with one of these: alread, held, hold, has, have, exist, own.
+
+  values.resolution.denied:
+    label: "resolution value meaning REFUSED (request refused)"
+    ask: line
+    form: resolution_value
+    uses: [resolution_values, result_keys, status_words]
+    instruction: |
+      When the assistant closes a request, it states the resolution, which tells how the request ended, with
+      one of four fixed values. Write the value for this ending: the request was refused. The program
+      checks it: cut at the underscores, the value must hold a word that begins with one of these: den,
+      refus, reject, declin, block, inactiv, disabl.
+
+  # ---- The three confirmations -----------------------------------------------------------------------------
+  values.confirmation.approval_requested:
+    label: "confirmation that the approval tool returns"
+    ask: line
+    form: confirmation
+    uses: [tools.request_approval.name]
+    instruction: |
+      When the tool that records a request for approval has done its work, it returns a short text. Write
+      this text.
+      NOTES (content only, not the wording): confirmed fact, in 2 parts -> thing: request for approval; what
+      happened to it: recorded. Text must not suggest -> role given.
+
+  values.confirmation.role_granted:
+    label: "confirmation that the role-giving tool returns"
+    ask: line
+    form: confirmation
+    uses: [tools.grant_role.name, confirmations]
+    instruction: |
+      When the tool that gives a role has done its work, it returns a short text. Write this text.
+      NOTES (content only, not the wording): confirmed fact, in 2 parts -> thing: the role; its holder
+      now: the person.
+
+  values.confirmation.request_closed:
+    label: "confirmation that the closing tool returns"
+    ask: line
+    form: confirmation
+    uses: [tools.close_request.name, confirmations]
+    instruction: |
+      When the tool that closes the request has done its work, it returns a short text. Write this text.
+      NOTES (content only, not the wording): confirmed fact, in 2 parts -> thing: the request; its state:
+      closed.
+
+  # ---- Tool descriptions -----------------------------------------------------------------------------------
+  tools.lookup_person.description:
+    label: "description of the people-finding tool"
+    ask: line
+    form: tool_description
+    uses: [tools.lookup_person.name, tools.lookup_person.params.name.name, person_entry_keys]
+    instruction: |
+      Write the description of the tool that finds people. The assistant reads it in its list of tools, next
+      to the name of the tool.
+      NOTES on what it must tell (content only, not the wording):
+        input -> 1 full name; capital letters, extra spaces -> no difference
+        output -> list: every person with that name; size of list -> 0, 1 or several people
+        per person in list -> id; full name; department; account state; manager id
+        changes -> none
+      You may use the result keys listed below as words, and you need not.
+
+  tools.check_access.description:
+    label: "description of the role-checking tool"
+    ask: line
+    form: tool_description
+    uses: [tools.check_access.name, tools.check_access.params.person_id.name,
+           tools.check_access.params.role_name.name, role_check_keys]
+    instruction: |
+      Write the description of the tool that checks a role for a person. The assistant reads it in its list of
+      tools, next to the name of the tool.
+      NOTES on what it must tell (content only, not the wording):
+        input -> person id; role name
+        output -> 3 things: id of that role; that role sensitive, yes or no; that role held by that person
+          already, yes or no
+        changes -> none
+      You may use the result keys listed below as words, and you need not.
+
+  tools.request_approval.description:
+    label: "description of the approval tool"
+    ask: line
+    form: tool_description
+    uses: [tools.request_approval.name, tools.request_approval.params.person_id.name,
+           tools.request_approval.params.role_id.name, tools.request_approval.params.approver_id.name]
+    instruction: |
+      Write the description of the tool that records a request for approval. The assistant reads it in its
+      list of tools, next to the name of the tool.
+      NOTES on what it must tell (content only, not the wording):
+        input -> person id; role id; approver id
+        effect -> 1 new record per call; in the record -> who is asked: approver; asked for: approval of
+          this role, for this person
+        not an effect of this call -> giving of the role itself
+        output -> short confirmation
+
+  tools.grant_role.description:
+    label: "description of the role-giving tool"
+    ask: line
+    form: tool_description
+    uses: [tools.grant_role.name, tools.grant_role.params.person_id.name,
+           tools.grant_role.params.role_id.name]
+    instruction: |
+      Write the description of the tool that gives a role to a person. The assistant reads it in its list of
+      tools, next to the name of the tool.
+      NOTES on what it must tell (content only, not the wording):
+        input -> person id; role id
+        effect, on every call -> role: to the person, at once; record of that: written
+        output -> short confirmation
+
+  tools.close_request.description:
+    label: "description of the closing tool"
+    ask: line
+    form: tool_description
+    uses: [tools.close_request.name, tools.close_request.params.resolution.name,
+           tools.close_request.params.person_id.name, tools.close_request.params.role_id.name]
+    instruction: |
+      Write the description of the tool that closes the request. The assistant reads it in its list of tools,
+      next to the name of the tool.
+      NOTES on what it must tell (content only, not the wording):
+        input -> resolution of the request; 2 ids: person's, role's (person and role of the request)
+        effect -> these 3 written on the request; request closed; conversation over
+        output -> short confirmation
+      Do not list the resolution values.
+
+  tools.department_info.description:
+    label: "description of the sixth tool"
+    ask: line
+    form: tool_description
+    uses: [tools.department_info.name, tools.department_info.params.department.name, result_keys.department,
+           result_keys.member_count]
+    instruction: |
+      Write the description of the sixth tool. The assistant reads it in its list of tools, next to the name
+      of the tool.
+      NOTES on what it must tell (content only, not the wording):
+        input -> department name
+        output -> that name; count of people in that department
+        changes -> none
+      You may use the result keys listed below as words, and you need not.
+
+  # ---- Parameter descriptions ------------------------------------------------------------------------------
+  tools.lookup_person.params.name.description:
+    label: "description of the parameter for the full name to search for"
+    ask: line
+    form: parameter_description
+    uses: [tools.lookup_person.name, tools.lookup_person.params.name.name]
+    instruction: |
+      Write the description of the one parameter of the tool that finds people.
+      NOTES (content only, not the wording): value -> full name; whose -> person to find; source -> the
+      request.
+
+  tools.check_access.params.person_id.description:
+    label: "description of the person-id parameter of the role-checking tool"
+    ask: line
+    form: parameter_description
+    uses: [tools.check_access.name, tools.check_access.params.person_id.name]
+    instruction: |
+      Write the description of the person-id parameter of the tool that checks a role for a person.
+      NOTES (content only, not the wording): value -> person id; whose -> person under the role check.
+
+  tools.check_access.params.role_name.description:
+    label: "description of the role-name parameter of the role-checking tool"
+    ask: line
+    form: parameter_description
+    uses: [tools.check_access.name, tools.check_access.params.role_name.name]
+    instruction: |
+      Write the description of the role-name parameter of the tool that checks a role for a person.
+      NOTES (content only, not the wording): value -> role name; source -> the request; kind -> name, NOT
+      id.
+
+  tools.request_approval.params.person_id.description:
+    label: "description of the person-id parameter of the approval tool"
+    ask: line
+    form: parameter_description
+    uses: [tools.request_approval.name, tools.request_approval.params.person_id.name]
+    instruction: |
+      Write the description of the person-id parameter of the tool that records a request for approval.
+      NOTES (content only, not the wording): value -> person id; whose -> would-be receiver of the role.
+
+  tools.request_approval.params.role_id.description:
+    label: "description of the role-id parameter of the approval tool"
+    ask: line
+    form: parameter_description
+    uses: [tools.request_approval.name, tools.request_approval.params.role_id.name]
+    instruction: |
+      Write the description of the role-id parameter of the tool that records a request for approval.
+      NOTES (content only, not the wording): value -> role id; which role -> object of the approval
+      request.
+
+  tools.request_approval.params.approver_id.description:
+    label: "description of the approver parameter of the approval tool"
+    ask: line
+    form: parameter_description
+    uses: [tools.request_approval.name, tools.request_approval.params.approver_id.name]
+    instruction: |
+      Write the description of the approver parameter of the tool that records a request for approval.
+      NOTES (content only, not the wording): value -> an id; whose -> person asked to approve; kind ->
+      person id.
+
+  tools.grant_role.params.person_id.description:
+    label: "description of the person-id parameter of the role-giving tool"
+    ask: line
+    form: parameter_description
+    uses: [tools.grant_role.name, tools.grant_role.params.person_id.name]
+    instruction: |
+      Write the description of the person-id parameter of the tool that gives a role.
+      NOTES (content only, not the wording): value -> person id; whose -> receiver of the role.
+
+  tools.grant_role.params.role_id.description:
+    label: "description of the role-id parameter of the role-giving tool"
+    ask: line
+    form: parameter_description
+    uses: [tools.grant_role.name, tools.grant_role.params.role_id.name]
+    instruction: |
+      Write the description of the role-id parameter of the tool that gives a role.
+      NOTES (content only, not the wording): value -> role id; which role -> the one being given.
+
+  tools.close_request.params.resolution.description:
+    label: "description of the closing tool's parameter for the resolution"
+    ask: line
+    form: parameter_description
+    uses: [tools.close_request.name, tools.close_request.params.resolution.name]
+    instruction: |
+      Write the description of one parameter of the tool that closes the request: the parameter that takes
+      the resolution. The name of this parameter is listed below. If your text names the parameter, it uses
+      that name, letter for letter, and no shorter word in its place.
+      NOTES (content only, not the wording): value -> resolution of the request; resolution tells -> how
+      the request ended; allowed -> 1 of 4 fixed values.
+      The program adds the list of the four values to the tool's schema by itself, so the description must not
+      list them.
+
+  tools.close_request.params.person_id.description:
+    label: "description of the person-id parameter of the closing tool"
+    ask: line
+    form: parameter_description
+    uses: [tools.close_request.name, tools.close_request.params.person_id.name]
+    instruction: |
+      Write the description of the person-id parameter of the tool that closes the request.
+      NOTES (content only, not the wording): value -> person id; whose -> person of the request.
+
+  tools.close_request.params.role_id.description:
+    label: "description of the role-id parameter of the closing tool"
+    ask: line
+    form: parameter_description
+    uses: [tools.close_request.name, tools.close_request.params.role_id.name]
+    instruction: |
+      Write the description of the role-id parameter of the tool that closes the request.
+      NOTES (content only, not the wording): value -> role id; which role -> the requested one.
+
+  tools.department_info.params.department.description:
+    label: "description of the one parameter of the sixth tool"
+    ask: line
+    form: parameter_description
+    uses: [tools.department_info.name, tools.department_info.params.department.name]
+    instruction: |
+      Write the description of the one parameter of the sixth tool.
+      NOTES (content only, not the wording): value -> department name.
+
+  # ---- Error texts -----------------------------------------------------------------------------------------
+  errors.unknown_person_id:
+    label: "error text for a person id that does not exist"
+    ask: line
+    form: error_text
+    instruction: |
+      SITUATION (background, not for the text): a tool call with a person id; that id -> not the id of
+      anybody in the company. Tool -> no change. Assistant -> reads a text as the result. Write this text.
+      NOTES on what it must tell (content only, not the wording): given id -> no person with it.
+
+  errors.unknown_role_name:
+    label: "error text for a role name that does not exist"
+    ask: line
+    form: error_text
+    instruction: |
+      SITUATION (background, not for the text): a tool call with a role name; that name -> not the name
+      of any role in the company. Tool -> no change. Assistant -> reads a text as the result. Write this text.
+      NOTES on what it must tell (content only, not the wording): given name -> no role with it.
+
+  errors.unknown_role_id:
+    label: "error text for a role id that does not exist"
+    ask: line
+    form: error_text
+    instruction: |
+      SITUATION (background, not for the text): a tool call with a role id; that id -> not the id of any
+      role in the company. Tool -> no change. Assistant -> reads a text as the result. Write this text.
+      NOTES on what it must tell (content only, not the wording): given id -> no role with it.
+
+  errors.unknown_approver_id:
+    label: "error text for an approver id that does not exist"
+    ask: line
+    form: error_text
+    instruction: |
+      SITUATION (background, not for the text): a call of the tool that records a request for approval,
+      with an approver id; that id -> not the id of anybody in the company. Tool -> no change. Assistant
+      -> reads a text as the result. Write this text.
+      NOTES on what it must tell (content only, not the wording): approver -> has to be: person of the
+      company; given id -> no person with it. Clear to the reader -> wrong value: the approver id; NOT the
+      wrong value: id of the would-be receiver of the role.
+
+  errors.unknown_department:
+    label: "error text for a department name that does not exist"
+    ask: line
+    form: error_text
+    instruction: |
+      SITUATION (background, not for the text): a call of the sixth tool with a department name; that name
+      -> not the name of any department in the company. Assistant -> reads a text as the result. Write this
+      text.
+      NOTES on what it must tell (content only, not the wording): given name -> no department with it.
+
+  errors.malformed_call:
+    label: "reply to a message that is not exactly one valid tool call"
+    ask: line
+    instruction: |
+      SITUATION (background, not for the text): sometimes a message of the assistant -> not usable as a tool
+      call. The cases:
+        tool calls in message -> 0
+        tool calls in message -> more than 1
+        after the call -> text
+        tool named in call -> not existing
+        a parameter of the tool -> missing, unknown, empty, or given twice
+        resolution -> not among the allowed values
+      In all these cases: change -> none; result that the assistant reads -> one and the same text. Write this
+      text.
+      NOTES on what it must tell (content only, not the wording):
+        message -> could not be used; reason -> message was not: 1 tool call, in the right form
+        usable message -> 1 call, exactly, of 1 of the tools; each parameter of that tool, once; after the
+          call -> nothing
+
+      Form: one line of plain English, at most 30 words. No braces, no variable, no tags or markup of any
+      kind, no tool name, no markdown. Write a normal sentence or two of your own: no arrow, and nothing from
+      the notes word for word.
+
+  # ---- The three system prompts ----------------------------------------------------------------------------
+  system_prompt:
+    label: "system prompt of the first desk (it stands between the two lines of dashes)"
+    ask: text
+    form: system_prompt
+    uses: [five_tool_names, resolution_values, status_words, result_keys.status, result_keys.manager_id,
+           result_keys.sensitive, result_keys.has_access]
+    instruction: |
+      Write the system prompt that the assistant reads at the start of every conversation. It is the only
+      place where the assistant learns the rules of the desk, so it must be complete and exact.
+
+      NOTES on what the prompt must contain, in this order. The notes give the content only. They are not
+      the wording of the prompt.
+      (1) SITUATION. workplace of assistant; 1 conversation = 1 request; request -> named person, of named
+          department, to get named role; assistant -> settles request, with its tools.
+      (2) TWO WORKING RULES, one sentence each.
+          rule 1: each message of assistant = 1 tool call, exactly; after the call -> nothing.
+          rule 2: id allowed -> shown by a tool result: yes; any other: no; made up or guessed: never.
+      (3) STEPS, always in this order.
+          step 1: find person. Tool of this step -> the one that finds people. Input of that tool -> 1
+                  thing only: full name from request. Department -> NOT an input of that tool. Result of
+                  that tool -> a list: the people with that name; size of list -> 0, 1 or several.
+                  What the result holds for each person of the list (a FACT about the result;
+                  nothing that the assistant writes, lists or shows) -> department; state of
+                  account, under its result key; id of manager, under its result key.
+                  Several people in the list -> possible; then decider -> department from request;
+                  person to take -> the one in the list whose department is that department. From
+                  here on, "the person" -> that person.
+          step 2: look at requested role, for the person. Tool of this step -> the one that checks a
+                  role. Inputs of that tool -> id of the person; role name from request. Result -> role
+                  id; role sensitive, true or false, under its result key; role held by the person
+                  already, true or false, under its result key. When -> for every request, also with
+                  a switched-off account; reason -> role id: shown by this result only; needed by:
+                  the closing call.
+          step 3: 4 cases; order of testing -> a, b, c, d; first case that fits -> the one to follow.
+                  Step 3 -> a line of its own in the prompt, with its marker, above case a; never
+                  left out. Words that this line must hold, all 3 -> order; first; case.
+            a. IF account of person: switched off (state of account -> in result of step 1). THEN give
+               role -> no; ask approval -> no; close request, resolution value -> the one meaning REFUSED.
+            b. IF person: holds role already (its result key -> true). Condition of this line, as
+               written in the prompt -> that result key itself, letter for letter, with the value
+               true; other words for it alone: not enough. THEN give role -> no; ask
+               approval -> no; close request, resolution value -> the one meaning HELD BEFORE.
+            c. IF role: sensitive (its result key -> true). Condition of this line, as written in
+               the prompt -> that result key itself, letter for letter, with the value true; other
+               words for it alone: not enough. THEN ask approval, tool for it -> the one
+               that records a request for approval; approver -> id of the manager of the person (in
+               result of step 1); give role -> no. After that, in the NEXT message -> close request,
+               resolution value -> the one meaning WAITS FOR APPROVAL. Calls in this case -> 2, in 2
+               messages, one after the other.
+            d. IF a, b, c: none fits. THEN give role to person, tool for it -> the one that gives a
+               role. After that, in the NEXT message -> close request, resolution value -> the one
+               meaning GIVEN. Calls in this case -> 2, in 2 messages, one after the other.
+            closing of the request, in each of the 4 cases -> tool: the one that closes the request.
+      (4) END. last call of every conversation -> closing tool; inputs of that call -> resolution value;
+          person id; role id. Giving of a role -> once at most. Request for approval -> once at most.
+
+      Name each tool in the line of the step or of the case where the assistant calls it; a sentence at the
+      end that only lists the tool names is not enough and is not needed. Write the names of the five tools
+      and the four resolution values exactly as they are listed below, letter for letter. The result key
+      of the state of a person's account, which is listed below, must stand in the line of step 1, and
+      the account word for a switched-off account, which is listed below, must stand in the line of case a
+      (the sixth check). The other account word may not stand in the line of case a. The result key of
+      the manager id stands in the line of step 1, the result key for a held role in the line of case b,
+      and the result key for a sensitive role in the line of case c, all letter for letter.
+      Before you answer, look at two places, because most earlier drafts were refused there. One: the
+      line of step 3 is there, above case a, and holds the words "order", "first" and "case" (the fourth
+      check). Two: the line of case b holds the result key for a held role, and the line of case c
+      holds the result key for a sensitive role (the tenth check).
+
+  policy_shift.system_prompt:
+    label: "system prompt of the second desk"
+    ask: text
+    form: system_prompt
+    uses: [system_prompt, five_tool_names, resolution_values, status_words, result_keys.status,
+           result_keys.manager_id, result_keys.sensitive, result_keys.has_access]
+    instruction: |
+      One test uses a second desk, in which one rule is different. NOTES on the second desk (content only,
+      not the wording):
+        difference -> assistant gives a role directly: never, at that desk.
+        number of cases at the second desk -> 3, exactly: a, b, c. A case after c -> none; the letter d
+          -> not used; the count of cases told to the assistant -> 3.
+        lines that begin with the word Case -> 3, exactly; their marks -> a, b, c, each one time; each
+          case -> 1 line, whole, with its resolution value in it.
+        line that tells the order of the cases (order of testing; first case that fits) -> stays, above
+          case a; order of testing at the second desk -> a, b, c.
+        steps 1 and 2 -> unchanged; each keeps its line, with its marker and its result keys.
+        cases a and b -> the 2 cases ACCOUNT SWITCHED OFF and ROLE HELD ALREADY: unchanged; each keeps
+          its line, with its marker and its account word.
+        case c -> every request that reaches it (cases a and b did not fit). What its line holds,
+          in this order: condition -> no case above fits; nothing else in the condition. First
+          message -> ask approval, tool for it -> the one that records a request for approval;
+          approver -> id of the manager of the person (in result of step 1); give role -> no.
+          After that, in the NEXT message -> close request, resolution value -> the one meaning
+          WAITS FOR APPROVAL. Calls in this case -> 2, in 2 messages, one after the other. Mark
+          of the line -> c. If the line of case c speaks of the account -> only with the account
+          word for an account in use, as the tool result shows it; other words for that state ->
+          none.
+        tool that gives a role -> in assistant's list of tools: still there; calls of it at this desk
+          -> never. How the prompt tells this -> 1 sentence of its own; in it -> the name of that
+          tool, letter for letter, and the word never; nothing else in it (no approval, no "once").
+        resolution value meaning GIVEN -> use at this desk: never.
+        Finally line (the end rules) of the second desk -> 3 things, in this order, and nothing else:
+          thing 1 -> last call of every conversation: the closing tool; inputs of that call:
+            resolution value; person id; role id (as at the first desk).
+          thing 2 -> the tool that gives a role: never called at this desk (the sentence with the
+            name of that tool and the word never). It takes the place of the first desk's
+            sentence on the giving of a role.
+          thing 3 -> request for approval: once at most.
+          Each sentence of the Finally line tells one of these 3 things. The words for "once at
+          most" stand in it 1 time, in thing 3.
+
+      Write the complete system prompt for the second desk. Start from the system prompt of the first desk,
+      which stands below, and change only what the different rule requires, so that the two prompts use the
+      same words wherever the two desks have the same rule. The new prompt must be complete in itself: it does
+      not speak of a first desk, of an earlier prompt or of a change. One point must be told to the assistant
+      in plain words (note: direct giving of a role -> none at this desk). For that point the program
+      checks the name of the tool that gives a role: the name must stand in the prompt, and every
+      sentence that holds the name must also hold the word "not" or the word "never". So the name cannot
+      stand in a list of tool names. Such a sentence may hold neither the word "twice" nor the word
+      "second": at this desk the tool is not called even once. The program also refuses a prompt that
+      speaks of four cases, of a fourth case or of a case d, or that has a line with the letter d as its
+      mark. The program checks seven more things at this desk. The condition in the line of case c is
+      only that no case above fits: between the mark of that line and its action, the program
+      accepts only words about the cases, about the account in use and about a role that the
+      person does not hold yet. Behind that condition, the line of case c has no second condition:
+      the program refuses the words if, unless, except and only there. Exactly three lines
+      begin with Case: a, b and c, each one time, and each resolution value stands first in the
+      line of its own case, so every case is one whole line. The line of step 2 is the one line
+      of the prompt that speaks of a sensitive role: the result key for it stands in that line
+      only, in the sentence that tells what the result holds, and every other line says "the
+      role" with no word for a kind of role. No sentence holds twice, again, second,
+      "two times", "more than once", "at most once" or "only once" together with a word that begins
+      with giv, grant or assign (the words "second message" are not counted): this desk has no rule
+      about how often a role is given. If the line of case c holds the word "account" or the
+      result key of the account state, it also holds the account word for an account in use, which is
+      listed below. And the resolution value for a given role, if the prompt holds it at all, stands
+      only in a sentence that holds never, not or no. The prompt names the tools for
+      finding the person, for checking the role, for asking approval and for closing, each in the
+      line where the assistant calls it, and the three resolution values that can still occur, all
+      exactly as they are listed below.
+      Before you answer, look at three places. One: the prompt holds a sentence with the name of the tool
+      that gives a role, letter for letter as it is listed below, and the word "never". Every draft of
+      one earlier run was refused because no sentence held this name. A sentence about giving that does
+      not hold the name is not enough, and leaving out the case that gives a role is not enough. Two:
+      the line of case c begins with the condition: no case above fits. Three: the Finally line
+      tells three things, each in its own sentence or two: the last call with its three inputs, the
+      tool that gives a role with the word "never", and approval once at most.
+
+  plain_system_prompt:
+    label: "short system prompt without the rules"
+    ask: text
+    instruction: |
+      Write a second, much shorter system prompt for the first desk. A comparison test uses it in place of the
+      full one, to see what the assistant does when the rules of the desk are not told.
+
+      NOTES on what it must contain, and nothing more (content only, not the wording):
+        workplace of assistant
+        1 conversation = 1 request; request -> asks: a role for a person (what is asked, not what the
+          desk does about it); request settled -> with the tools
+        working rule 1, a sentence of its own -> each message of assistant = 1 tool call, exactly
+        working rule 2, a sentence of its own -> id allowed: shown in a tool result, yes; any other, no
+      NOT in the prompt: any step; any case; any word on the state of an account, on sensitive roles, on
+      managers, on approval; any resolution of a request; any name of a tool.
+
+      Form: three or four short sentences of plain English, at most 40 words in all, spoken to the
+      assistant as "you". The program counts the words and refuses a prompt of more than 40. The two
+      working rules are two separate sentences: do not join them, and do not say that one serves the
+      other. The program checks them: one sentence holds "one" or "single", a word that begins with
+      "call", and a word that begins with one of: message, repl, turn, respons. And one sentence holds
+      "id" or "ids", a word that begins with "result" or "return", and one of: only, never, not, no.
+      No markdown, no list, nothing in curly braces. No word that begins with giv, grant or assign: the
+      prompt tells what is asked, and the program refuses a word that could tell what the desk does about
+      it. Write every sentence yourself: no arrow, and nothing from the notes word for word.
+
+  # ---- Request wordings: four manners of writing to the desk -----------------------------------------------
+  request_templates.style_1:
+    label: "request templates in the first manner (a formal written request about a colleague)"
+    ask: list
+    want: 3
+    form: request_templates
+    instruction: |
+      A request reaches the desk as one short text. The program builds it from a template. Write templates in
+      this manner: a formal written request, as in a careful business e-mail to the IT desk, sent by somebody
+      who asks on behalf of another person. Each template is one complete, polite sentence in standard
+      spelling, and it speaks about the person in the third person. No greeting line and no signature.
+
+  request_templates.style_2:
+    label: "request templates in the second manner (a filled-in form)"
+    ask: list
+    want: 3
+    form: request_templates
+    instruction: |
+      A request reaches the desk as one short text. The program builds it from a template. Write templates in
+      this manner: a filled-in form or ticket, not a sentence. Each of the three facts stands behind a short
+      label of its own, and the entries are divided by a punctuation mark that you choose. A short heading
+      entry that says what kind of ticket it is may come first. No verb is needed. The labels and the dividing
+      marks change from one template to the next.
+
+  request_templates.style_3:
+    label: "request templates in the third manner (a hurried chat message about a colleague)"
+    ask: list
+    want: 3
+    form: request_templates
+    instruction: |
+      A request reaches the desk as one short text. The program builds it from a template. Write templates in
+      this manner: a quick message in a workplace chat, typed in a hurry by somebody who asks on behalf of a
+      colleague. The words are informal and few. Small letters at the start, shortened words, loose
+      punctuation, a short hello or thanks are all fine. The message speaks about the colleague in the third
+      person.
+
+  request_templates.style_4:
+    label: "request templates in the fourth manner (written by the person who needs the role)"
+    ask: list
+    want: 3
+    form: request_templates
+    uses: [request_templates.style_1, request_templates.style_2, request_templates.style_3]
+    instruction: |
+      A request reaches the desk as one short text. The program builds it from a template. Write templates in
+      this manner: a note from the very person who needs the role, in the first person. The writer says who
+      they are, with their own full name and their own department, and asks for the role for themself. A
+      short, everyday reason from their work is part of the note: something they cannot do without the role.
+      The note has two or three sentences, all on one line. Its tone is that of an ordinary friendly note: not
+      the formal tone of a business letter, and not the clipped tone of a chat. The reason says nothing about
+      hurry or deadlines.
+
+      This fourth manner is kept out of the assistant's training and is used in tests only. So it must not
+      read like the other three manners, whose templates are listed below: it differs from them in who speaks
+      and in how the text is built, not only in single words.
+
+  # ---- Department names and role names ---------------------------------------------------------------------
+  departments:
+    label: "department names"
+    ask: list
+    want: 8
+    instruction: |
+      Write names of departments of an ordinary company of middle size: the kind of departments that most
+      companies have. Each name is the usual name of the department.
+
+      Form: write twelve names, one per line, without numbers and without bullet signs. Each name has one to
+      three words with capital first letters. Letters only; a hyphen inside a word is allowed. No "and" sign,
+      no shortened word with a dot, and not the word Department itself. No name twice.
+
+  roles:
+    label: "role names"
+    ask: list
+    want: 14
+    instruction: |
+      Write names of access roles in the IT systems of an ordinary company. A role lets its holder do one kind
+      of work in one system or with one kind of data. Each name tells which system or which kind of data the
+      role is for, and may tell what the holder does there. The systems and the kinds of work change from name
+      to name, so that the names cover many parts of a company.
+
+      In the simulation, whether a role is sensitive is drawn at random and changes from one conversation to
+      the next. So a name must give no hint of it. Do not use any of these words in a name: admin,
+      administrator, root, superuser, super, master, owner, privileged, elevated, sensitive, restricted,
+      confidential, secret, classified, protected, critical, secure, security, high, low, limited, basic,
+      standard, general, public, open, guest, unrestricted, common, default, safe, full, only, readonly.
+
+      Form: write twenty names, one per line, without numbers and without bullet signs. Each name has two or
+      three words with capital first letters. Letters only; a hyphen inside a word is allowed. A name does not
+      end with the word Role or the word Access. No name twice.

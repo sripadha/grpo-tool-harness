@@ -1,0 +1,10 @@
+replay check of results/main/base_test/episodes.jsonl
+scenarios data/scenarios, split test; text text/model_text.yaml
+records            1536
+harness errors     0   (counted, not checked)
+checked            1536
+with a difference  0
+scenarios          192, each with 8 record(s)
+settings           1 kind(s) among the checked records
+  1536 record(s): {"malformed_cap": 15, "malformed_penalty": 5, "max_new_tokens": 260, "parser_strict": true, "pass_reward": 100, "penalise_malformed_on_fail": false, "temperature": 1.0, "top_k": 0, "top_p": 1.0, "turn_cap": 10, "turn_limit": 8, "turn_penalty": 2}
+no difference: each checked record has the final state, the turns, the pass and the reward that its saved calls and texts give (verify and reward in both versions)

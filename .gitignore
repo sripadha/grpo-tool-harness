@@ -1,0 +1,31 @@
+# Secrets and keys never enter the repository.
+*.env
+.env*
+*.pem
+*_ed25519*
+
+# Local environments and caches.
+.venv/
+.cache/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# Working notes of the build (not part of the submission).
+_dev/
+
+# Large or temporary run outputs.
+results/_smoke/
+results/**/tokens*.jsonl
+*.safetensors
+checkpoints/
+
+# Raw gradient dumps of the layout measurement (the JSON summary beside them is kept).
+results/main/checks/layout_gradients/*.npz
+
+# Results that are kept unread until they are opened (the test run before the hand audit).
+_sealed/
+
+# The zip of the package (scripts/make_package.sh).
+dist/

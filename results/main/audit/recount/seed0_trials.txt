@@ -1,0 +1,32 @@
+PART 1. Bootstrap interval ends: 18 ends (4 arms and 5 comparisons, two ends each).
+Each way draws a (10000, 48) table of family positions with seed 0, fresh for every interval;
+then the mean of the drawn families per row, then numpy's 2.5th and 97.5th percentile.
+
+way to draw                                                    ends equal to the table largest gap (fraction scale)
+numpy default_rng(0).integers(0, 48, size=(10000, 48))         18 of 18               1.110e-16
+numpy default_rng(0).choice(48, size=(10000, 48))              18 of 18               1.110e-16
+numpy RandomState(0).randint(0, 48, size=(10000, 48))           4 of 18               1.953e-03
+numpy RandomState(0).choice(48, size=(10000, 48))               4 of 18               1.953e-03
+python random.Random(0).randrange(48), one by one               5 of 18               1.953e-03
+python random.Random(0).choices(range(48), k=48), row by row    7 of 18               3.255e-03
+python int(random.Random(0).random() * 48), one by one          7 of 18               3.255e-03
+
+PART 2. Smallest detectable effect: se_halves, mde_lowest_split, mde_highest_split of the 4 arms.
+Each way makes 200 splits with numpy default_rng(0). Per split: family pass rate of half A minus
+half B; the standard deviation of that over the 48 families (n - 1) / sqrt(48) is the split's value.
+Three ways to pool the 200 values into se_halves: mean, root mean square, median.
+
+way to draw the halves (arms equal to the table, of 4)             mean       rms        median     lowest     highest   
+rng.permutation(8) per scenario; families outside, styles inside   0          4          0          4          4         
+rng.shuffle of the positions 0..7 per scenario                     0          4          0          4          4         
+rng.permutation of the 8 pass marks themselves                     0          4          0          4          4         
+rng.choice(8, 4, replace=False) for half A                         0          0          0          2          2         
+argsort of rng.random(8) per scenario                              0          0          0          2          2         
+one rng.permuted call per split on a (192, 8) table                0          4          0          4          4         
+styles outside, families inside; rng.permutation(8)                0          0          0          2          1         
+
+Note: ways 1, 2, 3 and 6 are one way written four times if they give the same row above: a random
+order of the 8 attempts of each scenario, scenarios taken family by family and style by style.
+The lowest and highest split can be equal to the table by chance in the GRPO arms even with other
+random numbers, because few values are possible there (few scenarios have both passes and fails).
+In part 1 a single end can also be equal by chance: the ends sit on a grid of 1/1536.

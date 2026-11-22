@@ -1,0 +1,79 @@
+{
+  "complete": true,
+  "status": "same",
+  "mode": "tokenizer_check",
+  "extra": "distill",
+  "script": "scripts/gpu/train_distill.py",
+  "command": [
+    "scripts/gpu/train_distill.py",
+    "--model",
+    "Qwen/Qwen3.5-2B",
+    "--revision",
+    "15852e8c16360a2fea060d615a32b45270f8a8fc",
+    "--teacher",
+    "Qwen/Qwen3.5-4B",
+    "--teacher-revision",
+    "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+    "--text",
+    "text/model_text.yaml",
+    "--scenarios",
+    "data/scenarios",
+    "--check-episodes",
+    "results/main/sft_train/episodes.jsonl",
+    "--check-tokens",
+    "results/main/sft_train/tokens.jsonl",
+    "--tokenizer-check-only",
+    "--out",
+    "results/_smoke/extras_distill/tokenizer_check"
+  ],
+  "started_utc": "2026-11-19T17:14:48Z",
+  "ended_utc": "2026-11-19T17:15:07Z",
+  "model": "Qwen/Qwen3.5-2B",
+  "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+  "teacher": {
+    "model": "Qwen/Qwen3.5-4B",
+    "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a"
+  },
+  "text_file": "model_text.yaml",
+  "text_sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+  "text_is_placeholder": false,
+  "split": "train",
+  "scenario_folder": "data/scenarios",
+  "split_file_sha256": "330e7022f6d378ae4d00dd5c3fbe75c8799d2a7ea804ad0b0af89bb46c34bf79",
+  "tokenizer_check": {
+    "same": true,
+    "n_differences": 0,
+    "differences": [],
+    "checked": {
+      "vocabulary_entries": 248077,
+      "special_tokens": 17,
+      "scenario_prompts": 600,
+      "attempts": 2400,
+      "prompt_segments": 2400,
+      "tool_result_segments": 6178,
+      "sampled_turns": 8578,
+      "sampled_tokens": 448573,
+      "distinct_token_ids": 1959
+    },
+    "attempts_read": {
+      "episodes": {
+        "path": "results/main/sft_train/episodes.jsonl",
+        "sha256": "87b4b6c7e0a9f8615b7718729c7017b6c5e5f35e0b5f78fc6777b34136b072a6",
+        "bytes": 8606520
+      },
+      "tokens": {
+        "path": "results/main/sft_train/tokens.jsonl",
+        "sha256": "5e3674d6e2f398423dd750a0fc810de69abab8a7491a5702b63513988f2cce2b",
+        "bytes": 30539520
+      },
+      "records": 2400
+    }
+  },
+  "extra_code": {
+    "scripts/gpu/train_distill.py": "278260fc3da0c8feef4e6a9d5ef5aecc196ece1c742be28dd39f27a72b92ce2b",
+    "scripts/gpu/chain_extra_distill.sh": "1bfa6d3f7d92cdcf7a9a8d9fd61d7979d8ad74c61c713da693f6792879352f80",
+    "extras/distill/DESCRIPTION.md": "f3d47c52451326ee270406c3ba313ea9e4c952f2f0c9da4ef219dab714603ff9",
+    "extras/distill/NUMBERS.md": "aa1c74715cb3dfe7d76eba4718f0cea3373ad544bdf2f36477ed2b8b037e118b",
+    "extras/distill/DESCRIPTION.sha256": null
+  }
+}

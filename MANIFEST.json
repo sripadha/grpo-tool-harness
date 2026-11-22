@@ -1,0 +1,1061 @@
+{
+  "schema": 1,
+  "frozen_at": "2026-11-18T21:48:10Z",
+  "signed_by": "Sri",
+  "note": "",
+  "git": {
+    "commit": "cff7f0a59b82d590cca44b0014dbee0b9d26f2e9",
+    "dirty": false,
+    "uncommitted_frozen_files": []
+  },
+  "hash_rule": "file: SHA-256 of the bytes. group: SHA-256 of the lines '<file sha256>  <path>\\n' of its files in path order (the output of sha256sum). code_sha256: SHA-256 of the lines '<group sha256>  <group>\\n' for the groups grader, environment, harness, evaluation, config.",
+  "code_sha256": "a157f32175cc4a24092f916a8dcf2a382a0ac4764b81d60d94f28a02963202f3",
+  "text_sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+  "run_config_sha256": "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475",
+  "run_config": {
+    "turn_limit": 8,
+    "max_new_tokens": 260,
+    "parser_strict": true,
+    "temperature": 1.0,
+    "top_k": 0,
+    "top_p": 1.0,
+    "chunk_size": 32,
+    "pass_reward": 100,
+    "malformed_penalty": 5,
+    "malformed_cap": 15,
+    "turn_penalty": 2,
+    "turn_cap": 10,
+    "penalise_malformed_on_fail": false,
+    "n_people": 8,
+    "n_roles": 6,
+    "n_departments": 3,
+    "homonym_share": 0.5,
+    "mix_facts": true,
+    "n_train": 200,
+    "n_dev": 48,
+    "n_test": 48,
+    "n_calib": 24,
+    "data_seed": 20261118,
+    "calib_seed": 20261119,
+    "placeholder_data_seed": 9001,
+    "placeholder_calib_seed": 9002
+  },
+  "data": {
+    "summary_file": "data/scenarios/summary.json",
+    "seeds": {
+      "data_seed": 20261118,
+      "calib_seed": 20261119
+    },
+    "design": {
+      "mix_facts": true,
+      "homonym_share": 0.5
+    },
+    "families": {
+      "train": 200,
+      "dev": 48,
+      "test": 48,
+      "calib": 24
+    },
+    "text_sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+    "config_sha256": "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475"
+  },
+  "groups": {
+    "scenarios": {
+      "sha256": "eb89268a45d5a9fa022395f403f384901d80bc3fd1c873acb9fcbf8e82ea2de3",
+      "files": [
+        {
+          "path": "data/scenarios/calib.jsonl",
+          "sha256": "d60a34fe041539819386b90f3b84f3e606dcb37c78026aa5f6d6c046ea7a2123",
+          "bytes": 109051
+        },
+        {
+          "path": "data/scenarios/dev.jsonl",
+          "sha256": "fea3e07efa22481bb8ee3e2728f4554087e47a607754ecb98c5dc4641be87dd5",
+          "bytes": 212307
+        },
+        {
+          "path": "data/scenarios/sets.json",
+          "sha256": "624e9a6eb50f4c09284cc81d3a2658b3753c628125cce0de4bb1ea009c1b534e",
+          "bytes": 869
+        },
+        {
+          "path": "data/scenarios/summary.json",
+          "sha256": "8d848237e9ae96e8ef863ae3d0a97264edc7d528111302ae08ba12c920de2b0d",
+          "bytes": 6114
+        },
+        {
+          "path": "data/scenarios/test.jsonl",
+          "sha256": "b30364bdf0706e4b604c50fbc1792df71583096bab926559577d49d72207aaa1",
+          "bytes": 214557
+        },
+        {
+          "path": "data/scenarios/train.jsonl",
+          "sha256": "330e7022f6d378ae4d00dd5c3fbe75c8799d2a7ea804ad0b0af89bb46c34bf79",
+          "bytes": 879872
+        }
+      ]
+    },
+    "names": {
+      "sha256": "2c0cfdeb4a1e121cfe264491330b4bbd93d820a36ab8c1a232cac032362d25b1",
+      "files": [
+        {
+          "path": "data/names/PROVENANCE.md",
+          "sha256": "de45856a058e1a77019966792c2a3f1112faafa86317d0c42fed614c09f9f6fd",
+          "bytes": 15816
+        },
+        {
+          "path": "data/names/first_names.txt",
+          "sha256": "be99b057c35573b35dd4c5f352846490c22c7417abdf06fe447d1793bd05bd9c",
+          "bytes": 1353
+        },
+        {
+          "path": "data/names/last_names.txt",
+          "sha256": "785f1a001034646c828027893ac29575224eb588d4734403224dc421e8f4c362",
+          "bytes": 1403
+        },
+        {
+          "path": "data/names/make_name_lists.py",
+          "sha256": "39fd80ad855e80b9563a50748b41a13a3edbf4c5895987270087267cc151575a",
+          "bytes": 7964
+        },
+        {
+          "path": "data/names/provenance.json",
+          "sha256": "d8c7e57a5678cdfac821bcd27da876fb5d60422a967f5cf89caefe080f00e733",
+          "bytes": 20642
+        }
+      ]
+    },
+    "text": {
+      "sha256": "3af9c7ebb6862fe55babb682ed787b14c99c0ec754d8cae1d84562ad312a3236",
+      "files": [
+        {
+          "path": "text/model_text.yaml",
+          "sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+          "bytes": 16485
+        }
+      ]
+    },
+    "text_provenance": {
+      "sha256": "832c0f3e4adb59a417817b1c3cde50602aeafa051b02aded8974287509b3c2fd",
+      "files": [
+        {
+          "path": "accessdesk/drafting.py",
+          "sha256": "eef77c5efda67fcfd854fe4e4ba8f67fca62cdd366b3a3ab9bbd92566705f924",
+          "bytes": 153957
+        },
+        {
+          "path": "scripts/gpu/draft_text.py",
+          "sha256": "825fc78a75da730809a19eacf1d3232d47fee690ff8e682f249c42bb8d07b3c2",
+          "bytes": 18492
+        },
+        {
+          "path": "text/drafting_instructions.yaml",
+          "sha256": "afb1bc047894933338d5926cbe4e2d608dd800e8cc55cf03d081f62ca0882ddb",
+          "bytes": 78341
+        },
+        {
+          "path": "text/drafting_log.jsonl",
+          "sha256": "217157101027e1f00b9a96af38d9fb2101f221432b67f8f57bb269b23d700297",
+          "bytes": 2000146
+        }
+      ]
+    },
+    "grader": {
+      "sha256": "a2d2a8aafcec045834c5da8f83d8964be0fb364d679494b21c0200213f1b0033",
+      "files": [
+        {
+          "path": "accessdesk/_second/__init__.py",
+          "sha256": "502a9b83f92b87cf658fcd8119f12f64c6ae0b8d5fa105df5531ec3f6f357955",
+          "bytes": 126
+        },
+        {
+          "path": "accessdesk/_second/reward.py",
+          "sha256": "b3084db760d2e26a366659a4f77d4f8cdd8531cd21339e1e3e4997fa4de67bd4",
+          "bytes": 5412
+        },
+        {
+          "path": "accessdesk/_second/verifier.py",
+          "sha256": "033a3acd9dbd72cfd77f0deee4e466f00c0d3dbd4182198b6b884b55a66e5009",
+          "bytes": 5449
+        },
+        {
+          "path": "accessdesk/env/reward.py",
+          "sha256": "8a41a186b17787206bb1441544c52ad98a95f0c58ecb1edb5748c8bc91a91fee",
+          "bytes": 3958
+        },
+        {
+          "path": "accessdesk/env/rules.py",
+          "sha256": "db7a78e7f2333f4eecdaca69266e6e4c6e10116ad75290cf6b9b3117988c5b5f",
+          "bytes": 5064
+        },
+        {
+          "path": "accessdesk/env/verifier.py",
+          "sha256": "e06886bc08cd96e2c0229f5a41e069f167214ca7600eb8eae79c79d8d7c25f00",
+          "bytes": 4213
+        },
+        {
+          "path": "accessdesk/impl.py",
+          "sha256": "3e631d987ee1a30b432221a7f8b3ffab8d9bf229f38575a657b90b7b92023816",
+          "bytes": 5023
+        }
+      ]
+    },
+    "environment": {
+      "sha256": "58ad69c62625c31fc49ffd70cd8f8cfc6da5e0bc51dc3990d406b25b23451fe2",
+      "files": [
+        {
+          "path": "accessdesk/__init__.py",
+          "sha256": "fd8b5ac17835aee75c17659dd8493ccc755bd6fb7c4b5d068769a1a98f57e3bf",
+          "bytes": 110
+        },
+        {
+          "path": "accessdesk/env/__init__.py",
+          "sha256": "2da49b32a87317afa0a9724ab7922211960d72330242e9db85205b5d16218d08",
+          "bytes": 95
+        },
+        {
+          "path": "accessdesk/env/generator.py",
+          "sha256": "aff3508921e42b444540c2fa59e9fd3a1aef4e513064de962d4b70e699a34342",
+          "bytes": 27273
+        },
+        {
+          "path": "accessdesk/env/scenarios.py",
+          "sha256": "1a06b70ba3595f5d976eaf15d770d2ae4b40d144e94e3b5a5a90babbdaff04e8",
+          "bytes": 6477
+        },
+        {
+          "path": "accessdesk/env/tools.py",
+          "sha256": "67c56d9dd1d85acc8f7c5826aeb9af1bd8051177025ee22597a6a1f5bcdbfb42",
+          "bytes": 6979
+        },
+        {
+          "path": "accessdesk/env/world.py",
+          "sha256": "ddc93be914a115514a38fb4ea4277d9cdc70ef51713b1d90f5f7c9e1c9fe111d",
+          "bytes": 1878
+        },
+        {
+          "path": "accessdesk/rng.py",
+          "sha256": "49b2c5e6be726aa0992088bcd26080ce7ee84b61baa956413773615fdf5498e1",
+          "bytes": 2512
+        },
+        {
+          "path": "accessdesk/text.py",
+          "sha256": "91591cee0cfdcaf686eb4237afbec74ab2aef40ab2336c01120d3fe9a149010e",
+          "bytes": 22583
+        },
+        {
+          "path": "accessdesk/types.py",
+          "sha256": "0b72375176e2674f010923f3c96bd347610230f47e5a0d888fa65fb8e6ae90c9",
+          "bytes": 4070
+        }
+      ]
+    },
+    "harness": {
+      "sha256": "44e7947b8528580431c67e643f9180d308f500f5aa3d29bdf890be96bb17e792",
+      "files": [
+        {
+          "path": "accessdesk/harness/__init__.py",
+          "sha256": "435f1eecdbe8a525f8001e67008697432fcf9e1b1e63f4d2c082791cb194e0bb",
+          "bytes": 96
+        },
+        {
+          "path": "accessdesk/harness/episode.py",
+          "sha256": "6e830faa0215fb4cd6a6bf0a301d026f555590bae5c8218e23866619b15ab009",
+          "bytes": 12336
+        },
+        {
+          "path": "accessdesk/harness/hf_backend.py",
+          "sha256": "b9dbc10a3ca3fee8e6b93fd2001d335c4b383097bf6863c980165e39bc5cce93",
+          "bytes": 31720
+        },
+        {
+          "path": "accessdesk/harness/parser.py",
+          "sha256": "d2d8095e6311559848791d7c965652e7bb5a511347d48248622f52a7158da2bf",
+          "bytes": 10550
+        },
+        {
+          "path": "accessdesk/harness/policies.py",
+          "sha256": "d53bdb02a9fc30f7fefe345cff9f4489ad18b262cf5994500cde87ae9ec55bf8",
+          "bytes": 32131
+        },
+        {
+          "path": "accessdesk/harness/records.py",
+          "sha256": "5e1344a465cd099bc644000faadd83ee2c86a38eefeb6a2e98c388b724893db0",
+          "bytes": 2602
+        },
+        {
+          "path": "accessdesk/harness/render.py",
+          "sha256": "0ca03939bea1db2d31760aa35e878de12f63e92cf7eef2a7185f765d2d90c0c2",
+          "bytes": 1959
+        },
+        {
+          "path": "accessdesk/harness/tokens.py",
+          "sha256": "b6127b92e5ef3166f8fe92aeb79988bcbabd5b10eac512281974738346f2be32",
+          "bytes": 10392
+        }
+      ]
+    },
+    "evaluation": {
+      "sha256": "bb33c0fe3527fcd5f904a2def6523d18ae0f26946f254d4c595109d1bd59f9f1",
+      "files": [
+        {
+          "path": "accessdesk/_second/bootstrap.py",
+          "sha256": "58986bb5991781c64e1d987312afb5283ac751bcc0d8c509e5e05e814fe05b3c",
+          "bytes": 5485
+        },
+        {
+          "path": "accessdesk/eval/__init__.py",
+          "sha256": "5015ad594c8ac7b853181ce307777ad1c69b1cf3ea89cc6101dfb6b70a4f728b",
+          "bytes": 61
+        },
+        {
+          "path": "accessdesk/eval/bootstrap.py",
+          "sha256": "f52f146b1e50131390a7999102e9f2a292bf84daee5f8a0be7f6a3db39b50cef",
+          "bytes": 4164
+        },
+        {
+          "path": "accessdesk/eval/metrics.py",
+          "sha256": "3bce7f5f3b491373e9c9ce0cffd83da048e4649f8af7a3792183f25e637e8993",
+          "bytes": 23191
+        },
+        {
+          "path": "accessdesk/eval/monitors.py",
+          "sha256": "3007e3dd1498f43849d6a639f390fc42c0a5c4078f4a5ca9b05d8e6bd5e0bfe4",
+          "bytes": 37863
+        },
+        {
+          "path": "accessdesk/eval/tables.py",
+          "sha256": "a4aaad48d9ff452fe6efbe8365ba6bf65df4fd29a7abbe209428734b4ecbb7e8",
+          "bytes": 28488
+        },
+        {
+          "path": "scripts/build_scenarios.py",
+          "sha256": "0c51417650d65b69a51bf75fb9f711abf76945b08bdfa0e1d52cd6444cb7adcd",
+          "bytes": 12851
+        },
+        {
+          "path": "scripts/check_wordings.py",
+          "sha256": "fb4f5924ae68f1f3aa24b56451478f1ac9cb3a7cb42c8bdf204504d03964fd96",
+          "bytes": 6425
+        },
+        {
+          "path": "scripts/gpu/rollout.py",
+          "sha256": "ee21786ef0cbfaa38bcf59a04e86b35ee122a9953b8abc3a73bd0511de1a4fc5",
+          "bytes": 18680
+        },
+        {
+          "path": "scripts/hand_states.py",
+          "sha256": "4d444dd01f10b758f415c8e1d62d2cd60234d3555d0c3732836b76089e44dabd",
+          "bytes": 48621
+        },
+        {
+          "path": "scripts/monitor_report.py",
+          "sha256": "e47aeb959111ab1ca1f8937267bcde613d0a4c0d7aec8f8cd488094a861711aa",
+          "bytes": 8020
+        },
+        {
+          "path": "scripts/pick_overfit_families.py",
+          "sha256": "6a40eb03a4a16e7db3540cbad9e41dd826ecedd9aa63ab91732842efff8b8a06",
+          "bytes": 9028
+        },
+        {
+          "path": "scripts/replay_check.py",
+          "sha256": "a4df35c19e5dbe13e4c2a1194459586fd8a8895672e480bf6d620da56a1a97b0",
+          "bytes": 23068
+        },
+        {
+          "path": "scripts/run_scripted.py",
+          "sha256": "a6f3c50642d6719f8082207d75a3ac9a14a8b6483b9298e1aac69e4949ed45f5",
+          "bytes": 10101
+        },
+        {
+          "path": "scripts/sft_profile.py",
+          "sha256": "f76711123e13af9982805025469178bdc36d0d6f56396378b95e7ce4d253aae7",
+          "bytes": 21925
+        }
+      ]
+    },
+    "config": {
+      "sha256": "ef8c89013f2d016a23e263c39738f3f1b5dfcda43fbf02214f33283cff86ba9e",
+      "files": [
+        {
+          "path": "accessdesk/config.py",
+          "sha256": "ed74dc8a641870c9550072632eb96d263f0aad149f49224d089f1b286d27d0ae",
+          "bytes": 5016
+        }
+      ]
+    },
+    "plan": {
+      "sha256": "c92782d39cee4bf8f68f25af89f0ffa38476d7b63727a345c3b97cfa378bdb04",
+      "files": [
+        {
+          "path": "ANALYSIS_PLAN.md",
+          "sha256": "70c6a5b914ddf0bb761b14d8c982c3e9837e786bc533b19190ee5e749241ed44",
+          "bytes": 15328
+        }
+      ]
+    },
+    "lock": {
+      "sha256": "ca45a096e276a2648d43d80137e9d4ff27759ee001dd70c8c9f6684140dadb2c",
+      "files": [
+        {
+          "path": "pyproject.toml",
+          "sha256": "ca40bf21d49414963b81d21c0ca713ad06caf5358aa42149c7bc1990e59f3f7c",
+          "bytes": 907
+        },
+        {
+          "path": "requirements-gpu-optional.txt",
+          "sha256": "35b4265bf4529228ff75b26b95e23e4f88f6de0efd5504db612268f67674ad08",
+          "bytes": 871
+        },
+        {
+          "path": "requirements-gpu.txt",
+          "sha256": "adada94a260ff9f75181a17121e5bd638333a86a3187bb32bfe9b8346bef0d03",
+          "bytes": 1323
+        }
+      ]
+    },
+    "audit": {
+      "sha256": "5238e79c1f00f28c5758754c72baa83641af5bdc8c6ab39baf9fc17a73cf81e4",
+      "files": [
+        {
+          "path": "accessdesk/audit/__init__.py",
+          "sha256": "1828466b5bb9519e5d466abe34b35dcb833aae13fdd0609fadb4eb4164e684c3",
+          "bytes": 5581
+        },
+        {
+          "path": "accessdesk/audit/broken.py",
+          "sha256": "eed78be65d095a77d87b4e2cf7365c527e1969306166b4eb93a0e17583ff296b",
+          "bytes": 18452
+        },
+        {
+          "path": "accessdesk/audit/formula.py",
+          "sha256": "fb5042108293f84b256269358190d539970622628213b1f451e3310b4b93da5b",
+          "bytes": 32529
+        },
+        {
+          "path": "accessdesk/audit/sample.py",
+          "sha256": "b7f061cc3a5c12a6c28ad7950ba62a5b32cc0c3d3de2946323b50eb2581088a8",
+          "bytes": 9799
+        },
+        {
+          "path": "accessdesk/audit/second_desk.py",
+          "sha256": "9848e740acb053c57b2eeb956a28d338d2c4bcd07bf110dc5bfba1201b7cd2e7",
+          "bytes": 17551
+        },
+        {
+          "path": "accessdesk/audit/sheet.py",
+          "sha256": "930fb4a8ca387b77787ec84f8fa57860c55e2d9963d91e024babaae43d22670f",
+          "bytes": 39198
+        },
+        {
+          "path": "scripts/audit_positive_control.py",
+          "sha256": "85a2e8aa35759dc780b963b3a2e78b62cf845707fa9028071104b82e3328551c",
+          "bytes": 5777
+        },
+        {
+          "path": "scripts/audit_sheet.py",
+          "sha256": "6d1d8b9fc88d6218ad8d10c66897df64173704f3986243da4aa8d461781b47d6",
+          "bytes": 15533
+        },
+        {
+          "path": "scripts/formula_audit.py",
+          "sha256": "a7ac606c1dc0dc9258cf70320bf2d89477f6bc3b906c476c0df38a953a40f50e",
+          "bytes": 3434
+        },
+        {
+          "path": "scripts/second_desk_report.py",
+          "sha256": "b9730a39bc60ac692ff658518d2c6fb979ea5e93a92791d5281255b9e1de62a4",
+          "bytes": 10539
+        }
+      ]
+    },
+    "report": {
+      "sha256": "6eadd761ce977e8046a61719accb386932f12e718a28ee4faeea443cac7c36b2",
+      "files": [
+        {
+          "path": "scripts/failure_report.py",
+          "sha256": "6476e49b2cf65af486c2a8b58f528ec1478913d7ab0e13eb90918bf3b3b8110d",
+          "bytes": 154522
+        },
+        {
+          "path": "scripts/make_figure.py",
+          "sha256": "49e13e3b0e0f4e35420c26b54c55132399060890d4d58155a690d009ba3fb317",
+          "bytes": 82710
+        },
+        {
+          "path": "scripts/rebuild_results.sh",
+          "sha256": "ed168f3a94520b549ea296b35c3b75b39fec41e26eb65a98e07b14ce50250b07",
+          "bytes": 33576
+        },
+        {
+          "path": "scripts/requirements-report.txt",
+          "sha256": "47d1b5b48f31607fd309c5c4f0c9d2cd17ef09171ca85cbd8e48beec628510a5",
+          "bytes": 1573
+        },
+        {
+          "path": "scripts/stretch_numbers.py",
+          "sha256": "8201f2d97146593c3335db71806e6778da2911b323ac30f668a8f9e319b7e802",
+          "bytes": 129830
+        },
+        {
+          "path": "scripts/training_report.py",
+          "sha256": "52310436ad5a798e21641eaf3bc92b44f5b0b922144ecef5c1500a4e50c375c3",
+          "bytes": 159315
+        }
+      ]
+    }
+  },
+  "amendments": [
+    {
+      "amended_at": "2026-11-19T06:53:40Z",
+      "reason": "The audit code of ANALYSIS_PLAN.md section 8 (lines 1, 3, 4 and 5) and the second-desk report of section 3 were written after the freeze, on 2026-11-18. This code only reads saved attempts. It gets its hashes here, in a new frozen group audit that is not part of code_sha256, so no result is split.",
+      "git": {
+        "commit": "66bfc8d802fb2e79cdc1746d219626c5c4032205",
+        "dirty": true,
+        "uncommitted_frozen_files": []
+      },
+      "changes": [
+        {
+          "path": "accessdesk/audit/__init__.py",
+          "group": "audit",
+          "kind": "new",
+          "old_sha256": null,
+          "new_sha256": "1828466b5bb9519e5d466abe34b35dcb833aae13fdd0609fadb4eb4164e684c3"
+        },
+        {
+          "path": "accessdesk/audit/broken.py",
+          "group": "audit",
+          "kind": "new",
+          "old_sha256": null,
+          "new_sha256": "eed78be65d095a77d87b4e2cf7365c527e1969306166b4eb93a0e17583ff296b"
+        },
+        {
+          "path": "accessdesk/audit/formula.py",
+          "group": "audit",
+          "kind": "new",
+          "old_sha256": null,
+          "new_sha256": "fb5042108293f84b256269358190d539970622628213b1f451e3310b4b93da5b"
+        },
+        {
+          "path": "accessdesk/audit/sample.py",
+          "group": "audit",
+          "kind": "new",
+          "old_sha256": null,
+          "new_sha256": "b7f061cc3a5c12a6c28ad7950ba62a5b32cc0c3d3de2946323b50eb2581088a8"
+        },
+        {
+          "path": "accessdesk/audit/second_desk.py",
+          "group": "audit",
+          "kind": "new",
+          "old_sha256": null,
+          "new_sha256": "9848e740acb053c57b2eeb956a28d338d2c4bcd07bf110dc5bfba1201b7cd2e7"
+        },
+        {
+          "path": "accessdesk/audit/sheet.py",
+          "group": "audit",
+          "kind": "new",
+          "old_sha256": null,
+          "new_sha256": "930fb4a8ca387b77787ec84f8fa57860c55e2d9963d91e024babaae43d22670f"
+        },
+        {
+          "path": "scripts/audit_positive_control.py",
+          "group": "audit",
+          "kind": "new",
+          "old_sha256": null,
+          "new_sha256": "85a2e8aa35759dc780b963b3a2e78b62cf845707fa9028071104b82e3328551c"
+        },
+        {
+          "path": "scripts/audit_sheet.py",
+          "group": "audit",
+          "kind": "new",
+          "old_sha256": null,
+          "new_sha256": "6d1d8b9fc88d6218ad8d10c66897df64173704f3986243da4aa8d461781b47d6"
+        },
+        {
+          "path": "scripts/formula_audit.py",
+          "group": "audit",
+          "kind": "new",
+          "old_sha256": null,
+          "new_sha256": "a7ac606c1dc0dc9258cf70320bf2d89477f6bc3b906c476c0df38a953a40f50e"
+        },
+        {
+          "path": "scripts/second_desk_report.py",
+          "group": "audit",
+          "kind": "new",
+          "old_sha256": null,
+          "new_sha256": "b9730a39bc60ac692ff658518d2c6fb979ea5e93a92791d5281255b9e1de62a4"
+        }
+      ],
+      "before": {
+        "code_sha256": "a157f32175cc4a24092f916a8dcf2a382a0ac4764b81d60d94f28a02963202f3",
+        "text_sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+        "run_config_sha256": "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475",
+        "run_config": {
+          "turn_limit": 8,
+          "max_new_tokens": 260,
+          "parser_strict": true,
+          "temperature": 1.0,
+          "top_k": 0,
+          "top_p": 1.0,
+          "chunk_size": 32,
+          "pass_reward": 100,
+          "malformed_penalty": 5,
+          "malformed_cap": 15,
+          "turn_penalty": 2,
+          "turn_cap": 10,
+          "penalise_malformed_on_fail": false,
+          "n_people": 8,
+          "n_roles": 6,
+          "n_departments": 3,
+          "homonym_share": 0.5,
+          "mix_facts": true,
+          "n_train": 200,
+          "n_dev": 48,
+          "n_test": 48,
+          "n_calib": 24,
+          "data_seed": 20261118,
+          "calib_seed": 20261119,
+          "placeholder_data_seed": 9001,
+          "placeholder_calib_seed": 9002
+        },
+        "data": {
+          "summary_file": "data/scenarios/summary.json",
+          "seeds": {
+            "data_seed": 20261118,
+            "calib_seed": 20261119
+          },
+          "design": {
+            "mix_facts": true,
+            "homonym_share": 0.5
+          },
+          "families": {
+            "train": 200,
+            "dev": 48,
+            "test": 48,
+            "calib": 24
+          },
+          "text_sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+          "config_sha256": "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475"
+        },
+        "group_sha256": {
+          "scenarios": "eb89268a45d5a9fa022395f403f384901d80bc3fd1c873acb9fcbf8e82ea2de3",
+          "names": "2c0cfdeb4a1e121cfe264491330b4bbd93d820a36ab8c1a232cac032362d25b1",
+          "text": "3af9c7ebb6862fe55babb682ed787b14c99c0ec754d8cae1d84562ad312a3236",
+          "text_provenance": "832c0f3e4adb59a417817b1c3cde50602aeafa051b02aded8974287509b3c2fd",
+          "grader": "a2d2a8aafcec045834c5da8f83d8964be0fb364d679494b21c0200213f1b0033",
+          "environment": "58ad69c62625c31fc49ffd70cd8f8cfc6da5e0bc51dc3990d406b25b23451fe2",
+          "harness": "44e7947b8528580431c67e643f9180d308f500f5aa3d29bdf890be96bb17e792",
+          "evaluation": "bb33c0fe3527fcd5f904a2def6523d18ae0f26946f254d4c595109d1bd59f9f1",
+          "config": "ef8c89013f2d016a23e263c39738f3f1b5dfcda43fbf02214f33283cff86ba9e",
+          "plan": "dac04864cdac6fb4c0a05897c7b21222c9980e12db75b508a1480c569f661bc1",
+          "lock": "ca45a096e276a2648d43d80137e9d4ff27759ee001dd70c8c9f6684140dadb2c"
+        }
+      },
+      "after": {
+        "code_sha256": "a157f32175cc4a24092f916a8dcf2a382a0ac4764b81d60d94f28a02963202f3",
+        "text_sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+        "run_config_sha256": "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475",
+        "run_config": {
+          "turn_limit": 8,
+          "max_new_tokens": 260,
+          "parser_strict": true,
+          "temperature": 1.0,
+          "top_k": 0,
+          "top_p": 1.0,
+          "chunk_size": 32,
+          "pass_reward": 100,
+          "malformed_penalty": 5,
+          "malformed_cap": 15,
+          "turn_penalty": 2,
+          "turn_cap": 10,
+          "penalise_malformed_on_fail": false,
+          "n_people": 8,
+          "n_roles": 6,
+          "n_departments": 3,
+          "homonym_share": 0.5,
+          "mix_facts": true,
+          "n_train": 200,
+          "n_dev": 48,
+          "n_test": 48,
+          "n_calib": 24,
+          "data_seed": 20261118,
+          "calib_seed": 20261119,
+          "placeholder_data_seed": 9001,
+          "placeholder_calib_seed": 9002
+        },
+        "data": {
+          "summary_file": "data/scenarios/summary.json",
+          "seeds": {
+            "data_seed": 20261118,
+            "calib_seed": 20261119
+          },
+          "design": {
+            "mix_facts": true,
+            "homonym_share": 0.5
+          },
+          "families": {
+            "train": 200,
+            "dev": 48,
+            "test": 48,
+            "calib": 24
+          },
+          "text_sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+          "config_sha256": "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475"
+        },
+        "group_sha256": {
+          "scenarios": "eb89268a45d5a9fa022395f403f384901d80bc3fd1c873acb9fcbf8e82ea2de3",
+          "names": "2c0cfdeb4a1e121cfe264491330b4bbd93d820a36ab8c1a232cac032362d25b1",
+          "text": "3af9c7ebb6862fe55babb682ed787b14c99c0ec754d8cae1d84562ad312a3236",
+          "text_provenance": "832c0f3e4adb59a417817b1c3cde50602aeafa051b02aded8974287509b3c2fd",
+          "grader": "a2d2a8aafcec045834c5da8f83d8964be0fb364d679494b21c0200213f1b0033",
+          "environment": "58ad69c62625c31fc49ffd70cd8f8cfc6da5e0bc51dc3990d406b25b23451fe2",
+          "harness": "44e7947b8528580431c67e643f9180d308f500f5aa3d29bdf890be96bb17e792",
+          "evaluation": "bb33c0fe3527fcd5f904a2def6523d18ae0f26946f254d4c595109d1bd59f9f1",
+          "config": "ef8c89013f2d016a23e263c39738f3f1b5dfcda43fbf02214f33283cff86ba9e",
+          "plan": "dac04864cdac6fb4c0a05897c7b21222c9980e12db75b508a1480c569f661bc1",
+          "lock": "ca45a096e276a2648d43d80137e9d4ff27759ee001dd70c8c9f6684140dadb2c",
+          "audit": "5238e79c1f00f28c5758754c72baa83641af5bdc8c6ab39baf9fc17a73cf81e4"
+        }
+      }
+    },
+    {
+      "amended_at": "2026-11-19T18:06:30Z",
+      "reason": "The report code was written after the freeze, on 2026-11-19: the four pieces of the report (scripts/make_figure.py, scripts/training_report.py, scripts/failure_report.py, scripts/stretch_numbers.py), the command that makes every reported file again and compares it (scripts/rebuild_results.sh), and the package list of the figure (scripts/requirements-report.txt). This code only reads saved runs. It gets its hashes here, in a new frozen group report that is not part of code_sha256, so no result is split.",
+      "git": {
+        "commit": "577339a8d025911fc7c93c9673f43af226f75ebe",
+        "dirty": true,
+        "uncommitted_frozen_files": []
+      },
+      "changes": [
+        {
+          "path": "scripts/failure_report.py",
+          "group": "report",
+          "kind": "new",
+          "old_sha256": null,
+          "new_sha256": "6476e49b2cf65af486c2a8b58f528ec1478913d7ab0e13eb90918bf3b3b8110d"
+        },
+        {
+          "path": "scripts/make_figure.py",
+          "group": "report",
+          "kind": "new",
+          "old_sha256": null,
+          "new_sha256": "49e13e3b0e0f4e35420c26b54c55132399060890d4d58155a690d009ba3fb317"
+        },
+        {
+          "path": "scripts/rebuild_results.sh",
+          "group": "report",
+          "kind": "new",
+          "old_sha256": null,
+          "new_sha256": "ed168f3a94520b549ea296b35c3b75b39fec41e26eb65a98e07b14ce50250b07"
+        },
+        {
+          "path": "scripts/requirements-report.txt",
+          "group": "report",
+          "kind": "new",
+          "old_sha256": null,
+          "new_sha256": "47d1b5b48f31607fd309c5c4f0c9d2cd17ef09171ca85cbd8e48beec628510a5"
+        },
+        {
+          "path": "scripts/stretch_numbers.py",
+          "group": "report",
+          "kind": "new",
+          "old_sha256": null,
+          "new_sha256": "8201f2d97146593c3335db71806e6778da2911b323ac30f668a8f9e319b7e802"
+        },
+        {
+          "path": "scripts/training_report.py",
+          "group": "report",
+          "kind": "new",
+          "old_sha256": null,
+          "new_sha256": "52310436ad5a798e21641eaf3bc92b44f5b0b922144ecef5c1500a4e50c375c3"
+        }
+      ],
+      "before": {
+        "code_sha256": "a157f32175cc4a24092f916a8dcf2a382a0ac4764b81d60d94f28a02963202f3",
+        "text_sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+        "run_config_sha256": "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475",
+        "run_config": {
+          "turn_limit": 8,
+          "max_new_tokens": 260,
+          "parser_strict": true,
+          "temperature": 1.0,
+          "top_k": 0,
+          "top_p": 1.0,
+          "chunk_size": 32,
+          "pass_reward": 100,
+          "malformed_penalty": 5,
+          "malformed_cap": 15,
+          "turn_penalty": 2,
+          "turn_cap": 10,
+          "penalise_malformed_on_fail": false,
+          "n_people": 8,
+          "n_roles": 6,
+          "n_departments": 3,
+          "homonym_share": 0.5,
+          "mix_facts": true,
+          "n_train": 200,
+          "n_dev": 48,
+          "n_test": 48,
+          "n_calib": 24,
+          "data_seed": 20261118,
+          "calib_seed": 20261119,
+          "placeholder_data_seed": 9001,
+          "placeholder_calib_seed": 9002
+        },
+        "data": {
+          "summary_file": "data/scenarios/summary.json",
+          "seeds": {
+            "data_seed": 20261118,
+            "calib_seed": 20261119
+          },
+          "design": {
+            "mix_facts": true,
+            "homonym_share": 0.5
+          },
+          "families": {
+            "train": 200,
+            "dev": 48,
+            "test": 48,
+            "calib": 24
+          },
+          "text_sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+          "config_sha256": "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475"
+        },
+        "group_sha256": {
+          "scenarios": "eb89268a45d5a9fa022395f403f384901d80bc3fd1c873acb9fcbf8e82ea2de3",
+          "names": "2c0cfdeb4a1e121cfe264491330b4bbd93d820a36ab8c1a232cac032362d25b1",
+          "text": "3af9c7ebb6862fe55babb682ed787b14c99c0ec754d8cae1d84562ad312a3236",
+          "text_provenance": "832c0f3e4adb59a417817b1c3cde50602aeafa051b02aded8974287509b3c2fd",
+          "grader": "a2d2a8aafcec045834c5da8f83d8964be0fb364d679494b21c0200213f1b0033",
+          "environment": "58ad69c62625c31fc49ffd70cd8f8cfc6da5e0bc51dc3990d406b25b23451fe2",
+          "harness": "44e7947b8528580431c67e643f9180d308f500f5aa3d29bdf890be96bb17e792",
+          "evaluation": "bb33c0fe3527fcd5f904a2def6523d18ae0f26946f254d4c595109d1bd59f9f1",
+          "config": "ef8c89013f2d016a23e263c39738f3f1b5dfcda43fbf02214f33283cff86ba9e",
+          "plan": "dac04864cdac6fb4c0a05897c7b21222c9980e12db75b508a1480c569f661bc1",
+          "lock": "ca45a096e276a2648d43d80137e9d4ff27759ee001dd70c8c9f6684140dadb2c",
+          "audit": "5238e79c1f00f28c5758754c72baa83641af5bdc8c6ab39baf9fc17a73cf81e4"
+        }
+      },
+      "after": {
+        "code_sha256": "a157f32175cc4a24092f916a8dcf2a382a0ac4764b81d60d94f28a02963202f3",
+        "text_sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+        "run_config_sha256": "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475",
+        "run_config": {
+          "turn_limit": 8,
+          "max_new_tokens": 260,
+          "parser_strict": true,
+          "temperature": 1.0,
+          "top_k": 0,
+          "top_p": 1.0,
+          "chunk_size": 32,
+          "pass_reward": 100,
+          "malformed_penalty": 5,
+          "malformed_cap": 15,
+          "turn_penalty": 2,
+          "turn_cap": 10,
+          "penalise_malformed_on_fail": false,
+          "n_people": 8,
+          "n_roles": 6,
+          "n_departments": 3,
+          "homonym_share": 0.5,
+          "mix_facts": true,
+          "n_train": 200,
+          "n_dev": 48,
+          "n_test": 48,
+          "n_calib": 24,
+          "data_seed": 20261118,
+          "calib_seed": 20261119,
+          "placeholder_data_seed": 9001,
+          "placeholder_calib_seed": 9002
+        },
+        "data": {
+          "summary_file": "data/scenarios/summary.json",
+          "seeds": {
+            "data_seed": 20261118,
+            "calib_seed": 20261119
+          },
+          "design": {
+            "mix_facts": true,
+            "homonym_share": 0.5
+          },
+          "families": {
+            "train": 200,
+            "dev": 48,
+            "test": 48,
+            "calib": 24
+          },
+          "text_sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+          "config_sha256": "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475"
+        },
+        "group_sha256": {
+          "scenarios": "eb89268a45d5a9fa022395f403f384901d80bc3fd1c873acb9fcbf8e82ea2de3",
+          "names": "2c0cfdeb4a1e121cfe264491330b4bbd93d820a36ab8c1a232cac032362d25b1",
+          "text": "3af9c7ebb6862fe55babb682ed787b14c99c0ec754d8cae1d84562ad312a3236",
+          "text_provenance": "832c0f3e4adb59a417817b1c3cde50602aeafa051b02aded8974287509b3c2fd",
+          "grader": "a2d2a8aafcec045834c5da8f83d8964be0fb364d679494b21c0200213f1b0033",
+          "environment": "58ad69c62625c31fc49ffd70cd8f8cfc6da5e0bc51dc3990d406b25b23451fe2",
+          "harness": "44e7947b8528580431c67e643f9180d308f500f5aa3d29bdf890be96bb17e792",
+          "evaluation": "bb33c0fe3527fcd5f904a2def6523d18ae0f26946f254d4c595109d1bd59f9f1",
+          "config": "ef8c89013f2d016a23e263c39738f3f1b5dfcda43fbf02214f33283cff86ba9e",
+          "plan": "dac04864cdac6fb4c0a05897c7b21222c9980e12db75b508a1480c569f661bc1",
+          "lock": "ca45a096e276a2648d43d80137e9d4ff27759ee001dd70c8c9f6684140dadb2c",
+          "audit": "5238e79c1f00f28c5758754c72baa83641af5bdc8c6ab39baf9fc17a73cf81e4",
+          "report": "6eadd761ce977e8046a61719accb386932f12e718a28ee4faeea443cac7c36b2"
+        }
+      }
+    },
+    {
+      "amended_at": "2026-11-21T22:43:31Z",
+      "reason": "PREDICTIONS.md is taken out of the group plan and of the package. The brief does not ask for predictions, and the candidate chose a smaller package. The file is not code, a scenario, a split, a grader or evaluation code, and no reported number depends on it. Its SHA-256 at the freeze is in the field changes of this amendment. ANALYSIS_PLAN.md stays in the group plan. code_sha256, text_sha256 and run_config_sha256 do not change.",
+      "git": {
+        "commit": "19bf169ae33130a44f202e35117901bbd3b89b7e",
+        "dirty": true,
+        "uncommitted_frozen_files": []
+      },
+      "changes": [
+        {
+          "path": "PREDICTIONS.md",
+          "group": "plan",
+          "kind": "missing",
+          "old_sha256": "5e112367cdb2585a663f7eb98b6844171349eee2204a87a320b89a2687aea2c2",
+          "new_sha256": null
+        }
+      ],
+      "before": {
+        "code_sha256": "a157f32175cc4a24092f916a8dcf2a382a0ac4764b81d60d94f28a02963202f3",
+        "text_sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+        "run_config_sha256": "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475",
+        "run_config": {
+          "turn_limit": 8,
+          "max_new_tokens": 260,
+          "parser_strict": true,
+          "temperature": 1.0,
+          "top_k": 0,
+          "top_p": 1.0,
+          "chunk_size": 32,
+          "pass_reward": 100,
+          "malformed_penalty": 5,
+          "malformed_cap": 15,
+          "turn_penalty": 2,
+          "turn_cap": 10,
+          "penalise_malformed_on_fail": false,
+          "n_people": 8,
+          "n_roles": 6,
+          "n_departments": 3,
+          "homonym_share": 0.5,
+          "mix_facts": true,
+          "n_train": 200,
+          "n_dev": 48,
+          "n_test": 48,
+          "n_calib": 24,
+          "data_seed": 20261118,
+          "calib_seed": 20261119,
+          "placeholder_data_seed": 9001,
+          "placeholder_calib_seed": 9002
+        },
+        "data": {
+          "summary_file": "data/scenarios/summary.json",
+          "seeds": {
+            "data_seed": 20261118,
+            "calib_seed": 20261119
+          },
+          "design": {
+            "mix_facts": true,
+            "homonym_share": 0.5
+          },
+          "families": {
+            "train": 200,
+            "dev": 48,
+            "test": 48,
+            "calib": 24
+          },
+          "text_sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+          "config_sha256": "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475"
+        },
+        "group_sha256": {
+          "scenarios": "eb89268a45d5a9fa022395f403f384901d80bc3fd1c873acb9fcbf8e82ea2de3",
+          "names": "2c0cfdeb4a1e121cfe264491330b4bbd93d820a36ab8c1a232cac032362d25b1",
+          "text": "3af9c7ebb6862fe55babb682ed787b14c99c0ec754d8cae1d84562ad312a3236",
+          "text_provenance": "832c0f3e4adb59a417817b1c3cde50602aeafa051b02aded8974287509b3c2fd",
+          "grader": "a2d2a8aafcec045834c5da8f83d8964be0fb364d679494b21c0200213f1b0033",
+          "environment": "58ad69c62625c31fc49ffd70cd8f8cfc6da5e0bc51dc3990d406b25b23451fe2",
+          "harness": "44e7947b8528580431c67e643f9180d308f500f5aa3d29bdf890be96bb17e792",
+          "evaluation": "bb33c0fe3527fcd5f904a2def6523d18ae0f26946f254d4c595109d1bd59f9f1",
+          "config": "ef8c89013f2d016a23e263c39738f3f1b5dfcda43fbf02214f33283cff86ba9e",
+          "plan": "dac04864cdac6fb4c0a05897c7b21222c9980e12db75b508a1480c569f661bc1",
+          "lock": "ca45a096e276a2648d43d80137e9d4ff27759ee001dd70c8c9f6684140dadb2c",
+          "audit": "5238e79c1f00f28c5758754c72baa83641af5bdc8c6ab39baf9fc17a73cf81e4",
+          "report": "6eadd761ce977e8046a61719accb386932f12e718a28ee4faeea443cac7c36b2"
+        }
+      },
+      "after": {
+        "code_sha256": "a157f32175cc4a24092f916a8dcf2a382a0ac4764b81d60d94f28a02963202f3",
+        "text_sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+        "run_config_sha256": "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475",
+        "run_config": {
+          "turn_limit": 8,
+          "max_new_tokens": 260,
+          "parser_strict": true,
+          "temperature": 1.0,
+          "top_k": 0,
+          "top_p": 1.0,
+          "chunk_size": 32,
+          "pass_reward": 100,
+          "malformed_penalty": 5,
+          "malformed_cap": 15,
+          "turn_penalty": 2,
+          "turn_cap": 10,
+          "penalise_malformed_on_fail": false,
+          "n_people": 8,
+          "n_roles": 6,
+          "n_departments": 3,
+          "homonym_share": 0.5,
+          "mix_facts": true,
+          "n_train": 200,
+          "n_dev": 48,
+          "n_test": 48,
+          "n_calib": 24,
+          "data_seed": 20261118,
+          "calib_seed": 20261119,
+          "placeholder_data_seed": 9001,
+          "placeholder_calib_seed": 9002
+        },
+        "data": {
+          "summary_file": "data/scenarios/summary.json",
+          "seeds": {
+            "data_seed": 20261118,
+            "calib_seed": 20261119
+          },
+          "design": {
+            "mix_facts": true,
+            "homonym_share": 0.5
+          },
+          "families": {
+            "train": 200,
+            "dev": 48,
+            "test": 48,
+            "calib": 24
+          },
+          "text_sha256": "6e05616ecf4e24aaae6f20920fae8e60dd6c9798d53a971b89b2f0cd9e4ba3cb",
+          "config_sha256": "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475"
+        },
+        "group_sha256": {
+          "scenarios": "eb89268a45d5a9fa022395f403f384901d80bc3fd1c873acb9fcbf8e82ea2de3",
+          "names": "2c0cfdeb4a1e121cfe264491330b4bbd93d820a36ab8c1a232cac032362d25b1",
+          "text": "3af9c7ebb6862fe55babb682ed787b14c99c0ec754d8cae1d84562ad312a3236",
+          "text_provenance": "832c0f3e4adb59a417817b1c3cde50602aeafa051b02aded8974287509b3c2fd",
+          "grader": "a2d2a8aafcec045834c5da8f83d8964be0fb364d679494b21c0200213f1b0033",
+          "environment": "58ad69c62625c31fc49ffd70cd8f8cfc6da5e0bc51dc3990d406b25b23451fe2",
+          "harness": "44e7947b8528580431c67e643f9180d308f500f5aa3d29bdf890be96bb17e792",
+          "evaluation": "bb33c0fe3527fcd5f904a2def6523d18ae0f26946f254d4c595109d1bd59f9f1",
+          "config": "ef8c89013f2d016a23e263c39738f3f1b5dfcda43fbf02214f33283cff86ba9e",
+          "plan": "c92782d39cee4bf8f68f25af89f0ffa38476d7b63727a345c3b97cfa378bdb04",
+          "lock": "ca45a096e276a2648d43d80137e9d4ff27759ee001dd70c8c9f6684140dadb2c",
+          "audit": "5238e79c1f00f28c5758754c72baa83641af5bdc8c6ab39baf9fc17a73cf81e4",
+          "report": "6eadd761ce977e8046a61719accb386932f12e718a28ee4faeea443cac7c36b2"
+        }
+      }
+    }
+  ]
+}

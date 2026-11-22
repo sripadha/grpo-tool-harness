@@ -1,0 +1,150 @@
+Tue Nov 17 16:58:29 UTC 2026
+64 fields to write, with up to 8 candidates each
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/427 [00:00<?, ?it/s]Loading weights:  91%|█████████ | 387/427 [00:00<00:00, 3862.76it/s]Loading weights: 100%|██████████| 427/427 [00:00<00:00, 3730.50it/s]
+/workspace/venv/lib/python3.11/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+  candidate 0 of id_prefixes.person: taken
+  candidate 0 of id_prefixes.role: taken
+  candidate 0 of tools.department_info.name: taken
+  candidate 0 of tools.lookup_person.params.name.name: taken
+  candidate 0 of tools.check_access.params.person_id.name: taken
+  candidate 0 of tools.check_access.params.role_name.name: taken
+  candidate 0 of tools.request_approval.params.role_id.name: taken
+  candidate 0 of tools.request_approval.params.approver_id.name: taken
+  candidate 0 of tools.close_request.params.resolution.name: taken
+  candidate 0 of tools.department_info.params.department.name: taken
+  candidate 0 of result_keys.matches: taken
+  candidate 0 of result_keys.person_id: taken
+  candidate 0 of result_keys.name: taken
+  candidate 0 of result_keys.department: taken
+  candidate 0 of result_keys.status: taken
+  candidate 0 of result_keys.manager_id: taken
+  candidate 0 of result_keys.role_id: taken
+  candidate 0 of result_keys.sensitive: taken
+  candidate 0 of result_keys.has_access: taken
+  candidate 0 of result_keys.result: taken
+  candidate 0 of result_keys.error: taken
+  candidate 0 of result_keys.member_count: taken
+  candidate 0 of values.status.active: taken
+  candidate 0 of values.status.inactive: taken
+  candidate 0 of values.resolution.granted: taken
+  candidate 0 of values.resolution.pending: taken
+  candidate 0 of values.resolution.already: taken
+  candidate 0 of values.resolution.denied: taken
+  candidate 0 of values.confirmation.approval_requested: taken
+  candidate 0 of values.confirmation.role_granted: taken
+  candidate 0 of values.confirmation.request_closed: taken
+  candidate 0 of tools.lookup_person.description: taken
+  candidate 0 of tools.check_access.description: taken
+  candidate 0 of tools.request_approval.description: taken
+  candidate 0 of tools.grant_role.description: taken
+  candidate 0 of tools.close_request.description: taken
+  candidate 0 of tools.department_info.description: taken
+  candidate 0 of tools.lookup_person.params.name.description: taken
+  candidate 0 of tools.check_access.params.person_id.description: taken
+  candidate 0 of tools.check_access.params.role_name.description: taken
+  candidate 0 of tools.request_approval.params.person_id.description: taken
+  candidate 0 of tools.request_approval.params.role_id.description: taken
+  candidate 0 of tools.request_approval.params.approver_id.description: taken
+  candidate 0 of tools.grant_role.params.person_id.description: taken
+  candidate 0 of tools.grant_role.params.role_id.description: taken
+  candidate 0 of tools.close_request.params.resolution.description: taken
+  candidate 0 of tools.close_request.params.person_id.description: taken
+  candidate 0 of tools.close_request.params.role_id.description: taken
+  candidate 0 of tools.department_info.params.department.description: taken
+  candidate 0 of errors.unknown_person_id: taken
+  candidate 0 of errors.unknown_role_name: taken
+  candidate 0 of errors.unknown_role_id: taken
+  candidate 0 of errors.unknown_approver_id: taken
+  candidate 0 of errors.unknown_department: taken
+  candidate 0 of errors.malformed_call: taken
+  candidate 0 of system_prompt: refused: copies the instruction: it shares a run of 13 words with the text that the writer was shown ('asks that a named person from a named department gets a named role'); the limit is 8
+  candidate 1 of system_prompt: refused: copies the instruction: it shares a run of 13 words with the text that the writer was shown ('asks that a named person from a named department gets a named role'); the limit is 8
+  candidate 2 of system_prompt: refused: copies the instruction: it shares a run of 13 words with the text that the writer was shown ('asks that a named person from a named department gets a named role'); the limit is 8
+  candidate 3 of system_prompt: taken
+  candidate 0 of policy_shift.system_prompt: taken
+  candidate 0 of plain_system_prompt: taken
+  candidate 0 of request_templates.style_1: 3 of 6 items taken
+  candidate 0 of request_templates.style_2: 0 of 24 items taken
+  candidate 1 of request_templates.style_2: 0 of 19 items taken
+  candidate 2 of request_templates.style_2: 3 of 7 items taken
+  candidate 0 of request_templates.style_3: 3 of 6 items taken
+  candidate 0 of request_templates.style_4: 1 of 6 items taken
+  candidate 1 of request_templates.style_4: 2 of 6 items taken
+  candidate 0 of departments: 8 of 12 items taken
+  candidate 0 of roles: 14 of 20 items taken
+longest run of words shared with the shown text, among the taken values (limit 8): 6 words in tools.lookup_person.params.name.description ("the full name to search for")
+longest run of words shared with the placeholder text file (a report, not a rule): 14 words in system_prompt ("returns the role id whether the role is sensitive and whether the person already")
+runs in which a value was drawn, for each field:
+  id_prefixes.person                                     1
+  id_prefixes.role                                       1
+  tools.department_info.name                             1
+  tools.lookup_person.params.name.name                   1
+  tools.check_access.params.person_id.name               1
+  tools.check_access.params.role_name.name               1
+  tools.request_approval.params.role_id.name             1
+  tools.request_approval.params.approver_id.name         1
+  tools.close_request.params.resolution.name             1
+  tools.department_info.params.department.name           1
+  result_keys.matches                                    1
+  result_keys.person_id                                  1
+  result_keys.name                                       1
+  result_keys.department                                 1
+  result_keys.status                                     1
+  result_keys.manager_id                                 1
+  result_keys.role_id                                    1
+  result_keys.sensitive                                  1
+  result_keys.has_access                                 1
+  result_keys.result                                     1
+  result_keys.error                                      1
+  result_keys.member_count                               1
+  values.status.active                                   1
+  values.status.inactive                                 1
+  values.resolution.granted                              1
+  values.resolution.pending                              1
+  values.resolution.already                              1
+  values.resolution.denied                               1
+  values.confirmation.approval_requested                 1
+  values.confirmation.role_granted                       1
+  values.confirmation.request_closed                     1
+  tools.lookup_person.description                        1
+  tools.check_access.description                         1
+  tools.request_approval.description                     1
+  tools.grant_role.description                           1
+  tools.close_request.description                        1
+  tools.department_info.description                      1
+  tools.lookup_person.params.name.description            1
+  tools.check_access.params.person_id.description        1
+  tools.check_access.params.role_name.description        1
+  tools.request_approval.params.person_id.description    1
+  tools.request_approval.params.role_id.description      1
+  tools.request_approval.params.approver_id.description  1
+  tools.grant_role.params.person_id.description          1
+  tools.grant_role.params.role_id.description            1
+  tools.close_request.params.resolution.description      1
+  tools.close_request.params.person_id.description       1
+  tools.close_request.params.role_id.description         1
+  tools.department_info.params.department.description    1
+  errors.unknown_person_id                               1
+  errors.unknown_role_name                               1
+  errors.unknown_role_id                                 1
+  errors.unknown_approver_id                             1
+  errors.unknown_department                              1
+  errors.malformed_call                                  1
+  system_prompt                                          1
+  policy_shift.system_prompt                             1
+  plain_system_prompt                                    1
+  request_templates.style_1                              1
+  request_templates.style_2                              1
+  request_templates.style_3                              1
+  request_templates.style_4                              1
+  departments                                            1
+  roles                                                  1
+fields drawn in more than one run: none
+peak GPU memory of this process: 16.99 GB
+written: text/model_text.yaml (SHA-256 0f0b10ed24f198a7371877c75538c86c15beb74e97f8d9ab904c6691abe25c95)
+Next: read the file, change any line you want, and put your name after 'Read and approved by:'.
+DRAFT_EXIT=0 SECONDS_TOTAL=123
+428 MiB
+JOB_EXIT_CODE=0

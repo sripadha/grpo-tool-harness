@@ -1,0 +1,6 @@
+scenarios=data/scenarios
+arm=sft_train
+options=--families results/main/sft_profile/families.txt --styles 1,2,3
+adapter_config.json=9fe0c5587b821bc1d8681d2ae5c61ebec618c9447e1786b57173e76e4e6f3fa0
+adapter_model.safetensors=c7c7c55110eb921eb03483ee5c5da2cbba04ecc0e35f44a1925fa51ccac1ca8b
+families_file=f3fac1170b719a1f4e447d6a4409ac56a41f29b0fc755c46766503bbc1e031c3

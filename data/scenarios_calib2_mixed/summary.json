@@ -1,0 +1,279 @@
+{
+  "text_file": "model_text.yaml",
+  "text_sha256": "711a1a963f41666f21cf12291160a5fb616dcb352943e90301b540af9052715d",
+  "text_is_placeholder": false,
+  "name_files_sha256": {
+    "first_names.txt": "be99b057c35573b35dd4c5f352846490c22c7417abdf06fe447d1793bd05bd9c",
+    "last_names.txt": "785f1a001034646c828027893ac29575224eb588d4734403224dc421e8f4c362"
+  },
+  "config": {
+    "turn_limit": 8,
+    "max_new_tokens": 160,
+    "parser_strict": true,
+    "temperature": 1.0,
+    "top_k": 0,
+    "top_p": 1.0,
+    "chunk_size": 32,
+    "pass_reward": 100,
+    "malformed_penalty": 5,
+    "malformed_cap": 15,
+    "turn_penalty": 2,
+    "turn_cap": 10,
+    "penalise_malformed_on_fail": false,
+    "n_people": 8,
+    "n_roles": 6,
+    "n_departments": 3,
+    "homonym_share": 0.5,
+    "mix_facts": true,
+    "n_train": 200,
+    "n_dev": 48,
+    "n_test": 48,
+    "n_calib": 48,
+    "data_seed": 1,
+    "calib_seed": 2,
+    "placeholder_data_seed": 9001,
+    "placeholder_calib_seed": 9002
+  },
+  "config_sha256": "bb0e1495c02ac3db2afbd2486482c128d5017fded92f6be381564e584cd9b344",
+  "splits": {
+    "train": {
+      "families": 200,
+      "scenarios": 600,
+      "outcomes": {
+        "grant": 50,
+        "approval": 50,
+        "already": 50,
+        "inactive": 50
+      },
+      "homonyms": {
+        "grant": 25,
+        "approval": 25,
+        "already": 25,
+        "inactive": 25
+      },
+      "homonyms_person_meant_first": {
+        "grant": 13,
+        "approval": 12,
+        "already": 13,
+        "inactive": 12
+      },
+      "kinds": {
+        "grant": {
+          "plain": 50
+        },
+        "approval": {
+          "plain": 50
+        },
+        "already": {
+          "plain": 25,
+          "sensitive": 25
+        },
+        "inactive": {
+          "plain": 17,
+          "sensitive": 17,
+          "held": 8,
+          "held+sensitive": 8
+        }
+      },
+      "kinds_with_homonym": {
+        "grant": {
+          "plain": 25
+        },
+        "approval": {
+          "plain": 25
+        },
+        "already": {
+          "plain": 13,
+          "sensitive": 12
+        },
+        "inactive": {
+          "plain": 9,
+          "sensitive": 8,
+          "held": 4,
+          "held+sensitive": 4
+        }
+      }
+    },
+    "dev": {
+      "families": 48,
+      "scenarios": 192,
+      "outcomes": {
+        "grant": 12,
+        "approval": 12,
+        "already": 12,
+        "inactive": 12
+      },
+      "homonyms": {
+        "grant": 6,
+        "approval": 6,
+        "already": 6,
+        "inactive": 6
+      },
+      "homonyms_person_meant_first": {
+        "grant": 3,
+        "approval": 3,
+        "already": 3,
+        "inactive": 3
+      },
+      "kinds": {
+        "grant": {
+          "plain": 12
+        },
+        "approval": {
+          "plain": 12
+        },
+        "already": {
+          "plain": 6,
+          "sensitive": 6
+        },
+        "inactive": {
+          "plain": 4,
+          "sensitive": 4,
+          "held": 2,
+          "held+sensitive": 2
+        }
+      },
+      "kinds_with_homonym": {
+        "grant": {
+          "plain": 6
+        },
+        "approval": {
+          "plain": 6
+        },
+        "already": {
+          "plain": 3,
+          "sensitive": 3
+        },
+        "inactive": {
+          "plain": 2,
+          "sensitive": 2,
+          "held": 1,
+          "held+sensitive": 1
+        }
+      }
+    },
+    "test": {
+      "families": 48,
+      "scenarios": 192,
+      "outcomes": {
+        "grant": 12,
+        "approval": 12,
+        "already": 12,
+        "inactive": 12
+      },
+      "homonyms": {
+        "grant": 6,
+        "approval": 6,
+        "already": 6,
+        "inactive": 6
+      },
+      "homonyms_person_meant_first": {
+        "grant": 3,
+        "approval": 3,
+        "already": 3,
+        "inactive": 3
+      },
+      "kinds": {
+        "grant": {
+          "plain": 12
+        },
+        "approval": {
+          "plain": 12
+        },
+        "already": {
+          "plain": 6,
+          "sensitive": 6
+        },
+        "inactive": {
+          "plain": 4,
+          "sensitive": 4,
+          "held": 2,
+          "held+sensitive": 2
+        }
+      },
+      "kinds_with_homonym": {
+        "grant": {
+          "plain": 6
+        },
+        "approval": {
+          "plain": 6
+        },
+        "already": {
+          "plain": 3,
+          "sensitive": 3
+        },
+        "inactive": {
+          "plain": 2,
+          "sensitive": 2,
+          "held": 1,
+          "held+sensitive": 1
+        }
+      }
+    },
+    "calib": {
+      "families": 48,
+      "scenarios": 192,
+      "outcomes": {
+        "grant": 12,
+        "approval": 12,
+        "already": 12,
+        "inactive": 12
+      },
+      "homonyms": {
+        "grant": 6,
+        "approval": 6,
+        "already": 6,
+        "inactive": 6
+      },
+      "homonyms_person_meant_first": {
+        "grant": 3,
+        "approval": 3,
+        "already": 3,
+        "inactive": 3
+      },
+      "kinds": {
+        "grant": {
+          "plain": 12
+        },
+        "approval": {
+          "plain": 12
+        },
+        "already": {
+          "plain": 6,
+          "sensitive": 6
+        },
+        "inactive": {
+          "plain": 4,
+          "sensitive": 4,
+          "held": 2,
+          "held+sensitive": 2
+        }
+      },
+      "kinds_with_homonym": {
+        "grant": {
+          "plain": 6
+        },
+        "approval": {
+          "plain": 6
+        },
+        "already": {
+          "plain": 3,
+          "sensitive": 3
+        },
+        "inactive": {
+          "plain": 2,
+          "sensitive": 2,
+          "held": 1,
+          "held+sensitive": 1
+        }
+      }
+    }
+  },
+  "files_sha256": {
+    "train.jsonl": "74fcfdc5aea670535573cf68587725e662e20abee2e42b61f927e21eb4e4aa96",
+    "dev.jsonl": "fd5400a5b498895a94b2b8198e409a8d338b69b685f2f33b2e611ffc8774c61f",
+    "test.jsonl": "0010c1253a7581bcae7f5aa325427bd9cbf2d039bd8621053fc40847f1f7c914",
+    "calib.jsonl": "1fba47b850a57c0d76bbb376c0a2e5dd43e4c852d7807ffa22e01e589abc55d8",
+    "sets.json": "ca1f404caab2d2917b233a5ef75d6899544f0eee46b50735467674efd98a0d3d"
+  }
+}

@@ -1,0 +1,1008 @@
+{
+  "title": "Calibration report",
+  "placeholder_text_runs": [],
+  "level": 0.95,
+  "n_draws": 10000,
+  "seed": 0,
+  "paired_family_bootstrap": "main",
+  "seen_styles": [
+    1,
+    2,
+    3
+  ],
+  "held_out_style": 4,
+  "token_cap_rule": {
+    "percentile": 99,
+    "factor": 2,
+    "minimum": 128
+  },
+  "runs": {
+    "2b": {
+      "name": "2b",
+      "source": "results/calibration/round4/2b_mixed/episodes.jsonl",
+      "config": {
+        "turn_limit": 8,
+        "max_new_tokens": 256,
+        "parser_strict": true,
+        "temperature": 1.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "chunk_size": 32,
+        "pass_reward": 100,
+        "malformed_penalty": 5,
+        "malformed_cap": 15,
+        "turn_penalty": 2,
+        "turn_cap": 10,
+        "penalise_malformed_on_fail": false,
+        "n_people": 8,
+        "n_roles": 6,
+        "n_departments": 3,
+        "homonym_share": 0.2,
+        "mix_facts": false,
+        "n_train": 200,
+        "n_dev": 48,
+        "n_test": 48,
+        "n_calib": 24,
+        "data_seed": 1,
+        "calib_seed": 2,
+        "placeholder_data_seed": 9001,
+        "placeholder_calib_seed": 9002
+      },
+      "config_source": "run_manifest.json",
+      "size": {
+        "n_records": 1536,
+        "n_harness_errors": 0,
+        "harness_error_share": 0.0,
+        "n_episodes": 1536,
+        "n_families": 48,
+        "n_families_by_outcome": {
+          "grant": 12,
+          "approval": 12,
+          "already": 12,
+          "inactive": 12
+        },
+        "n_scenarios": 192,
+        "n_scenarios_without_valid_sample": 0,
+        "samples_per_scenario": {
+          "min": 8,
+          "max": 8,
+          "all_equal": true,
+          "table": [
+            {
+              "samples": 8,
+              "scenarios": 192
+            }
+          ]
+        },
+        "manifest_found": true,
+        "model": "Qwen/Qwen3.5-2B",
+        "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+        "adapter": null,
+        "text_file": "model_text.yaml",
+        "text_sha256": [
+          "71e18ceab0239b91318f3ec00957afe2f10e5c9fae9ca1413dc2d21314643b3d"
+        ],
+        "data_sha256": [
+          "4d344b97ea094d541697e375d2955932bff430f67c3e363bd0839bc2b6861835"
+        ],
+        "placeholder_text": false,
+        "split": [
+          "calib"
+        ],
+        "ruleset": "default",
+        "toolset": "five",
+        "prompt": "final",
+        "config_sha256": [
+          "1557a4ad6ce21a831005960182f955300c5f6b3b7c559d6e39a7945401aa43c3"
+        ],
+        "impl": {
+          "verify": [
+            "main"
+          ],
+          "reward": [
+            "main"
+          ]
+        }
+      },
+      "pass": {
+        "pass_rate": 0.4479166666666667,
+        "lo": 0.35546875,
+        "hi": 0.5436197916666666,
+        "n_families": 48,
+        "by_outcome": {
+          "grant": {
+            "pass_rate": 0.5026041666666666,
+            "n_families": 12
+          },
+          "approval": {
+            "pass_rate": 0.8567708333333334,
+            "n_families": 12
+          },
+          "already": {
+            "pass_rate": 0.21875,
+            "n_families": 12
+          },
+          "inactive": {
+            "pass_rate": 0.21354166666666666,
+            "n_families": 12
+          }
+        },
+        "by_style": {
+          "1": {
+            "pass_rate": 0.453125,
+            "n_families": 48
+          },
+          "2": {
+            "pass_rate": 0.4609375,
+            "n_families": 48
+          },
+          "3": {
+            "pass_rate": 0.4791666666666667,
+            "n_families": 48
+          },
+          "4": {
+            "pass_rate": 0.3984375,
+            "n_families": 48
+          }
+        },
+        "seen_held_out": {
+          "seen": {
+            "pass_rate": 0.46440972222222215,
+            "n_families": 48
+          },
+          "held_out": {
+            "pass_rate": 0.3984375,
+            "n_families": 48
+          }
+        },
+        "held_out_minus_seen": {
+          "diff": -0.06597222222222215,
+          "lo": -0.11284722222222215,
+          "hi": -0.020833333333333315,
+          "n_families": 48
+        }
+      },
+      "checks": {
+        "floor": {
+          "threshold": 0.25,
+          "interval_lo": 0.35546875,
+          "passed": true,
+          "best_constant_policy": 0.25
+        },
+        "band": {
+          "lo": 0.3,
+          "hi": 0.65,
+          "pass_rate": 0.4479166666666667,
+          "passed": true,
+          "position": "inside"
+        },
+        "room": {
+          "all": 0.5520833333333333,
+          "by_outcome": {
+            "grant": 0.49739583333333337,
+            "approval": 0.14322916666666663,
+            "already": 0.78125,
+            "inactive": 0.7864583333333334
+          }
+        }
+      },
+      "ties": {
+        "all": {
+          "n_scenarios": 192,
+          "equal_reward": 0.2708333333333333,
+          "equal_reward_all_pass": 0.06770833333333333,
+          "equal_reward_all_fail": 0.203125,
+          "equal_passfail": 0.3177083333333333
+        },
+        "by_outcome": {
+          "grant": {
+            "n_scenarios": 48,
+            "equal_reward": 0.08333333333333333,
+            "equal_reward_all_pass": 0.020833333333333332,
+            "equal_reward_all_fail": 0.0625,
+            "equal_passfail": 0.10416666666666667
+          },
+          "approval": {
+            "n_scenarios": 48,
+            "equal_reward": 0.22916666666666666,
+            "equal_reward_all_pass": 0.22916666666666666,
+            "equal_reward_all_fail": 0.0,
+            "equal_passfail": 0.3958333333333333
+          },
+          "already": {
+            "n_scenarios": 48,
+            "equal_reward": 0.25,
+            "equal_reward_all_pass": 0.0,
+            "equal_reward_all_fail": 0.25,
+            "equal_passfail": 0.25
+          },
+          "inactive": {
+            "n_scenarios": 48,
+            "equal_reward": 0.5208333333333334,
+            "equal_reward_all_pass": 0.020833333333333332,
+            "equal_reward_all_fail": 0.5,
+            "equal_passfail": 0.5208333333333334
+          }
+        },
+        "samples_per_scenario": [
+          {
+            "samples": 8,
+            "scenarios": 192
+          }
+        ],
+        "n_scenarios_left_out": 0,
+        "family_profile": {
+          "n_families": 48,
+          "always_pass": 0,
+          "always_fail": 5,
+          "mixed": 43
+        }
+      },
+      "call_format": {
+        "n_messages": 6826,
+        "n_malformed": 316,
+        "invalid_call_rate": 0.04629358335774978,
+        "parse_errors": {
+          "no_call": 213,
+          "multiple_calls": 10,
+          "bad_format": 8,
+          "unknown_tool": 7,
+          "missing_argument": 10,
+          "unknown_argument": 14,
+          "empty_argument": 1,
+          "bad_value": 11,
+          "text_after_call": 2,
+          "truncated": 40
+        },
+        "n_tool_errors": 77,
+        "tool_errors": {
+          "unknown_approver_id": 5,
+          "unknown_person_id": 26,
+          "unknown_role_id": 16,
+          "unknown_role_name": 30
+        },
+        "n_truncated": 40,
+        "truncated_share": 0.005859947260474656,
+        "counters_agree": true
+      },
+      "turns": {
+        "n_episodes": 1536,
+        "mean_turns": 4.444010416666667,
+        "mean_turns_by_outcome": {
+          "grant": 4.479166666666667,
+          "approval": 4.625,
+          "already": 4.484375,
+          "inactive": 4.1875
+        },
+        "share_at_turn_limit": 0.107421875,
+        "n_over_budget": 271,
+        "share_over_budget": 0.17643229166666666,
+        "tokens": {
+          "n_calls": 6510,
+          "n_calls_without_length": 0,
+          "median": 48.0,
+          "p99": 130,
+          "max": 255,
+          "cap_by_rule": 260,
+          "cap_in_force": 256,
+          "n_truncated": 40
+        }
+      },
+      "penalties": {
+        "malformed": {
+          "with": {
+            "n_episodes": 155,
+            "n_passed": 52,
+            "n_families": 45,
+            "pass_rate": 0.34699294532627867
+          },
+          "without": {
+            "n_episodes": 1381,
+            "n_passed": 636,
+            "n_families": 48,
+            "pass_rate": 0.45547734832473896
+          },
+          "difference": -0.1084844029984603,
+          "sentence": "Of the 155 episodes with a malformed call 52 passed, and of the 1381 episodes with no malformed call 636 passed. As a mean over families (45 and 48 families) the pass rates are 34.7% and 45.5%: the pass rate is 10.8 points lower with a malformed call.",
+          "closed_only": {
+            "with": {
+              "n_episodes": 93,
+              "n_passed": 52,
+              "n_families": 42,
+              "pass_rate": 0.5880952380952381
+            },
+            "without": {
+              "n_episodes": 1278,
+              "n_passed": 636,
+              "n_families": 48,
+              "pass_rate": 0.4900503939410896
+            },
+            "difference": 0.09804484415414849,
+            "sentence": "Among the episodes that closed the request: of the 93 episodes with a malformed call 52 passed, and of the 1278 episodes with no malformed call 636 passed. As a mean over families (42 and 48 families) the pass rates are 58.8% and 49.0%: the pass rate is 9.8 points higher with a malformed call."
+          },
+          "never_closed": {
+            "n_episodes": 165,
+            "n_with": 62,
+            "n_passed": 0
+          },
+          "caution": "62 of the 155 episodes with a malformed call never closed the request, and an episode that never closes cannot pass: to that extent the difference is true by construction, whatever the penalty is."
+        },
+        "turn_budget": {
+          "with": {
+            "n_episodes": 271,
+            "n_passed": 42,
+            "n_families": 45,
+            "pass_rate": 0.1652866269532936
+          },
+          "without": {
+            "n_episodes": 1265,
+            "n_passed": 646,
+            "n_families": 48,
+            "pass_rate": 0.49560902260666767
+          },
+          "difference": -0.33032239565337407,
+          "sentence": "Of the 271 episodes over the turn budget 42 passed, and of the 1265 episodes inside the turn budget 646 passed. As a mean over families (45 and 48 families) the pass rates are 16.5% and 49.6%: the pass rate is 33.0 points lower over the turn budget.",
+          "closed_only": {
+            "with": {
+              "n_episodes": 106,
+              "n_passed": 42,
+              "n_families": 37,
+              "pass_rate": 0.49420849420849416
+            },
+            "without": {
+              "n_episodes": 1265,
+              "n_passed": 646,
+              "n_families": 48,
+              "pass_rate": 0.49560902260666767
+            },
+            "difference": -0.0014005283981735062,
+            "sentence": "Among the episodes that closed the request: of the 106 episodes over the turn budget 42 passed, and of the 1265 episodes inside the turn budget 646 passed. As a mean over families (37 and 48 families) the pass rates are 49.4% and 49.6%: the pass rate is 0.1 points lower over the turn budget."
+          },
+          "never_closed": {
+            "n_episodes": 165,
+            "n_with": 165,
+            "n_passed": 0
+          },
+          "caution": "165 of the 271 episodes over the turn budget never closed the request, and an episode that never closes cannot pass: to that extent the difference is true by construction, whatever the penalty is."
+        },
+        "n_both": 115,
+        "n_passes": 688,
+        "rewards_of_passes": [
+          {
+            "reward": 100,
+            "episodes": 619
+          },
+          {
+            "reward": 98,
+            "episodes": 9
+          },
+          {
+            "reward": 96,
+            "episodes": 6
+          },
+          {
+            "reward": 95,
+            "episodes": 27
+          },
+          {
+            "reward": 94,
+            "episodes": 2
+          },
+          {
+            "reward": 93,
+            "episodes": 6
+          },
+          {
+            "reward": 91,
+            "episodes": 4
+          },
+          {
+            "reward": 89,
+            "episodes": 4
+          },
+          {
+            "reward": 88,
+            "episodes": 4
+          },
+          {
+            "reward": 87,
+            "episodes": 1
+          },
+          {
+            "reward": 86,
+            "episodes": 2
+          },
+          {
+            "reward": 84,
+            "episodes": 2
+          },
+          {
+            "reward": 82,
+            "episodes": 1
+          },
+          {
+            "reward": 81,
+            "episodes": 1
+          }
+        ]
+      },
+      "failures": {
+        "n_episodes": 1536,
+        "labels": {
+          "closed_correctly": 0.4479166666666667,
+          "closed_wrongly": 0.4446614583333333,
+          "never_closed": 0.107421875,
+          "malformed_only": 0.0
+        },
+        "label_counts": {
+          "closed_correctly": 688,
+          "closed_wrongly": 683,
+          "never_closed": 165,
+          "malformed_only": 0
+        },
+        "closed_wrongly": {
+          "n": 683,
+          "n_by_outcome": {
+            "grant": 153,
+            "approval": 13,
+            "already": 260,
+            "inactive": 257
+          },
+          "table": {
+            "grant": {
+              "granted": 6,
+              "pending": 138,
+              "already": 3,
+              "denied": 6
+            },
+            "approval": {
+              "granted": 2,
+              "pending": 11
+            },
+            "already": {
+              "granted": 107,
+              "pending": 153
+            },
+            "inactive": {
+              "granted": 16,
+              "pending": 176,
+              "already": 59,
+              "denied": 6
+            }
+          }
+        },
+        "correct_resolution": {
+          "grant": "granted",
+          "approval": "pending",
+          "already": "already",
+          "inactive": "denied"
+        },
+        "wrong_person": {
+          "n_closed": 1371,
+          "n": 25,
+          "share_of_closed": 0.01823486506199854
+        },
+        "unexpected_grant": {
+          "n": 126,
+          "share": 0.08203125,
+          "by_outcome": {
+            "grant": 3,
+            "approval": 2,
+            "already": 107,
+            "inactive": 14
+          }
+        },
+        "missing": null
+      },
+      "sft_supply": {
+        "pass_reward": 100,
+        "n_episodes": 1536,
+        "n_clean": 619,
+        "share_clean": 0.4029947916666667,
+        "by_outcome": {
+          "grant": {
+            "n_episodes": 384,
+            "n_clean": 179,
+            "share_clean": 0.4661458333333333
+          },
+          "approval": {
+            "n_episodes": 384,
+            "n_clean": 306,
+            "share_clean": 0.796875
+          },
+          "already": {
+            "n_episodes": 384,
+            "n_clean": 64,
+            "share_clean": 0.16666666666666666
+          },
+          "inactive": {
+            "n_episodes": 384,
+            "n_clean": 70,
+            "share_clean": 0.18229166666666666
+          }
+        },
+        "n_scenarios": 192,
+        "n_scenarios_with_clean_pass": 143,
+        "n_families": 48,
+        "n_families_with_clean_pass": 41
+      },
+      "warnings": []
+    },
+    "4b": {
+      "name": "4b",
+      "source": "results/calibration/round4/4b_mixed/episodes.jsonl",
+      "config": {
+        "turn_limit": 8,
+        "max_new_tokens": 256,
+        "parser_strict": true,
+        "temperature": 1.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "chunk_size": 32,
+        "pass_reward": 100,
+        "malformed_penalty": 5,
+        "malformed_cap": 15,
+        "turn_penalty": 2,
+        "turn_cap": 10,
+        "penalise_malformed_on_fail": false,
+        "n_people": 8,
+        "n_roles": 6,
+        "n_departments": 3,
+        "homonym_share": 0.2,
+        "mix_facts": false,
+        "n_train": 200,
+        "n_dev": 48,
+        "n_test": 48,
+        "n_calib": 24,
+        "data_seed": 1,
+        "calib_seed": 2,
+        "placeholder_data_seed": 9001,
+        "placeholder_calib_seed": 9002
+      },
+      "config_source": "run_manifest.json",
+      "size": {
+        "n_records": 1536,
+        "n_harness_errors": 0,
+        "harness_error_share": 0.0,
+        "n_episodes": 1536,
+        "n_families": 48,
+        "n_families_by_outcome": {
+          "grant": 12,
+          "approval": 12,
+          "already": 12,
+          "inactive": 12
+        },
+        "n_scenarios": 192,
+        "n_scenarios_without_valid_sample": 0,
+        "samples_per_scenario": {
+          "min": 8,
+          "max": 8,
+          "all_equal": true,
+          "table": [
+            {
+              "samples": 8,
+              "scenarios": 192
+            }
+          ]
+        },
+        "manifest_found": true,
+        "model": "Qwen/Qwen3.5-4B",
+        "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+        "adapter": null,
+        "text_file": "model_text.yaml",
+        "text_sha256": [
+          "71e18ceab0239b91318f3ec00957afe2f10e5c9fae9ca1413dc2d21314643b3d"
+        ],
+        "data_sha256": [
+          "4d344b97ea094d541697e375d2955932bff430f67c3e363bd0839bc2b6861835"
+        ],
+        "placeholder_text": false,
+        "split": [
+          "calib"
+        ],
+        "ruleset": "default",
+        "toolset": "five",
+        "prompt": "final",
+        "config_sha256": [
+          "1557a4ad6ce21a831005960182f955300c5f6b3b7c559d6e39a7945401aa43c3"
+        ],
+        "impl": {
+          "verify": [
+            "main"
+          ],
+          "reward": [
+            "main"
+          ]
+        }
+      },
+      "pass": {
+        "pass_rate": 0.84765625,
+        "lo": 0.7591145833333334,
+        "hi": 0.92578125,
+        "n_families": 48,
+        "by_outcome": {
+          "grant": {
+            "pass_rate": 0.9505208333333334,
+            "n_families": 12
+          },
+          "approval": {
+            "pass_rate": 1.0,
+            "n_families": 12
+          },
+          "already": {
+            "pass_rate": 0.9947916666666666,
+            "n_families": 12
+          },
+          "inactive": {
+            "pass_rate": 0.4453125,
+            "n_families": 12
+          }
+        },
+        "by_style": {
+          "1": {
+            "pass_rate": 0.8411458333333334,
+            "n_families": 48
+          },
+          "2": {
+            "pass_rate": 0.8489583333333334,
+            "n_families": 48
+          },
+          "3": {
+            "pass_rate": 0.8411458333333334,
+            "n_families": 48
+          },
+          "4": {
+            "pass_rate": 0.859375,
+            "n_families": 48
+          }
+        },
+        "seen_held_out": {
+          "seen": {
+            "pass_rate": 0.8437500000000001,
+            "n_families": 48
+          },
+          "held_out": {
+            "pass_rate": 0.859375,
+            "n_families": 48
+          }
+        },
+        "held_out_minus_seen": {
+          "diff": 0.015625,
+          "lo": -0.01215277777777779,
+          "hi": 0.046875,
+          "n_families": 48
+        }
+      },
+      "checks": {
+        "floor": {
+          "threshold": 0.25,
+          "interval_lo": 0.7591145833333334,
+          "passed": true,
+          "best_constant_policy": 0.25
+        },
+        "band": {
+          "lo": 0.3,
+          "hi": 0.65,
+          "pass_rate": 0.84765625,
+          "passed": false,
+          "position": "above"
+        },
+        "room": {
+          "all": 0.15234375,
+          "by_outcome": {
+            "grant": 0.04947916666666663,
+            "approval": 0.0,
+            "already": 0.00520833333333337,
+            "inactive": 0.5546875
+          }
+        }
+      },
+      "ties": {
+        "all": {
+          "n_scenarios": 192,
+          "equal_reward": 0.7395833333333334,
+          "equal_reward_all_pass": 0.6770833333333334,
+          "equal_reward_all_fail": 0.0625,
+          "equal_passfail": 0.78125
+        },
+        "by_outcome": {
+          "grant": {
+            "n_scenarios": 48,
+            "equal_reward": 0.6458333333333334,
+            "equal_reward_all_pass": 0.6458333333333334,
+            "equal_reward_all_fail": 0.0,
+            "equal_passfail": 0.6875
+          },
+          "approval": {
+            "n_scenarios": 48,
+            "equal_reward": 0.9583333333333334,
+            "equal_reward_all_pass": 0.9583333333333334,
+            "equal_reward_all_fail": 0.0,
+            "equal_passfail": 1.0
+          },
+          "already": {
+            "n_scenarios": 48,
+            "equal_reward": 0.9166666666666666,
+            "equal_reward_all_pass": 0.9166666666666666,
+            "equal_reward_all_fail": 0.0,
+            "equal_passfail": 0.9583333333333334
+          },
+          "inactive": {
+            "n_scenarios": 48,
+            "equal_reward": 0.4375,
+            "equal_reward_all_pass": 0.1875,
+            "equal_reward_all_fail": 0.25,
+            "equal_passfail": 0.4791666666666667
+          }
+        },
+        "samples_per_scenario": [
+          {
+            "samples": 8,
+            "scenarios": 192
+          }
+        ],
+        "n_scenarios_left_out": 0,
+        "family_profile": {
+          "n_families": 48,
+          "always_pass": 26,
+          "always_fail": 0,
+          "mixed": 22
+        }
+      },
+      "call_format": {
+        "n_messages": 5488,
+        "n_malformed": 16,
+        "invalid_call_rate": 0.0029154518950437317,
+        "parse_errors": {
+          "no_call": 3,
+          "bad_format": 1,
+          "unknown_tool": 3,
+          "unknown_argument": 7,
+          "bad_value": 1,
+          "truncated": 1
+        },
+        "n_tool_errors": 15,
+        "tool_errors": {
+          "unknown_role_id": 13,
+          "unknown_role_name": 2
+        },
+        "n_truncated": 1,
+        "truncated_share": 0.00018221574344023323,
+        "counters_agree": true
+      },
+      "turns": {
+        "n_episodes": 1536,
+        "mean_turns": 3.5729166666666665,
+        "mean_turns_by_outcome": {
+          "grant": 3.9791666666666665,
+          "approval": 4.010416666666667,
+          "already": 3.0104166666666665,
+          "inactive": 3.2916666666666665
+        },
+        "share_at_turn_limit": 0.0013020833333333333,
+        "n_over_budget": 6,
+        "share_over_budget": 0.00390625,
+        "tokens": {
+          "n_calls": 5472,
+          "n_calls_without_length": 0,
+          "median": 48.0,
+          "p99": 130,
+          "max": 252,
+          "cap_by_rule": 260,
+          "cap_in_force": 256,
+          "n_truncated": 1
+        }
+      },
+      "penalties": {
+        "malformed": {
+          "with": {
+            "n_episodes": 13,
+            "n_passed": 10,
+            "n_families": 13,
+            "pass_rate": 0.7692307692307693
+          },
+          "without": {
+            "n_episodes": 1523,
+            "n_passed": 1292,
+            "n_families": 48,
+            "pass_rate": 0.8484122983870969
+          },
+          "difference": -0.07918152915632759,
+          "sentence": "Of the 13 episodes with a malformed call 10 passed, and of the 1523 episodes with no malformed call 1292 passed. As a mean over families (13 and 48 families) the pass rates are 76.9% and 84.8%: the pass rate is 7.9 points lower with a malformed call.",
+          "closed_only": {
+            "with": {
+              "n_episodes": 11,
+              "n_passed": 10,
+              "n_families": 11,
+              "pass_rate": 0.9090909090909091
+            },
+            "without": {
+              "n_episodes": 1523,
+              "n_passed": 1292,
+              "n_families": 48,
+              "pass_rate": 0.8484122983870969
+            },
+            "difference": 0.0606786107038122,
+            "sentence": "Among the episodes that closed the request: of the 11 episodes with a malformed call 10 passed, and of the 1523 episodes with no malformed call 1292 passed. As a mean over families (11 and 48 families) the pass rates are 90.9% and 84.8%: the pass rate is 6.1 points higher with a malformed call."
+          },
+          "never_closed": {
+            "n_episodes": 2,
+            "n_with": 2,
+            "n_passed": 0
+          },
+          "caution": "2 of the 13 episodes with a malformed call never closed the request, and an episode that never closes cannot pass: to that extent the difference is true by construction, whatever the penalty is."
+        },
+        "turn_budget": {
+          "with": {
+            "n_episodes": 6,
+            "n_passed": 3,
+            "n_families": 6,
+            "pass_rate": 0.5
+          },
+          "without": {
+            "n_episodes": 1530,
+            "n_passed": 1299,
+            "n_families": 48,
+            "pass_rate": 0.8488953293010751
+          },
+          "difference": -0.34889532930107514,
+          "sentence": "Of the 6 episodes over the turn budget 3 passed, and of the 1530 episodes inside the turn budget 1299 passed. As a mean over families (6 and 48 families) the pass rates are 50.0% and 84.9%: the pass rate is 34.9 points lower over the turn budget.",
+          "closed_only": {
+            "with": {
+              "n_episodes": 4,
+              "n_passed": 3,
+              "n_families": 4,
+              "pass_rate": 0.75
+            },
+            "without": {
+              "n_episodes": 1530,
+              "n_passed": 1299,
+              "n_families": 48,
+              "pass_rate": 0.8488953293010751
+            },
+            "difference": -0.09889532930107514,
+            "sentence": "Among the episodes that closed the request: of the 4 episodes over the turn budget 3 passed, and of the 1530 episodes inside the turn budget 1299 passed. As a mean over families (4 and 48 families) the pass rates are 75.0% and 84.9%: the pass rate is 9.9 points lower over the turn budget."
+          },
+          "never_closed": {
+            "n_episodes": 2,
+            "n_with": 2,
+            "n_passed": 0
+          },
+          "caution": "2 of the 6 episodes over the turn budget never closed the request, and an episode that never closes cannot pass: to that extent the difference is true by construction, whatever the penalty is."
+        },
+        "n_both": 5,
+        "n_passes": 1302,
+        "rewards_of_passes": [
+          {
+            "reward": 100,
+            "episodes": 1291
+          },
+          {
+            "reward": 98,
+            "episodes": 1
+          },
+          {
+            "reward": 95,
+            "episodes": 8
+          },
+          {
+            "reward": 88,
+            "episodes": 2
+          }
+        ]
+      },
+      "failures": {
+        "n_episodes": 1536,
+        "labels": {
+          "closed_correctly": 0.84765625,
+          "closed_wrongly": 0.15104166666666666,
+          "never_closed": 0.0013020833333333333,
+          "malformed_only": 0.0
+        },
+        "label_counts": {
+          "closed_correctly": 1302,
+          "closed_wrongly": 232,
+          "never_closed": 2,
+          "malformed_only": 0
+        },
+        "closed_wrongly": {
+          "n": 232,
+          "n_by_outcome": {
+            "grant": 18,
+            "already": 2,
+            "inactive": 212
+          },
+          "table": {
+            "grant": {
+              "granted": 17,
+              "pending": 1
+            },
+            "already": {
+              "pending": 2
+            },
+            "inactive": {
+              "granted": 11,
+              "pending": 99,
+              "already": 102
+            }
+          }
+        },
+        "correct_resolution": {
+          "grant": "granted",
+          "approval": "pending",
+          "already": "already",
+          "inactive": "denied"
+        },
+        "wrong_person": {
+          "n_closed": 1534,
+          "n": 0,
+          "share_of_closed": 0.0
+        },
+        "unexpected_grant": {
+          "n": 9,
+          "share": 0.005859375,
+          "by_outcome": {
+            "grant": 0,
+            "approval": 0,
+            "already": 0,
+            "inactive": 9
+          }
+        },
+        "missing": null
+      },
+      "sft_supply": {
+        "pass_reward": 100,
+        "n_episodes": 1536,
+        "n_clean": 1291,
+        "share_clean": 0.8404947916666666,
+        "by_outcome": {
+          "grant": {
+            "n_episodes": 384,
+            "n_clean": 363,
+            "share_clean": 0.9453125
+          },
+          "approval": {
+            "n_episodes": 384,
+            "n_clean": 382,
+            "share_clean": 0.9947916666666666
+          },
+          "already": {
+            "n_episodes": 384,
+            "n_clean": 379,
+            "share_clean": 0.9869791666666666
+          },
+          "inactive": {
+            "n_episodes": 384,
+            "n_clean": 167,
+            "share_clean": 0.4348958333333333
+          }
+        },
+        "n_scenarios": 192,
+        "n_scenarios_with_clean_pass": 179,
+        "n_families": 48,
+        "n_families_with_clean_pass": 48
+      },
+      "warnings": []
+    }
+  },
+  "side_by_side": {
+    "runs": [
+      "2b",
+      "4b"
+    ],
+    "comparable": true,
+    "warnings": [],
+    "differences": [
+      {
+        "a": "2b",
+        "b": "4b",
+        "n_families": 48,
+        "diff": 0.3997395833333333,
+        "lo": 0.3157552083333333,
+        "hi": 0.486328125,
+        "t_lo": 0.3114659998681153,
+        "t_hi": 0.48801316679855133
+      }
+    ]
+  }
+}

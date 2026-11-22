@@ -1,0 +1,5 @@
+scenarios=data/scenarios
+arm=grpo_seed2
+options=
+adapter_config.json=9fe0c5587b821bc1d8681d2ae5c61ebec618c9447e1786b57173e76e4e6f3fa0
+adapter_model.safetensors=6c98faa9b726e3eac7e00236370f00d10cbfe1615d5ab00f24738d57a40ef040

@@ -1,0 +1,21 @@
+time_utc,event,instance_id,offer_id,gpu,dph_usd,max_minutes,bandwidth_est_usd,projected_usd,actual_usd,note
+2026-11-17T08:44:05Z,rent,61045163,60498830,RTX 4090,0.5111,240,0.1042,2.1486,,label accessdesk-20261117T084405Z; image vastai/pytorch@sha256:e052540e87b18c5b9f8048826ccd3c9c9f0bf6ae6f9245bd6ba684fbd362ef27
+2026-11-17T09:03:43Z,destroy,61045163,60498830,RTX 4090,0.5111,,0.1042,,0.2710,"0.326 h x price + download estimate; an estimate, the invoice is the authority. destroyed because start-up failed"
+2026-11-17T09:05:08Z,rent,61047327,54116660,RTX 4090,0.5495,240,0.0516,2.2495,,label accessdesk-20261117T090508Z; image vastai/pytorch:cuda-13.0.3-auto (sha256:e052540e87b18c5b9f8048826ccd3c9c9f0bf6ae6f9245bd6ba684fbd362ef27 on 2026-11-17)
+2026-11-17T16:02:31Z,destroy,61047327,54116660,RTX 4090,,,0.0516,,2.2495,already gone (the watchdog?); cost = the projected upper limit.
+2026-11-17T16:51:32Z,rent,61098966,60111611,RTX 4090,0.4889,150,0.1042,1.3264,,label accessdesk-20261117T165132Z; image vastai/pytorch:cuda-13.0.3-auto (sha256:e052540e87b18c5b9f8048826ccd3c9c9f0bf6ae6f9245bd6ba684fbd362ef27 on 2026-11-17)
+2026-11-17T18:43:21Z,destroy,61098966,60111611,RTX 4090,0.4889,,0.1042,,1.0153,"1.864 h x price + download estimate; an estimate, the invoice is the authority."
+2026-11-18T04:49:59Z,rent,61182932,61102937,RTX 4090,0.4889,160,0.1042,1.4079,,label accessdesk-20261118T044959Z; image vastai/pytorch:cuda-13.0.3-auto (sha256:e052540e87b18c5b9f8048826ccd3c9c9f0bf6ae6f9245bd6ba684fbd362ef27 on 2026-11-17)
+2026-11-18T15:27:20Z,destroy,61182932,61102937,RTX 4090,0.4889,,0.1042,,5.2971,"10.622 h x price + download estimate; an estimate, the invoice is the authority. destroy-all"
+2026-11-18T16:37:15Z,rent,61285391,61102937,RTX 4090,0.4833,180,0.0521,1.5021,,label accessdesk-20261118T163715Z; image vastai/pytorch:cuda-13.0.3-auto (sha256:e052540e87b18c5b9f8048826ccd3c9c9f0bf6ae6f9245bd6ba684fbd362ef27 on 2026-11-17)
+2026-11-18T17:40:09Z,destroy,61285391,61102937,RTX 4090,0.4833,,0.0521,,0.5587,"1.048 h x price + download estimate; an estimate, the invoice is the authority."
+2026-11-18T20:04:28Z,rent,61312835,60498830,RTX 4090,0.4944,360,0.0521,3.0188,,label accessdesk-20261118T200428Z; image vastai/pytorch:cuda-13.0.3-auto (sha256:e052540e87b18c5b9f8048826ccd3c9c9f0bf6ae6f9245bd6ba684fbd362ef27 on 2026-11-17)
+2026-11-18T20:08:20Z,destroy,61312835,60498830,RTX 4090,0.4944,,0.0521,,0.0838,"0.064 h x price + download estimate; an estimate, the invoice is the authority. destroyed because start-up failed"
+2026-11-18T20:08:34Z,rent,61313315,54116660,RTX 4090,0.5421,360,0.0258,3.2784,,label accessdesk-20261118T200834Z; image vastai/pytorch:cuda-13.0.3-auto (sha256:e052540e87b18c5b9f8048826ccd3c9c9f0bf6ae6f9245bd6ba684fbd362ef27 on 2026-11-17)
+2026-11-19T03:26:18Z,rent,61368330,60688995,RTX 4090,0.4700,400,0.0781,3.2115,,label accessdesk-20261119T032618Z; image vastai/pytorch:cuda-13.0.3-auto (sha256:e052540e87b18c5b9f8048826ccd3c9c9f0bf6ae6f9245bd6ba684fbd362ef27 on 2026-11-17)
+2026-11-19T06:46:45Z,destroy,61313315,54116660,RTX 4090,0.5421,,0.0258,,5.7921,"10.637 h x price + download estimate; an estimate, the invoice is the authority."
+2026-11-19T06:52:33Z,destroy,61368330,60688995,RTX 4090,0.4700,,0.0781,,1.6937,"3.437 h x price + download estimate; an estimate, the invoice is the authority."
+2026-11-19T07:54:56Z,rent,61405905,60688995,RTX 4090,0.4700,330,0.0781,2.6631,,label accessdesk-20261119T075456Z; image vastai/pytorch:cuda-13.0.3-auto (sha256:e052540e87b18c5b9f8048826ccd3c9c9f0bf6ae6f9245bd6ba684fbd362ef27 on 2026-11-17)
+2026-11-19T11:16:44Z,destroy,61405905,60688995,RTX 4090,0.4700,,0.0781,,1.6589,"3.363 h x price + download estimate; an estimate, the invoice is the authority."
+2026-11-19T16:36:50Z,rent,61480327,60688979,RTX 4090,0.4700,300,0.0781,2.4281,,label accessdesk-20261119T163650Z; image vastai/pytorch:cuda-13.0.3-auto (sha256:e052540e87b18c5b9f8048826ccd3c9c9f0bf6ae6f9245bd6ba684fbd362ef27 on 2026-11-17)
+2026-11-19T18:11:52Z,destroy,61480327,60688979,RTX 4090,0.4700,,0.0781,,0.8226,"1.584 h x price + download estimate; an estimate, the invoice is the authority."

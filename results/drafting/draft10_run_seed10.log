@@ -1,0 +1,99 @@
+11:26:22
+3 fields to write, with up to 16 candidates each
+Loading weights:   0%|          | 0/427 [00:00<?, ?it/s]Loading weights: 100%|██████████| 427/427 [00:00<00:00, 4497.14it/s]
+/workspace/venv/lib/python3.11/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+  candidate 0 of system_prompt: refused: does not tell the first working rule (one tool call in each message): no sentence of the part that begins with 'You work at an IT access desk where one ' holds 'one' or 'single', a word that begins with 'call' and a word that begins with one of message, repl, turn, respons (check C17)
+  candidate 1 of system_prompt: refused: has 428 words; a system prompt has 80 to 400
+  candidate 2 of system_prompt: refused: the first line that holds 'denial' does not say whose account state is meant: it holds neither the word 'person', nor 'step 1', nor lookup_person (check C13)
+  candidate 3 of system_prompt: refused: names the tool close_request only in a list of tools: on every line that holds it, 2 or more tools of the desk are named besides close_request
+  candidate 4 of system_prompt: refused: does not name the tool close_request
+  candidate 5 of system_prompt: refused: does not name the tool close_request
+  candidate 6 of system_prompt: refused: does not name the tool close_request
+  candidate 7 of system_prompt: refused: does not name the tool close_request
+  candidate 8 of system_prompt: refused: does not name the tool close_request
+  candidate 9 of system_prompt: refused: does not say, before its first case, that the cases are tested in order and that the first case that fits is followed: above the first line with a resolution value, no sentence that names no tool (and no two such sentences in a row on one line) holds the three words 'order', 'first', 'case'
+  candidate 10 of system_prompt: refused: does not name the tool close_request
+  candidate 11 of system_prompt: refused: does not name the tool close_request
+  candidate 12 of system_prompt: taken
+  candidate 0 of policy_shift.system_prompt: refused: does not say that grant_role is not called at this desk: no sentence names it
+  candidate 1 of policy_shift.system_prompt: refused: does not say that grant_role is not called at this desk: no sentence names it
+  candidate 2 of policy_shift.system_prompt: taken
+  candidate 0 of plain_system_prompt: refused: has 51 words; the short prompt has at most 40 (check C19)
+  candidate 1 of plain_system_prompt: refused: holds a word that begins with 'giv', which tells what the desk does with a request (check C10)
+  candidate 2 of plain_system_prompt: refused: has 49 words; the short prompt has at most 40 (check C19)
+  candidate 3 of plain_system_prompt: taken
+longest run of words shared with the shown text, among the taken values (limit 8): 6 words in tools.lookup_person.params.name.description ("the full name to search for")
+longest run of words shared with the placeholder text file (a report, not a rule): 6 words in tools.grant_role.params.person_id.description ("the id of the person who")
+runs in which a value was drawn, for each field:
+  id_prefixes.person                                     1
+  id_prefixes.role                                       1
+  tools.department_info.name                             1
+  tools.lookup_person.params.name.name                   1
+  tools.check_access.params.person_id.name               1
+  tools.check_access.params.role_name.name               1
+  tools.request_approval.params.role_id.name             1
+  tools.request_approval.params.approver_id.name         1
+  tools.close_request.params.resolution.name             1
+  tools.department_info.params.department.name           1
+  result_keys.matches                                    1
+  result_keys.person_id                                  1
+  result_keys.name                                       1
+  result_keys.department                                 1
+  result_keys.status                                     1
+  result_keys.manager_id                                 1
+  result_keys.role_id                                    1
+  result_keys.sensitive                                  1
+  result_keys.has_access                                 1
+  result_keys.result                                     1
+  result_keys.error                                      1
+  result_keys.member_count                               1
+  values.status.active                                   1
+  values.status.inactive                                 1
+  values.resolution.granted                              1
+  values.resolution.pending                              2
+  values.resolution.already                              3
+  values.resolution.denied                               3
+  values.confirmation.approval_requested                 1
+  values.confirmation.role_granted                       1
+  values.confirmation.request_closed                     1
+  tools.lookup_person.description                        1
+  tools.check_access.description                         1
+  tools.request_approval.description                     1
+  tools.grant_role.description                           1
+  tools.close_request.description                        1
+  tools.department_info.description                      1
+  tools.lookup_person.params.name.description            1
+  tools.check_access.params.person_id.description        1
+  tools.check_access.params.role_name.description        1
+  tools.request_approval.params.person_id.description    1
+  tools.request_approval.params.role_id.description      1
+  tools.request_approval.params.approver_id.description  1
+  tools.grant_role.params.person_id.description          1
+  tools.grant_role.params.role_id.description            1
+  tools.close_request.params.resolution.description      2
+  tools.close_request.params.person_id.description       2
+  tools.close_request.params.role_id.description         1
+  tools.department_info.params.department.description    1
+  errors.unknown_person_id                               3
+  errors.unknown_role_name                               3
+  errors.unknown_role_id                                 3
+  errors.unknown_approver_id                             3
+  errors.unknown_department                              3
+  errors.malformed_call                                  3
+  system_prompt                                          8
+  policy_shift.system_prompt                             5
+  plain_system_prompt                                    6
+  request_templates.style_1                              1
+  request_templates.style_2                              1
+  request_templates.style_3                              4
+  request_templates.style_4                              4
+  departments                                            1
+  roles                                                  1
+fields drawn in more than one run: ['values.resolution.pending', 'values.resolution.already', 'values.resolution.denied', 'tools.close_request.params.resolution.description', 'tools.close_request.params.person_id.description', 'errors.unknown_person_id', 'errors.unknown_role_name', 'errors.unknown_role_id', 'errors.unknown_approver_id', 'errors.unknown_department', 'errors.malformed_call', 'system_prompt', 'policy_shift.system_prompt', 'plain_system_prompt', 'request_templates.style_3', 'request_templates.style_4']
+peak GPU memory of this process: 17.22 GB
+written: /workspace/repo/text/model_text.yaml (SHA-256 e862cfc17605f1f4edb5becfff97bb66b1bfc9ac17e5ca597ca591e1de5d8568)
+Next: read the file, change any line you want, and put your name after 'Read and approved by:'.
+DRAFT_EXIT=0
+11:31:29
+JOB_EXIT_CODE=0

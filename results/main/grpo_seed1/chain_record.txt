@@ -1,0 +1,2 @@
+options=--scenarios-per-step 8 --group-size 16
+GRPO_OPTIONS=--reference-tokens 200

@@ -1,0 +1,168 @@
+{
+  "complete": true,
+  "script": "scripts/gpu/sft_data.py",
+  "command": [
+    "scripts/gpu/sft_data.py",
+    "--episodes",
+    "results/_smoke/dress/base_train/episodes.jsonl",
+    "--tokens",
+    "results/_smoke/dress/base_train/tokens.jsonl",
+    "--scenarios",
+    "data/scenarios_calib5_mixed",
+    "--out",
+    "results/_smoke/dress/sft_data"
+  ],
+  "started_utc": "2026-11-18T22:00:14Z",
+  "ended_utc": "2026-11-18T22:00:14Z",
+  "seconds": 0.12,
+  "python": "3.11.17",
+  "allow_penalised": false,
+  "config": {
+    "turn_limit": 8,
+    "max_new_tokens": 260,
+    "parser_strict": true,
+    "temperature": 1.0,
+    "top_k": 0,
+    "top_p": 1.0,
+    "chunk_size": 32,
+    "pass_reward": 100,
+    "malformed_penalty": 5,
+    "malformed_cap": 15,
+    "turn_penalty": 2,
+    "turn_cap": 10,
+    "penalise_malformed_on_fail": false,
+    "n_people": 8,
+    "n_roles": 6,
+    "n_departments": 3,
+    "homonym_share": 0.5,
+    "mix_facts": true,
+    "n_train": 200,
+    "n_dev": 48,
+    "n_test": 48,
+    "n_calib": 24,
+    "data_seed": 20261118,
+    "calib_seed": 20261119,
+    "placeholder_data_seed": 9001,
+    "placeholder_calib_seed": 9002
+  },
+  "config_sha256": "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475",
+  "config_source": "run_manifest.json of the rollout",
+  "records_config_sha256": "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475",
+  "records_settings": {
+    "turn_limit": 8,
+    "max_new_tokens": 260,
+    "parser_strict": true,
+    "temperature": 1.0,
+    "top_k": 0,
+    "top_p": 1.0,
+    "pass_reward": 100,
+    "malformed_penalty": 5,
+    "malformed_cap": 15,
+    "turn_penalty": 2,
+    "turn_cap": 10,
+    "penalise_malformed_on_fail": false
+  },
+  "impl": {
+    "verify": "main",
+    "reward": "main",
+    "build_loss_mask": "main",
+    "group_advantages": "main",
+    "policy_loss": "main",
+    "paired_family_bootstrap": "main"
+  },
+  "code_sha256": "a157f32175cc4a24092f916a8dcf2a382a0ac4764b81d60d94f28a02963202f3",
+  "frozen": {
+    "manifest_sha256": "f1ea719eadb4e16a25af51ee9b4ec7050097de3df451469d0b001833b85a99e9",
+    "code_sha256": "a157f32175cc4a24092f916a8dcf2a382a0ac4764b81d60d94f28a02963202f3",
+    "matches": true,
+    "differences": []
+  },
+  "frozen_note": null,
+  "training_code": {
+    "sha256": "d547e6d138b205f1a1fe4f863938a99dc8607c60240c49259310c8e19d43d97c",
+    "files": {
+      "accessdesk/_second/grpo_math.py": "1b3793232d5452e8ea0867314e808b48da8d6b19ce790c721d6f566a0765d3dd",
+      "accessdesk/_second/loss_mask.py": "c70bbdbcf71d25b0abb9acc6c90a85fb00e3f4c488caf1a3e1b68d4c29e8be92",
+      "accessdesk/train/__init__.py": "20ca27ddc874c92c4ba81f9ae1fcf255496de787333ef23cd3684c6d1a4c4e43",
+      "accessdesk/train/forward.py": "9c957343fb4eb6f20e67da68a4d7ae1b9ebae200e07f5fd588f3faa4021b5489",
+      "accessdesk/train/grpo.py": "cf18a0e50f2d0e1d7afbb3b9beb56daa308cb0715e8da276f351f454be472c27",
+      "accessdesk/train/grpo_math.py": "8d203e9e3dae38f9197423cc6e1b1072bb7869cc944852f409f5cf789277811f",
+      "accessdesk/train/lora.py": "9b86324257684d26da53e6a20acbc34fb7579fdbe43800ad7cf60a599a034daa",
+      "accessdesk/train/loss_mask.py": "c4894b141befd82b34a12cfd59be1b2185d3f23634ba188f6e451ce7044a33c6",
+      "accessdesk/train/sft.py": "6f4bebaee39c70d6434027ea9aae238a872620a1d20d07061d267b5221522e25",
+      "scripts/gpu/chain_stage1.sh": "6d7a5446eed99e8ce14874b7d3f29ea439a16d4b43cac0fb2409f9aca319ef20",
+      "scripts/gpu/chain_stage2.sh": "f807ebc2544b2f9cabf1067407bb927a79af52f88f4c7149978e3d479abca00c",
+      "scripts/gpu/sft_data.py": "d94e8cff1da1eb4e5b23f367607b56dfc251e1e29d0ce957db4b274ced8bcb54",
+      "scripts/gpu/train_grpo.py": "68846c03e24e65a4ac32a9c86f233179b899c8eb4c609712a9585ceef1c57613",
+      "scripts/gpu/train_sft.py": "a0e975302e6e84f382e2350ffba476c99f422f2543397e86a11704215d5ef431"
+    }
+  },
+  "split": "train",
+  "text_sha256": "e4118288ed14b14ab185da4e304040fdc5b30140c61635b8b479d84a7a808709",
+  "text_is_placeholder": false,
+  "data_sha256": "664862bf4c847edeef2c3762e3eae895ed5de3722a3adf92e452c681d85d49e8",
+  "scenarios_config_sha256": "bb0e1495c02ac3db2afbd2486482c128d5017fded92f6be381564e584cd9b344",
+  "source_run": {
+    "manifest": {
+      "path": "results/_smoke/dress/base_train/run_manifest.json",
+      "sha256": "7643ea580b717e19c60ce1a9463d282d09ac8de65787955f4537d374529e9ab5",
+      "bytes": 6784
+    },
+    "complete": true,
+    "model": "Qwen/Qwen3.5-2B",
+    "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+    "adapter": null,
+    "split": "train",
+    "samples": 8,
+    "run_seed": 10,
+    "families": 8,
+    "scenarios": 24,
+    "config_sha256": "88b3bf6642df849fc01bd23187783b0710d81e86e4b48d166b54886ef8ef3475",
+    "text_sha256": "e4118288ed14b14ab185da4e304040fdc5b30140c61635b8b479d84a7a808709",
+    "split_file_sha256": "664862bf4c847edeef2c3762e3eae895ed5de3722a3adf92e452c681d85d49e8"
+  },
+  "inputs": {
+    "episodes": {
+      "path": "results/_smoke/dress/base_train/episodes.jsonl",
+      "sha256": "0c12be52b274160656a9b6516ef93fcd3bb651f5d8ce9a87110ebd76b68b6e2e",
+      "bytes": 759196
+    },
+    "tokens": {
+      "path": "results/_smoke/dress/base_train/tokens.jsonl",
+      "sha256": "570dc0ef5d622c2499016fcfdd025005eebf3f487ab1ce7736520f39220fda5f",
+      "bytes": 2682890
+    },
+    "summary": {
+      "path": "data/scenarios_calib5_mixed/summary.json",
+      "sha256": "3322404eb0fb115ce3e963fb96cd88ba5e66880a4a57ef2478c23d3c24dbf1b5",
+      "bytes": 6107
+    },
+    "train_file": {
+      "path": "data/scenarios_calib5_mixed/train.jsonl",
+      "sha256": "664862bf4c847edeef2c3762e3eae895ed5de3722a3adf92e452c681d85d49e8",
+      "bytes": 866607
+    }
+  },
+  "outputs": {
+    "sft_records.jsonl": {
+      "path": "results/_smoke/dress/sft_data/sft_records.jsonl",
+      "sha256": "3209c2bee1fa52dc91a13c0d933d5a4aa41b4f7357634a9a83de7efa0c985770",
+      "bytes": 240952
+    },
+    "sft_report.json": {
+      "path": "results/_smoke/dress/sft_data/sft_report.json",
+      "sha256": "55cd12cc83fb3631636678464ea4d81ed69c880f7b2c62c1ff58965a5c832573",
+      "bytes": 1104
+    },
+    "sft_report.md": {
+      "path": "results/_smoke/dress/sft_data/sft_report.md",
+      "sha256": "de51e4eda3888361b14cd03a2c3e6ba2d1f1d2dbc0b6d4dca724430235a268fe",
+      "bytes": 1112
+    }
+  },
+  "counts": {
+    "records": 192,
+    "chosen": 15,
+    "loss_tokens": 2683
+  }
+}

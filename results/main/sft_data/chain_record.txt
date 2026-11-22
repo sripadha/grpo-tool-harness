@@ -1,0 +1,2 @@
+scenarios=data/scenarios
+SFT_DATA_OPTIONS=

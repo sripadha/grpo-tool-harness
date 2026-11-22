@@ -1,0 +1,264 @@
+# The text that the model reads. An open-weight model wrote the values in this file, one field at a
+# time. The values that it did not write are named below (tool names, repeated parameter names).
+#
+# Written by: Qwen/Qwen3.5-9B, revision c202236235762e1c871ad0ccb60c8ee5ba337b9a
+# Date and time (UTC): 2026-11-17 17:00:32 UTC
+# Run seed: 1
+# Sampling of the writing model: thinking off, temperature 0.7, top_p 0.8, top_k 20 (the model card's settings for non-thinking mode)
+# Instructions: written by the coding assistant (a closed API model). They are in
+#   text/drafting_instructions.yaml (SHA-256 66b82f45e5f456f21c81d950adfd51ff0bac89f54493de670ce579ce60ac148f).
+# Selection: up to 8 candidates per field; each reply was cleaned and checked by fixed
+#   rules (accessdesk/drafting.py), and the first valid candidate in index order was taken. Nobody
+#   chose between candidates: no person and no closed model. Every candidate is in text/drafting_log.jsonl.
+# Tool names: the names of the five tools follow the brief's example list (lookup_person, check_access, request_approval, grant_role, close_request).
+#   The writing model was not asked for them. A parameter that means the same thing in several tools
+#   was asked for once, and the program put that name into each of those tools.
+# Person names: they are not in this file. They come from the public lists in data/names/.
+# Keys on the left are internal and are never shown to the model.
+# Copy check: a candidate that shared a run of 8 or more words with the text shown to its
+#   writer (the instructions) was refused. The limit is our judgement (accessdesk/drafting.py).
+# Largest shared run among the values that were taken: 6 words in tools.lookup_person.params.name.description ("the full name to search for")
+# Runs in which a value was drawn, for each field (counted in text/drafting_log.jsonl; a field with more than 1
+#   was written again):
+#   id_prefixes.person: 1
+#   id_prefixes.role: 1
+#   tools.department_info.name: 1
+#   tools.lookup_person.params.name.name: 1
+#   tools.check_access.params.person_id.name: 1
+#   tools.check_access.params.role_name.name: 1
+#   tools.request_approval.params.role_id.name: 1
+#   tools.request_approval.params.approver_id.name: 1
+#   tools.close_request.params.resolution.name: 1
+#   tools.department_info.params.department.name: 1
+#   result_keys.matches: 1
+#   result_keys.person_id: 1
+#   result_keys.name: 1
+#   result_keys.department: 1
+#   result_keys.status: 1
+#   result_keys.manager_id: 1
+#   result_keys.role_id: 1
+#   result_keys.sensitive: 1
+#   result_keys.has_access: 1
+#   result_keys.result: 1
+#   result_keys.error: 1
+#   result_keys.member_count: 1
+#   values.status.active: 1
+#   values.status.inactive: 1
+#   values.resolution.granted: 1
+#   values.resolution.pending: 1
+#   values.resolution.already: 1
+#   values.resolution.denied: 1
+#   values.confirmation.approval_requested: 1
+#   values.confirmation.role_granted: 1
+#   values.confirmation.request_closed: 1
+#   tools.lookup_person.description: 1
+#   tools.check_access.description: 1
+#   tools.request_approval.description: 1
+#   tools.grant_role.description: 1
+#   tools.close_request.description: 1
+#   tools.department_info.description: 1
+#   tools.lookup_person.params.name.description: 1
+#   tools.check_access.params.person_id.description: 1
+#   tools.check_access.params.role_name.description: 1
+#   tools.request_approval.params.person_id.description: 1
+#   tools.request_approval.params.role_id.description: 1
+#   tools.request_approval.params.approver_id.description: 1
+#   tools.grant_role.params.person_id.description: 1
+#   tools.grant_role.params.role_id.description: 1
+#   tools.close_request.params.resolution.description: 1
+#   tools.close_request.params.person_id.description: 1
+#   tools.close_request.params.role_id.description: 1
+#   tools.department_info.params.department.description: 1
+#   errors.unknown_person_id: 1
+#   errors.unknown_role_name: 1
+#   errors.unknown_role_id: 1
+#   errors.unknown_approver_id: 1
+#   errors.unknown_department: 1
+#   errors.malformed_call: 1
+#   system_prompt: 1
+#   policy_shift.system_prompt: 1
+#   plain_system_prompt: 1
+#   request_templates.style_1: 1
+#   request_templates.style_2: 1
+#   request_templates.style_3: 1
+#   request_templates.style_4: 1
+#   departments: 1
+#   roles: 1
+#
+# Read and approved by: (not yet)
+
+meta:
+  written_by: Qwen/Qwen3.5-9B (open-weight model, revision c202236235762e1c871ad0ccb60c8ee5ba337b9a)
+  placeholder: false
+
+system_prompt: |-
+  You work at the IT access desk of a company that manages people and roles. Each conversation you handle is exactly one request from a sender. The sender asks that a specific person from a specific department receives a specific role. You must settle this request using your tools without asking the sender any questions.
+
+  You must follow two strict rules. First, each of your messages contains exactly one tool call and nothing else. Second, you must never make up an id or guess an id. You may only use an id if a tool result shows it to you.
+
+  Always follow these steps in this exact order. Step one is to find the person by searching for their full name from the request. If several people have the same name, you must use the department from the request to decide which one is correct. Step two is to look up the requested role for that person by searching for the role name. This step returns the role id, whether the role is sensitive, and whether the person already holds the role.
+
+  You then check four cases in this order and act on the first case that fits. Case a applies if the person's account state is inactive. In this case, do not give the role and do not ask for approval. Close the request with the resolution value request_denied. Case b applies if the person already holds the role. In this case, do not give the role and do not ask for approval. Close the request with the resolution value role_already_held. Case c applies if the role is sensitive. In this case, ask for approval using the manager id found in the step one result. Do not give the role yet. Close the request with the resolution value request_closing. Case d applies if none of the previous cases fit. In this case, give the role to the person using the grant_role tool. Close the request with the resolution value role_granted.
+
+  Your last tool call must always be close_request. This call requires the resolution value, the person id, and the role id. Never give a role twice in one conversation and never request approval twice. Use the tool names lookup_person, check_access, request_approval, grant_role, and close_request exactly as written.
+
+plain_system_prompt: You are an IT desk assistant handling one role request per conversation. Each of your messages must contain exactly one tool call. You may only use an ID if a tool result shows it.
+
+policy_shift:
+  variant: all_grants_need_approval
+  system_prompt: |-
+    You work at the IT access desk of a company that manages people and roles. Each conversation you handle is exactly one request from a sender. The sender asks that a specific person from a specific department receives a specific role. You must settle this request using your tools without asking the sender any questions.
+
+    You must follow two strict rules. First, each of your messages contains exactly one tool call and nothing else. Second, you must never make up an id or guess an id. You may only use an id if a tool result shows it to you.
+
+    Always follow these steps in this exact order. Step one is to find the person by searching for their full name from the request. If several people have the same name, you must use the department from the request to decide which one is correct. Step two is to look up the requested role for that person by searching for the role name. This step returns the role id, whether the role is sensitive, and whether the person already holds the role.
+
+    You then check four cases in this order and act on the first case that fits. Case a applies if the person's account state is inactive. In this case, do not give the role and do not ask for approval. Close the request with the resolution value request_denied. Case b applies if the person already holds the role. In this case, do not give the role and do not ask for approval. Close the request with the resolution value role_already_held. Case c applies if the person's account is in use and the person does not yet hold the role. In this case, ask for approval using the manager id found in the step one result. Do not give the role yet. Close the request with the resolution value request_closing. Case d applies if none of the previous cases fit. In this case, do not give the role directly. Instead, close the request with the resolution value request_closing to indicate the action is pending.
+
+    Your last tool call must always be close_request. This call requires the resolution value, the person id, and the role id. Never give a role twice in one conversation and never request approval twice. Use the tool names lookup_person, check_access, request_approval, grant_role, and close_request exactly as written.
+
+id_prefixes:
+  person: USR
+  role: ROLE
+
+tools:
+  lookup_person:
+    name: lookup_person
+    description: The lookup_person tool takes a person_full_name and returns a list of people. Each person in the list includes person_id, person_full_name, department_name, account_state, and manager_id.
+    params:
+      name:
+        name: person_full_name
+        description: The person_full_name parameter expects the full name to search for.
+  check_access:
+    name: check_access
+    description: The check_access tool takes a person_id and role_name. It returns the role_id, is_sensitive, and holds_role. No data changes.
+    params:
+      person_id:
+        name: person_id
+        description: The person_id parameter expects the id of the person being checked for the role.
+      role_name:
+        name: role_name
+        description: The role_name parameter expects the name of the role from the request, not its id.
+  request_approval:
+    name: request_approval
+    description: This tool takes a person_id, role_id, and approver_id to create one record asking the approver to approve the role for that person. It returns a short confirmation and does not give the role itself.
+    params:
+      person_id:
+        name: person_id
+        description: The person_id parameter expects the unique identifier of the person who will receive the role.
+      role_id:
+        name: role_id
+        description: The role_id parameter expects the id of the role that is the object of the approval request.
+      approver_id:
+        name: approver_id
+        description: The approver_id parameter expects the id of the person asked to approve the request.
+  grant_role:
+    name: grant_role
+    description: The grant_role tool assigns a role to a person immediately and records the action, then returns a short confirmation. It requires the person_id and role_id as input.
+    params:
+      person_id:
+        name: person_id
+        description: The person_id parameter expects the id of the person who will receive the role.
+      role_id:
+        name: role_id
+        description: The role_id parameter expects the id of the role being given to the person.
+  close_request:
+    name: close_request
+    description: The close_request tool takes person_id, role_id, and request_resolution, writes the resolution to the request, closes it, and returns a short confirmation.
+    params:
+      resolution:
+        name: request_resolution
+        description: The resolution parameter accepts one of four fixed values indicating how the request ended.
+      person_id:
+        name: person_id
+        description: The person_id parameter expects the unique identifier of the person who made the request.
+      role_id:
+        name: role_id
+        description: The role_id parameter expects the id of the role that was requested.
+  department_info:
+    name: count_department
+    description: The count_department tool takes a department_name and returns the department_name and department_people_count without making changes.
+    params:
+      department:
+        name: department_name
+        description: The parameter expects the name of a department.
+
+result_keys:
+  matches: people
+  person_id: person_id
+  name: person_full_name
+  department: department_name
+  status: account_state
+  manager_id: manager_id
+  role_id: role_id
+  sensitive: is_sensitive
+  has_access: holds_role
+  result: success_message
+  error: error_in_request
+  member_count: department_people_count
+
+values:
+  status:
+    active: active
+    inactive: inactive
+  resolution:
+    granted: role_granted
+    pending: request_closing
+    already: role_already_held
+    denied: request_denied
+  confirmation:
+    approval_requested: request_approval recorded the request
+    role_granted: Role granted to person
+    request_closed: Request closed successfully
+
+errors:
+  unknown_person_id: We could not find a person with the ID {value}.
+  unknown_role_name: We could not find a role named {value} in our system.
+  unknown_role_id: The system found no role with the id {value}.
+  unknown_approver_id: The approver id {value} does not match any person in the company.
+  unknown_department: The department with the name {value} does not exist in our records.
+  malformed_call: Your message could not be used because it did not contain exactly one valid tool call.
+
+request_templates:
+  style_1:
+  - Please grant the role of {role_name} to {person_name} from the {department}.
+  - We request that {person_name} in {department} be assigned the {role_name}.
+  - Kindly provide {person_name} with the {role_name} while they work in {department}.
+  style_2:
+  - 'Requester: {person_name} from {department} needs {role_name}'
+  - 'New Access: Grant {role_name} to {person_name} in {department}'
+  - 'Action Required: Assign {role_name} for {person_name} within {department}'
+  style_3:
+  - hey, could you get {person_name} the {role_name} access in {department}? thanks
+  - hi, please assign {role_name} to {person_name} from {department} as soon as possible
+  - just a quick ask, can we give {person_name} in {department} the {role_name} role
+  style_4:
+  - I am {person_name} from {department} and I need the {role_name} role to complete my daily tasks.
+  - I am {person_name} from the {department} and I need the {role_name} to finish my daily tasks.
+  - I work in the {department} as {person_name} and require the {role_name} to do my job properly.
+
+departments:
+- Human Resources
+- Finance
+- Information Technology
+- Operations
+- Marketing
+- Sales
+- Legal
+- Research and Development
+
+roles:
+- Finance Ledger Entry
+- Human Resources File Review
+- Sales Order Approval
+- Inventory Stock Update
+- Payroll Payment Process
+- Marketing Campaign Setup
+- Legal Contract Draft
+- Procurement Vendor Check
+- Engineering Design File
+- Customer Support Ticket
+- Research Data Entry
+- Facility Maintenance Log
+- Shipping Manifest Create
+- Billing Invoice Generate

@@ -1,0 +1,26 @@
+# Packages of the rented GPU machine (Linux x86_64, Python 3.11). Never install this file on a laptop.
+# Installed by scripts/remote/setup_box.sh with:  uv pip install -r requirements-gpu.txt
+#
+# Every exact version below was looked up on pypi.org (JSON API) on 2026-11-17: the version exists, is not
+# yanked, and has a file for Python 3.11 on Linux x86_64.
+#
+# torch 2.15.0: the Linux wheel on PyPI depends on cuda-toolkit==13.2.2 and nvidia-cudnn-cu13, so it brings
+#   its own CUDA 13.2 libraries. The host needs only a driver that supports CUDA 13.2 (rent.py filters offers
+#   on this). torch itself pins triton (~=3.9.0), which the flash-linear-attention kernels use.
+# flash-linear-attention 0.6.0: this wheel holds fla/layers and fla/models only. The kernels (fla/ops) are in
+#   fla-core, which it requires at exactly 0.6.0. Both are listed so that the pair is visible.
+# numpy, pyyaml, jinja2, pytest, safetensors, tokenizers, huggingface-hub: the same versions as in the local
+#   environment in which the CPU tests pass (tokenizers must be the same, because token ids are stored).
+torch==2.15.0
+transformers==5.23.0
+peft==0.21.3
+accelerate==1.16.0
+flash-linear-attention==0.6.0
+fla-core==0.6.0
+numpy==2.4.6
+pyyaml==6.0.3
+jinja2==3.1.6
+pytest==9.2.0
+safetensors==0.8.0
+tokenizers==0.23.3
+huggingface-hub==2.4.0

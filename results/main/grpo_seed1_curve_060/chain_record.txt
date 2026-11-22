@@ -1,0 +1,6 @@
+scenarios=data/scenarios
+arm=grpo_seed1_curve_060
+options=--set curve_subset --styles 1
+adapter_config.json=9fe0c5587b821bc1d8681d2ae5c61ebec618c9447e1786b57173e76e4e6f3fa0
+adapter_model.safetensors=d7f32695e62524b4faaf62892fa0a5edce07a770cc45b356d530658cd19b8d2f
+sets.json=624e9a6eb50f4c09284cc81d3a2658b3753c628125cce0de4bb1ea009c1b534e

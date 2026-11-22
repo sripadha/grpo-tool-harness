@@ -1,0 +1,53 @@
+{
+  "rule": "families whose attempts in the style are all valid, with 0 < passes < attempts; ordered by the distance of the pass count from half of the attempts, then by family id; the first ones are taken",
+  "style": 1,
+  "count": 2,
+  "chosen": [
+    {
+      "family_id": "tr-020",
+      "passes": 4,
+      "attempts": 8,
+      "harness_errors": 0
+    },
+    {
+      "family_id": "tr-019",
+      "passes": 2,
+      "attempts": 8,
+      "harness_errors": 0
+    }
+  ],
+  "counts": {
+    "families": 100,
+    "mixed": 15,
+    "always_pass": 84,
+    "always_fail": 1,
+    "with_harness_error": 0
+  },
+  "source": {
+    "episodes": {
+      "path": "results/main/sft_train/episodes.jsonl",
+      "sha256": "87b4b6c7e0a9f8615b7718729c7017b6c5e5f35e0b5f78fc6777b34136b072a6",
+      "bytes": 8606520
+    },
+    "run": "sft_train",
+    "arm": "sft_train",
+    "model": {
+      "run_manifest": {
+        "path": "results/main/sft_train/run_manifest.json",
+        "sha256": "ff5bd5150520d51b20d71d8647b2215174bf820125c5abbe7cb130e56fc2f25e",
+        "bytes": 6852
+      },
+      "complete": true,
+      "model": "Qwen/Qwen3.5-2B",
+      "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+      "adapter": "results/main/sft/adapter",
+      "samples": 8,
+      "run_seed": 20
+    }
+  },
+  "script": {
+    "path": "scripts/pick_overfit_families.py",
+    "sha256": "6a40eb03a4a16e7db3540cbad9e41dd826ecedd9aa63ab91732842efff8b8a06",
+    "bytes": 9028
+  }
+}

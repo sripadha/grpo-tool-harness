@@ -1,0 +1,2 @@
+# Hashes of data and text files are taken over raw bytes. Never convert line ends.
+* -text

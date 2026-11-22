@@ -1,0 +1,17 @@
+Loading weights:   0%|          | 0/427 [00:00<?, ?it/s]Loading weights: 100%|██████████| 427/427 [00:00<00:00, 17287.00it/s]
+/workspace/venv/lib/python3.11/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+pass 1/1: 16 episodes, 24 s, 0 harness errors
+episodes 16   harness errors 0
+pass rate (mean over families)  1.000
+  grant      1.000
+  approval   1.000
+  already    1.000
+  inactive   1.000
+invalid-call rate (malformed messages / all messages)  0.000
+turns cut off by the token cap  0.000
+tokens per turn  48.6  (largest 87)
+turns per episode  3.50
+episodes that used up the turn limit  0.000
+2378 episodes per hour in 24.2 s; peak GPU memory {'allocated': 21.53, 'reserved': 22.53} GiB; wrote results/_smoke/probe9b/c16
+JOB_EXIT_CODE=0

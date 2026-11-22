@@ -1,0 +1,353 @@
+{
+  "what_this_is": "Where the two name lists in this folder come from and how they were chosen. The lists hold common first names and common surnames, meant to be combined into made-up person names.",
+  "record_written": "2026-11-17T00:07:07-08:00",
+  "times": "All times come from the clock of the machine that made the requests: US Pacific Standard Time, UTC-08:00.",
+  "download_client": "curl 7.81.0 sending the user agent 'curl/8'. No cookies, no login, no personal data.",
+  "raw_folder": ".cache/names_raw/ (kept on the machine; .gitignore lists .cache/, so the raw downloads are not part of the repository)",
+  "raw_files": [
+    {
+      "used_for": "first_names.txt (female names)",
+      "source_name": "US Census Bureau: Frequently Occurring Names from the 1990 Census, file dist.female.first",
+      "address": "https://www2.census.gov/topics/genealogy/1990surnames/dist.female.first",
+      "downloaded_at": "2026-11-17T00:00:51-08:00",
+      "downloaded_at_utc": "2026-11-17T08:00:51Z",
+      "http_status": 200,
+      "last_modified_header_sent_by_the_server": "Thu, 31 Jul 2014 14:15:52 GMT",
+      "saved_as": ".cache/names_raw/census_1990_dist.female.first",
+      "bytes": 149625,
+      "lines": 4275,
+      "sha256": "bd2f310fc4e5d5e5ea122c9d4342c9821145823118eb20db1647f305ec77b358",
+      "layout": "Plain text. Each line: name in capitals, frequency in percent, cumulative frequency in percent, rank. The lines are in rank order, 1 to 4275."
+    },
+    {
+      "used_for": "first_names.txt (male names)",
+      "source_name": "US Census Bureau: Frequently Occurring Names from the 1990 Census, file dist.male.first",
+      "address": "https://www2.census.gov/topics/genealogy/1990surnames/dist.male.first",
+      "downloaded_at": "2026-11-17T00:00:51-08:00",
+      "downloaded_at_utc": "2026-11-17T08:00:51Z",
+      "http_status": 200,
+      "last_modified_header_sent_by_the_server": "Thu, 31 Jul 2014 14:15:52 GMT",
+      "saved_as": ".cache/names_raw/census_1990_dist.male.first",
+      "bytes": 42665,
+      "lines": 1219,
+      "sha256": "0a5078ef6effe3b483d15b0f7f95047662126c9bfb624ecd5e5b978fc0f2470b",
+      "layout": "Plain text. Each line: name in capitals, frequency in percent, cumulative frequency in percent, rank. The lines are in rank order, 1 to 1219."
+    },
+    {
+      "used_for": "last_names.txt",
+      "source_name": "US Census Bureau: Frequently Occurring Surnames from the 2010 Census (File B: Surnames Occurring 100 or more times)",
+      "address": "https://www2.census.gov/topics/genealogy/2010surnames/names.zip",
+      "downloaded_at": "2026-11-16T23:39:56-08:00",
+      "downloaded_at_utc": "2026-11-17T07:39:56Z",
+      "http_status": 200,
+      "last_modified_header_sent_by_the_server": "Thu, 15 Dec 2016 15:21:36 GMT",
+      "saved_as": ".cache/names_raw/census_2010_surnames_names.zip",
+      "bytes": 12874389,
+      "sha256": "117c41cb4668727b7627b2845b6df3f83eb2a22a1813f42c0ff4bdcab86de135",
+      "files_inside_archive": [
+        "Names_2010Census.csv",
+        "Names_2010Census.xlsx"
+      ],
+      "file_used_inside_archive": "Names_2010Census.csv",
+      "file_used_bytes": 9445924,
+      "file_used_sha256": "6b4933178060b4e5ac8dd9a611ec15472d35eab98fe9027474bc5ccc5b7a8708",
+      "layout": "One header line (name,rank,count,prop100k,cum_prop100k,pctwhite,pctblack,pctapi,pctaian,pct2prace,pcthispanic), then 162,253 surnames in rank order, then a last row ALL OTHER NAMES."
+    }
+  ],
+  "derived_files": {
+    "first_names.txt": {
+      "lines": 200,
+      "sha256": "be99b057c35573b35dd4c5f352846490c22c7417abdf06fe447d1793bd05bd9c",
+      "made_from": [
+        "census_1990_dist.female.first",
+        "census_1990_dist.male.first"
+      ],
+      "first_12_lines": [
+        "Mary",
+        "James",
+        "Patricia",
+        "John",
+        "Linda",
+        "Robert",
+        "Barbara",
+        "Michael",
+        "Elizabeth",
+        "William",
+        "Jennifer",
+        "David"
+      ]
+    },
+    "last_names.txt": {
+      "lines": 200,
+      "sha256": "785f1a001034646c828027893ac29575224eb588d4734403224dc421e8f4c362",
+      "made_from": [
+        "census_2010_surnames_names.zip (Names_2010Census.csv)",
+        "the 200 names of first_names.txt, which are left out"
+      ],
+      "first_12_lines": [
+        "Smith",
+        "Johnson",
+        "Williams",
+        "Brown",
+        "Jones",
+        "Garcia",
+        "Miller",
+        "Davis",
+        "Rodriguez",
+        "Martinez",
+        "Hernandez",
+        "Lopez"
+      ]
+    }
+  },
+  "selection_rules": {
+    "first_names": [
+      "Walk dist.female.first and dist.male.first in rank order. This is the order of each file; the script stops if a rank ever goes down.",
+      "Skip a name with fewer than 3 letters.",
+      "Skip a name with a character outside A-Z.",
+      "Skip a name that is taken under the other sex. A name that is in both files is considered only under the sex where its frequency in percent is higher (if the two are equal: female).",
+      "Take the first 100 female names and the first 100 male names that pass.",
+      "Write each name with a capital first letter and the rest in lower case (MARY becomes Mary).",
+      "Write first_names.txt interleaved: female 1, male 1, female 2, male 2, and so on (200 lines)."
+    ],
+    "last_names": [
+      "Walk Names_2010Census.csv in rank order. This is the order of the file; the script stops if a rank ever goes down.",
+      "Skip the row ALL OTHER NAMES.",
+      "Skip every name that starts with MC. Plain capitalisation would spoil it: MCDONALD would become Mcdonald.",
+      "Skip a name with a character outside A-Z.",
+      "Skip a name that is equal, ignoring upper and lower case, to any of the 200 chosen first names.",
+      "Write each name with a capital first letter and the rest in lower case (SMITH becomes Smith).",
+      "Take the first 200 names that pass and keep them in rank order."
+    ],
+    "example_for_the_shared_name_rule": "TERRY is in both files, with 0.311 percent in the male file and 0.080 percent in the female file, so TERRY can only be chosen as a male name."
+  },
+  "what_was_skipped": {
+    "first_names": {
+      "fewer than 3 letters": 0,
+      "character outside A-Z": 0,
+      "in both files and belongs to the other sex": 0,
+      "in_plain_words": "Nothing was skipped. The 100 names taken from each file are its ranks 1 to 100. 331 names are in both files, but none of them is within the first 100 of both, and each one within the first 100 of a file has its higher frequency there."
+    },
+    "last_names": {
+      "the row ALL OTHER NAMES": 0,
+      "starts with MC": 1,
+      "starts_with_MC_names": [
+        {
+          "name": "MCDONALD",
+          "rank": 143
+        }
+      ],
+      "character outside A-Z": 0,
+      "same as a chosen first name": 10,
+      "same_as_a_chosen_first_name_names": [
+        {
+          "name": "THOMAS",
+          "rank": 16
+        },
+        {
+          "name": "MARTIN",
+          "rank": 20
+        },
+        {
+          "name": "SCOTT",
+          "rank": 36
+        },
+        {
+          "name": "KELLY",
+          "rank": 74
+        },
+        {
+          "name": "HOWARD",
+          "rank": 75
+        },
+        {
+          "name": "JAMES",
+          "rank": 85
+        },
+        {
+          "name": "RUSSELL",
+          "rank": 104
+        },
+        {
+          "name": "HENRY",
+          "rank": 149
+        },
+        {
+          "name": "ROSE",
+          "rank": 177
+        },
+        {
+          "name": "RYAN",
+          "rank": 193
+        }
+      ],
+      "in_plain_words": "11 surnames were skipped inside the walk, so the 200th surname taken is Cunningham at rank 211 (200 + 11)."
+    },
+    "checked_on_the_2010_file": "Ranks 1 to 211: every rank occurs once and the ranks rise in file order; no name starts with MAC; MCDONALD is the only name starting with MC."
+  },
+  "checks": {
+    "lines_in_first_names_txt": 200,
+    "lines_in_last_names_txt": 200,
+    "a_name_twice_inside_first_names_txt_ignoring_case": false,
+    "a_name_twice_inside_last_names_txt_ignoring_case": false,
+    "names_in_both_files_ignoring_case": [],
+    "two_runs_give_byte_identical_files": true,
+    "how_that_was_checked": "The script was run three times on 2026-11-17; the two lists were byte-identical each time.",
+    "modules_the_script_imports": [
+      "csv",
+      "decimal",
+      "hashlib",
+      "io",
+      "json",
+      "pathlib",
+      "string",
+      "sys",
+      "zipfile"
+    ],
+    "all_modules_are_in_the_python_standard_library": true,
+    "files_the_script_opened_for_reading_in_a_watched_run": [
+      ".cache/names_raw/census_1990_dist.female.first",
+      ".cache/names_raw/census_1990_dist.male.first",
+      ".cache/names_raw/census_2010_surnames_names.zip"
+    ],
+    "files_the_script_opened_for_writing_in_a_watched_run": [
+      "data/names/first_names.txt",
+      "data/names/last_names.txt"
+    ]
+  },
+  "what_the_census_bureau_says_about_the_1990_files": [
+    {
+      "address": "https://www.census.gov/topics/population/genealogy/data/1990_census.html",
+      "page_title": "Frequently Occurring Names from the 1990 Census",
+      "page_last_revised": "Page Last Revised - November 13, 2026",
+      "fetched": "2026-11-17T00:01:08-08:00",
+      "http_status": 200,
+      "quotes": [
+        "NOTE: No specific individual information is given.",
+        "The Census Bureau receives numerous requests to supply information on name frequency. In an effort to comply with those requests, the Census Bureau has embarked on a names list project involving a tabulation of names from the 1990 Census. These files contain only the frequency of a given name, no specific individual information."
+      ],
+      "about_reuse": "no explicit statement found on the page",
+      "saved_copy": "census_1990_census_page.html",
+      "saved_copy_sha256": "2743f2007abf5a84584d8eba894356d1daff36028b373a2170f7befc73f54cbf"
+    },
+    {
+      "address": "https://www.census.gov/topics/population/genealogy/data/1990_census/1990_census_namefiles.html",
+      "page_title": "Frequently Occurring Names from Census 1990 Names Files",
+      "page_last_revised": "Page Last Revised - November 13, 2026",
+      "fetched": "2026-11-17T00:01:24-08:00",
+      "http_status": 200,
+      "what_it_links": "dist.all.last, dist.female.first and dist.male.first, at the addresses used above",
+      "quotes": [
+        "NOTE: No specific individual information is given.",
+        "Each of the three files, (dist.all.last), (dist. male.first), and (dist female.first) contain four items of data. The four items are:",
+        "A \"Name\" Frequency in percent Cumulative Frequency in percent Rank",
+        "In our search area sample, MOORE ranks 9th in terms of frequency. 5.312 percent of the sample population is covered by MOORE and the 8 names occurring more frequently than MOORE. The surname, MOORE, is possessed by 0.312 percent of our population sample."
+      ],
+      "note_on_the_third_quote": "On the page these are four list items, one per line.",
+      "about_reuse": "no explicit statement found on the page",
+      "saved_copy": "census_1990_namefiles_page.html",
+      "saved_copy_sha256": "a073061a54221638b6f887773ab85f705b7a8077d097f3676b59539adee5d6fb"
+    },
+    {
+      "address": "https://www2.census.gov/topics/genealogy/1990surnames/nam_meth.txt",
+      "what": "The document both pages link as 'Name List: Documentation and Methodology'. Its heading: DOCUMENTATION AND METHODOLOGY FOR FREQUENTLY OCCURRING NAMES IN THE U.S.--1990",
+      "fetched": "2026-11-17T00:01:24-08:00",
+      "http_status": 200,
+      "quotes": [
+        "The PES blocks plus the surrounding ring--\"the Search Area\"--contained 7.2 million census records replete with name. It is this Search Area data set that provides the impetus for the three name files at this internet site.",
+        "For purposes of both confidentiality and elimination of data noise we restricted the number of unique names available at this internet site to the minimum number of entries that contain 90 percent of the population in that data file.",
+        "The PES sample intentionally over sampled both Blacks and Hispanics, and it is likely that the Search Area also contains an excess of these two groups. Thus the frequently occurring surnames: GARCIA, RODRIGUEZ, GOMEZ and WASHINGTON as well as first names: JUAN, JOSE, GUADALUPE and WILLIE might attain higher rankings than their actual population numbers within the United States would warrant.",
+        "Selected data from these files have appeared in the print media with the citation \"source--Census Bureau\"."
+      ],
+      "numbers_it_gives": "Valid records and unique names: dist.female.first 3,184,399 and 4,275; dist.male.first 3,003,954 and 1,219 (printed there as 1.219). The downloaded files have 4,275 and 1,219 lines.",
+      "note": "In the document the quoted sentences run over several lines; line breaks are written here as single spaces. PES stands for the Post-Enumeration Survey of 1990. Juan, Jose and Willie are among the 200 chosen first names; Guadalupe is not.",
+      "about_reuse": "no explicit statement found in the document. The last quote reports how others credited the data; it is not a permission.",
+      "saved_copy": "census_1990_nam_meth.txt",
+      "saved_copy_sha256": "aa18f18d4243479f538fea56ee31bb083607b4c670b1dfcafac120f4eb3cbc7f"
+    }
+  ],
+  "what_the_first_names_represent": "The 1990 files tabulate the names of people recorded in the 1990 census. They are not a list of babies born in a given year. So the first names are those of the generations living in 1990, which today means older generations: the lists begin Mary, Patricia, Linda and James, John, Robert.",
+  "reuse": {
+    "pages_of_the_1990_files": "no explicit statement found on the page (https://www.census.gov/topics/population/genealogy/data/1990_census.html and https://www.census.gov/topics/population/genealogy/data/1990_census/1990_census_namefiles.html), and none in the linked documentation (https://www2.census.gov/topics/genealogy/1990surnames/nam_meth.txt). Their text was searched for: public domain, copyright, reuse, re-use, permission, license, licence, free of charge, restriction, freely, cite, citation, terms of. The only matches are 'in terms of frequency' and the sentence about the citation 'source--Census Bureau' quoted above.",
+    "page_of_the_2010_file": {
+      "address": "https://www.census.gov/topics/population/genealogy/data/2010_surnames.html",
+      "page_last_revised": "Page Last Revised - October 8, 2021",
+      "fetched": "2026-11-16T23:44:00-08:00",
+      "http_status": 200,
+      "about_reuse": "no explicit statement found on the page",
+      "how_it_was_looked_for": "The text of the page was searched for: public domain, copyright, reuse, re-use, permission, license, licence, free of charge, restriction, freely, cite, citation, terms of. None occurs.",
+      "related_sentence_on_the_page": "NOTE: This presentation of data focuses on summarized aggregates of counts and characteristics associated with surnames, and the data do not in any way identify any specific individuals.",
+      "saved_copy": "census_2010_surnames_page.html",
+      "saved_copy_sha256": "572ec407e821b48c1470e4db85b5320a397e4d6ab977639bc3668da3c0e4b821"
+    },
+    "general_rule_on_the_census_bureau_site": [
+      {
+        "address": "https://www.census.gov/about/policies/open-gov.html",
+        "page_title": "Open Government at the Census Bureau",
+        "page_last_revised": "Page Last Revised - July 8, 2026",
+        "fetched": "2026-11-16T23:45:33-08:00",
+        "http_status": 200,
+        "quote": "The U.S. Census Bureau publishes its data as open data, meaning it is freely available for use and re-use by the public.",
+        "saved_copy": "census_open_gov.html",
+        "saved_copy_sha256": "315a0c2cf32472f3dae91cbce36629bf0975fb03311585b1d389e54f7ac05c3d"
+      },
+      {
+        "address": "https://www.census.gov/topics/research/research-transparency-public-access/open-data.html",
+        "reached_from": "https://www.census.gov/about/policies/open-gov/open-data.html (the site redirects)",
+        "page_title": "Open Data",
+        "page_last_revised": "Page Last Revised - July 8, 2026",
+        "fetched": "2026-11-16T23:44:32-08:00",
+        "http_status": 200,
+        "quote": "The U.S. Census Bureau is committed to open government by sharing its public data as open data.",
+        "saved_copy": "census_policies_open_data.html",
+        "saved_copy_sha256": "9fa337bef193490455d9243567fe00fc2232782b1782971d4f98b51ca376f2fe"
+      },
+      {
+        "address": "https://www.census.gov/about/policies/citation.html",
+        "page_title": "Citing our Data, Tools, Technical Documents and Research",
+        "page_last_revised": "Page Last Revised - February 24, 2026",
+        "fetched": "2026-11-16T23:44:31-08:00",
+        "http_status": 200,
+        "quote": "Data users who create their own estimates using data from disseminated tables and other data should cite the Census Bureau as the source of the original data only.",
+        "note": "This asks for the Census Bureau to be named as the source. It is not a licence.",
+        "saved_copy": "census_policies_citation.html",
+        "saved_copy_sha256": "932ba5027b61581e784a46bc5fb2bb1826b3abd05389624669e5e5c6c691ec75"
+      }
+    ],
+    "general_rule_in_us_law": {
+      "address": "https://www.copyright.gov/title17/92chap1.html",
+      "what": "US Copyright Office, text of the US copyright law (title 17 of the United States Code), section 105(a)",
+      "fetched": "2026-11-16T23:46:23-08:00",
+      "http_status": 200,
+      "quote": "Copyright protection under this title is not available for any work of the United States Government, but the United States Government is not precluded from receiving and holding copyrights transferred to it by assignment, bequest, or otherwise.",
+      "saved_copy": "copyright_gov_title17_chap1.html",
+      "saved_copy_sha256": "97999d678e2877c8142da81a0dce819b210e9f92aa5a405d130bf2f2e50c7d75"
+    }
+  },
+  "what_happened_with_the_social_security_administration_file": "The first choice for first names was the national baby-names file of the US Social Security Administration (https://www.ssa.gov/oact/babynames/names.zip). The site refused automated download: on 2026-11-16 it answered HTTP 403 'Access Denied' to five requests made with curl between 23:36:41 and 23:56:35, and also to requests for its describing page, its home page and its robots.txt. The data.gov catalog lists the same address and holds no copy. No copy from another site was used. The Census Bureau's 1990 first-name files were used in its place.",
+  "suggested_credit_line": "Name lists derived from U.S. Census Bureau data: Frequently Occurring Names from the 1990 Census (first names) and Frequently Occurring Surnames from the 2010 Census (last names).",
+  "fuller_citations": {
+    "pattern_on_the_census_citation_page": "Author/s, “Table or File Name/Number,” Full Product Name, Vintage, <URL>, accessed on date.",
+    "pattern_address": "https://www.census.gov/about/policies/citation.html",
+    "filled_in_for_these_files": [
+      "U.S. Census Bureau, \"dist.female.first\" and \"dist.male.first,\" Frequently Occurring Names from the 1990 Census, <https://www.census.gov/topics/population/genealogy/data/1990_census.html>, accessed on November 17, 2026.",
+      "U.S. Census Bureau, \"Names_2010Census.csv,\" Frequently Occurring Surnames from the 2010 Census, <https://www.census.gov/topics/population/genealogy/data/2010_surnames.html>, accessed on November 16, 2026."
+    ],
+    "note": "The credit line and the filled-in citations are suggestions written for this project; only the pattern is the Census Bureau's wording."
+  },
+  "rebuild": {
+    "script": "make_name_lists.py (Python standard library only)",
+    "command": "python3 -I data/names/make_name_lists.py",
+    "reads": [
+      ".cache/names_raw/census_1990_dist.female.first",
+      ".cache/names_raw/census_1990_dist.male.first",
+      ".cache/names_raw/census_2010_surnames_names.zip"
+    ],
+    "writes": [
+      "data/names/first_names.txt",
+      "data/names/last_names.txt"
+    ],
+    "prints": "the SHA-256 of the three raw files, of the file used inside the archive and of the two lists, the names skipped under each rule, and the checks",
+    "to_repeat_from_nothing": "Download the three raw files from the addresses above into .cache/names_raw/ under the names given in saved_as, compare their SHA-256 with this record, then run the command."
+  }
+}

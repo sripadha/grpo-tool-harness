@@ -1,0 +1,31 @@
+PASS  test 0  unchanged copy
+      nothing reported
+PASS  test 1  .json: grpo_seed1 pass_rate + 1e-6
+      json_mismatch: reported [('test', 'grpo_seed1', 'pass_rate')]
+PASS  test 2  .md: sft pass rate 91.3 -> 91.4
+      md_mismatch: reported [('test', 'sft', 'Pass rate')]; md_vs_json_mismatch: reported [('test', 'sft', 'Pass rate')]
+PASS  test 3  .json: lower bootstrap end of grpo_seed1 minus sft - 0.01 (one point)
+      md_vs_json_mismatch: reported [('test', 'grpo_seed1 minus sft', 'Paired bootstrap, lower end')]; outside_noise: reported [('test', 'grpo_seed1 minus sft', 'lo')]; seed0_mismatch: reported [('test', 'grpo_seed1 minus sft', 'pair.lo (my code, seed 0)')]
+PASS  test 4  .md: upper bootstrap end of grpo_seed1 minus sft +13.6 -> +14.6
+      md_vs_json_mismatch: reported [('test', 'grpo_seed1 minus sft', 'Paired bootstrap, upper end')]; md_seed0_mismatch: reported [('test', 'grpo_seed1 minus sft', 'Paired bootstrap, upper end (my code, seed 0)')]
+PASS  test 5  .json: upper interval end of base + one grid step (1/1536)
+      seed0_mismatch: reported [('test', 'base', 'pass_rate_hi (my code, seed 0)')]
+PASS  test 6  .json: grpo_seed2 attempts with reward 100: 1524 -> 1523
+      json_mismatch: reported [('test', 'grpo_seed2', 'reward_distribution.100')]; md_vs_json_mismatch: reported [('test', 'grpo_seed2', 'attempts with reward 100')]
+PASS  test 7  .md: grpo_seed1 attempts with reward 0: 7 -> 8
+      md_mismatch: reported [('test', 'grpo_seed1', 'attempts with reward 0')]; md_vs_json_mismatch: reported [('test', 'grpo_seed1', 'attempts with reward 0')]
+PASS  test 8  .json: base n_episodes 1536 -> 1535
+      json_mismatch: reported [('test', 'base', 'n_episodes')]; md_vs_json_mismatch: reported [('test', 'base', 'Episodes')]
+PASS  test 9  .json: sign of the difference grpo_seed2 minus sft turned
+      json_mismatch: reported [('test', 'grpo_seed2 minus sft', 'pair.diff')]; md_vs_json_mismatch: reported [('test', 'grpo_seed2 minus sft', 'Difference in points')]
+PASS  test 10 .json: t_hi of sft minus base + 1e-6
+      json_mismatch: reported [('test', 'sft minus base', 'pair.t_hi')]
+PASS  test 11 .json: sft smallest detectable effect mde x 1.01
+      seed0_mismatch: reported [('test', 'sft', 'smallest_detectable_effect.mde')]
+PASS  test 12 .json: the comparison grpo_seed2 minus sft removed
+      structure: reported [('pairs', 'the comparison grpo_seed2 minus sft is missing in the table')]; and the .md rows of this comparison have no .json value: 6 reported
+command on the unchanged copy: exit code 0
+command on the copy with the change of test 2: exit code 1; standard error: exit code 1: 2 of 651 comparisons differ; input checks failed 0; structure problems 0; parts of the .md not covered 0
+PASS  test 13 exit codes (0 wanted for the unchanged copy, 1 for the changed copy)
+
+14 of 14 tests pass
